@@ -8,25 +8,24 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='wcoa',
+    name='mida',
     version='0.1',
     packages=find_packages(),
     include_package_data=True,
-    license='BSD License',  # example license
-    description='A simple Django app for wcoa.',
+    license='MIT License',
+    description='Mid-Atlantic customizations to the Ocean Portal Platform.',
     long_description=README,
-    url='https://www.wcoa.com/',
-    author='Your Name',
-    author_email='yourname@example.com',
+    url='https://github.com/Ecotrust/mida-portal',
+    author='Ecotrust Developers',
+    author_email='ksdev@ecotrust.org',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Framework :: Django :: X.Y',  # replace "X.Y" as appropriate
+        'Framework :: Django :: 2.2',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: BSD License',  # example license
+        'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',

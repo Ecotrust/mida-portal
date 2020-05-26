@@ -1,7 +1,7 @@
-West Coast Ocean Alliance (WCOA) Data Portal
+Mid-Atlantic Ocean Data Portal
 =====
 
-Django web application and Wagtail CMS for the West Coast Ocean Data Portal.
+Django web application and Wagtail CMS for the Mid-Atlantic Ocean Data Portal.
 
 ## Local Vagrant Development Env
 
@@ -31,9 +31,9 @@ requirements:
   vim /usr/local/apps/ocean_portal/requirements.txt
   ```
 
-4. Add WCOA app to requirements.txt
+4. Add MidA-Portal app to requirements.txt
   ```
-  -e git+https://github.com/Ecotrust/wcoa.git@master#egg=wcoa-master
+  -e git+https://github.com/Ecotrust/mida-portal.git@master#egg=mida
   ```
 
 5. Set up virtualenv
@@ -72,7 +72,7 @@ requirements:
 8. Edit config.ini
   - Add the following lines under `[App]`:
     ```
-      PROJECT_APP = wcoa
+      PROJECT_APP = mida
       PROJECT_SETTINGS_FILE = True
       MEDIA_ROOT = /usr/local/apps/ocean_portal/marco/media
   	  STATIC_ROOT = /usr/local/apps/ocean_portal/marco/static
@@ -139,7 +139,7 @@ The Compass install docs were a nice guideline for setting up MP, perhaps they w
 https://github.com/Ecotrust/COMPASS/wiki/install
 
  Upgrading to Wagtail 2.0+: https://wagtail.io/blog/upgrading-to-wagtail-2/
- 
+
  ## Production Installation (Ubuntu 18.04 LTS)
  #### set up new server
  ```
@@ -150,7 +150,7 @@ https://github.com/Ecotrust/COMPASS/wiki/install
  ```
  change ownership of /usr/local/apps to be your primary sudo user:
  `sudo chown {USERNAME} /usr/local/apps`
- 
+
  ```
  cd /usr/local/apps/
  git clone https://github.com/Ecotrust/marco-portal2.git
@@ -159,7 +159,7 @@ https://github.com/Ecotrust/COMPASS/wiki/install
  git checkout wcoa
  git pull
  ```
- 
+
  #### Set up virtualenv
   ```
   python3 -m pip install --user virtualenv
@@ -167,19 +167,19 @@ https://github.com/Ecotrust/COMPASS/wiki/install
   python3 -m virtualenv env
   source /usr/local/apps/ocean_portal/env/bin/activate
   pip install -r /usr/local/apps/ocean_portal/requirements.txt
-  pip install -e git+https://github.com/Ecotrust/wcoa.git@master#egg=wcoa-master
+  pip install -e git+https://github.com/Ecotrust/mida-portal.git@master#egg=mida
   ```
-  
+
 #### Install PyGDAL
   ```
   pip uninstall numpy
   gdal-config --version
   ```
   Note what version is printed. You will want to intall the correct pygdal for your system's GDAL.
-  
+
   For example, if the printed version is '2.2.3', then you will want the latest pyGDAL in the 2.2.3 family:
   `pip install "pygdal<2.2.4"`
- 
+
   You should see a new version of numpy installed as well.
 
 #### Install database
@@ -211,11 +211,11 @@ https://github.com/Ecotrust/COMPASS/wiki/install
 #### Edit config.ini
   - Add the following lines under `[App]`:
     ```
-      PROJECT_APP = wcoa
+      PROJECT_APP = mida
       PROJECT_SETTINGS_FILE = True
-      MEDIA_ROOT = /usr/local/apps/ocean_portal/env/src/wcoa-master/media
+      MEDIA_ROOT = /usr/local/apps/ocean_portal/env/src/mida/media
   	  STATIC_ROOT = /usr/local/apps/ocean_portal/marco/static
-      EMAIL_SUBJECT_PREFIX = [WCOA]
+      EMAIL_SUBJECT_PREFIX = [Mid-Atlantic Portal]
     ```
     - If you already know your URL, you can put that in for `ALLOWED_HOSTS`
   - Add the following under [DATABASE] (replacing `{DBUSER}` and `{DBPASSWORD}` with the database user and password you created above):
@@ -240,7 +240,7 @@ https://github.com/Ecotrust/COMPASS/wiki/install
   dj compress
   dj collectstatic
   ```
-  
+
 #### Load in initial data
   There is no prescribed method for this. If you have access to existing servers, you have the following two options.
   If you don't have access to existing servers, you'll need to just try to build from scratch.
@@ -269,13 +269,13 @@ For reference [go here](http://uwsgi-docs.readthedocs.org/en/latest/tutorials/Dj
 From inside your virualenv:
 * `sudo apt-get install nginx uwsgi uwsgi-plugin-python3 -y`
 * `pip install uwsgi`
-* `sudo cp /usr/local/apps/ocean_portal/env/src/wcoa-master/deploy/nginx_config /etc/nginx/sites-available/wcoa`
+* `sudo cp /usr/local/apps/ocean_portal/env/src/mida/deploy/nginx_config /etc/nginx/sites-available/mida`
 * `sudo rm /etc/nginx/sites-enabled/default`
-* `sudo ln -s /etc/nginx/sites-available/wcoa /etc/nginx/sites-enabled/wcoa`
-* `sudo cp /usr/local/apps/ocean_portal/env/src/wcoa-master/deploy/emperor.ini /etc/uwsgi/`
-* `sudo cp /usr/local/apps/ocean_portal/env/src/wcoa-master/deploy/uwsgi.service /etc/systemd/system/`
+* `sudo ln -s /etc/nginx/sites-available/mida /etc/nginx/sites-enabled/mida`
+* `sudo cp /usr/local/apps/ocean_portal/env/src/mida/deploy/emperor.ini /etc/uwsgi/`
+* `sudo cp /usr/local/apps/ocean_portal/env/src/mida/deploy/uwsgi.service /etc/systemd/system/`
 * `sudo systemctl enable uwsgi.service`
-* `sudo cp /usr/local/apps/ocean_portal/env/src/wcoa-master/deploy/wcoa.ini /etc/uwsgi/apps-enabled/wcoa.ini`
+* `sudo cp /usr/local/apps/ocean_portal/env/src/mida/deploy/mida.ini /etc/uwsgi/apps-enabled/mida.ini`
 * `sudo service nginx start`
    * If this fails, apache2 may already be running and hogging port 80.
       * you can stop apache2 with `sudo service apache2 stop` - but it will restart on reboot.
@@ -315,7 +315,7 @@ Requirements:
    * external access to port 80
    * external access to port 443
    * access to a preferred email address to receive any alerts about your SSL certificates
-   
+
 If you have not already done so, edit /usr/local/apps/ocean_portal/marco/config.ini in the [APP] section:
    * `ALLOWED_HOSTS = {SITE_URL}` where `{SITE_URL}` is your site's intended address
 Then restart uWSGI: `sudo service uwsgi restart`
@@ -329,8 +329,8 @@ Install certbot:
 
 Configure NGINX:
 ```
-sudo cp /etc/nginx/sites-available/wcoa /etc/nginx/sites-available/wcoa.http_only
-sudo vim /etc/nginx/sites-available/wcoa
+sudo cp /etc/nginx/sites-available/mida /etc/nginx/sites-available/mida.http_only
+sudo vim /etc/nginx/sites-available/mida
 ```
 * Replace the line `server_name _;`  with `server_name {SITE_URL}` where `{SITE_URL}` is your site's URL address
 * Save
@@ -343,13 +343,13 @@ Get your SSL Certificate, replace `{SITE_URL}` with your URL address:
 sudo certbot --nginx -d {SITE_URL}
 ```
 * provide your email address
-* agree to their terms: https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf 
+* agree to their terms: https://letsencrypt.org/documents/LE-SA-v1.2-November-15-2017.pdf
 * choose whether or not to have your email address shared with eff.org
 * select if you want users hitting the site using HTTP to be automatically redirected to HTTPS
 
 Test your SSL Cert installation:
 * hit your site using HTTPS (or HTTP if you chose to have automatic redirection)
-* Inspect your URL using https://www.ssllabs.com/ssltest/ 
+* Inspect your URL using https://www.ssllabs.com/ssltest/
 * Check that Certbot auto-renew is properly configured:
    * `sudo certbot renew --dry-run`
 

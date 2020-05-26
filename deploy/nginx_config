@@ -4,8 +4,8 @@ server {
         client_max_body_size 50M;
 
         server_name _;
-        access_log /var/log/nginx/wcoa.access.log;
-        error_log /var/log/nginx/wcoa.error.log;
+        access_log /var/log/nginx/mida.access.log;
+        error_log /var/log/nginx/mida.error.log;
 
         location /munin/static/ {
                 alias /etc/munin/static/;
@@ -20,12 +20,12 @@ server {
         }
 
         location /media {
-                alias /usr/local/apps/ocean_portal/env/src/wcoa-master/media/;
+                alias /usr/local/apps/ocean_portal/env/src/mida/media/;
         }
 
         location / {
                 include uwsgi_params;
-                uwsgi_pass unix:///tmp/wcoa-socket;
+                uwsgi_pass unix:///tmp/mida-socket;
                 #uwsgi_pass django;
                 #try_files $uri $uri/ =404;
                 uwsgi_read_timeout 300;
