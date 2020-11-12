@@ -3,6 +3,7 @@
 TIME=`/bin/date +20%y/%m/%d-%H:%M:%S`
 
 /usr/sbin/service uwsgi start
+/usr/sbin/service stage start
 
 /usr/local/apps/ocean_portal/env/src/mida/deploy/restart_nginx.sh &
 

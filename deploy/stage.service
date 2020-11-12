@@ -1,0 +1,14 @@
+[Unit]
+Description=uWSGI Emperor service for staging
+After=syslog.target
+
+[Service]
+ExecStart=/usr/local/apps/ocean_portal/env/bin/uwsgi --ini /etc/uwsgi/apps-enabled/stage.ini
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
