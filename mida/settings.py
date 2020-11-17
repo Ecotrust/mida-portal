@@ -18,3 +18,5 @@ DATA_MANAGER_ADMIN = True
 DATA_CATALOG_ENABLED = True
 
 # HANDLER_404 = 'wcoa.views.page_not_found'
+
+FEEDBACK_IFRAME_URL = "//docs.google.com/forms/d/e/1FAIpQLSfI6jIDyQzY1viSzEQHYGo4Z_yhFR49DhMpUIUTErBdkEvtxA/viewform?usp=sf_link"
