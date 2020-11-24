@@ -1,0 +1,18 @@
+button.email-list-button {
+  width: 80%;
+  position: relative;
+  line-height: 1.7em;
+}
+
+button.email-list-button i {
+  position: absolute;
+  padding-top: 0.25em;
+}
+
+button.email-list-button i.left {
+  left: 1em;
+}
+
+button.email-list-button i.right {
+  right: 1em;
+}

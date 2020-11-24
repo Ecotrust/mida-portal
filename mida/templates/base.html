@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+  <!-- FOOOO EXTRA CSS!!!! -->
+  <link rel="stylesheet" href="{% static 'mida/css/footer.css' %}" type="text/css">
+  <!-- EnD EXTRA CSS!!!! -->
+{% endblock %}
+
+{% block footer_wrap %}
+<footer>
+    {% block footer %}
+    <div class="container">
+        {% include 'marco_site/includes/footer.html' %}
+    </div>
+    {% endblock %}
+</footer>
+{% endblock footer_wrap %}
