@@ -87,7 +87,7 @@ app.wrapper.events.clickOnUTFGridLayerEvent = function(layer, evt){
       } else if ( mp_layer.name === 'BOEM Wind Planning Areas' ) {
           data = app.legacy.getWindPlanningAreaAttributes(data);
       } else if ( mp_layer.name === 'Party & Charter Boat' ) {
-          data = app.legacy.adjustPartyCharterAttributes(attribute_objs);
+          data = app.legacy.adjustPartyCharterAttributes(data);
       } else if ( mp_layer.name === 'Port Commodity (Points)' ) {
           data = app.legacy.getPortCommodityAttributes(data);
       } else if ( mp_layer.name === 'Port Commodity' ) {
@@ -112,8 +112,9 @@ app.wrapper.events.clickOnUTFGridLayerEvent = function(layer, evt){
       // if (Object.keys(data[0]).indexOf('display') >= 0) {
       //   data = app.legacy.reformatGridAttributeData(data);
       // }
-
-      app.wrapper.events.generateAttributeReport(mp_layer, [data]);
+      if ((Array.isArray(data) && data.length > 0) || !Array.isArray(data)) {
+        app.wrapper.events.generateAttributeReport(mp_layer, [data]);
+      }
     });
 };
 
@@ -409,6 +410,188 @@ app.legacy.getOCSAttributes = function (data) {
     //     attrs.push({'display': 'Commercial Ship Traffic Density', 'data': rank });
     // }
 
+    return attrs;
+};
+
+app.legacy.getSeaTurtleAttributes = function (data) {
+    attrs = [];
+    if ('ST_LK_NUM' in data && data['ST_LK_NUM']) {
+        //attrs.push({'display': 'Sightings', 'data': data['ST_LK_NUM']});
+        if (data['ST_LK_NUM'] === 99) {
+            attrs.push({'display': 'Insufficient Data available for this area', 'data': ''});
+        } else {
+            attrs.push({'display': 'Above Average Sightings for the following species:', 'data': ''});
+        }
+    } else {
+        attrs.push({'display': 'Sightings were in the normal range for all species', 'data': ''});
+    }
+
+    if ('ST_LK_NUM' in data && data['ST_LK_NUM'] ) {
+        var season, species, sighting;
+        if ('GREEN_LK' in data && data['GREEN_LK']) {
+            season = data['GREEN_LK'];
+            species = 'Green Sea Turtle';
+            sighting = species + ' (' + season + ') ';
+            attrs.push({'display': '', 'data': sighting});
+        }
+        if ('LEATH_LK' in data && data['LEATH_LK']) {
+            season = data['LEATH_LK'];
+            species = 'Leatherback Sea Turtle';
+            sighting = species + ' (' + season + ') ';
+            attrs.push({'display': '', 'data': sighting});
+        }
+        if ('LOGG_LK' in data && data['LOGG_LK']) {
+            season = data['LOGG_LK'];
+            species = 'Loggerhead Sea Turtle';
+            sighting = species + ' (' + season + ') ';
+            attrs.push({'display': '', 'data': sighting});
+        }
+    }
+    return attrs;
+};
+
+app.legacy.getToothedMammalAttributes = function (data) {
+    attrs = [];
+    if ('TOO_LK_NUM' in data && data['TOO_LK_NUM']) {
+        if (data['TOO_LK_NUM'] === 99) {
+            attrs.push({'display': 'Insufficient Data available for this area', 'data': ''});
+        } else {
+            attrs.push({'display': 'Above Average Sightings for the following species:', 'data': ''});
+        }
+    } else {
+        attrs.push({'display': 'Sightings were in the normal range for all species', 'data': ''});
+    }
+    if ('TOO_LK_NUM' in data && data['TOO_LK_NUM'] ) {
+        var season, species, sighting;
+        if ('SPERM_LK' in data && data['SPERM_LK']) {
+            season = data['SPERM_LK'];
+            species = 'Sperm Whale';
+            sighting = species + ' (' + season + ') ';
+            attrs.push({'display': '', 'data': sighting});
+        }
+        if ('BND_LK' in data && data['BND_LK']) {
+            season = data['BND_LK'];
+            species = 'Bottlenose Dolphin';
+            sighting = species + ' (' + season + ') ';
+            attrs.push({'display': '', 'data': sighting});
+        }
+        if ('STRIP_LK' in data && data['STRIP_LK']) {
+            season = data['STRIP_LK'];
+            species = 'Striped Dolphin';
+            sighting = species + ' (' + season + ') ';
+            attrs.push({'display': '', 'data': sighting});
+        }
+    }
+    return attrs;
+};
+
+app.legacy.getWindSpeedAttributes = function (data) {
+    attrs = [];
+    if ('SPEED_90' in data) {
+        var min_speed = (parseFloat(data['SPEED_90'])-0.125).toPrecision(3),
+            max_speed = (parseFloat(data['SPEED_90'])+0.125).toPrecision(3);
+        attrs.push({'display': 'Estimated Avg Wind Speed', 'data': min_speed + ' to ' + max_speed + ' m/s'});
+    }
+    return attrs;
+};
+
+app.legacy.getWindPlanningAreaAttributes = function (data) {
+    attrs = [];
+    if ('INFO' in data) {
+        var state = data.INFO,
+            first = state.indexOf("Call"),
+            second = state.indexOf("WEA"),
+            third = state.indexOf("RFI");
+        /*if (first !== -1) {
+            state = state.slice(0, first);
+        } else if (second !== -1) {
+            state = state.slice(0, second);
+        } else if (third !== -1) {
+            state = state.slice(0, third);
+        }*/
+        attrs.push({'display': '', 'data': state});
+    }
+    return attrs;
+};
+
+app.legacy.adjustPartyCharterAttributes = function (data) {
+    var attrs = [];
+    if (Array.isArray(data) == false) {
+      data = [data]
+    }
+    for (var x=0; x<data.length; x=x+1) {
+      if (data[x].hasOwnProperty('TOTAL_TRIP')) {
+        attrs.push({
+          'display': 'Total Trips (2000-2009)',
+          'data': Math.round(data[x].TOTAL_TRIP)
+        });
+      }
+    }
+    return attrs;
+};
+
+app.legacy.getPortCommodityAttributes = function (data) {
+    attrs = [];
+    if ('Commodity_' in data) {
+        var commodity = 'Unknown';
+        switch (data['Commodity_']) {
+            case 0:
+                commodity = 'Not applicable';
+                break;
+            case 10:
+                commodity = 'Coal';
+                break;
+            case 20:
+                commodity = 'Petroleum & petroleum products';
+                break;
+            case 30:
+                commodity = 'Chemicals & related products';
+                break;
+            case 40:
+                commodity = 'Crude materials, inedible, except fuels';
+                break;
+            case 50:
+                commodity = 'Primary manufactured goods';
+                break;
+            case 60:
+                commodity = 'Food & farm products';
+                break;
+            case 70:
+                commodity = 'All manufactured equipment and machinery';
+                break;
+            case 80:
+                commodity = 'Waste material; garbage, landfill, sewage sludge & waste water';
+                break;
+            case 91:
+                commodity = 'Multi-commodities';
+                break;
+            case 99:
+                commodity = 'Unknown';
+                break;
+        }
+        attrs.push({'display': '', 'data': commodity});
+    }
+    return attrs;
+};
+
+app.legacy.getPortOwnershipAttributes = function (data) {
+    attrs = [];
+    if ('Ownership' in data) {
+        attrs.push({'display': '', 'data': data['Ownership']});
+    }
+    return attrs;
+};
+
+app.legacy.getChannelAttributes = function (data) {
+    attrs = [];
+    if ('location' in data) {
+        attrs.push({'display': '', 'data': data['location']});
+    }
+    if ('minimumDep' in data) {
+        var meters = data['minimumDep'],
+            feet =  new Number(meters * 3.28084).toPrecision(2);
+        attrs.push({'display': 'Minimum Depth', 'data': feet + ' feet'}); // + meters + ' meters)'});
+    }
     return attrs;
 };
 
