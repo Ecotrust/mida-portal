@@ -1,0 +1,46 @@
+/* Recreating Styles*/
+body {
+    font-family: 'Roboto';
+    font-size: 14px;
+    line-height: 1.42857;
+}
+
+/*
+++++++++++++ NEWS ++++++++++++
+*/
+
+.description, .description p {
+    color: #58585b;
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.media-body {
+  font-size: 18px;
+  line-height: 26px;
+}
+
+.media-body div.item-text {
+  line-height: 1.42857;
+}
+
+div.media-item .detail .media-body .item-text,
+.detail .media-body .item-text p {
+  font-size: 18px;
+  line-height: 26px;
+  color: black;
+  font-weight: 400;
+}
+
+/*
+++++++++++++ DATA CATALOG ++++++++++++
+*/
+
+.detail .media-body .theme-detail-border .description {
+    line-height: 27.1428px;
+}
+
+.media-body .view-in-map {
+  font-size: 14px;
+  line-height: 20px;
+}

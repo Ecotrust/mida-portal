@@ -1,0 +1,175 @@
+.intro p:not(:empty) {
+    background: #22408f;
+    color: #fff;
+    padding: 1.5rem;
+}
+
+.carousel,
+.slide-wrap {
+    height: 240px;
+}
+
+.carousel a,
+.carousel a * {
+    color: #fff;
+    transition: 0.2s all ease-in-out;
+    text-shadow: 0 0 7px rgba(46,46,46,.96);
+}
+
+.carousel a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.carousel a:hover * {
+    text-shadow: 0 0 10px rgba(46,46,46,.96);
+}
+
+.slide-wrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.slide-bg {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: -1;
+}
+.slide-bg:after {
+    background: rgba(0,0,0,.45);
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.slide-bg img {
+   width: 100%;
+   height: auto;
+}
+.slide-content {
+    margin: 0 auto;
+    padding: 30px 0 30px;
+    text-align: center;
+    width: 80%;
+}
+
+.slide-title {
+    font-size: 1.25em;
+    font-weight: 700;
+    letter-spacing: .0125em;
+    line-height: 1.25;
+    word-spacing: .18375em;
+    margin: 0 0 3.5rem;
+}
+
+.slide-body,
+.slide-body p {
+    font-size: .875em;
+    font-weight: 400;
+    line-height: 1.3125;
+}
+.slide-body p {
+    text-align: justify;
+}
+
+.slick-prev, .slick-next {
+    height: 40px;
+    width: 40px;
+    z-index: 9;
+}
+.slick-prev:before, .slick-next:before {
+    color: #fff;
+    font-size: 40px;
+}
+
+.slick-prev {
+    left: 5px;
+}
+.slick-next {
+    right: 5px;
+}
+
+@media only screen and (min-width: 480px) {
+    .carousel,
+    .slide-wrap {
+        height: 240px;
+    }
+    .slide-title {
+        font-size: 1.3125em;
+    }
+    .slide-body,
+    .slide-body p {
+        font-size: .9375em;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .slide-title {
+        font-size: 1.5em;
+    }
+    .slide-body,
+    .slide-body p {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .carousel,
+    .slide-wrap {
+        height: 240px;
+    }
+    .slide-title {
+        font-size: 2em;
+    }
+    .slide-body,
+    .slide-body p {
+        font-size: 1.06125em;
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .slide-title {
+        font-size: 3em;
+    }
+    .slide-body {
+        font-size: 1.125em;
+        margin: 0 auto;
+        width: 70%;
+    }
+    .slide-body p {
+        font-size: 1.125em;
+        line-height: 1.375;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .carousel,
+    .slide-wrap {
+        height: 313px;
+    }
+    .slide-title {
+        font-size: 4em;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .carousel,
+    .slide-wrap {
+        height: 380px;
+    }
+    .slide-title {
+        font-size: 5.125em;
+    }
+    .slide-body {
+        font-size: 1.25em;
+        width: 56%;
+    }
+    .slide-body p {
+        font-size: 1.25em;
+    }
+}

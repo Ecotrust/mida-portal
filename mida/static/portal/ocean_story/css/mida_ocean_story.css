@@ -8,3 +8,9 @@ div.page-header div.description {
   font-size: 1.1875em;
   line-height: 1.6375em;
 }
+
+body.ocean-story-page.section-layout .page-header .description p {
+    color: black;
+    font-weight: normal;
+    margin-bottom: 4rem;
+}
