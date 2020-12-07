@@ -22,6 +22,7 @@ body.page-layout div.page-body p {
     line-height: 26px;
 }
 
+.detail .media-body .item-text,
 .media-body {
   font-size: 18px;
   line-height: 26px;
@@ -29,6 +30,10 @@ body.page-layout div.page-body p {
 
 .media-body div.item-text {
   line-height: 1.42857;
+}
+
+div.media-item.media {
+  display: contents;
 }
 
 div.media-item .detail .media-body .item-text,
