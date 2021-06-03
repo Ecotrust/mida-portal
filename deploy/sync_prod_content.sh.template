@@ -1,0 +1,19 @@
+#!/bin/bash
+
+USERNAME=username
+SOURCE=portal.midatlanticocean.org
+IDENTITY=/path/to/key.pem
+
+
+# For the stage server, we need to sync media and staticfiles so admin-added
+#   content/files referenced (relatively) by the database exist on all servers
+
+# Let's do this with rSync!
+# https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories
+
+# Legends
+
+# sFTP Uploads (/usr/local/apps/marco_portal_static)
+rsync -a -e "ssh -i $IDENTITY" $USERNAME@$SOURCE:/usr/local/apps/marco_portal_static/ /usr/local/apps/marco_portal_static/
+
+# Wagtail-added images (/usr/loca/apps/ocean_portal/marco/media/images)
