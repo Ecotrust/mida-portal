@@ -62,16 +62,20 @@ class MDAT22Q1Test(TestCase):
         self.assertEqual(Layer.objects.filter(source__icontains="://seamap.env.duke.edu/models/mdat/").count(), 6)
         self.assertEqual(Layer.objects.filter(source__icontains="https://seamap.env.duke.edu/models/mdat/#more-information").count(), 0)
 
+        self.assertEqual(Layer.objects.filter(data_download="http://seamap.env.duke.edu/models/mdat/").count(), 2)
+        self.assertEqual(Layer.objects.filter(data_download="").count(), 2)
+        self.assertEqual(Layer.objects.filter(data_download=None).count(), 2)
+
         mdat_source_update_22q1()
 
         self.assertEqual(Layer.objects.filter(source="http://seamap.env.duke.edu/models/mdat/").count(), 0)
-        self.assertEqual(Layer.objects.filter(source="https://seamap.env.duke.edu/models/mdat/").count(), 0)
-        self.assertEqual(Layer.objects.filter(source__icontains="https://seamap.env.duke.edu/models/mdat/#more-information").count(), 6)
+        self.assertEqual(Layer.objects.filter(source="https://seamap.env.duke.edu/models/mdat/").count(), 6)
+        self.assertEqual(Layer.objects.filter(data_download="https://seamap.env.duke.edu/models/mdat/#more-information").count(), 6)
+        
 
         mdat_source_update_22q1(undo=True)
 
-        self.assertEqual(Layer.objects.filter(source__icontains="https://seamap.env.duke.edu/models/mdat/").count(), 6)
-        self.assertEqual(Layer.objects.filter(source__icontains="https://seamap.env.duke.edu/models/mdat/#more-information").count(), 0)
+        self.assertEqual(Layer.objects.filter(source="https://seamap.env.duke.edu/models/mdat/").count(), 6)
+        self.assertEqual(Layer.objects.filter(data_download="https://seamap.env.duke.edu/models/mdat/#more-information").count(), 0)
         self.assertEqual(Layer.objects.filter(source__icontains="http://seamap.env.duke.edu/models/mdat/").count(), 0)
-
 

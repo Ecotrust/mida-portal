@@ -87,10 +87,14 @@ def mdat_22Q1(prod=True, undo=False):
 
 def mdat_source_update_22q1(undo=False):
     layers = Layer.all_objects.filter(source__icontains="://seamap.env.duke.edu/models/mdat")
+    new_source = "https://seamap.env.duke.edu/models/mdat/"
     if undo:
-        new_source = "https://seamap.env.duke.edu/models/mdat/"
+        new_download = None
     else:
-        new_source = "https://seamap.env.duke.edu/models/mdat/#more-information"
+        new_download = "https://seamap.env.duke.edu/models/mdat/#more-information"
     for layer in layers:
-        layer.source = new_source
-        layer.save()
+        if not layer.source == new_source or not layer.data_download == new_download:
+            layer.source = new_source
+            layer.data_download = new_download
+            layer.save()
+    print("Layers impacted: {}".format(layers.count()))
