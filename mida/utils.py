@@ -42,7 +42,7 @@ def mdat_22Q1(prod=True, undo=False):
     layer_name_middle = " frequency: "
 
 
-    mammal_sound_sensitivity_layers = Layer.objects.filter(url__icontains=source_url, name__contains=layer_name_start).filter(name__icontains=layer_name_middle)
+    mammal_sound_sensitivity_layers = Layer.all_objects.filter(url__icontains=source_url, name__contains=layer_name_start).filter(name__icontains=layer_name_middle)
 
     low_label = "Low"
     if undo:
@@ -83,3 +83,14 @@ def mdat_22Q1(prod=True, undo=False):
             layer.arcgis_layers = to_value
             print("{} arcgis layer changed from {} to {}".format(layer.name, from_value, to_value))
             layer.save()
+
+
+def mdat_source_update_22q1(undo=False):
+    layers = Layer.all_objects.filter(source__icontains="://seamap.env.duke.edu/models/mdat")
+    if undo:
+        new_source = "https://seamap.env.duke.edu/models/mdat/"
+    else:
+        new_source = "https://seamap.env.duke.edu/models/mdat/#more-information"
+    for layer in layers:
+        layer.source = new_source
+        layer.save()

@@ -1,7 +1,7 @@
 from socket import IP_DROP_MEMBERSHIP
 from django.test import TestCase
 from data_manager.models import Layer
-from mida.utils import mdat_22Q1
+from mida.utils import mdat_22Q1, mdat_source_update_22q1
 
 # Create your tests here.
 class MDAT22Q1Test(TestCase):
@@ -52,5 +52,26 @@ class MDAT22Q1Test(TestCase):
         )
         self.assertEqual(Layer.objects.filter(name__icontains='Sound sensitivity High frequency:').count(), 0)
 
+
+    def test_mdat_22_q1_source(self):
+        layers = Layer.objects.filter(source__icontains="://seamap.env.duke.edu/models/mdat")
+        for foo in layers:
+            self.assertTrue(isinstance(foo, Layer))
+
+        self.assertEqual(layers.count(), 6)
+        self.assertEqual(Layer.objects.filter(source__icontains="://seamap.env.duke.edu/models/mdat/").count(), 6)
+        self.assertEqual(Layer.objects.filter(source__icontains="https://seamap.env.duke.edu/models/mdat/#more-information").count(), 0)
+
+        mdat_source_update_22q1()
+
+        self.assertEqual(Layer.objects.filter(source="http://seamap.env.duke.edu/models/mdat/").count(), 0)
+        self.assertEqual(Layer.objects.filter(source="https://seamap.env.duke.edu/models/mdat/").count(), 0)
+        self.assertEqual(Layer.objects.filter(source__icontains="https://seamap.env.duke.edu/models/mdat/#more-information").count(), 6)
+
+        mdat_source_update_22q1(undo=True)
+
+        self.assertEqual(Layer.objects.filter(source__icontains="https://seamap.env.duke.edu/models/mdat/").count(), 6)
+        self.assertEqual(Layer.objects.filter(source__icontains="https://seamap.env.duke.edu/models/mdat/#more-information").count(), 0)
+        self.assertEqual(Layer.objects.filter(source__icontains="http://seamap.env.duke.edu/models/mdat/").count(), 0)
 
 

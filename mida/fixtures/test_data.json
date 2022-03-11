@@ -16,6 +16,8 @@
             "arcgis_layers": "41",
             "layer_type": "ArcRest",
             "date_modified": "2014-12-19T19:03:39.609Z",
+            "metadata": "http://seamap.env.duke.edu/models/mdat/Mammal/MDAT_Mammal_Summary_Products_v1_1_2016_08_29_Metadata.pdf",
+            "source": "http://seamap.env.duke.edu/models/mdat/",
             "site": [1]
         }
     },
@@ -28,6 +30,8 @@
             "arcgis_layers": "42",
             "layer_type": "ArcRest",
             "date_modified": "2014-12-19T19:03:39.609Z",
+            "metadata": "http://seamap.env.duke.edu/models/mdat/Mammal/MDAT_Mammal_Summary_Products_v1_1_2016_08_29_Metadata.pdf",
+            "source": "http://seamap.env.duke.edu/models/mdat/",
             "site": [1]
         }
     },
@@ -40,6 +44,8 @@
             "arcgis_layers": "46",
             "layer_type": "ArcRest",
             "date_modified": "2014-12-19T19:03:39.609Z",
+            "metadata": "http://seamap.env.duke.edu/models/mdat/Mammal/MDAT_Mammal_Summary_Products_v1_1_2016_08_29_Metadata.pdf",
+            "source": "http://seamap.env.duke.edu/models/mdat/",
             "site": [1]
         }
     },
@@ -52,6 +58,8 @@
             "arcgis_layers": "49",
             "layer_type": "ArcRest",
             "date_modified": "2014-12-19T19:03:39.609Z",
+            "metadata": "http://seamap.env.duke.edu/models/mdat/Mammal/MDAT_Mammal_Summary_Products_v1_1_2016_08_29_Metadata.pdf",
+            "source": "http://seamap.env.duke.edu/models/mdat/",
             "site": [1]
         }
     },
@@ -64,6 +72,8 @@
             "arcgis_layers": "50",
             "layer_type": "ArcRest",
             "date_modified": "2014-12-19T19:03:39.609Z",
+            "metadata": "http://seamap.env.duke.edu/models/mdat/Mammal/MDAT_Mammal_Summary_Products_v1_1_2016_08_29_Metadata.pdf",
+            "source": "http://seamap.env.duke.edu/models/mdat/",
             "site": [1]
         }
     },
@@ -76,6 +86,8 @@
             "arcgis_layers": "54",
             "layer_type": "ArcRest",
             "date_modified": "2014-12-19T19:03:39.609Z",
+            "metadata": "http://seamap.env.duke.edu/models/mdat/Mammal/MDAT_Mammal_Summary_Products_v1_1_2016_08_29_Metadata.pdf",
+            "source": "http://seamap.env.duke.edu/models/mdat/",
             "site": [1]
         }
     }
