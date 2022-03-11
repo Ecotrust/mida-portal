@@ -11,8 +11,6 @@ class MDAT22Q1Test(TestCase):
         layers = Layer.objects.all()
         for foo in layers:
             self.assertTrue(isinstance(foo, Layer))
-        # self.assertEqual(foo.__unicode__(), foo.name)
-        # import ipdb; ipdb.set_trace()
 
         self.assertEqual(Layer.objects.filter(name__icontains='Sound sensitivity Low frequency:').count(), 3)
         self.assertEqual(
