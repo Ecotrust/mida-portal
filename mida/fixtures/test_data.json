@@ -1,0 +1,83 @@
+[
+    {
+        "model": "sites.site",
+        "pk": 1,
+        "fields": {
+          "domain": "portal.midatlanticocean.org",
+          "name": "Portal"
+        }
+    },
+    {
+        "model": "data_manager.Layer",
+        "pk": 1,
+        "fields": {
+            "name": "Sound sensitivity Low frequency: Abundance", 
+            "url": "https://mgelmaps.env.duke.edu/mdat/rest/services/MDAT/Mammal_SummaryProducts/MapServer/export",
+            "arcgis_layers": "41",
+            "layer_type": "ArcRest",
+            "date_modified": "2014-12-19T19:03:39.609Z",
+            "site": [1]
+        }
+    },
+    {
+        "model": "data_manager.Layer",
+        "pk": 2,
+        "fields": {
+            "name": "Sound sensitivity Low frequency: Species Richness", 
+            "url": "https://mgelmaps.env.duke.edu/mdat/rest/services/MDAT/Mammal_SummaryProducts/MapServer/export",
+            "arcgis_layers": "42",
+            "layer_type": "ArcRest",
+            "date_modified": "2014-12-19T19:03:39.609Z",
+            "site": [1]
+        }
+    },
+    {
+        "model": "data_manager.Layer",
+        "pk": 3,
+        "fields": {
+            "name": "Sound sensitivity Low frequency: Core Abundance Area - Mid-Atlantic scale", 
+            "url": "https://mgelmaps.env.duke.edu/mdat/rest/services/MDAT/Mammal_SummaryProducts/MapServer/export",
+            "arcgis_layers": "46",
+            "layer_type": "ArcRest",
+            "date_modified": "2014-12-19T19:03:39.609Z",
+            "site": [1]
+        }
+    },
+    {
+        "model": "data_manager.Layer",
+        "pk": 4,
+        "fields": {
+            "name": "Sound sensitivity Medium frequency: Abundance", 
+            "url": "https://mgelmaps.env.duke.edu/mdat/rest/services/MDAT/Mammal_SummaryProducts/MapServer/export",
+            "arcgis_layers": "49",
+            "layer_type": "ArcRest",
+            "date_modified": "2014-12-19T19:03:39.609Z",
+            "site": [1]
+        }
+    },
+    {
+        "model": "data_manager.Layer",
+        "pk": 5,
+        "fields": {
+            "name": "Sound sensitivity Medium frequency: Species Richness", 
+            "url": "https://mgelmaps.env.duke.edu/mdat/rest/services/MDAT/Mammal_SummaryProducts/MapServer/export",
+            "arcgis_layers": "50",
+            "layer_type": "ArcRest",
+            "date_modified": "2014-12-19T19:03:39.609Z",
+            "site": [1]
+        }
+    },
+    {
+        "model": "data_manager.Layer",
+        "pk": 6,
+        "fields": {
+            "name": "Sound sensitivity Medium frequency: Core Abundance Area - Mid-Atlantic scale", 
+            "url": "https://mgelmaps.env.duke.edu/mdat/rest/services/MDAT/Mammal_SummaryProducts/MapServer/export",
+            "arcgis_layers": "54",
+            "layer_type": "ArcRest",
+            "date_modified": "2014-12-19T19:03:39.609Z",
+            "site": [1]
+        }
+    }
+]
+
