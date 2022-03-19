@@ -43,3 +43,5 @@ TEMPLATES = [
         }
     },
 ]
+
+SUPPORT_INVERTED_COORDINATES = False
