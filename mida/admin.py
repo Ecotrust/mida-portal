@@ -20,7 +20,7 @@ from data_manager.admin import ThemeAdmin, LayerAdmin, AttributeInfoAdmin, Attri
 #         ('BASIC INFO', {
 #             'fields': (
 #                 ('name','layer_type'),
-#                 'url',
+#                 ('url', 'url_proxy'),
 #                 'site'
 #             )
 #         }),
