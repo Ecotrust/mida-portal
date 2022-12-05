@@ -11,3 +11,8 @@
   {{ block.super }}
   <script src="{% static 'legacy_portal/js/wrappers/ol6/ol6_events.js' %}"></script>
 {% endblock %}
+
+{% block ADDITIONAL_APP_JAVASCRIPT %}
+{{ block.super }}
+<script src="{% static 'mida/js/mida_models.js' %}"></script>
+{% endblock %}
