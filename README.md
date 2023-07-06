@@ -33,7 +33,7 @@ requirements:
 
 4. Add MidA-Portal app to requirements.txt
   ```
-  -e git+https://github.com/Ecotrust/mida-portal.git@master#egg=mida
+  -e git+https://github.com/Ecotrust/mida-portal.git@main#egg=mida
   ```
 
 5. Set up virtualenv
