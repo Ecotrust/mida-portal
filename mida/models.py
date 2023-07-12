@@ -70,7 +70,7 @@
 #         ('item', CTAStreamBlock()),
 #         ('details', blocks.RichTextBlock()),
 #         ('row', CTARowDivider()),
-#     ])
+#     ], use_json_field=True)
 #
 #     content_panels = Page.content_panels + [
 #         FieldPanel('body'),
@@ -89,7 +89,7 @@
 #
 #     def get_context(self, request):
 #         from django.conf import settings
-#         context = super().get_context(request)
+#         context = super().get_context(request, parent_context=parent_context)
 #
 #         context['SOLR_ENDPOINT'] = settings.SOLR_ENDPOINT
 #
@@ -119,7 +119,7 @@
 #     cta_list = StreamField([
 #         ('connection', CTAStreamBlock()),
 #         ('details', blocks.RichTextBlock()),
-#     ])
+#     ], use_json_field=True)
 #
 #     # Editor panels configuration
 #
