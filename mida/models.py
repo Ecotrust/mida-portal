@@ -89,7 +89,7 @@
 #
 #     def get_context(self, request):
 #         from django.conf import settings
-#         context = super().get_context(request, parent_context=parent_context)
+#         context = super().get_context(request)
 #
 #         context['SOLR_ENDPOINT'] = settings.SOLR_ENDPOINT
 #
