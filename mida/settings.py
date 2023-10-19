@@ -45,3 +45,13 @@ TEMPLATES = [
 ]
 
 SUPPORT_INVERTED_COORDINATES = False
+ARCGIS_API_KEY = "set in local settings"
+
+try:
+    from .local_settings import *
+except ImportError:
+    print(
+        "we recommend using a local settings file; "\
+        "`cp local_settings.template local_settings.py` and modify as needed"
+    )
+    pass
