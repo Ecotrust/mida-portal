@@ -17,13 +17,13 @@ var callback = function(){
 //       //throws client-side error in pageguide.js for some reason...
 //   };
 //
-  app.viewModel.mapLinks.getURL = function() {
-      if (window.location.hostname == "localhost") {
-        return window.location.protocol + '//portal.midatlanticocean.org' + app.viewModel.currentURL();
-      } else {
-        return window.location.origin + app.viewModel.currentURL();
-      }
-  };
+  // app.viewModel.mapLinks.getURL = function() {
+  //     if (window.location.hostname == "localhost") {
+  //       return window.location.protocol + '//portal.midatlanticocean.org' + app.viewModel.currentURL();
+  //     } else {
+  //       return window.location.origin + app.viewModel.currentURL();
+  //     }
+  // };
 
   app.viewModel.mapLinks.useShortURL = function() {
   //   var self = app.viewModel.mapLinks;
