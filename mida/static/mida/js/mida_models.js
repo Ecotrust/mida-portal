@@ -26,37 +26,55 @@ var callback = function(){
   };
 
   app.viewModel.mapLinks.useShortURL = function() {
-    var self = app.viewModel.mapLinks;
-    var bitly_login = "p97dev",
-        bitly_access_token = '227d50a9d70140483b003a70b1f449e00514c053',
-        long_url = self.getURL();
+  //   var self = app.viewModel.mapLinks;
+  //   var bitly_login = "p97dev",
+  //       bitly_access_token = '227d50a9d70140483b003a70b1f449e00514c053',
+  //       long_url = self.getURL();
 
-    var params = {
-      "long_url" : long_url
-    }
+  //   var params = {
+  //     "long_url" : long_url
+  //   }
+
+  //   $.ajax({
+  //       //   url: "https://api-ssl.bitly.com/v4/shorten?long_url=http%3A%2F%2Fcompass2019.ecotrust.org%2Fvisualize%2F&_=1572541860009",
+  //         url: "https://api-ssl.bitly.com/v4/shorten?",
+  //         cache: false,
+  //         dataType: "json",
+  //         method: "POST",
+  //         contentType: "application/json",
+  //         beforeSend: function (xhr) {
+  //             xhr.setRequestHeader("Authorization", "Bearer " + bitly_access_token);
+  //         },
+  //         data: JSON.stringify(params)
+  //     }).done(function(response) {
+  //       setTimeout(function(){
+  //         $('.in #short-url')[0].value = response.link;
+  //       }, 300);
+
+  //     }).fail(function(data) {
+  //         console.log(data);
+  //     });
+
+
+  // };
+  var self = app.viewModel.mapLinks;
+    var long_url = self.getURL();
 
     $.ajax({
-        //   url: "https://api-ssl.bitly.com/v4/shorten?long_url=http%3A%2F%2Fcompass2019.ecotrust.org%2Fvisualize%2F&_=1572541860009",
-          url: "https://api-ssl.bitly.com/v4/shorten?",
-          cache: false,
-          dataType: "json",
-          method: "POST",
-          contentType: "application/json",
-          beforeSend: function (xhr) {
-              xhr.setRequestHeader("Authorization", "Bearer " + bitly_access_token);
-          },
-          data: JSON.stringify(params)
-      }).done(function(response) {
-        setTimeout(function(){
-          $('.in #short-url')[0].value = response.link;
-        }, 300);
-
-      }).fail(function(data) {
-          console.log(data);
-      });
-
-
-  };
+      type: "POST",
+      url: "/url_shortener/",  
+      data: {
+          "url": long_url,
+          "csrfmiddlewaretoken": $('input[name="csrfmiddlewaretoken"]').val()  
+      },
+      success: function(response) {
+          $('#short-url')[0].value = response.shortened_url;
+      },
+      error: function(xhr, status, error) {
+          console.log("Error shortening URL:", error);
+      }
+  });
+  }
 };
 
 if (
