@@ -1,14 +1,20 @@
 {% extends "visualize/planner.html" %}
 {% load static %}
 
-{% block extra_css %}
-  <!-- FOO 2 extra css -->
-  {{ block.super }}
+{% block templatename %}
+    {{ block.super }}
+    <!-- (MIDA)PLANNER: mida-portal/mida/templates/visualize/planner.html -->
+    {% endblock templatename %}
+    
+    {% block extra_css %}
+    {{ block.super }}
+    <!-- MIDA extra css -->
+    <link rel="stylesheet" href="{% static 'mida/css/header.css' %}" type="text/css">
 {% endblock %}
 
 {% block extra_js %}
-  <!-- FOO 2 extra js -->
   {{ block.super }}
+  <!-- MIDA extra js -->
   <script src="{% static 'legacy_portal/js/wrappers/ol6/ol6_events.js' %}"></script>
 {% endblock %}
 

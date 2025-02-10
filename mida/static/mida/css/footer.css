@@ -1,3 +1,7 @@
+body footer .footer-brand img {
+  height: 5rem;
+}
+
 button.email-list-button {
   width: 80%;
   position: relative;
