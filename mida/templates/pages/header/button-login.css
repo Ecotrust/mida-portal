@@ -1,0 +1,98 @@
+.button-filled {
+    display: flex;
+    width: 120px;
+    height: 46px;
+    align-items: center;
+    padding: 10px 20px;
+    position: relative;
+    border-radius: 80px;
+}
+
+.button-filled .icon-wrapper {
+    width: 22px;
+    height: 22px;
+    background-color: var(--white);
+    border-radius: 11px;
+    position: relative;
+}
+
+.button-filled .vector {
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.button-filled .text-wrapper {
+    position: relative;
+    top: 9px;
+    left: 50px;
+    font-family: "Barlow-Medium", Helvetica;
+    font-weight: 500;
+    color: #ffffff;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 26px;
+    white-space: nowrap;
+}
+
+/* Original CSS code should be injected here */
+
+.button-filled {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 120px;
+    height: 46px;
+    background-color: var(--light-blue);
+    border-radius: 80px;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.button-filled:hover,
+.button-filled:focus {
+    background-color: var(--dark-blue);
+}
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 22px;
+    height: 22px;
+    background-color: var(--white);
+    border-radius: 11px;
+    margin-left: 20px;
+}
+
+.vector {
+    width: 12px;
+    height: 14px;
+}
+
+.button-text {
+    margin-left: 8px;
+    font-family: "Barlow-Medium", Helvetica;
+    font-weight: 500;
+    color: var(--white);
+    font-size: 18px;
+    line-height: 26px;
+}
+
+@media (max-width: 768px) {
+    .button-filled {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+
+    .icon-wrapper {
+        margin-left: 0;
+        margin-right: 8px;
+    }
+}

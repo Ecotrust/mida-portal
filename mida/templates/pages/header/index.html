@@ -1,0 +1,76 @@
+{% load compress static wagtailcore_tags wagtailcustom_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/css/vars.css' %}">
+    <link rel="stylesheet" href="{% static 'mida/css/globals.css' %}">
+    <link rel="stylesheet" href="{% static 'mida/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'mida/css/button-login.css' %}">
+{% endblock extra_css %}
+
+<header class="header">
+    <div class="top-bar">
+        <div class="lane-container">
+            <nav class="social-links">
+                <a href="#" class="social-link facebook" aria-label="Facebook">
+                    <img src="{% static 'mida/img/icon-facebook-white.svg' %}" alt="facebook" />
+                </a>
+                <a href="#" class="social-link twitter" aria-label="Twitter">
+                    <img src="{% static 'mida/img/icon-youtube-white.svg' %}" alt="youtube" />
+                </a>
+                <a href="#" class="social-link email" aria-label="Email">
+                    <img src="{% static 'mida/img/icon-twitter-white.svg' %}" alt="twitter" />
+                </a>
+            </nav>
+            <nav class="top-nav">
+                <a href="#" class="nav-link">About the Portal</a>
+                <a href="#" class="nav-link">How-to Guide</a>
+            </nav>
+            <div class="user-actions">
+                <button class="button-filled" aria-label="Log In">
+                    <span class="icon-wrapper">
+                        <img class="vector" src="{% static 'mida/img/icon-useraccount.svg' %}" alt="User icon" />
+                    </span>
+                    <span class="button-text">Log In</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="main-nav">
+        <div class="lane-container">
+            <a href="#" class="logo">
+                <img src="{% static 'mida/img/logo-marco-full.svg' %}" alt="MARCO Portal Logo" />
+            </a>
+            <nav class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <img src="{% static 'mida/img/marcodataportal-global-icon-geo-small.svg' %}" alt="" />
+                            Map
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Data
+                            <img src="{% static 'mida/img/icon-triangledown.svg' %}" alt="open dropdown" class="dropdown-icon" />
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Ocean Stories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Case Studies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            News
+                            <img src="{% static 'mida/img/icon-triangledown.svg' %}" alt="open dropdown" class="dropdown-icon" />
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Events</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>
