@@ -1,108 +1,59 @@
-.lane-container {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
+/**
+ * Header component styles 
+ */
+
+.header {
     align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.nav-link {
-    font-family: "Barlow-Medium", Helvetica;
+
+/**
+ * Top navigation styles
+ */
+
+.header .top-nav {
+    background-color: var(--green);
+    align-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0.4375rem 7.5rem;
+}
+
+.header .top-nav-link .nav-link {
+    color: var(--white, #FFF);
+    font-family: var(--p1-font-family, "Barlow", Helvetica);
+    font-size: 1.125rem;
+    font-style: normal;
     font-weight: 500;
-    color: var(--white);
-    font-size: 18px;
-    line-height: 26px;
+    line-height: 1.625rem;
     text-decoration: none;
 }
 
-.user-actions {
+.header .top-nav .user-actions {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.btn-login {
-    display: flex;
-    align-items: center;
-    background-color: var(--light-blue);
-    border: none;
-    border-radius: 80px;
-    padding: 9px 20px;
-    color: var(--white);
-    font-family: "Barlow-Medium", Helvetica;
-    font-weight: 500;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.icon-wrapper {
-    width: 22px;
-    height: 22px;
-    background-color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 8px;
-}
-
-.btn-search {
+.header .top-nav .button-search {
     background: none;
     border: none;
     cursor: pointer;
 }
 
-.logo {
-    display: block;
-    width: 100%;
-    max-width: 266px;
-}
-
-.logo img {
-    width: 100%;
-    height: auto;
-}
-
-.nav-item {
-    position: relative;
-    width: 100%;
-}
-
-.nav-item .nav-link {
-    display: flex;
-    align-items: center;
-    color: var(--light-blue);
-    justify-content: flex-end;
-    text-decoration: none;
-    padding: 10px 0;
-}
-
-.dropdown-icon {
-    margin-left: 5px;
-}
-
-/* Base styles for the header */
-.header {
-    width: 100%;
-    margin: 0 auto;
-    height: auto;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.top-bar {
-    background-color: var(--green);
-    padding: 7px 0;
-    width: 100%;
-}
-
-.social-links {
+.header .top-nav .social-links {
     display: flex;
     gap: 7px;
 }
 
-.social-link {
+.header .top-nav .social-link {
     width: 31px;
     height: 31px;
     border-radius: 50%;
@@ -112,119 +63,68 @@
     align-items: center;
 }
 
-.top-nav {
-    display: flex;
-    gap: 20px;
-}
 
-/* Top bar styles */
-.header .frame {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--green);
-    padding: 10px 20px;
-    flex-wrap: wrap;
-}
-
-.header .social {
-    display: flex;
-    gap: 10px;
-}
-
-.header .social .overlap-group {
-    width: 31px;
-    height: 31px;
-    border-radius: 50%;
-    border: 1px solid var(--white);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.header .social .img-2 {
-    width: 15px;
-    height: 15px;
-}
-
-/* Main navigation styles */
+/**
+ * Main navigation styles
+ */
+ 
 .header .main-nav {
-    padding: 20px 0;
-    border-bottom: 1px solid var(--grey-medium);
+    align-items: center;
+    align-self: stretch;
+    background: var(--white, #FFF);
+    border-bottom: 1px solid var(--grey-medium, #B1B3B5);
+    display: flex;
+    flex-direction: row;
+    gap: 0.625rem;
+    padding: 2.125rem 0.625rem;
 }
 
-.header .nav-menu {
+.header .main-nav .logo {
+    display: flex;
+    width: 100%;
+    max-width: 266px;
+}
+
+.header .main-nav .nav-menu {
     flex: .875;
 }
 
-.header .nav-list {
+.header .main-nav .nav-menu .nav-list {
+    align-items: baseline;
     display: flex;
-    gap: 20px;
+    gap: 30px;
     list-style: none;
     flex-direction: row;
+    justify-content: flex-end;
     margin: 0;
     padding: 0;
 }
 
-.header .nav-item {
+.header .main-nav .nav-menu .nav-list .nav-item {
     position: relative;
 }
 
-.header .nav-item .nav-link {
-    font-family: "Barlow-Medium", Helvetica;
-    font-weight: 500;
-    color: var(--light-blue);
-    font-size: 18px;
-    line-height: 26px;
-    text-decoration: none;
-    display: flex;
+.header .main-nav .nav-menu .nav-list .nav-item .nav-link {
     align-items: center;
+    color: var(--dark-blue);
+    font-family: var(--p1-font-family, "Barlow-Medium", Helvetica);
+    font-size: 1.125rem;
+    font-weight: 500;
+    justify-content: flex-end;
+    line-height: 1.625rem;
+    padding: 10px 0;
+    text-decoration: none;
 }
 
-.header .nav-item .dropdown-icon {
+.header .main-nav .nav-menu .nav-list .nav-item .dropdown-icon {
     margin-left: 5px;
 }
 
-/* User actions (e.g., login button) */
-.header .user-actions {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
 
-.header .btn-login {
-    display: flex;
-    align-items: center;
-    background-color: var(--light-blue);
-    border: none;
-    border-radius: 80px;
-    padding: 9px 20px;
-    color: var(--white);
-    font-family: "Barlow-Medium", Helvetica;
-    font-weight: 500;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.header .icon-wrapper {
-    width: 22px;
-    height: 22px;
-    background-color: var(--white);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 8px;
-}
-
-.header .btn-search {
-    background: none;
-    border: none;
-    cursor: pointer;
-}
 
 /* Responsive styles */
 @media (max-width: 1024px) {
+    
     .header .main-nav {
         flex-direction: column;
         align-items: flex-start;
@@ -234,26 +134,9 @@
         flex-wrap: wrap;
         justify-content: center;
     }
-
-    .header .MARCO-portal-logo {
-        margin-bottom: 20px;
-    }
 }
 
 @media (max-width: 768px) {
-    .header .frame {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .header .social {
-        margin-bottom: 10px;
-    }
-
-    .header .main-nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 
     .header .nav-list {
         flex-direction: column;
@@ -268,11 +151,6 @@
     .header .nav-item .nav-link {
         padding: 10px 0;
     }
-
-    .header .btn-login {
-        width: 100%;
-        justify-content: center;
-    }
 }
 
 @media (max-width: 480px) {
@@ -280,16 +158,11 @@
         padding: 10px;
     }
 
-    .header .MARCO-portal-logo {
+    .header .logo {
         width: 150px;
     }
 
     .header .nav-list {
         gap: 10px;
-    }
-
-    .header .btn-login {
-        font-size: 16px;
-        padding: 8px 16px;
     }
 }

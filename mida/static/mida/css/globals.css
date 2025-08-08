@@ -21,6 +21,23 @@ a {
     text-decoration: none;
 }
 
+img {
+    height: auto;
+    max-width: 100%;
+}
+
+.threelane-container {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    gap: 0.625rem;
+    margin: 0 auto;
+    padding: 0 20px;
+    justify-content: space-between;
+    max-width: 1440px;
+    width: 100%;
+}
+
 /* Accessibility improvements */
 .visually-hidden {
     position: absolute;
