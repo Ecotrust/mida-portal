@@ -46,7 +46,7 @@
     justify-content: flex-start;
     width: 120px;
     height: 46px;
-    background-color: var(--light-blue);
+    background-color: var(--dark-blue);
     border-radius: 80px;
     border: none;
     cursor: pointer;
@@ -63,16 +63,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 22px;
-    height: 22px;
+    width: 16px;
+    height: 16px;
     background-color: var(--white);
     border-radius: 11px;
     margin-left: 20px;
-}
-
-.vector {
-    width: 12px;
-    height: 14px;
+    margin-right: 4px;
 }
 
 .button-text {
