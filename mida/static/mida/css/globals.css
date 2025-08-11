@@ -1,4 +1,5 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Fira+Sans:500,600|Barlow:400,500,600|Oswald:400,500");
 
 * {
     -webkit-font-smoothing: antialiased;
