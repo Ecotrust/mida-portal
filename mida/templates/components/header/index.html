@@ -1,4 +1,4 @@
-{% load compress static wagtailcore_tags wagtailcustom_tags %}
+{% load compress static portal menu wagtailcore_tags wagtailcustom_tags %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'mida/css/vars.css' %}">
@@ -10,21 +10,21 @@
 <header class="header">
     <div class="top-nav">
         <nav class="social-links">
-            <a href="#" class="social-link facebook" aria-label="Facebook">
+            <a href="https://www.facebook.com/midatlanticocean" class="social-link facebook" aria-label="Facebook">
                 <img src="{% static 'mida/img/icon-facebook-white.svg' %}" alt="facebook" />
             </a>
-            <a href="#" class="social-link twitter" aria-label="Twitter">
+            <a href="https://www.youtube.com/channel/UC4xYS-oWsPJkO34r1o-nEPg" class="social-link youtube" aria-label="Youtube">
                 <img src="{% static 'mida/img/icon-youtube-white.svg' %}" alt="youtube" />
             </a>
-            <a href="#" class="social-link email" aria-label="Email">
+            <a href="https://twitter.com/PortalMARCO" class="social-link twitter" aria-label="Twitter">
                 <img src="{% static 'mida/img/icon-twitter-white.svg' %}" alt="twitter" />
             </a>
         </nav>
         <nav class="top-nav-link">
-            <a href="#" class="nav-link">About the Portal</a>
+            <a href="/about-us/" class="nav-link">About the Portal</a>
         </nav>
         <nav class="top-nav-link">
-            <a href="#" class="nav-link">How-to Guide</a>
+            <a href="/how-use-portal/" class="nav-link">How-to Guide</a>
         </nav>
         <div class="user-actions">
             <button class="button-login" aria-label="Log In">
@@ -35,9 +35,22 @@
             </button>
         </div>
         <div class="search-wrapper">
-            <button class="button-search" aria-label="Search">
-                <img src="{% static 'mida/img/icon-search.svg' %}" alt="Search icon" />
-            </button>
+
+            {% if not SEARCH_DISABLED %}
+                <ul class="nav-list">
+                    <li class="dropdown search-dropdown">
+                        <a href="#" class="button-search dropdown-toggle" data-toggle="dropdown">
+                            <img src="{% static 'mida/img/icon-search.svg' %}" alt="Search icon" />
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="{% active 'planner' %}">
+                                {% include "portal/components/search_form.html" %}
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            {% endif %}
+
         </div>
     </div>
 
@@ -45,12 +58,18 @@
 
         <div class="threelane-container">
 
-            <a href="#" class="logo">
+            <a href="/" class="logo">
                 <img src="{% static 'mida/img/logo-marco-full.svg' %}" alt="MARCO Portal Logo" />
             </a>
 
             <nav class="nav-menu">
                 <ul class="nav-list">
+                    
+                    <li class="nav-item {% active 'planner' %}"><a href="{% url 'planner' %}" class="nav-link"><span class="icon-marco oversized"></span>Map</a></li>
+                    
+                    {% menus %}
+
+                    {% comment %} 
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <img src="{% static 'mida/img/marcodataportal-global-icon-geo-small.svg' %}" alt="" />
@@ -77,7 +96,7 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Events</a>
-                    </li>
+                    </li> {% endcomment %}
                 </ul>
             </nav>
         </div>
