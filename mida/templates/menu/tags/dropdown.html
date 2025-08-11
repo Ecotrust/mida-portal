@@ -1,0 +1,37 @@
+{% for menu in menus %}
+  {% if menu.is_user_menu and not request.user.is_authenticated %}
+    <li>
+      <a href="{% url 'account:index' %}?next={{ request.path }}">LOG IN <span class="fa fa-user"></span></a>
+    </li>
+  {% else %}
+    <li class="dropdown nav-item {% if active %} active{% endif %}">
+        {% if menu.is_user_menu %}
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ request.user.first_name }}&nbsp<span class="fa fa-user"></span><span class="caret"></span></a>
+        {% else %}
+          {% if menu.entries.all.count == 1 %}
+            <a class="nav-link" href="{{ menu.entries.all.0.destination }}"{% if entry.external %} target="_blank"{% endif %}>
+              <span class="oversized"></span>{{ menu.entries.all.0.text }}
+            </a>
+          {% else %}
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ menu.title }}<span class="caret"></span></a>
+          {% endif %}
+        {% endif %}
+        {% if menu.entries.all.count > 1 %}
+          <ul class="dropdown-menu" role="menu">
+              {% for entry in menu.entries.all %}
+                  {# This logic should _NOT_ Be in the template, but template tags don't know who the user is :( #}
+                  {# A = all users, O = only signed out users, I = only signed in users (see models.py) #}
+                  {# AND has a higher precedence than OR, so this expression is parsed like: #}
+                  {# A or (anon and O) or (not_anon and I) #}
+                  {% if entry.display_options == 'A' or request.user.is_anonymous and entry.display_options == 'O' or request.user.is_authenticated and entry.display_options == 'I' or request.user.is_staff and entry.display_options == 'S' or request.user.is_superuser and entry.display_options == 'S' %}
+                  <li><a href="{{ entry.destination }}"{% if not entry.external == None %} target="_blank"{% endif %}>{{ entry.text }}</a></li>
+                      {% if entry.show_divider_underneath %}
+                          <li class="divider"></li>
+                      {% endif %}
+                  {% endif %}
+              {% endfor %}
+          </ul>
+        {% endif %}
+    </li>
+  {% endif %}
+{% endfor %}
