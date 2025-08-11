@@ -63,6 +63,11 @@
     align-items: center;
 }
 
+.header .top-nav .search-dropdown .dropdown-menu {
+    left: auto;
+    right: 0;
+}
+
 
 /**
  * Main navigation styles
