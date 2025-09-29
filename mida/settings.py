@@ -48,6 +48,12 @@ TEMPLATES = [
 SUPPORT_INVERTED_COORDINATES = False
 ARCGIS_API_KEY = "set in local settings"
 
+PLANNER_APPS = [
+    'visualize',
+    'drawing',
+    'survey',
+]
+
 try:
     from .local_settings import *
 except ImportError:
