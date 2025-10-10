@@ -3,102 +3,153 @@
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'mida/css/vars.css' %}">
     <link rel="stylesheet" href="{% static 'mida/css/globals.css' %}">
-    <link rel="stylesheet" href="{% static 'mida/css/button-login.css' %}">
-    <link rel="stylesheet" href="{% static 'mida/css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'mida/components/header/style.css' %}">
 {% endblock extra_css %}
 
 <header class="header">
     <div class="top-nav">
-        <nav class="social-links">
-            <a href="https://www.facebook.com/midatlanticocean" class="social-link facebook" aria-label="Facebook">
-                <img src="{% static 'mida/img/icon-facebook-white.svg' %}" alt="facebook" />
-            </a>
-            <a href="https://www.youtube.com/channel/UC4xYS-oWsPJkO34r1o-nEPg" class="social-link youtube" aria-label="Youtube">
-                <img src="{% static 'mida/img/icon-youtube-white.svg' %}" alt="youtube" />
-            </a>
-            <a href="https://twitter.com/PortalMARCO" class="social-link twitter" aria-label="Twitter">
-                <img src="{% static 'mida/img/icon-twitter-white.svg' %}" alt="twitter" />
-            </a>
-        </nav>
-        <nav class="top-nav-link">
-            <a href="/about-us/" class="nav-link">About the Portal</a>
-        </nav>
-        <nav class="top-nav-link">
-            <a href="/how-use-portal/" class="nav-link">How-to Guide</a>
-        </nav>
-        <div class="user-actions">
-            <button class="button-login" aria-label="Log In">
-                <span class="icon-user">
-                    <img class="vector" src="{% static 'mida/img/icon-useraccount.svg' %}" alt="User icon" />
-                </span>
-                <span class="button-text">Log In</span>
-            </button>
-        </div>
-        <div class="search-wrapper">
+        <div class="threelane-container">
+            <!-- Desktop Layout -->
+            <div class="top-nav-desktop">
+                <!-- Left: Social Media -->
+                <nav class="social-links">
+                    <a href="https://www.facebook.com/midatlanticocean" class="social-link facebook" aria-label="Facebook" rel="noopener noreferrer" target="_blank">
+                        <img src="{% static 'mida/img/icon-facebook-white.svg' %}" alt="facebook" />
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC4xYS-oWsPJkO34r1o-nEPg" class="social-link youtube" aria-label="Youtube" rel="noopener noreferrer" target="_blank">
+                        <img src="{% static 'mida/img/icon-youtube-white.svg' %}" alt="youtube" />
+                    </a>
+                    <a href="https://twitter.com/PortalMARCO" class="social-link twitter" aria-label="Twitter" rel="noopener noreferrer" target="_blank">
+                        <img src="{% static 'mida/img/icon-twitter-white.svg' %}" alt="twitter" />
+                    </a>
+                </nav>
 
-            {% if not SEARCH_DISABLED %}
-                <ul class="nav-list">
-                    <li class="dropdown search-dropdown">
-                        <a href="#" class="button-search dropdown-toggle" data-toggle="dropdown">
-                            <img src="{% static 'mida/img/icon-search.svg' %}" alt="Search icon" />
-                        </a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li class="{% active 'planner' %}">
-                                {% include "portal/components/search_form.html" %}
+                <!-- Center: Navigation Links -->
+                <nav class="top-nav-links">
+                    <a href="/about-us/" class="top-nav-link">About the Portal</a>
+                    <a href="/how-use-portal/" class="top-nav-link">How-to Guide</a>
+                </nav>
+
+                <!-- Right: User Actions & Search -->
+                <div class="user-actions">
+                    <button class="button-login" aria-label="Log In">
+                        <span class="icon-user">
+                            <img class="vector" src="{% static 'mida/img/icon-useraccount.svg' %}" alt="User icon" />
+                        </span>
+                        <span class="button-text">Log In</span>
+                    </button>
+                </div>
+
+                <div class="search-wrapper">
+                    {% if not SEARCH_DISABLED %}
+                        <ul class="nav-list">
+                            <li class="dropdown search-dropdown">
+                                <a href="#" class="button-search dropdown-toggle" data-toggle="dropdown">
+                                    <img src="{% static 'mida/img/icon-search.svg' %}" alt="Search icon" />
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="{% active 'planner' %}">
+                                        {% include "portal/components/search_form.html" %}
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-                    </li>
-                </ul>
-            {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        
+            <!-- Mobile Layout -->
+            <div class="top-nav-mobile">
+                <div class="user-actions">
+                    <button class="button-login" aria-label="Log In">
+                        <span class="icon-user">
+                            <img class="vector" src="{% static 'mida/img/icon-useraccount.svg' %}" alt="User icon" />
+                        </span>
+                        <span class="button-text">Log In</span>
+                    </button>
+                </div>
 
+                <div class="search-wrapper">
+                    {% if not SEARCH_DISABLED %}
+                        <ul class="nav-list">
+                            <li class="dropdown search-dropdown">
+                                <a href="#" class="button-search dropdown-toggle" data-toggle="dropdown">
+                                    <img src="{% static 'mida/img/icon-search.svg' %}" alt="Search icon" />
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="{% active 'planner' %}">
+                                        {% include "portal/components/search_form.html" %}
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="main-nav">
 
+    <div class="main-nav">
         <div class="threelane-container">
 
             <a href="/" class="logo">
                 <img src="{% static 'mida/img/logo-marco-full.svg' %}" alt="MARCO Portal Logo" />
             </a>
 
-            <nav class="nav-menu">
-                <ul class="nav-list">
-                    
-                    <li class="nav-item {% active 'planner' %}"><a href="{% url 'planner' %}" class="nav-link"><span class="icon-marco oversized"></span>Map</a></li>
-                    
-                    {% menus %}
+            <div class="desktop-nav">
+                <nav class="nav-menu">
+                    <ul class="nav-list">
+                        <li class="nav-item {% active 'planner' %}">
+                            <a href="{% url 'planner' %}" class="nav-link">
+                                <svg width="17" height="23" viewBox="0 0 17 23" fill="none" class="nav-icon">
+                                    <path
+                                        d="M8.18481 0C12.7048 0.000130394 16.3694 3.66457 16.3694 8.18457C16.3693 11.8252 13.9911 14.9089 10.7043 15.9717H10.8245L8.29419 22.1104L5.65454 15.9717H5.66431C2.37775 14.9088 0.000349164 11.825 0.000244141 8.18457C0.000244141 3.66449 3.66473 0 8.18481 0ZM8.18579 2.06836C4.73498 2.06836 1.93774 4.86559 1.93774 8.31641C1.9379 11.7671 4.73507 14.5645 8.18579 14.5645C11.6365 14.5644 14.4337 11.767 14.4338 8.31641C14.4338 4.86563 11.6365 2.06842 8.18579 2.06836Z"
+                                        fill="#00A564" />
+                                </svg>
+                                Map
+                            </a>
+                        </li>
 
-                    {% comment %} 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <img src="{% static 'mida/img/marcodataportal-global-icon-geo-small.svg' %}" alt="" />
-                            Map
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            Data
-                            <img src="{% static 'mida/img/icon-triangledown.svg' %}" alt="open dropdown" class="dropdown-icon" />
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Ocean Stories</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Case Studies</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            News
-                            <img src="{% static 'mida/img/icon-triangledown.svg' %}" alt="open dropdown" class="dropdown-icon" />
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Events</a>
-                    </li> {% endcomment %}
-                </ul>
-            </nav>
+                        {% menus %}
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-button" aria-label="Open menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-overlay"></div>
+            <div class="mobile-menu-content">
+                <div class="mobile-menu-header">
+                    <h2>Menu</h2>
+                    <button class="mobile-menu-close" aria-label="Close menu">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+                <nav class="mobile-menu-nav">
+                    {% menus %}
+                </nav>
+            </div>
         </div>
     </div>
 </header>
+
+{% block extra_js %}
+    <script src="{% static 'mida/components/header/svg-paths.js' %}"></script>
+    <script src="{% static 'mida/components/header/scripts.js' %}"></script>
+{% endblock extra_js %}

@@ -141,4 +141,5 @@
     --primitives-color-black: rgba(41, 41, 41, 1);
     --gray-medium: rgba(177, 179, 181, 1);
     --variable-collection-green: rgba(0, 165, 100, 1);
+    --font-weight-medium: 500;
 }
