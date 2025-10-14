@@ -1,0 +1,242 @@
+.box {
+  width: 100vw;
+  height: 100%;
+
+}
+
+.box ul {
+  list-style: inside;
+}
+
+.box .block-with {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background-color: var(--light-blue);
+  overflow-y: scroll
+}
+
+.box .heading-leadership {
+  width: fit-content;
+  font-family: var(--h4-font-family);
+  font-weight: var(--h4-font-weight);
+  color: var(--dark-blue);
+  font-size: var(--h4-font-size);
+  text-align: center;
+  letter-spacing: var(--h4-letter-spacing);
+  line-height: var(--h4-line-height);
+  font-style: var(--h4-font-style);
+}
+
+.box .frame {
+  align-items: center;
+  gap: 32px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.box .element {
+  background-color: #ffffff;
+  padding: 4rem 2rem;
+}
+
+.box .text-wrapper {
+  font-family: var(--p3-font-family);
+  font-weight: var(--p3-font-weight);
+  color: var(--grey-dark);
+  font-size: var(--p3-font-size);
+  letter-spacing: var(--p3-letter-spacing);
+  line-height: var(--p3-line-height);
+  font-style: var(--p3-font-style);
+}
+
+.box .white {
+  color: var(--white);
+}
+
+.box .div {
+  align-items: flex-start;
+  gap: 8px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.box .left-items {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.box .data-group {
+  background-color: var(--white);
+  width: 100%;
+  padding: 15px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+}
+
+.box .group-header {
+  font-family: var(--FAQ-headline-font-family);
+  font-weight: var(--FAQ-headline-font-weight);
+  color: #22408f;
+  font-size: var(--FAQ-headline-font-size);
+  letter-spacing: var(--FAQ-headline-letter-spacing);
+  line-height: var(--FAQ-headline-line-height);
+  font-style: var(--FAQ-headline-font-style);
+}
+
+.box .text-number {
+  color: var(--green);
+  font-family: var(--FAQ-headline-font-family);
+  font-weight: var(--FAQ-headline-font-weight);
+  font-size: var(--FAQ-headline-font-size);
+  letter-spacing: var(--FAQ-headline-letter-spacing);
+  line-height: var(--FAQ-headline-line-height);
+  font-style: var(--FAQ-headline-font-style);
+}
+
+.box .data-groups {
+  width: 100%;
+}
+
+.box .overlap-group {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0px 0px 35px #0000001a;
+}
+
+.box .list {
+  font-family: "Barlow", Helvetica;
+  font-weight: 400;
+  color: #6c6c6c;
+  font-size: 22px;
+  letter-spacing: 0;
+  line-height: 34px;
+}
+
+.box .marcodataportal {
+  width: 20px;
+  height: 20px;
+}
+
+.box .img {
+  width: 20px;
+  height: 20px;
+}
+
+.box .polygon {
+  width: 20px;
+  height: 20px;
+}
+
+.box .text {
+  font-family: var(--FAQ-headline-font-family);
+  font-weight: var(--FAQ-headline-font-weight);
+  color: var(--white);
+  font-size: var(--FAQ-headline-font-size);
+  letter-spacing: var(--FAQ-headline-letter-spacing);
+  line-height: var(--FAQ-headline-line-height);
+  white-space: nowrap;
+  font-style: var(--FAQ-headline-font-style);
+}
+
+.box .vector {
+  width: 18px;
+  height: 14px;
+}
+
+.box .list-item {
+  width: 100%;
+}
+
+.box .overlap {
+  display: flex;
+  background-color: #ffffff;
+  padding: 29px;
+  justify-content: space-between;
+}
+
+.box .center {
+  justify-content: center;
+}
+
+.box .space-evenly {
+  justify-content: space-evenly;
+}
+
+.box .rectangle {
+  background-color: var(--white);
+  border-radius: 12px;
+  box-shadow: 0px 4px 35px #0000001a;
+  padding: 3rem;
+}
+
+.box .overlap-group-wrapper,
+.box .overlap-wrapper {
+  width: 48%;
+  max-width: 496px;
+}
+
+.box .element-wrapper,
+.box .div-wrapper {
+  background-color: #22408f;
+  border-radius: 12px 12px 0px 0px;
+  padding: 19px 39px;
+}
+
+.card-contents {
+  padding: 1rem;
+}
+
+.box .card-header-contents {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+}
+
+.box .head {
+  background-color: var(--green);
+  padding: 15px 18px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+}
+
+.box .property-default {
+  background-color: var(--white);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.box .list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .box .overlap {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .box .overlap-group-wrapper,
+  .box .overlap-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
