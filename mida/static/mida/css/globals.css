@@ -28,7 +28,7 @@ img {
 }
 
 .threelane-container {
-    align-items: flex-start;
+    align-items: center;
     display: flex;
     flex-direction: row;
     gap: 0.625rem;

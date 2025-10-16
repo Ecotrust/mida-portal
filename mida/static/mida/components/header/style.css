@@ -52,7 +52,7 @@
 
 .header .top-nav .top-nav-links {
     align-items: center;
-    display: none;
+    display: flex;
     gap: 2rem;
 }
 
@@ -60,7 +60,7 @@
 .header .top-nav .top-nav-links .top-nav-link {
     color: var(--white, #FFF);
     font-family: var(--p1-font-family, "Barlow", Helvetica);
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-style: normal;
     font-weight: 500;
     line-height: 1.625rem;
@@ -214,7 +214,7 @@
     display: flex;
     flex-direction: row;
     gap: 0.625rem;
-    padding: 2.125rem 0.625rem;
+    padding: 1.8125rem 0.625rem;
 }
 
 .header .desktop-nav {
@@ -361,6 +361,10 @@
         flex: auto;
         justify-content: flex-end;
         padding-right: 2rem;
+    }
+
+    .header .top-nav .top-nav-links .top-nav-link {
+        font-size: 1.125rem;
     }
 
     .header .desktop-nav {
