@@ -15,6 +15,27 @@
     {% include './components/header/index.html' %}
 {% endblock %}
 
+{% block main %}
+    {% block outer_content %}
+    {% block page_header_container %}
+    <div class="container">
+        <a class="anchor" id="page-header"></a>
+        <div class="page-header">
+            {% block page_header %}
+            <h1>{% block page_title %}{{ title }}{% endblock %}</h1>
+            {% endblock %}
+        </div>
+    </div>
+    {% endblock %} <!-- page_header_container -->
+
+    {% block all_content %}
+        {% block content %}{% endblock %}
+        {% block nav_footer %}{% endblock %}
+        {% block containerless_content %}{% endblock %}
+    {% endblock %} <!-- all_content -->
+    {% endblock outer_content %}
+{% endblock main %}
+
 {% block footer_wrap %}
 <footer>
     {% block footer %}
