@@ -261,6 +261,15 @@
     margin-left: 5px;
 }
 
+.header .main-nav .caret {
+    background-image: url('/static/mida/components/header/img/icon-triangledown.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    height: 14px;
+    width: 14px;
+}
 
 .mobile-menu-button {
     display: block;
@@ -372,7 +381,7 @@
 
     .social-icon:hover,
     .button-login:hover,
-    .search-button:hover,
+    .button-search:hover,
     .top-nav-link:hover,
     .nav-link:hover,
     .dropdown-item:hover,
