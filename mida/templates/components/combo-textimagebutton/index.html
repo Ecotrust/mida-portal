@@ -4,19 +4,25 @@
     <link rel="stylesheet" href="{% static 'mida/components/combo-textimagebutton/style.css' %}">
 {% endblock extra_css %}
 
-<article class="text-image-and" data-model-id="2041:8185">
-    <h1 class="data-catalog">DATA CATALOG INSIGHTS</h1>
-    <img class="marcodataportal-data" src="{% static 'mida/components/combo-textimagebutton/img/marcodataportal-data-datacatalog-landingpage-image02.png' %}" alt="Marina with boats" />
-    <section class="frame">
-        <p class="you-can-explore-the">
-            You can explore the data available under each of the Portal's themes below.<br /><br />To learn more about how
-            data is selected for inclusion in the Portal, read our
-            <a href="#" class="span">Spatial data evaluation and criteria</a>
-            fact sheet.
-        </p>
-    </section>
-    <a href="#" class="button-border" aria-label="Download Spatial Data Evaluation and Criteria PDF">
-        <img class="iconpdf" src="{% static 'mida/components/combo-textimagebutton/img/iconpdf.png' %}" alt="PDF icon" />
-        <p class="spatial-data">SPATIAL DATA EVALUATION AND CRITERIA (PDF)</p>
-    </a>
-</article>
+<div class="threelane-container">
+    <article class="text-image-and" data-model-id="2041:8185">
+        <h1 class="data-catalog">DATA CATALOG INSIGHTS</h1>
+        <div class="fifty-fifty-layout">
+            <img
+            class="marcodataportal-data"
+            src="{% static 'mida/components/combo-textimagebutton/img/marcodataportal-data-datacatalog-landingpage-image02.png' %}"
+            alt="Marina with boats"
+            />
+            <div class="fifty-right">
+                <section class="frame">
+                    <p class="you-can-explore-the">You can explore the data available under each of the Portal's themes below.<br /><br />To learn more about how data is selected for inclusion in the Portal, read our <a href="#" class="span">Spatial data evaluation and criteria</a> fact sheet.</p>
+                </section>
+                    
+                <a href="#" class="button-border">
+                    <img class="iconpdf" src="{% static 'mida/components/combo-textimagebutton/img/iconpdf.png' %}" alt="" />
+                    <p class="spatial-data">SPATIAL DATA EVALUATION AND CRITERIA (PDF)</p>
+                </a>
+            </div>
+        </div>
+    </article>
+</div>

@@ -1,203 +1,124 @@
-.text-image-and {
+/* Responsive rewrite: no absolute/fixed positioning or sizing */
+.text-image-and { 
   position: relative;
-  width: 1199px;
-  height: 548px;
+  width: 100%;
 }
 
-.text-image-and .marcodataportal-data {
-  position: absolute;
-  width: 573px;
-  height: 436px;
-  top: 112px;
-  left: 0;
+.fifty-fifty-layout {
+  width: 100%;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 3vw, 2rem);
 }
 
-.text-image-and .button-border {
-  position: absolute;
-  width: 596px;
-  height: 84px;
-  top: 464px;
-  left: 603px;
-  background-color: var(--white);
-  border-style: solid;
-  border-top-style: solid;
-  border-right-style: solid;
-  border-bottom-style: solid;
-  border-left-style: solid;
-  border-color: var(--yellow-bright);
+@media (min-width: 48rem) {
+  .fifty-fifty-layout {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.text-image-and .spatial-data {
-  position: absolute;
-  height: 36px;
-  top: 2px;
-  left: 85px;
-  font-family: var(--btn-oswald-font-family);
-  font-weight: var(--btn-oswald-font-weight);
-  color: var(--teal);
-  font-size: var(--btn-oswald-font-size);
-  letter-spacing: var(--btn-oswald-letter-spacing);
-  line-height: var(--btn-oswald-line-height);
-  white-space: nowrap;
-  font-style: var(--btn-oswald-font-style);
-}
-
-.text-image-and .iconpdf {
-  position: absolute;
-  width: 22px;
-  height: 27px;
-  top: 29px;
-  left: 47px;
-}
-
-.text-image-and .frame {
-  display: flex;
-  width: 596px;
-  height: 322px;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 0px 10px;
-  position: absolute;
-  top: 112px;
-  left: 603px;
-  background-color: var(--light-blue);
-}
-
-.text-image-and .you-can-explore-the {
-  position: relative;
-  width: 501px;
-  font-family: "Barlow", Helvetica;
-  font-weight: 400;
-  color: transparent;
-  font-size: 24px;
-  letter-spacing: 0;
-  line-height: 34px;
-}
-
-.text-image-and .text-wrapper {
-  color: #6c6c6c;
-  font-family: var(--p2-font-family);
-  font-style: var(--p2-font-style);
-  font-weight: var(--p2-font-weight);
-  letter-spacing: var(--p2-letter-spacing);
-  line-height: var(--p2-line-height);
-  font-size: var(--p2-font-size);
-}
-
-.text-image-and .span {
-  font-weight: 600;
-  color: #00788a;
+.fifty-right {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: clamp(1rem, 3vw, 2rem);
 }
 
 .text-image-and .data-catalog {
-  position: absolute;
-  height: 64px;
-  top: -1px;
-  left: 0;
+  margin-bottom: 3rem;
   font-family: var(--h4-bold-font-family);
   font-weight: var(--h4-bold-font-weight);
   color: #22408f;
   font-size: var(--h4-bold-font-size);
   letter-spacing: var(--h4-bold-letter-spacing);
   line-height: var(--h4-bold-line-height);
-  white-space: nowrap;
   font-style: var(--h4-bold-font-style);
-}
-/* Original CSS code should be injected here */
-
-.text-image-and {
-  position: relative;
-  max-width: 1199px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-.text-image-and .marcodataportal-data {
-  width: 100%;
-  max-width: 573px;
-  height: auto;
-  margin-top: 112px;
-}
-
-.text-image-and .button-border {
-  display: flex;
-  align-items: center;
-  max-width: 596px;
-  padding: 20px;
-  margin-top: 20px;
-  background-color: var(--white);
-  border: 2px solid var(--yellow-bright);
-  text-decoration: none;
-}
-
-.text-image-and .spatial-data {
-  margin-left: 20px;
-  font-family: var(--btn-oswald-font-family);
-  font-weight: var(--btn-oswald-font-weight);
-  color: var(--teal);
-  font-size: var(--btn-oswald-font-size);
-  letter-spacing: var(--btn-oswald-letter-spacing);
-  line-height: var(--btn-oswald-line-height);
-  white-space: nowrap;
-  font-style: var(--btn-oswald-font-style);
-}
-
-.text-image-and .iconpdf {
-  width: 22px;
-  height: 27px;
 }
 
 .text-image-and .frame {
-  display: flex;
-  max-width: 596px;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  margin-top: 20px;
   background-color: var(--light-blue);
+  padding: clamp(1rem, 3vw, 2rem);
+  display: grid;
+  place-items: center;
 }
 
-.text-image-and .you-can-explore-the {
-  max-width: 501px;
+.text-image-and .you-can-explore-the,
+.text-image-and .text-wrapper {
+  margin: 0;
+  max-width: 60ch;
   font-family: var(--p2-font-family);
   font-weight: var(--p2-font-weight);
   color: var(--grey-dark);
   font-size: var(--p2-font-size);
   letter-spacing: var(--p2-letter-spacing);
   line-height: var(--p2-line-height);
+  font-style: var(--p2-font-style);
 }
 
 .text-image-and .span {
   font-weight: 600;
   color: var(--teal);
+}
+
+.text-image-and .marcodataportal-data {
+  width: 100%;
+}
+
+.text-image-and .marcodataportal-data img,
+.text-image-and .marcodataportal-data picture,
+.text-image-and .marcodataportal-data video,
+.text-image-and .marcodataportal-data svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* CTA */
+.text-image-and .button-border {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--white);
+  border: 2px solid var(--yellow-bright);
   text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
-.text-image-and .data-catalog {
-  margin-bottom: 20px;
-  font-family: var(--h4-bold-font-family);
-  font-weight: var(--h4-bold-font-weight);
-  color: #22408f;
-  font-size: var(--h4-bold-font-size);
-  letter-spacing: var(--h4-bold-letter-spacing);
-  line-height: var(--h4-bold-line-height);
-  font-style: var(--h4-bold-font-style);
+.text-image-and .button-border:hover,
+.text-image-and .button-border:focus-visible {
+  background-color: var(--yellow-bright);
 }
 
-@media (min-width: 768px) {
+.text-image-and .iconpdf {
+  inline-size: 1.25em;
+  block-size: auto;
+  flex: 0 0 auto;
+}
+
+.text-image-and .spatial-data {
+  font-family: var(--btn-oswald-font-family);
+  font-weight: var(--btn-oswald-font-weight);
+  color: var(--teal);
+  font-size: var(--btn-oswald-font-size);
+  letter-spacing: var(--btn-oswald-letter-spacing);
+  line-height: var(--btn-oswald-line-height);
+  font-style: var(--btn-oswald-font-style);
+  white-space: normal;
+}
+
+/* Layout breakpoints */
+@media (min-width: 48rem) {
   .text-image-and {
-    display: grid;
+    grid-template-columns: 1.1fr 0.9fr; /* text | media */
+    align-items: center;
+  }
+}
+
+@media (min-width: 64rem) {
+  .text-image-and {
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .text-image-and .data-catalog {
-    grid-column: 1 / -1;
-  }
-
-  .text-image-and .frame,
-  .text-image-and .button-border {
-    margin-top: 0;
   }
 }
