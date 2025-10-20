@@ -1,0 +1,352 @@
+/* CSS for MARCO Footer */
+
+:root {
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+
+  /* Colors */
+  --blue-900: #22408f;
+  --blue-700: #1569dc;
+  --white: #ffffff;
+  --ink: #030b39;
+  --accent: #ffa400;
+
+  /* Type scale (fluid) */
+  --fs-xs: clamp(0.75rem, 0.6vw + 0.6rem, 0.9rem);
+  --fs-sm: clamp(0.875rem, 0.6vw + 0.7rem, 1rem);
+  --fs-md: clamp(1rem, 0.7vw + 0.85rem, 1.25rem);
+  --fs-lg: clamp(1.125rem, 0.8vw + 0.9rem, 1.375rem);
+  --fs-xl: clamp(1.25rem, 1vw + 1rem, 1.5rem);
+  --fs-2xl: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
+  --fs-3xl: clamp(2rem, 3.5vw + 1rem, 3.5rem);
+
+  /* Max widths */
+  --content-max: 80rem; /* 1280px */
+  --form-max: 32rem;    /* ~512px */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Barlow", sans-serif;
+  color: var(--white);
+  background-color: #fff;
+}
+
+/* Footer wrapper */
+.footer {
+  background-color: var(--blue-900);
+  color: var(--white);
+  width: 100%;
+  /* No fixed height; padding provides spacing */
+  padding-block: var(--space-8);
+  display: block;
+}
+
+/* Constrain and center major sections */
+.footer .container {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-inline: clamp(var(--space-4), 4vw, var(--space-9));
+}
+
+/* Newsletter Section */
+.newsletter-section {
+  margin-block-start: clamp(var(--space-7), 6vw, var(--space-9));
+  margin-inline: clamp(var(--space-4), 6vw, var(--space-9));
+  border-radius: 0.5rem;
+  /* Use a single background layer with low-opacity SVG; no absolute overlay */
+  background-color: var(--blue-700);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1203 382"><path d="M882.5 -25C965.619 -25 1033 42.3811 1033 125.5C1033 192.436 989.302 249.165 928.878 268.718H929.277L884.522 381.593L835.975 268.718H836.122C775.698 249.165 732 192.436 732 125.5C732 42.3811 799.381 -25 882.5 -25ZM882.501 13.0293C819.045 13.0295 767.604 64.4715 767.604 127.928C767.604 191.384 819.045 242.825 882.501 242.825C945.957 242.825 997.399 191.384 997.399 127.928C997.399 64.4714 945.957 13.0293 882.501 13.0293Z" fill="white" fill-opacity="0.2"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.newsletter-content {
+  /* Fluid padding and layout */
+  padding: clamp(var(--space-7), 6vw, var(--space-9));
+  display: grid;
+  grid-template-columns: 1fr minmax(18rem, var(--form-max));
+  gap: clamp(var(--space-6), 4vw, var(--space-8));
+  align-items: start;
+}
+
+.newsletter-text {
+  min-width: 0; /* prevent overflow */
+}
+
+.newsletter-title {
+  font-family: "Oswald", sans-serif;
+  font-size: var(--fs-3xl);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--space-4) 0;
+  color: var(--white);
+}
+
+.newsletter-description {
+  font-size: var(--fs-lg);
+  line-height: 1.6;
+  color: var(--white);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.newsletter-accent-bar {
+  width: clamp(4rem, 10vw, 7rem);
+  height: 0.25rem;
+  background-color: var(--accent);
+  border-radius: 999px;
+}
+
+.newsletter-form {
+  width: 100%;
+  max-width: var(--form-max);
+}
+
+.form-container {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.email-input {
+  min-height: 3.25rem;
+  background-color: var(--white);
+  border: 0;
+  border-radius: 0.5rem;
+  padding-inline: var(--space-6);
+  font-size: var(--fs-md);
+  color: var(--ink);
+}
+
+.email-input::placeholder {
+  color: var(--ink);
+  opacity: 0.9;
+}
+
+.signup-button {
+  min-height: 3rem;
+  background-color: var(--accent);
+  border: 0;
+  border-radius: 0.625rem;
+  color: var(--white);
+  font-family: "Oswald", sans-serif;
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Main Footer */
+.main-footer {
+  padding-block-start: clamp(var(--space-7), 6vw, var(--space-9));
+  padding-inline: clamp(var(--space-4), 4vw, var(--space-9));
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1fr);
+  gap: clamp(var(--space-7), 6vw, var(--space-9));
+  align-items: start;
+}
+
+.left-side {
+  min-width: 0;
+  max-width: 42rem;
+}
+
+.logo-container {
+  margin-block-end: clamp(var(--space-6), 4vw, var(--space-8));
+}
+
+.marco-logo {
+  width: 100%;
+  height: auto;
+  max-width: 28.5rem; /* was 456px */
+}
+
+.description {
+  font-size: var(--fs-lg);
+  line-height: 1.6;
+  color: var(--white);
+  margin-block-end: clamp(var(--space-6), 4vw, var(--space-8));
+}
+
+.description strong {
+  font-weight: 600;
+}
+
+.marine-planner {
+  color: var(--accent);
+}
+
+.visit-button {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--white);
+  border-radius: 0.5rem;
+  color: var(--white);
+  font-family: "Oswald", sans-serif;
+  font-size: var(--fs-md);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+/* Divider between columns (fluid, no fixed height) */
+.divider-line {
+  display: none; /* hidden on narrow, shown via media query on wide */
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  height: 100%;
+  align-self: stretch;
+}
+
+.right-side {
+  min-width: 0;
+}
+
+.contact-title {
+  font-family: "Fira Sans", sans-serif;
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.contact-email {
+  font-size: var(--fs-lg);
+  line-height: 1.6;
+  color: var(--white);
+  margin: 0 0 var(--space-5) 0;
+  word-break: break-word;
+}
+
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.social-icon {
+  inline-size: clamp(2.25rem, 5vw, 3rem);
+  block-size: clamp(2.25rem, 5vw, 3rem);
+  display: inline-block;
+}
+
+.social-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Bottom Footer */
+.bottom-footer {
+  background-color: var(--blue-700);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-4) clamp(var(--space-4), 4vw, var(--space-7));
+  margin-block-start: clamp(var(--space-7), 6vw, var(--space-8));
+}
+
+.copyright {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.copyright-symbol,
+.copyright-text,
+.site-credit {
+  font-size: var(--fs-sm);
+  color: var(--white);
+  margin: 0;
+}
+
+.footer-icons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.accessibility-icon,
+.back-to-top {
+  inline-size: clamp(2.25rem, 5vw, 3.25rem);
+  block-size: clamp(2.25rem, 5vw, 3.25rem);
+  cursor: pointer;
+}
+
+/* Feedback Button: inline, not absolutely positioned */
+.feedback-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--white);
+  border-radius: 0.5rem;
+  color: var(--white);
+  font-family: "Oswald", sans-serif;
+  font-size: var(--fs-md);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  width: auto;
+  height: auto;
+  margin-block-start: clamp(var(--space-5), 3vw, var(--space-7));
+}
+
+/* Make any decorative background children non-positioned (kept for DOM compatibility) */
+.newsletter-background,
+.newsletter-mask {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media (min-width: 56rem) { /* ~896px */
+  .main-footer {
+    grid-template-columns: 1fr min-content 1fr; /* left | divider | right */
+  }
+  .divider-line {
+    display: block;
+  }
+}
+
+@media (max-width: 48rem) { /* ~768px and below */
+  .newsletter-content {
+    grid-template-columns: 1fr;
+  }
+  .main-footer {
+    grid-template-columns: 1fr;
+  }
+  .right-side {
+    margin-top: 0;
+  }
+  .bottom-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer-icons {
+    margin-top: var(--space-2);
+  }
+  .feedback-button {
+    margin-inline: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}

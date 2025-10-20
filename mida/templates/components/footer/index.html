@@ -1,0 +1,127 @@
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/footer/style.css' %}">
+{% endblock extra_css %}
+
+<footer class="footer">
+    <!-- Newsletter Subscription Section -->
+    <div class="newsletter-section">
+        <div class="newsletter-background"></div>
+        <div class="newsletter-mask"></div>
+        <div class="newsletter-content">
+            <div class="newsletter-text">
+                <h2 class="newsletter-title">SUBSCRIBE TO OUR NEWSLETTER</h2>
+                <p class="newsletter-description">
+                    Stay current on Portal data additions, tool and site enhancements, upcoming webinars and
+                    more.
+                </p>
+                <div class="newsletter-accent-bar"></div>
+            </div>
+            <div class="newsletter-form">
+                <div class="form-container">
+                    <input type="email" placeholder="Your Email Address" class="email-input">
+                    <button class="signup-button">SIGN UP</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Footer Content -->
+    <div class="main-footer">
+        <!-- Left Side -->
+        <div class="left-side">
+            <div class="logo-container">
+                <svg class="marco-logo" viewBox="0 0 223 61" fill="none">
+                    <!-- MARCO Logo SVG paths would go here -->
+                    <g>
+                        <path
+                        d="M-8.53852e-06 1.23628H4.94652L22.0533 27.1979L39.3661 1.23628H44.3126V43.6815H38.9539V10.5083L22.0533 35.6457L5.35873 10.5083V43.6815H-8.53852e-06V1.23628Z"
+                        fill="white" fill-rule="evenodd" />
+                        <path
+                        d="M78.7322 27.1979L69.2514 8.44785L59.9766 27.1979H78.7322ZM67.1903 1.23628H71.5185L92.5413 43.6815H86.7703L80.9994 32.143H57.7095L52.1446 43.6815H46.3737L67.1903 1.23628Z"
+                        fill="white" fill-rule="evenodd" />
+                        <path
+                        d="M119.129 20.1924C124.488 20.1924 127.167 17.7199 127.167 13.1869C127.167 8.85994 124.488 6.18136 119.335 6.18136H100.373V20.1924H119.129ZM95.0145 1.23628H119.335C127.785 1.23628 132.732 5.56322 132.732 12.9808C132.732 18.9561 128.816 23.9012 122.633 24.9314L133.35 43.6815H127.579L116.862 25.1375H100.373V43.6815H95.0145V1.23628Z"
+                        fill="white" fill-rule="evenodd" />
+                        <path
+                        d="M176.632 33.1733C172.716 40.5909 165.709 44.7118 157.052 44.7118C144.274 44.7118 134.999 35.4398 134.999 22.459C134.999 9.47816 144.274 0.206153 157.052 0.206153C164.884 0.206153 171.686 3.91496 175.602 10.0963L171.273 13.187C168.594 8.03585 163.235 5.15123 157.052 5.15123C147.571 5.15123 140.564 12.3628 140.564 22.459C140.564 32.5552 147.571 39.7667 157.052 39.7667C163.648 39.7667 169.006 36.47 172.304 30.0826L176.632 33.1733Z"
+                        fill="white" fill-rule="evenodd" />
+                        <path
+                        d="M222.8 22.4591C222.8 10.0964 212.701 0.000218901 200.334 0.000218901C187.968 0.000218901 177.869 10.0964 177.869 22.4591C177.869 32.5553 184.464 41.0031 193.739 43.8877L200.54 60.9894L207.754 43.6817C216.411 40.591 222.8 32.1432 222.8 22.4591ZM200.54 38.5306C191.472 38.5306 184.258 31.319 184.258 22.253C184.258 13.1871 191.472 5.97551 200.54 5.97551C209.609 5.97551 216.823 13.1871 216.823 22.253C216.823 31.113 209.403 38.5306 200.54 38.5306Z"
+                        fill="white" fill-rule="evenodd" />
+                    </g>
+                </svg>
+            </div>
+            <div class="description">
+                <p>Welcome to the <strong>Mid-Atlantic Ocean Data Portal</strong>, an ocean planning resource
+                    center, and the <span class="marine-planner">Marine Planner</span>, an interactive mapping
+                    tool.</p>
+                </div>
+                <button class="visit-button">VISIT MIDATLANTICOCEAN.ORG</button>
+            </div>
+            
+            <!-- Divider Line -->
+            <div class="divider-line"></div>
+            
+            <!-- Right Side -->
+            <div class="right-side">
+                <h3 class="contact-title">Contact Us</h3>
+                <p class="contact-email">portal@midatlanticocean.org</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon facebook">
+                        <svg viewBox="0 0 60 60">
+                            <circle cx="30" cy="30" r="30" fill="#FFA400" />
+                            <path
+                            d="M9.55054 28.3333V15.4101H13.8866L14.5371 10.3722H9.55054V7.15624C9.55054 5.69811 9.95379 4.70441 12.0471 4.70441L14.7126 4.70331V0.197242C14.2517 0.137339 12.6693 0 10.8277 0C6.98201 0 4.34919 2.34736 4.34919 6.65729V10.3722H0V15.4101H4.34919V28.3333H9.55054Z"
+                            fill="white" transform="translate(16 16)" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon youtube">
+                        <svg viewBox="0 0 60 60">
+                            <circle cx="30" cy="30" r="30" fill="#FFA400" />
+                            <path
+                            d="M44.6729 22.0052C44.3042 20.6998 43.2233 19.6709 41.8526 19.3194C39.3485 18.667 29.3318 18.667 29.3318 18.667C29.3318 18.667 19.3155 18.667 16.8114 19.2946C15.467 19.6458 14.3598 20.7 13.991 22.0052C13.332 24.3893 13.332 29.3337 13.332 29.3337C13.332 29.3337 13.332 34.3031 13.991 36.6623C14.3602 37.9674 15.4406 38.9964 16.8116 39.3479C19.3418 40.0005 29.3322 40.0005 29.3322 40.0005C29.3322 40.0005 39.3485 40.0005 41.8526 39.3728C43.2235 39.0215 44.3042 37.9925 44.6733 36.6874C45.3321 34.3031 45.3321 29.3588 45.3321 29.3588C45.3321 29.3588 45.3585 24.3893 44.6729 22.0052ZM26.1427 33.9015V24.7659L34.472 29.3337L26.1427 33.9015Z"
+                            fill="white" />
+                        </svg>
+                    </a>
+                    <a href="#" class="social-icon twitter">
+                        <svg viewBox="0 0 60 60">
+                            <circle cx="30" cy="30" r="30" fill="#FFA400" />
+                            <path
+                            d="M32.8048 27.9975L43.1257 16.0003H40.6799L31.7183 26.4173L24.5607 16.0003H16.3052L27.1289 31.7527L16.3052 44.3336H18.751L28.2148 33.3329L35.7737 44.3336H44.0292L32.8042 27.9975H32.8048ZM29.4548 31.8915L28.3581 30.3229L19.6323 17.8415H23.389L30.4309 27.9144L31.5275 29.483L40.6811 42.5761H36.9244L29.4548 31.8921V31.8915Z"
+                            fill="white" transform="translate(16 16)" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Footer -->
+        <div class="bottom-footer">
+            <div class="copyright">
+                <span class="copyright-symbol">©</span>
+                <span class="copyright-text">2024 MARCO. All Rights Reserved.</span>
+            </div>
+            <div class="site-credit">Site By 3Lane Marketing and Ecotrust</div>
+            <div class="footer-icons">
+                <div class="accessibility-icon">
+                    <svg viewBox="0 0 55 55">
+                        <circle cx="27.5" cy="27.5" r="27.5" fill="white" />
+                        <!-- Accessibility icon path would go here -->
+                    </svg>
+                </div>
+                <div class="back-to-top">
+                    <svg viewBox="0 0 56 56">
+                        <circle cx="28" cy="28" r="26.5" fill="#FFA400" stroke="white" stroke-width="3" />
+                        <path
+                        d="M18.8835 32.681L17.6055 31.4L28.0055 21L38.4055 31.4L37.1275 32.678L28.0055 23.555L18.8835 32.681Z"
+                        fill="white" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Feedback Button -->
+        <button class="feedback-button">PROVIDE FEEDBACK</button>
+    </footer>
