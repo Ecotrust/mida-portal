@@ -1,14 +1,14 @@
+<!-- mida-portal/mida/static/mida/templates/base.html -->
+
 {% extends "base.html" %}
 {% load static %}
 
 {% block extra_css %}
-  {{ block.super }}
-  <!-- EXTRA MIDA CSS -->
-  <link rel="stylesheet" href="{% static 'mida/css/header.css' %}" type="text/css">
-  <link rel="stylesheet" href="{% static 'mida/css/footer.css' %}" type="text/css">
-  <link rel="stylesheet" href="{% static 'mida/css/home.css' %}" type="text/css">
-  <link rel="stylesheet" href="{% static 'mida/css/mida.css' %}" type="text/css">
-  <!-- END EXTRA CSS -->
+    {{ block.super }}
+    <!-- EXTRA_CSS MIDA base.html -->
+    <link rel="stylesheet" href="{% static 'mida/css/vars.css' %}">
+    <link rel="stylesheet" href="{% static 'mida/css/globals.css' %}">
+    <!-- END EXTRA_CSS -->
 {% endblock %}
 
 {% block header_tag %}
@@ -40,7 +40,8 @@
 <footer>
     {% block footer %}
     <div class="container">
-        {% include 'marco_site/includes/footer.html' %}
+        {% comment %} {% include 'marco_site/includes/footer.html' %} {% endcomment %}
+        {% include 'components/footer/index.html' %}
     </div>
     {% endblock %}
 </footer>
