@@ -1,5 +1,5 @@
 <!-- mida-portal/mida/static/mida/components/section-cards/index.html -->
-{% load static %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'mida/components/section-cards/style.css' %}">
@@ -8,16 +8,39 @@
 <div class="section-with-cards">
   <div>
     <div class="card-border">
-      <section class="card collaborate">
-        <header class="card-header">
-          <h2 class="card-title">Collaborate</h2>
-          <p class="card-description">
-            Work with friends in a Group, schedule a Portal training, or share your feedback and questions with us
-          </p>
-        </header>
-        <img src="{% static 'mida/components/section-cards/img/marcodataportal-homepage-image12.png' %}" alt="Collaboration illustration" class="card-image" />
-      </section>
-      <section class="card how-to-guide">
+      
+      {% for item in items %}
+        <section class="card collaborate">
+          {% block heading %}
+            <header class="card-header">
+              <a href="{{ item.url }}">
+                <h2 class="card-title">{{ item.title }}</h2>
+              </a>
+              <p class="card-description">
+                {% block text %}
+                  {% if item.search_description %}
+                    {{ item.search_description|striptags|truncatechars:93 }}
+                  {% else %}
+                    {{ item.description|striptags|truncatechars:93 }}
+                  {% endif %}
+                {% endblock %}
+              </p>
+            </header>
+          {% endblock %}
+        
+          {% block feature %}
+            {% if item.feature_image %}
+              <a href="{{ item.url }}" description="{{ item.title}}">
+                {% image item.feature_image max-800x800 class="card-image" %}
+              </a>
+            {% endif %}
+          {% endblock %}
+
+        {% comment %} <img src="{% static 'mida/components/section-cards/img/marcodataportal-homepage-image12.png' %}" alt="Collaboration illustration" class="card-image" /> {% endcomment %}
+        </section>
+      {% endfor %}
+      
+      {% comment %} <section class="card how-to-guide">
         <header class="card-header">
           <h2 class="card-title">How-to Guide</h2>
           <p class="card-description">
@@ -26,6 +49,7 @@
         </header>
         <img src="{% static 'mida/components/section-cards/img/marcodataportal-homepage-image13.png' %}" alt="How-to guide illustration" class="card-image" />
       </section>
+      
       <section class="card current-agency-actions">
         <header class="card-header">
           <h2 class="card-title">Current Agency Actions</h2>
@@ -36,7 +60,7 @@
         </header>
         <img src="{% static 'mida/components/section-cards/img/marcodataportal-homepage-image14.png' %}" alt="Current agency actions illustration"
           class="card-image" />
-      </section>
+      </section> {% endcomment %}
     </div>
   </div>
 </div>

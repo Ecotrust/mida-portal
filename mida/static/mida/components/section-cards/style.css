@@ -1,83 +1,93 @@
 .section-with-cards {
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  padding: 2rem;
-  gap: 3rem;
+  gap: clamp(1rem, 3vw, 3rem);
+  padding: clamp(1rem, 2.5vw, 2rem);
+  width: 100%;
 }
 
 .card-border {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 25px;
+  align-items: stretch;
+  display: grid;
+  gap: clamp(16px, 2vw, 80px);
+  grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 45vw, 600px), 1fr));
 }
 
 .card {
-  width: 489px;
-  height: 300px;
-  position: relative;
-  overflow: hidden;
+  background-color: var(--surface, #ffffff);
   border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 100%;
+
+  /* Enable container queries based on card width */
+  container-type: inline-size;
 }
 
 .card-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 12px 15px;
   background-color: var(--teal);
-  color: #ffffff;
-  z-index: 1;
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
+  text-align: center;
 }
 
 .card-title {
+  color: var(--white);
   font-family: var(--h6-font-family);
   font-weight: var(--h6-font-weight);
   font-size: var(--h6-font-size);
   letter-spacing: var(--h6-letter-spacing);
   line-height: var(--h6-line-height);
+  margin: 0 0 0.5rem 0;
   text-align: center;
-  margin-bottom: 8px;
   text-transform: uppercase;
+
+  /* Equal height across cards */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  min-block-size: calc(1lh);
 }
 
 .card-description {
+  color: var(--white);
   font-family: var(--p4-font-family);
   font-weight: var(--p4-font-weight);
   font-size: var(--p4-font-size);
   letter-spacing: var(--p4-letter-spacing);
   line-height: var(--p4-line-height);
+  margin: 0;
   text-align: center;
+
 }
 
 .card-image {
-  width: 100%;
-  height: 100%;
+  aspect-ratio: 16 / 10;
+  display: block;
+  height: auto;
   object-fit: cover;
+  width: 100%;
 }
 
-.collaborate .card-header {
-  background-color: var(--light-blue);
+.card:nth-of-type(3n + 1) .card-header {
+  background-color: var(--dark-blue);
 }
 
-.how-to-guide .card-header {
+.card:nth-of-type(3n + 2) .card-header {
   background-color: var(--green);
 }
 
-.current-agency-actions .card-header {
+.card:nth-of-type(3n + 3) .card-header {
   background-color: var(--teal);
 }
 
-@media (max-width: 1200px) {
-  .card-border {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .card {
-    width: 100%;
+@media screen and (max-width: 54rem) {
+  .card-title {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    min-block-size: calc(2lh);
   }
 }
