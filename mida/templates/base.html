@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block header_tag %}
-    {% include './components/header/index.html' %}
+    {% include 'components/header/index.html' %}
 {% endblock %}
 
 {% block main %}
@@ -40,8 +40,9 @@
 <footer>
     {% block footer %}
     <div class="container">
-        {% comment %} {% include 'marco_site/includes/footer.html' %} {% endcomment %}
+        <!-- Include Footer Component -->
         {% include 'components/footer/index.html' %}
+        <!-- End Footer Component -->
     </div>
     {% endblock %}
 </footer>
