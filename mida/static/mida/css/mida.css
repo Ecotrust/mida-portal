@@ -1,3 +1,8 @@
+/**
+  * MIDA Portal Custom Styles
+  * static/mida/css/mida.css
+ */
+
 /* Recreating Styles*/
 body {
     font-family: 'Roboto';
@@ -11,6 +16,21 @@ body.page-layout div.page-body p {
   color: black;
   font-weight: 400;
 }
+
+/**
+  * Alert Banner
+  */
+
+.intro p:not(:empty) {
+    background: #22408f;
+    color: #fff;
+    padding: 1.5rem;
+    font-size: 18px;
+    line-height: 26px;
+    margin-bottom: 0;
+    padding-bottom: 25px;
+}
+
 
 /*
 ++++++++++++ NEWS ++++++++++++

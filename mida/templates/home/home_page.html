@@ -1,7 +1,11 @@
 {% extends "home/home_page.html" %}
-{% load static %}
+{% load wagtailcore_tags wagtailcustom_tags wagtailimages_tags static %}
 
 {% block content %}
+    {% if page.intro != '<p><br/></p>' %} <!-- this is as empty as a richtext field gets -->
+        <div class="intro">{{ page.intro|anchored_richtext }}</div>
+    {% endif %}
+
     {% include 'components/homepage-herobanner/index.html' %}
     {% include 'components/combo-textimagebutton/index.html' %}
     {% include 'components/section-cards/index.html' %}
