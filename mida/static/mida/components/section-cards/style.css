@@ -1,0 +1,83 @@
+.section-with-cards {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  padding: 2rem;
+  gap: 3rem;
+}
+
+.card-border {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.card {
+  width: 489px;
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.card-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 15px;
+  background-color: var(--teal);
+  color: #ffffff;
+  z-index: 1;
+}
+
+.card-title {
+  font-family: var(--h6-font-family);
+  font-weight: var(--h6-font-weight);
+  font-size: var(--h6-font-size);
+  letter-spacing: var(--h6-letter-spacing);
+  line-height: var(--h6-line-height);
+  text-align: center;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.card-description {
+  font-family: var(--p4-font-family);
+  font-weight: var(--p4-font-weight);
+  font-size: var(--p4-font-size);
+  letter-spacing: var(--p4-letter-spacing);
+  line-height: var(--p4-line-height);
+  text-align: center;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.collaborate .card-header {
+  background-color: var(--light-blue);
+}
+
+.how-to-guide .card-header {
+  background-color: var(--green);
+}
+
+.current-agency-actions .card-header {
+  background-color: var(--teal);
+}
+
+@media (max-width: 1200px) {
+  .card-border {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+}
