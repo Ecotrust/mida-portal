@@ -133,7 +133,8 @@ body {
 }
 
 .email-input {
-  min-height: 3.25rem;
+  /* Design height ~69px; make fluid up to ~70px */
+  min-height: clamp(3rem, 5vw, 4.375rem);
   background-color: var(--white);
   border: 0;
   border-radius: 0.5rem;
@@ -148,7 +149,8 @@ body {
 }
 
 .signup-button {
-  min-height: 3rem;
+  /* Design height 64px; make fluid up to 64px */
+  min-height: clamp(3rem, 4.5vw, 4rem);
   background-color: var(--accent);
   border: 0;
   border-radius: 0.625rem;
@@ -226,10 +228,12 @@ body {
 
 .contact-title {
   font-family: "Fira Sans", sans-serif;
-  font-size: var(--fs-2xl);
+  /* Use Figma token 28/36 with fluid mapping */
+  font-size: var(--fira-subtitle-font-size-fluid);
   font-weight: 600;
   color: var(--accent);
   margin: 0 0 var(--space-2) 0;
+  line-height: var(--fira-subtitle-line-height-fluid);
 }
 
 .contact-email {
@@ -247,8 +251,9 @@ body {
 }
 
 .social-icon {
-  inline-size: clamp(2.25rem, 5vw, 3rem);
-  block-size: clamp(2.25rem, 5vw, 3rem);
+  /* Design size 60px circles */
+  inline-size: clamp(2.5rem, 6vw, 3.75rem);
+  block-size: clamp(2.5rem, 6vw, 3.75rem);
   display: inline-block;
 }
 
@@ -291,8 +296,9 @@ body {
 
 .accessibility-icon,
 .back-to-top {
-  inline-size: clamp(2.25rem, 5vw, 3.25rem);
-  block-size: clamp(2.25rem, 5vw, 3.25rem);
+  /* Accessibility 55px, BackToTop 56px */
+  inline-size: clamp(2.5rem, 6vw, 3.5rem);
+  block-size: clamp(2.5rem, 6vw, 3.5rem);
   cursor: pointer;
 }
 
