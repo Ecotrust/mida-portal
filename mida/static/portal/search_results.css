@@ -1,0 +1,8 @@
+.search-results {
+    background: var(--white, #FFFFFF);
+}
+
+.data h3{
+    background: var(--grey-light, #F5F6F6);
+    padding: 10px;
+}
