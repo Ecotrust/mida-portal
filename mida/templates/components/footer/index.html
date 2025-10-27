@@ -7,53 +7,35 @@
 {% endblock extra_css %}
 
 <footer class="footer">
-    <!-- Newsletter Subscription Section -->
-    <div class="newsletter-section">
-        <div class="newsletter-background"></div>
-        <div class="newsletter-mask"></div>
-        <div class="newsletter-content">
-            <div class="newsletter-text">
-                <h2 class="newsletter-title">SUBSCRIBE TO OUR NEWSLETTER</h2>
-                <p class="newsletter-description">
-                    Stay current on Portal data additions, tool and site enhancements, upcoming webinars and
-                    more.
-                </p>
-                <div class="newsletter-accent-bar"></div>
-            </div>
-            <div class="newsletter-form">
-                <div class="form-container">
-                    <input type="email" placeholder="Your Email Address" class="email-input">
-                    <button class="signup-button">SIGN UP</button>
+    <div class="container">
+        <!-- Newsletter Subscription Section -->
+        <div class="newsletter-section">
+            <div class="newsletter-background"></div>
+            <div class="newsletter-mask"></div>
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2 class="newsletter-title">SUBSCRIBE TO OUR NEWSLETTER</h2>
+                    <div class="newsletter-accent-bar"></div>
+                    <p class="newsletter-description">
+                        Stay current on Portal data additions, tool and site enhancements, upcoming webinars and
+                        more.
+                    </p>
+                </div>
+                <div class="newsletter-form">
+                    <div class="form-container">
+                        <input type="email" placeholder="Your Email Address" class="email-input">
+                        <button class="signup-button">SIGN UP</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     
     <!-- Main Footer Content -->
     <div class="main-footer">
         <!-- Left Side -->
         <div class="left-side">
             <div class="logo-container">
-                <svg class="marco-logo" viewBox="0 0 223 61" fill="none">
-                    <!-- MARCO Logo SVG paths would go here -->
-                    <g>
-                        <path
-                        d="M-8.53852e-06 1.23628H4.94652L22.0533 27.1979L39.3661 1.23628H44.3126V43.6815H38.9539V10.5083L22.0533 35.6457L5.35873 10.5083V43.6815H-8.53852e-06V1.23628Z"
-                        fill="white" fill-rule="evenodd" />
-                        <path
-                        d="M78.7322 27.1979L69.2514 8.44785L59.9766 27.1979H78.7322ZM67.1903 1.23628H71.5185L92.5413 43.6815H86.7703L80.9994 32.143H57.7095L52.1446 43.6815H46.3737L67.1903 1.23628Z"
-                        fill="white" fill-rule="evenodd" />
-                        <path
-                        d="M119.129 20.1924C124.488 20.1924 127.167 17.7199 127.167 13.1869C127.167 8.85994 124.488 6.18136 119.335 6.18136H100.373V20.1924H119.129ZM95.0145 1.23628H119.335C127.785 1.23628 132.732 5.56322 132.732 12.9808C132.732 18.9561 128.816 23.9012 122.633 24.9314L133.35 43.6815H127.579L116.862 25.1375H100.373V43.6815H95.0145V1.23628Z"
-                        fill="white" fill-rule="evenodd" />
-                        <path
-                        d="M176.632 33.1733C172.716 40.5909 165.709 44.7118 157.052 44.7118C144.274 44.7118 134.999 35.4398 134.999 22.459C134.999 9.47816 144.274 0.206153 157.052 0.206153C164.884 0.206153 171.686 3.91496 175.602 10.0963L171.273 13.187C168.594 8.03585 163.235 5.15123 157.052 5.15123C147.571 5.15123 140.564 12.3628 140.564 22.459C140.564 32.5552 147.571 39.7667 157.052 39.7667C163.648 39.7667 169.006 36.47 172.304 30.0826L176.632 33.1733Z"
-                        fill="white" fill-rule="evenodd" />
-                        <path
-                        d="M222.8 22.4591C222.8 10.0964 212.701 0.000218901 200.334 0.000218901C187.968 0.000218901 177.869 10.0964 177.869 22.4591C177.869 32.5553 184.464 41.0031 193.739 43.8877L200.54 60.9894L207.754 43.6817C216.411 40.591 222.8 32.1432 222.8 22.4591ZM200.54 38.5306C191.472 38.5306 184.258 31.319 184.258 22.253C184.258 13.1871 191.472 5.97551 200.54 5.97551C209.609 5.97551 216.823 13.1871 216.823 22.253C216.823 31.113 209.403 38.5306 200.54 38.5306Z"
-                        fill="white" fill-rule="evenodd" />
-                    </g>
-                </svg>
+                <img src="{% static 'mida/components/footer/img/logo.svg' %}" alt="MARCO Logo" class="marco-logo">
             </div>
             <div class="description">
                 <p>Welcome to the <strong>Mid-Atlantic Ocean Data Portal</strong>, an ocean planning resource
@@ -126,4 +108,5 @@
         
         <!-- Feedback Button -->
         <button class="feedback-button">PROVIDE FEEDBACK</button>
-    </footer>
+    </div>
+</footer>

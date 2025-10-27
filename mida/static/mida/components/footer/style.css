@@ -184,7 +184,7 @@ body {
 .marco-logo {
   width: 100%;
   height: auto;
-  max-width: 28.5rem; /* was 456px */
+  max-width: 32rem;
 }
 
 .description {
