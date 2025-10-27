@@ -5,10 +5,10 @@
 
 /* Recreating Styles*/
 body {
-    font-family: var(--p3-font-family);
-    font-weight: var(--p3-font-weight);
-    font-size: var(--p3-font-size-fluid);
-    line-height: var(--p3-line-height-fluid);
+    font-family: var(--body-regular-font-family);
+    font-weight: var(--body-regular-font-weight);
+    font-size: var(--body-regular-font-size);
+    line-height: var(--body-regular-line-height);
 }
 
 /**
