@@ -15,6 +15,8 @@
   --space-7: 2rem;
   --space-8: 3rem;
   --space-9: 4rem;
+  --space-10: 5rem;
+  --space-11: 6rem;
 
   /* Colors */
   --blue-900: #22408f;
@@ -33,25 +35,8 @@
   --fs-3xl: clamp(2rem, 3.5vw + 1rem, 3.5rem);
 
   /* Max widths */
-  --content-max: 80rem; /* 1280px */
+  --content-max: 1440px;
   --form-max: 32rem;    /* ~512px */
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Barlow", sans-serif;
-  color: var(--white);
-  background-color: #fff;
 }
 
 /* Footer wrapper */
@@ -59,22 +44,19 @@ body {
   background-color: var(--blue-900);
   color: var(--white);
   width: 100%;
-  /* No fixed height; padding provides spacing */
   padding-block: var(--space-8);
   display: block;
 }
 
-/* Constrain and center major sections */
-.footer .container {
+.footer-container {
   max-width: var(--content-max);
-  margin-inline: auto;
-  padding-inline: clamp(var(--space-4), 4vw, var(--space-9));
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* Newsletter Section */
 .newsletter-section {
   margin-block-start: clamp(var(--space-7), 6vw, var(--space-9));
-  margin-inline: clamp(var(--space-4), 6vw, var(--space-9));
   border-radius: 0.5rem;
   /* Use a single background layer with low-opacity SVG; no absolute overlay */
   background-color: var(--blue-700);
@@ -87,10 +69,10 @@ body {
 
 .newsletter-content {
   /* Fluid padding and layout */
-  padding: clamp(var(--space-7), 6vw, var(--space-9));
+  padding: clamp(var(--space-7), 10vw, var(--space-10));
   display: grid;
   grid-template-columns: 1fr minmax(18rem, var(--form-max));
-  gap: clamp(var(--space-6), 4vw, var(--space-8));
+  gap: clamp(var(--space-6), 4.5vw, var(--space-10));
   align-items: start;
 }
 
@@ -271,6 +253,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: var(--space-4) clamp(var(--space-4), 4vw, var(--space-7));
+  position: relative;
   margin-block-start: clamp(var(--space-7), 6vw, var(--space-8));
 }
 
@@ -292,6 +275,10 @@ body {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  justify-content: space-between;
+  left: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .accessibility-icon,
