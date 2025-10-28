@@ -1,29 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- mida-portal/mida/static/mida/components/tabs-text/index.html -->
+{% load static %}
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="globals.css" />
-    <link rel="stylesheet" href="styleguide.css" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Resource Tabs</title>
-</head>
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/tabs-text/style.css' %}">
+{% endblock extra_css %}
 
-<body>
-    <main class="box">
-        <nav class="tabs" aria-label="Resource navigation">
-            <section class="container">
-                <button class="tab-button selected" aria-selected="true">Map Resources</button>
-                <button class="tab-button" aria-selected="false">Data Resources</button>
-            </section>
-        </nav>
+<div class="box">
+    <nav class="tabs" aria-label="Resource navigation">
         <section class="container">
-            <button class="tab-button" aria-selected="true">Map Resources</button>
-            <button class="tab-button selected" aria-selected="false">Data Resources</button>
+            <button class="tab-button selected" aria-selected="true">Map Resources</button>
+            <button class="tab-button" aria-selected="false">Data Resources</button>
         </section>
-        </nav>
-    </main>
-</body>
+    </nav>
+</div>
 
-</html>
+

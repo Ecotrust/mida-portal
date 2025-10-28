@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailcustom_tags %}
+
+{% block extra_css %}
+  <!-- EXTRA CSS!!! -->
+  {{ block.super }}
+  <link rel="stylesheet" href="/static/portal/ocean_story/css/mida_ocean_story.css" type="text/css">
+  <!-- / EXTRA CSS!!! -->
+{% endblock %}
+
+{% block content %}
+    {% include 'components/homepage-herobanner/index.html' %}
+    {% include 'components/tabs-text/index.html' %}
+    {% include 'components/footer/index.html' %}
+{% endblock %}
+
+
+{% block extra_js %}
+  {{ block.super }}
+{% endblock %}
