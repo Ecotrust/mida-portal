@@ -22,7 +22,7 @@
             <section class="result-section">
                 <div class="section-header">
                     <p class="section-title">Data</p>
-                    <p class="section-count">Results: {{ theme_results|length }}</p>
+                    <p class="section-count">Results: {{ sum_data_results }}</p>
                 </div>
                   {% for result in theme_results %}
                     <div class="result-item">
@@ -61,7 +61,7 @@
             <section class="result-section">
                 <div class="section-header">
                     <p class="section-title">Ocean Stories</p>
-                    <p class="section-count">Results: {{ ocean_stories_results|length }}</p>
+                    <p class="section-count">Results: {{ ocean_story_results|length }}</p>
                 </div>
                   {% for result in ocean_story_results %}
                     <div class="result-item">
@@ -99,46 +99,6 @@
             </section>
         </section>
     </main>
-  {% comment %} <div class="search-results data"> {% endcomment %}
-    {% comment %} <h3>Data</h3>
-      {% for result in theme_results %}
-          <p><a href="/data-catalog/{{ result.name }}">{{ result.display_name }}</a></p>
-      {% endfor %}
-        
-      {% for result in layer_results %}
-           <p><a href="{{ result.get_absolute_url }}">{{ result.name }}</a></p>
-      {% endfor %}
-
-      {% for result in data_needs_results %}
-           <p><a href="{{ result.specific.url }}">{{ result.specific }}</a></p>
-      {% endfor %}
-
-      {% for result in resources_results %}
-           <p><a href="{{ result.specific.url }}">{{ result.specific }}</a></p>
-      {% endfor %}
-  </div>
-
-  <div class="search-results ocean-story">
-    <h3>Ocean Stories</h3>
-      {% for result in ocean_story_results %}
-           <p><a href="{{ result.specific.url }}">{{ result.specific }}</a></p>
-           <span class="item-text">{{ result.description|anchored_richtext }}</span>
-      {% endfor %}
-  </div>
-
-  <div class="search-results calendar-news">
-    <h3>Calendar/News</h3>
-        {% for result in calendar_news_results %}
-          {% if result.date %}
-            <p class='calendar'><a href="{{ result.specific.url }}">{{ result.specific }}</a> <span class="date">{{ result.date }}</span></p>
-
-          {% else %}
-            <p><a href="{{ result.specific.url }}">{{ result.specific }}</a></p>
-            <span class="item-text">{{ result.description|anchored_richtext }}</span>
-          {% endif %}
-
-        {% endfor %}
-  </div> {% endcomment %}
 {% endblock %}
 
 {% block extra_js %}
