@@ -1,0 +1,27 @@
+<!-- mida-portal/mida/static/mida/components/breadcrumb/index.html -->
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/breadcrumb/style.css' %}">
+{% endblock extra_css %}
+
+<nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#" class="element-item-label">Home</a>
+    </li>
+    <li class="breadcrumb-separator" aria-hidden="true">
+        <span class="separator">/</span>
+    </li>
+    <li class="breadcrumb-item">
+        <a href="#" class="element-item-label">Data</a>
+    </li>
+    <li class="breadcrumb-separator" aria-hidden="true">
+        <span class="separator">/</span>
+    </li>
+    <li class="breadcrumb-item">
+        <span class="last-item-label" aria-current="page">Groups</span>
+    </li>
+    </ol>
+</nav>
+
