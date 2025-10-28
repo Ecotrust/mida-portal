@@ -13,9 +13,13 @@
     justify-content: center;
 }
 
+.search-form {
+    width: 442px;
+}
+
 .search-box {
     background: var(--white);
-    width: 442px;
+    width: 100%;
     border-radius: 4px;
     border: 1px solid var(--white);
     outline: none;

@@ -11,7 +11,7 @@
 <main class="search-page">
         <!-- Search Section -->
         <section class="search-section">
-          <form action="/search/" method="get">
+          <form action="/search/" method="get" class="search-form">
             <input class="search-box" type="search" name="q"{% if query_string %} value="{{ query_string }}"{% endif %} class="form-control search-input">
           </form>
         </section>
