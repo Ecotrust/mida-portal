@@ -68,7 +68,6 @@
 }
 
 .newsletter-content {
-  /* Fluid padding and layout */
   padding: clamp(var(--space-7), 10vw, var(--space-10));
   display: grid;
   grid-template-columns: 1fr minmax(18rem, var(--form-max));
@@ -77,7 +76,7 @@
 }
 
 .newsletter-text {
-  min-width: 0; /* prevent overflow */
+  min-width: 0;
 }
 
 .newsletter-title {
@@ -178,6 +177,10 @@
 
 .description strong {
   font-weight: 600;
+}
+
+.main-footer .description p {
+  color: var(--white);
 }
 
 .marine-planner {
