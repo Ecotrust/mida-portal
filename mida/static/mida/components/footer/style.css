@@ -159,7 +159,7 @@
 }
 
 .logo-container {
-  margin-block-end: clamp(var(--space-6), 4vw, var(--space-8));
+  margin-block-end: clamp(var(--space-2), 2vw, var(--space-5));
 }
 
 .marco-logo {
@@ -172,7 +172,7 @@
   font-size: var(--fs-lg);
   line-height: 1.6;
   color: var(--white);
-  margin-block-end: clamp(var(--space-6), 4vw, var(--space-8));
+  margin-block-end: clamp(var(--space-4), 3vw, var(--space-7));
 }
 
 .description strong {
