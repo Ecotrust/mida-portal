@@ -30,7 +30,7 @@
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    background: url(mida/img/marco-icon-close.svg);
+    background: url('/static/mida/img/marco-icon-close.svg');
     color: white;
     cursor: pointer;
 }
