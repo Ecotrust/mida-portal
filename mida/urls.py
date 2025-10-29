@@ -6,6 +6,7 @@ from . import views
 
 app_name = 'mida'
 urlpatterns = [
+    re_path(r'^search/', views.search, name='search'),
     # path('', views.index, name='index'),
     # re_path(r'^planner/$', show_mida_planner, name="planner_planner"),
     # re_path(r'^visualize/$', show_mida_planner, name="planner"),
