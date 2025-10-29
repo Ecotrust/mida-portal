@@ -8,7 +8,7 @@
     justify-content: space-between;
 }
 
-.tab-button {
+.tab-text-button {
     background: none;
     font-family: var(--h6-font-family);
     font-weight: var(--h6-font-weight);
