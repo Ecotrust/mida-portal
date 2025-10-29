@@ -15,6 +15,8 @@
   --space-7: 2rem;
   --space-8: 3rem;
   --space-9: 4rem;
+  --space-10: 5rem;
+  --space-11: 6rem;
 
   /* Colors */
   --blue-900: #22408f;
@@ -33,25 +35,8 @@
   --fs-3xl: clamp(2rem, 3.5vw + 1rem, 3.5rem);
 
   /* Max widths */
-  --content-max: 80rem; /* 1280px */
+  --content-max: 1440px;
   --form-max: 32rem;    /* ~512px */
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: "Barlow", sans-serif;
-  color: var(--white);
-  background-color: #fff;
 }
 
 /* Footer wrapper */
@@ -59,22 +44,19 @@ body {
   background-color: var(--blue-900);
   color: var(--white);
   width: 100%;
-  /* No fixed height; padding provides spacing */
-  padding-block: var(--space-8);
+  padding-block-start: var(--space-8);
   display: block;
 }
 
-/* Constrain and center major sections */
-.footer .container {
+.footer-container {
   max-width: var(--content-max);
-  margin-inline: auto;
-  padding-inline: clamp(var(--space-4), 4vw, var(--space-9));
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* Newsletter Section */
 .newsletter-section {
   margin-block-start: clamp(var(--space-7), 6vw, var(--space-9));
-  margin-inline: clamp(var(--space-4), 6vw, var(--space-9));
   border-radius: 0.5rem;
   /* Use a single background layer with low-opacity SVG; no absolute overlay */
   background-color: var(--blue-700);
@@ -86,16 +68,15 @@ body {
 }
 
 .newsletter-content {
-  /* Fluid padding and layout */
-  padding: clamp(var(--space-7), 6vw, var(--space-9));
+  padding: clamp(var(--space-7), 10vw, var(--space-10));
   display: grid;
   grid-template-columns: 1fr minmax(18rem, var(--form-max));
-  gap: clamp(var(--space-6), 4vw, var(--space-8));
+  gap: clamp(var(--space-6), 4.5vw, var(--space-10));
   align-items: start;
 }
 
 .newsletter-text {
-  min-width: 0; /* prevent overflow */
+  min-width: 0;
 }
 
 .newsletter-title {
@@ -178,7 +159,7 @@ body {
 }
 
 .logo-container {
-  margin-block-end: clamp(var(--space-6), 4vw, var(--space-8));
+  margin-block-end: clamp(var(--space-2), 2vw, var(--space-5));
 }
 
 .marco-logo {
@@ -191,11 +172,15 @@ body {
   font-size: var(--fs-lg);
   line-height: 1.6;
   color: var(--white);
-  margin-block-end: clamp(var(--space-6), 4vw, var(--space-8));
+  margin-block-end: clamp(var(--space-4), 3vw, var(--space-7));
 }
 
 .description strong {
   font-weight: 600;
+}
+
+.main-footer .description p {
+  color: var(--white);
 }
 
 .marine-planner {
@@ -269,9 +254,21 @@ body {
   flex-wrap: wrap;
   gap: var(--space-3);
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: var(--space-4) clamp(var(--space-4), 4vw, var(--space-7));
+  position: relative;
   margin-block-start: clamp(var(--space-7), 6vw, var(--space-8));
+}
+
+.bottom-footer-container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2);
+  justify-content: space-between;
+  padding-block: var(--space-2);
+  padding-inline: clamp(var(--space-4), 4vw, var(--space-9));
+  width: 100%;
+  max-width: var(--content-max);
 }
 
 .copyright {
@@ -292,11 +289,18 @@ body {
   display: flex;
   align-items: center;
   gap: var(--space-3);
+  justify-content: space-between;
+  /* Center align absolute positioned element */
+  left: 50%;
+  transform: translate(-50%);
+  position: absolute;
+  top: -25%;
+  width: 100%;
+  max-width: var(--content-max);
 }
 
 .accessibility-icon,
 .back-to-top {
-  /* Accessibility 55px, BackToTop 56px */
   inline-size: clamp(2.5rem, 6vw, 3.5rem);
   block-size: clamp(2.5rem, 6vw, 3.5rem);
   cursor: pointer;
