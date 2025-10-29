@@ -2,18 +2,20 @@
 {% load static wagtailcore_tags wagtailimages_tags wagtailcustom_tags %}
 
 {% block extra_css %}
-  <!-- EXTRA CSS!!! -->
+  <!-- Page Level CSS!!! -->
   {{ block.super }}
-  <link rel="stylesheet" href="/static/portal/ocean_story/css/mida_ocean_story.css" type="text/css">
-  <!-- / EXTRA CSS!!! -->
+   <link rel="stylesheet" type="text/css" href="{% static 'portal/grid_page.css' %}"/>
+  <!-- / Page Level CSS!!! -->
 {% endblock %}
 
 {% block content %}
     {% include 'components/homepage-herobanner/index.html' %}
-    {% include 'components/tabs-text/index.html' %}
-    {% include 'components/breadcrumb/index.html' %}
-    {% include 'components/tabs-iconsgo/index.html' %}
-    {% include 'components/card-link/index.html' %}
+    <div class="page-content">
+      {% include 'components/breadcrumb/index.html' %}
+      {% include 'components/tabs-text/index.html' %}
+      {% include 'components/tabs-iconsgo/index.html' %}
+      {% include 'components/card-link/index.html' %}
+    </div>
     {% include 'components/footer/index.html' %}
 {% endblock %}
 
