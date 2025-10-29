@@ -1,4 +1,13 @@
 window.document.addEventListener('DOMContentLoaded', function() {
+    // Add scroll to top functionality
+    var scrollTopBtn = document.querySelector('.back-to-top');
+    if (scrollTopBtn) {
+        scrollTopBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
     // Find feedback button anywhere in the DOM
     var feedbackBtn = document.querySelector('.feedback-button');
     if (!feedbackBtn) return;

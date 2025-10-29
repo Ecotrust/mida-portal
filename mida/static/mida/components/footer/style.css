@@ -350,6 +350,12 @@
   }
 }
 
+@media (min-width: 1480px) {
+  .footer-icons {
+    max-width: calc(var(--content-max) + 40px);
+  }
+}
+
 @media (max-width: 48rem) { /* ~768px and below */
   .newsletter-content {
     grid-template-columns: 1fr;
