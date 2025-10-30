@@ -1,7 +1,6 @@
-.box {
+.box-tabs-iconsgo {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 
 .tabs {
@@ -72,6 +71,12 @@
 
 .tab-item:last-child .tab-button {
   border-right: none;
+}
+
+.tabs-link-container {
+  background-color: var(--light-blue);
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 1240px) {
