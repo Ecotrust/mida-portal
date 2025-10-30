@@ -10,14 +10,12 @@
 }
 
 .breadcrumb .element-item-label {
-  width: fit-content;
   font-family: var(--p4-font-family);
   font-weight: var(--p4-font-weight);
   color: var(--grey-dark);
   font-size: var(--p4-font-size);
   letter-spacing: var(--p4-letter-spacing);
   line-height: var(--p4-line-height);
-  white-space: nowrap;
   font-style: var(--p4-font-style);
 }
 
@@ -44,15 +42,12 @@
 }
 
 .breadcrumb .last-item-label {
-  width: fit-content;
-  margin-top: -1px;
   font-family: var(--p4-font-family);
   font-weight: var(--p4-font-weight);
   color: var(--dark-blue);
   font-size: var(--p4-font-size);
   letter-spacing: var(--p4-letter-spacing);
   line-height: var(--p4-line-height);
-  white-space: nowrap;
   font-style: var(--p4-font-style);
 }
 
@@ -72,17 +67,6 @@
   padding: 0 8px;
 }
 
-
-.element-item-label {
-  font-family: var(--p4-font-family);
-  font-weight: var(--p4-font-weight);
-  color: var(--grey-dark);
-  font-size: var(--p4-font-size);
-  letter-spacing: var(--p4-letter-spacing);
-  line-height: var(--p4-line-height);
-  font-style: var(--p4-font-style);
-}
-
 .separator {
   font-family: var(--body-regular-font-family);
   font-weight: var(--body-regular-font-weight);
@@ -91,14 +75,4 @@
   letter-spacing: var(--body-regular-letter-spacing);
   line-height: var(--body-regular-line-height);
   font-style: var(--body-regular-font-style);
-}
-
-.last-item-label {
-  font-family: var(--p4-font-family);
-  font-weight: var(--p4-font-weight);
-  color: var(--light-blue);
-  font-size: var(--p4-font-size);
-  letter-spacing: var(--p4-letter-spacing);
-  line-height: var(--p4-line-height);
-  font-style: var(--p4-font-style);
 }
