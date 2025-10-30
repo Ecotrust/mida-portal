@@ -1,0 +1,30 @@
+.box .container {
+    display: flex;
+    background-color: var(--light-blue);
+    padding: 1rem;
+    width: fit-content;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tab-text-button {
+    background: none;
+    font-family: var(--h6-font-family);
+    font-weight: var(--h6-font-weight);
+    color: var(--teal);
+    font-size: var(--h6-font-size);
+    letter-spacing: var(--h6-letter-spacing);
+    line-height: var(--h6-line-height);
+    white-space: nowrap;
+    font-style: var(--h6-font-style);
+    border: none;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+}
+
+.selected {
+    background: var(--green);
+    color: var(--white);
+}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailcustom_tags %}
+
+{% block extra_css %}
+  <!-- Page Level CSS!!! -->
+  {{ block.super }}
+   <link rel="stylesheet" type="text/css" href="{% static 'portal/grid_page.css' %}"/>
+  <!-- / Page Level CSS!!! -->
+{% endblock %}
+
+{% block content %}
+    {% include 'components/homepage-herobanner/index.html' %}
+    <div class="page-content">
+      {% include 'components/breadcrumb/index.html' %}
+      {% include 'components/tabs-text/index.html' with items=self.get_detail_children.live %}
+      {% include 'components/tabs-iconsgo/index.html' %}
+
+    </div>
+    {% include 'components/footer/index.html' %}
+{% endblock %}
+
+
+{% block extra_js %}
+  {{ block.super }}
+{% endblock %}

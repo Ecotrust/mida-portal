@@ -1,0 +1,17 @@
+<!-- mida-portal/mida/static/mida/components/tabs-text/index.html -->
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/tabs-text/style.css' %}">
+{% endblock extra_css %}
+
+<div class="box">
+    <nav aria-label="Resource navigation">
+        <section class="container">
+            {% for item in items %}
+            <!-- TODO: fix! need to figure out how to determine if selected or not. Current if/else logic does not work -->
+                <button class="tab-text-button" aria-selected="{% if item.selected %}true{% else %}false{% endif %}">{{ item.title }}</button>
+            {% endfor %}
+        </section>
+    </nav>
+</div>

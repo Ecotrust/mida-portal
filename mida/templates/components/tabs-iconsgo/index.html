@@ -1,0 +1,58 @@
+<!-- mida-portal/mida/static/mida/components/tabs-iconsgo/index.html -->
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/tabs-iconsgo/style.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="box-tabs-iconsgo">
+    <nav class="tabs inactive" aria-label="Data resource categories inactive">
+      <ul class="frame">
+        <!-- TODO: fix! We need to get dynamic content for these sections.
+         Comment below is an example of what it could look like -->
+
+        {% comment %} {% for section in self.sections.all %}
+          <li class="tab-item">
+            <button class="tab-button" aria-selected="false">
+              <img class="tab-icon" src="{% static 'mida/components/tabs-iconsgo/img/marcodataportal-data-mapanddataresources-icon-regional.svg' %}"
+                alt="Regional icon" />
+              <span class="tab-text">{{ section.title }}</span>
+            </button>
+        </li>
+        {% endfor %} {% endcomment %}
+        <li class="tab-item">
+          <button class="tab-button" aria-selected="true">
+            <img class="tab-icon" src="{% static 'mida/components/tabs-iconsgo/img/marcodataportal-data-mapanddataresources-icon-federal.svg' %}"
+              alt="Federal icon" />
+            <span class="tab-text">Federal</span>
+          </button>
+        </li>
+        <li class="tab-item">
+          <button class="tab-button" aria-selected="false">
+            <img class="tab-icon" src="{% static 'mida/components/tabs-iconsgo/img/marcodataportal-data-mapanddataresources-icon-regional.svg' %}"
+              alt="Regional icon" />
+            <span class="tab-text">Regional</span>
+          </button>
+        </li>
+        <li class="tab-item">
+          <button class="tab-button" aria-selected="false">
+            <img class="tab-icon" src="{% static 'mida/components/tabs-iconsgo/img/marcodataportal-data-mapanddataresources-icon-state.svg' %}"
+              alt="State icon" />
+            <span class="tab-text">State</span>
+          </button>
+        </li>
+        <li class="tab-item">
+          <button class="tab-button" aria-selected="false">
+            <img class="tab-icon" src="{% static 'mida/components/tabs-iconsgo/img/marcodataportal-data-mapanddataresources-icon-nongoverment.svg' %}"
+              alt="Non-Government icon" />
+            <span class="tab-text">Non-Government</span>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <div class="tabs-link-container">
+      {% include 'components/card-link/index.html' %}
+    </div>
+  </div>
+{% endblock %}
