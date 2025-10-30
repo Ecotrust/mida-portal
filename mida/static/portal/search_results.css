@@ -1,8 +1,158 @@
-.search-results {
-    background: var(--white, #FFFFFF);
+/* Page Styles */
+.search-page {
+    width: 100%;
+    min-height: 100vh;
+    background: var(--white);
 }
 
-.data h3{
-    background: var(--grey-light, #F5F6F6);
+/* Search Section */
+.search-section {
+    background: var(--teal);
+    padding: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.search-form {
+    width: 442px;
+}
+
+.search-box {
+    background: var(--white);
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--white);
+    outline: none;
+    padding: 1rem;
+    font-size: var(--p4-font-size);
+    font-family: var(--p4-font-family);
+}
+
+.search-box::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    display: inline-block;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background: url('/static/mida/img/marco-icon-close.svg');
+    color: white;
+    cursor: pointer;
+}
+
+/* Results Content */
+.results-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 4rem 0;
+}
+
+.result-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.section-header {
+    background: var(--grey-light);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: 10px;
+}
+
+.section-title {
+    font-family: var(--h1-font-family);
+    font-weight: var(--h6-font-weight);
+    font-size: var(--h6-font-size);
+    line-height: var(--p1-line-height);
+    color: var(--green);
+}
+
+.section-count {
+    font-family: var(--p5-font-family);
+    font-weight: var(--p5-font-weight);
+    font-size: var(--p5-font-size);
+    color: var(--grey-dark);
+}
+
+.result-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 1rem;
+    border-bottom: 1.5px solid var(--grey-medium);
+}
+
+.result-section>.result-item:last-of-type {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.result-title {
+    font-family: var(--FAQ-headline-font-family);
+    font-weight: var(--FAQ-headline-font-weight);
+    font-size: var(--FAQ-headline-font-size);
+    line-height: var(--FAQ-headline-line-height);
+    color: var(--dark-blue);
+}
+
+.result-description {
+    font-family: var(--p2-font-family);
+    font-size: var(--p2-font-size);
+    line-height: var(--p2-line-height);
+    color: var(--grey-dark);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.result-description p {
+    margin-bottom: 0;
+}
+
+.load-more-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.button-load-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 12px 24px;
+    border-radius: 8px;
+    border: 1px solid var(--dark-blue);
+    background: transparent;
+    font-family: var(--btn-oswald-font-family);
+    font-weight: var(--h6-font-weight);
+    font-size: var(--h7-font-size);
+    line-height: var(--btn-oswald-line-height);
+    letter-spacing: var(--h7-letter-spacing);
+    color: var(--dark-blue);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.button-load-more:hover {
+    background: var(--dark-blue);
+    color: var(--white);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1200px) {
+    .search-section {
+        padding: 2rem;
+    }
+
+    .results-content {
+        padding: 4rem 2rem;
+    }
 }

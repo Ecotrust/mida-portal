@@ -6,64 +6,103 @@
     <link rel="stylesheet" type="text/css" href="{% static 'portal/search_results.css' %}"/>
 {% endblock %}
 
-{% block body_class %}search-results-page{% endblock %}
-
-{% block title %}Search{% if wagtail_search_results or theme_results or layer_results %} Results{% endif %}{% endblock %}
-
-{% block page_title %}Dumb{% if wagtail_search_results or theme_results or layer_results %} Results{% endif %}{% endblock %}
-
-{% block page_header %}
-{{ block.super }}
-<div class="search-container">
-  {% include "portal/components/search_form.html" %}
-</div>
-{% endblock %}
-
 {% block content %}
-  <div class="search-results data">
-    <h3>Data</h3>
-      {% for result in theme_results %}
-          <p><a href="/data-catalog/{{ result.name }}">{{ result.display_name }}</a></p>
-      {% endfor %}
-        
-      {% for result in layer_results %}
-           <p><a href="{{ result.get_absolute_url }}">{{ result.name }}</a></p>
-      {% endfor %}
 
-      {% for result in data_needs_results %}
-           <p><a href="{{ result.specific.url }}">{{ result.specific }}</a></p>
-      {% endfor %}
+<main class="search-page">
+        <!-- Search Section -->
+        <section class="search-section">
+          <form action="/search/" method="get" class="search-form">
+            <input class="search-box" type="search" name="q"{% if query_string %} value="{{ query_string }}"{% endif %}>
+          </form>
+        </section>
 
-      {% for result in resources_results %}
-           <p><a href="{{ result.specific.url }}">{{ result.specific }}</a></p>
-      {% endfor %}
-  </div>
+        <!-- Results Content -->
+        <section class="results-content">
+            <!-- Data Section -->
+            <section class="result-section">
+                <div class="section-header">
+                    <p class="section-title">Data</p>
+                    <p class="section-count">Results: {{ sum_data_results }}</p>
+                </div>
+                  {% for result in theme_results %}
+                    <div class="result-item">
+                      <p class="result-title">
+                        <a href="/data-catalog/{{ result.name }}">{{ result.display_name }}</a>
+                      </p>
+                    </div>
+                  {% endfor %}
 
-  <div class="search-results ocean-story">
-    <h3>Ocean Stories</h3>
-      {% for result in ocean_story_results %}
-           <p><a href="{{ result.specific.url }}">{{ result.specific }}</a></p>
-           <span class="item-text">{{ result.description|anchored_richtext }}</span>
-      {% endfor %}
-  </div>
+                  {% for result in layer_results %}
+                    <div class="result-item">
+                      <p class="result-title">
+                        <a href="{{ result.get_absolute_url }}">{{ result.name }}</a>
+                      </p>
+                    </div>
+                  {% endfor %}
 
-  <div class="search-results calendar-news">
-    <h3>Calendar/News</h3>
-        {% for result in calendar_news_results %}
-          {% if result.date %}
-            <p class='calendar'><a href="{{ result.specific.url }}">{{ result.specific }}</a> <span class="date">{{ result.date }}</span></p>
+                  {% for result in data_needs_results %}
+                    <div class="result-item">
+                      <p class="result-title">
+                        <a href="{{ result.specific.url }}">{{ result.specific }}</a>
+                      </p>
+                    </div>
+                  {% endfor %}
 
-          {% else %}
-            <p><a href="{{ result.specific.url }}">{{ result.specific }}</a></p>
-            <span class="item-text">{{ result.description|anchored_richtext }}</span>
-          {% endif %}
+                  {% for result in resources_results %}
+                    <div class="result-item">
+                      <p class="result-title">
+                        <a href="{{ result.specific.url }}">{{ result.specific }}</a>
+                      </p>
+                    </div>
+                  {% endfor %}
+            </section>
 
-        {% endfor %}
-  </div>
+            <!-- Ocean Stories Section -->
+            <section class="result-section">
+                <div class="section-header">
+                    <p class="section-title">Ocean Stories</p>
+                    <p class="section-count">Results: {{ ocean_story_results|length }}</p>
+                </div>
+                  {% for result in ocean_story_results %}
+                    <div class="result-item">
+                      <p class="result-title">
+                        <a href="{{ result.specific.url }}">{{ result.specific }}</a>
+                      </p>
+                      <div class="result-description">
+                        <span class="item-text">{{ result.description|anchored_richtext }}</span>
+                      </div>
+                    </div>
+                  {% endfor %}
+            </section>
+
+            <!-- Calendar/News Events Section -->
+            <section class="result-section">
+                <div class="section-header">
+                    <p class="section-title">Events</p>
+                    <p class="section-count">Results: {{ calendar_news_results|length }}</p>
+                </div>
+                  {% for result in calendar_news_results %}
+                    <div class="result-item">
+                      <p class="result-title">
+                        <a href="{{ result.specific.url }}">{{ result.specific }}</a>
+                        {% if result.date %}
+                          <span class="date">{{ result.date }}</span>
+                        {% endif %}
+                      </p>
+                      {% if not result.date %}
+                        <div class="result-description">
+                          <span class="item-text">{{ result.description|anchored_richtext }}</span>
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+            </section>
+        </section>
+    </main>
 {% endblock %}
 
 {% block extra_js %}
   <script>
-    $('.content .search-input').focus();
+    $('.content .search-box').focus();
   </script>
 {% endblock %}
