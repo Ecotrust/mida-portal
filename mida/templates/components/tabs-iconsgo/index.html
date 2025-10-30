@@ -5,10 +5,22 @@
     <link rel="stylesheet" href="{% static 'mida/components/tabs-iconsgo/style.css' %}">
 {% endblock extra_css %}
 
-
-<main class="box">
+{% block content %}
+<div class="box">
     <nav class="tabs inactive" aria-label="Data resource categories inactive">
       <ul class="frame">
+        <!-- TODO: fix! We need to get dynamic content for these sections.
+         Comment below is an example of what it could look like -->
+
+        {% comment %} {% for section in self.sections.all %}
+          <li class="tab-item">
+            <button class="tab-button" aria-selected="false">
+              <img class="tab-icon" src="{% static 'mida/components/tabs-iconsgo/img/marcodataportal-data-mapanddataresources-icon-regional.svg' %}"
+                alt="Regional icon" />
+              <span class="tab-text">{{ section.title }}</span>
+            </button>
+        </li>
+        {% endfor %} {% endcomment %}
         <li class="tab-item">
           <button class="tab-button" aria-selected="true">
             <img class="tab-icon" src="{% static 'mida/components/tabs-iconsgo/img/marcodataportal-data-mapanddataresources-icon-federal.svg' %}"
@@ -39,5 +51,5 @@
         </li>
       </ul>
     </nav>
-</main>
-
+  </div>
+{% endblock %}
