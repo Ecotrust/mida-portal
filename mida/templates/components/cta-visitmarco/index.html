@@ -1,0 +1,35 @@
+<!-- mida-portal/mida/static/mida/components/cta-visitmarco/index.html -->
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/cta-visitmarco/style.css' %}">
+{% endblock extra_css %}
+
+  <div class="contain">
+    <section class="cta-visitmarco">
+      <img
+        class="marcodataportal"
+        src="{% static 'mida/components/cta-visitmarco/img/marcodataportal-homepage-image15.png' %}"
+        alt="Coastal scene with a boat and a building"
+      />
+      <div class="content-wrapper">
+        <header>
+          <h1 class="visit">VISIT</h1>
+          <img
+            class="marco-logo"
+            src="{% static 'mida/components/cta-visitmarco/img/marcodataportal-marco-logo.png' %}"
+            alt="MARCO - Mid-Atlantic Regional Council on the Ocean logo"
+          />
+        </header>
+        <p class="description">
+          MARCO is the Mid-Atlantic Regional Council on the Ocean, formed in 2009 by a governors' agreement among New
+          York, New Jersey, Delaware, Maryland, and Virginia.
+        </p>
+        <a href="https://midatlanticocean.org" class="cta-button" target="_blank" rel="noopener noreferrer">
+          <span class="cta-text">go to</span>
+          <span class="cta-link">midatlanticocean.org</span>
+        </a>
+      </div>
+    </section>
+  </div>

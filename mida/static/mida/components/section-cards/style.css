@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: clamp(1rem, 3vw, 3rem);
-  padding: clamp(1rem, 4vw, 4rem) clamp(1rem, 6vw, 6rem);
+  padding: clamp(1rem, 4vw, 4rem) clamp(1rem, 6vw, 6rem) 0;
   position: relative;
   width: 100%;
 }
