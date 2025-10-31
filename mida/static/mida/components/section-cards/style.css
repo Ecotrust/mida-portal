@@ -2,15 +2,45 @@
   display: flex;
   flex-direction: column;
   gap: clamp(1rem, 3vw, 3rem);
-  padding: clamp(1rem, 2.5vw, 2rem);
+  padding: clamp(1rem, 4vw, 4rem) clamp(1rem, 6vw, 6rem) 0;
+  position: relative;
   width: 100%;
+}
+
+.section-with-cards:before {
+  background: var(--light-blue, #ECF4FF);
+  content: '';
+  left: 0;
+  height: 20%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
 }
 
 .card-border {
   align-items: stretch;
   display: grid;
   gap: clamp(16px, 2vw, 80px);
-  grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 45vw, 600px), 1fr));
+  /* Mobile-first: stack cards */
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "a"
+    "b"
+    "c";
+  grid-auto-flow: row;
+  position: relative;
+}
+
+.card-border:after {
+  bottom: 2vw;
+  border: 1px solid var(--dark-blue, #003366);
+  content: '';
+  position: absolute;
+  left: -2vw;
+  top: -2vw;
+  right: -2vw;
+  pointer-events: none;
 }
 
 .card {
@@ -19,11 +49,18 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  /* Fill the grid area height */
+  height: 100%;
   width: 100%;
 
   /* Enable container queries based on card width */
   container-type: inline-size;
 }
+
+/* Map the first three cards to the desktop grid areas */
+.card:nth-of-type(1) { grid-area: a; }
+.card:nth-of-type(2) { grid-area: b; }
+.card:nth-of-type(3) { grid-area: c; }
 
 .card-header {
   background-color: var(--teal);
@@ -89,5 +126,22 @@
     -webkit-line-clamp: 2;
     line-clamp: 2;
     min-block-size: calc(2lh);
+  }
+}
+
+/* Desktop/tablet layout: two columns with the second card spanning both rows */
+@media screen and (min-width: 54rem) {
+  .card-border {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "a b"
+      "c b";
+    align-items: stretch;
+  }
+
+  /* Make the tall (right) card's image taller to match the mock */
+  .card:nth-of-type(2) .card-image {
+    aspect-ratio: 4 / 5;
   }
 }
