@@ -8,10 +8,10 @@
     
     {% include 'components/homepage-herobanner/index.html' %}
 
+    {% include 'components/combo-textimagebutton/index.html' %}
+    
     {% if page.cards.all %}
       {% include "components/section-cards/index.html" with items=page.cards.all %}
     {% endif %}
-
-    {% include 'components/combo-textimagebutton/index.html' %}
 
 {% endblock %}

@@ -5,6 +5,7 @@
 
 /* Recreating Styles*/
 body {
+    background: var(--white, #ffffff);
     font-family: var(--body-regular-font-family);
     font-weight: var(--body-regular-font-weight);
     font-size: var(--body-regular-font-size);
