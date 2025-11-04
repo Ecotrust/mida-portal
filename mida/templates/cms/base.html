@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block templatename %}
+    {{ block.super }}
+    <!-- BASE: mida-portal/templates/cms/base.html -->
+{% endblock templatename %}
+
+{% block body_class %}mida-cms-base {{ self.get_verbose_name|slugify }}-page{% endblock %}
