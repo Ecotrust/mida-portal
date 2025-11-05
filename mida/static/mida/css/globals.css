@@ -24,10 +24,18 @@ img {
     max-width: 100%;
 }
 
+/**
+ * Containers
+ */
+
 .contain {
     margin: 4rem auto;
     padding: 0 20px;
     max-width: 1440px;
+}
+
+.contain-padded {
+    padding: 4rem;
 }
 
 .threelane-container {
@@ -42,6 +50,11 @@ img {
     width: 100%;
 }
 
+.bg-light-blue {
+    background-color: var(--light-blue);
+}
+
+
 /* Accessibility improvements */
 .visually-hidden {
     position: absolute;
@@ -53,4 +66,72 @@ img {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/**
+ * Typography globals
+ */
+
+h1 {
+    font-family: var(--h1-font-family);
+    font-weight: var(--h1-font-weight);
+    font-size: var(--h1-font-size);
+    letter-spacing: var(--h1-letter-spacing);
+    line-height: var(--h1-line-height);
+}
+
+h2 {
+    font-family: var(--h2-font-family);
+    font-weight: var(--h2-font-weight);
+    font-size: var(--h2-font-size);
+    letter-spacing: var(--h2-letter-spacing);
+    line-height: var(--h2-line-height);
+}
+
+h3 {
+    font-family: var(--h3-font-family);
+    font-weight: var(--h3-font-weight);
+    font-size: var(--h3-font-size);
+    letter-spacing: var(--h3-letter-spacing);
+    line-height: var(--h3-line-height);
+}
+
+h4 {
+    font-family: var(--h4-font-family);
+    font-weight: var(--h4-font-weight);
+    font-size: var(--h4-font-size);
+    letter-spacing: var(--h4-letter-spacing);
+    line-height: var(--h4-line-height);
+}
+
+h5 {
+    font-family: var(--h5-font-family);
+    font-weight: var(--h5-font-weight);
+    font-size: var(--h5-font-size);
+    letter-spacing: var(--h5-letter-spacing);
+    line-height: var(--h5-line-height);
+}
+
+h6 {
+    font-family: var(--h6-font-family);
+    font-weight: var(--h6-font-weight);
+    font-size: var(--h6-font-size);
+    letter-spacing: var(--h6-letter-spacing);
+    line-height: var(--h6-line-height);
+}
+
+h7 {
+    font-family: var(--h7-font-family);
+    font-weight: var(--h7-font-weight);
+    font-size: var(--h7-font-size);
+    letter-spacing: var(--h7-letter-spacing);
+    line-height: var(--h7-line-height);
+}
+
+p {
+    font-family: var(--p1-font-family);
+    font-weight: var(--p1-font-weight);
+    font-size: var(--p1-font-size);
+    letter-spacing: var(--p1-letter-spacing);
+    line-height: var(--p1-line-height);
 }
