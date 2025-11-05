@@ -1,0 +1,17 @@
+{% extends "cms/section.html" %}
+{% load static %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/components/card-post/style.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="bg-light-blue contain contain-padded">
+        <section class="posts">
+            {% for item in self.stories %}
+                {% include "components/card-post/index.html" with item=item %}
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}
