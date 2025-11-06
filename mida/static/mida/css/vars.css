@@ -131,7 +131,7 @@
     --body-regular-letter-spacing: normal;
     --body-regular-line-height: auto;
     --body-regular-font-style: normal;
-    --shadow: 0 0 1.875rem 0.1875rem;
+    --shadow: 0 0 1.875rem 0.1875rem rgba(21, 47, 96, 0.05);
     --variable-collection-yellow-2: rgba(255, 164, 0, 1);
     --gray-dark: rgba(108, 108, 108, 1);
     --fields-text-1-font-family: "Inter", Helvetica;
