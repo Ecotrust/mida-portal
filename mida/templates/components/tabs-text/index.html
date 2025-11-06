@@ -9,7 +9,7 @@
     <nav aria-label="Resource navigation">
         <section class="container">
             {% for item in items %}
-                <a href="{{ item.url }}" class="tab-text-button">{{ item.title }}</a>
+                <a href="{{ item.url }}" class="tab-text-button {% if item.url == request.path %}selected{% endif %}">{{ item.title }}</a>
             {% endfor %}
         </section>
     </nav>
