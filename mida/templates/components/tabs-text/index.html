@@ -9,8 +9,7 @@
     <nav aria-label="Resource navigation">
         <section class="container">
             {% for item in items %}
-            <!-- TODO: fix! need to figure out how to determine if selected or not. Current if/else logic does not work -->
-                <button class="tab-text-button" aria-selected="{% if item.selected %}true{% else %}false{% endif %}">{{ item.title }}</button>
+                <a href="{{ item.url }}" class="tab-text-button">{{ item.title }}</a>
             {% endfor %}
         </section>
     </nav>

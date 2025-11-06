@@ -6,6 +6,7 @@
     border-radius: 12px;
     align-items: center;
     justify-content: space-between;
+    min-width: 50%;
 }
 
 .tab-text-button {
@@ -20,7 +21,7 @@
     font-style: var(--h6-font-style);
     border: none;
     cursor: pointer;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem;
     border-radius: 8px;
 }
 
