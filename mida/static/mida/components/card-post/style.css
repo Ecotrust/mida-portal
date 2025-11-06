@@ -78,6 +78,7 @@
     font-weight: var(--p4-font-weight);
     color: var(--black);
     font-size: var(--p4-font-size);
+    line-clamp: 3;
     line-height: var(--p4-line-height);
     overflow: hidden;
     text-overflow: ellipsis;
