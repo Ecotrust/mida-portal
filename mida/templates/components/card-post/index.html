@@ -1,0 +1,46 @@
+<!-- mida-portal/mida/templates/components/card-post/index.html -->
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<article class="card">
+    
+    {% if item.feature_image %}
+        <div class="img-wrapper">
+            <a href="{{ item.url }}">
+                {% image item.feature_image fill-345x194 class="feature" alt="{{ item.title }}" %}
+            </a>
+            <time class="date" datetime="{{ item.posted|date:"Y-m-d" }}">
+                <img class="calendar-icon" src="{% static 'img/components/card-post/marcodataportal-global-icon-calendar.svg' %}" alt="" aria-hidden="true" />
+                <span class="date-text">{{ item.posted|date:"M d Y" }}</span>
+            </time>
+        </div>
+    {% endif %}
+        
+    <div class="overlap">
+        <div class="frame">
+            
+            {% block heading %}
+                <a href="{{ item.url }}">
+                    <h2 class="text-wrapper">
+                        {{ item.title }}
+                    </h2>
+                </a>
+            {% endblock %}
+
+            {% block text %}
+                {% if item.search_description %}
+                    <a href="{{ item.url }}">
+                        <p class="p">{{ item.search_description|striptags|truncatechars:256 }}</p>
+                    </a>
+                {% else %}
+                    <a href="{{ item.url }}">
+                        <p class="p">{{ item.description|striptags|truncatechars:256 }}</p>
+                    </a>
+                {% endif %}
+            {% endblock %}
+
+        </div>
+
+        <a href="{{ item.url }}" class="button-small"><span class="button-text">READ MORE</span></a>
+    </div>
+</article>
