@@ -1,7 +1,6 @@
+<!-- mida/templates/cms/section.html -->
 {% extends "cms/base.html" %}
-{% load wagtailcore_tags wagtailcustom_tags %}
-
-<!-- mida-portal/templates/cms/section.html -->
+{% load wagtailimages_tags wagtailcore_tags wagtailcustom_tags %}
 
 {% block layout %}section{% endblock %}
 
@@ -16,6 +15,8 @@
 		    {{ self.description|anchored_richtext }}
 	    </div>
     {% endif %}
+
+    {% image self.feature_image fill-345x194 class="feature" alt="{{ self.title }}" %}
 
 {% endblock %}
 

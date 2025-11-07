@@ -73,6 +73,7 @@ img {
  */
 
 h1 {
+    color: var(--teal);
     font-family: var(--h1-font-family);
     font-weight: var(--h1-font-weight);
     font-size: var(--h1-font-size);
