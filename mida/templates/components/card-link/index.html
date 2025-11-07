@@ -5,55 +5,22 @@
     <link rel="stylesheet" href="{% static 'mida/components/card-link/style.css' %}">
 {% endblock extra_css %}
 
-<main class="box">
+
+{% for item in sections %}
+<div class="tabs-link-container {{ item.title|slugify }}">    
     <section class="links">
         <article class="link-wrapper">
         <div class="link-container">
             <div class="link-right">
-            <div class="logo-wrapper">
-                <img class="logo-img-rect" src="{% static 'mida/components/card-link/img/marcodataportal-maracoos-logo.png' %}" alt="MARACOOS logo" />
-            </div>
+
             </div>
 
-            <div class="link-middle">
-            <h2 class="text-wrapper">Mid-Atlantic Regional Association Coastal Ocean Observing System (MARACOOS)</h2>
-            </div>
-
-            <a href="#" class="external-link" aria-label="Visit MARACOOS website">
-            <img class="img" src="{% static 'mida/components/card-link/img/vector.svg' %}" alt="External link icon" />
-            </a>
-        </article>
-        <article class="link-wrapper">
-        <div class="link-container">
-            <div class="link-right">
-            <div class="logo-wrapper">
-                <img class="logo-img-rect" src="{% static 'mida/components/card-link/img/marcodataportal-noaa-logo.svg' %}" alt="NOAA logo" />
-            </div>
-            </div>
-            <div class="link-middle">
-            <h2 class="text-wrapper">NOAA Northeast Fisheries Science Center Data Portal</h2>
-            </div>
-            <a href="#" class="external-link" aria-label="Visit NOAA Deep-Sea Coral Data Portal">
-            <img class="img" src="{% static 'mida/components/card-link/img/vector.svg' %}" alt="External link icon" />
-            </a>
-        </div>
-        </article>
-        <article class="link-wrapper">
-        <div class="link-container">
-            <div class="link-right">
-            <div class="logo-wrapper">
-                <img class="logo-img-rect" src="{% static 'mida/components/card-link/img/marcodataportal-usgs-logo.svg' %}" alt="USGS Logo" />
-            </div>
-            </div>
             <div class="link-middle">
             <h2 class="text-wrapper">
-                US Geological Survey Coastal and Marine Geology Program - Internet Map Server and GIS Data
+                {{ item.body|safe }}
             </h2>
             </div>
-            <a href="#" class="external-link" aria-label="Visit USGS Coastal and Marine Geology Program">
-            <img class="img" src="{% static 'mida/components/card-link/img/vector.svg' %}" alt="External link icon" />
-            </a>
-        </div>
         </article>
     </section>
-</main>
+</div>
+{% endfor %}

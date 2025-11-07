@@ -7,8 +7,7 @@
 {% endblock %}
 
 {% block content %}
-
-    <div class="page-content">
+    <div class="contain">
       {% include 'components/breadcrumb/index.html' %}
 
       {% block tabs %}
@@ -16,11 +15,5 @@
       {% endblock %}
       
       {% block child_content %}{% endblock %}
-    
     </div>
-{% endblock %}
-
-
-{% block extra_js %}
-  {{ block.super }}
 {% endblock %}
