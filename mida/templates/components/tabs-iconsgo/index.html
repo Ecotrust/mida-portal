@@ -3,11 +3,12 @@
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'mida/components/tabs-iconsgo/style.css' %}">
+    <link rel="stylesheet" href="{% static 'mida/components/card-link/style.css' %}">
 {% endblock extra_css %}
 
 
 <div class="box-tabs-iconsgo">
-    <nav class="tabs inactive" aria-label="Data resource categories inactive">
+    <nav class="tabs" aria-label="Data resource categories">
       <ul class="frame">
         {% for section in sections %}
           <li class="tab-item">
@@ -21,5 +22,16 @@
       </ul>
     </nav>
     
-    {% include 'components/card-link/index.html' with sections=sections %}
+    {% for item in sections %}
+      <div class="tabs-link-container" id="{{ item.title|slugify }}">    
+        <article class="link-wrapper">
+            <p>{{ item.body|safe }}</p>
+        </article>
+      </div>
+    {% endfor %}
+
   </div>
+
+{% block extra_js %}
+  <script src="{% static 'mida/components/tabs-iconsgo/scripts.js' %}"></script>
+{% endblock extra_js %}
