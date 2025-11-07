@@ -29,6 +29,7 @@
 }
 
 .tab-button {
+  cursor: pointer;
   width: 100%;
   max-height: 199px;
   background-color: #ffffff;

@@ -11,11 +11,11 @@
       <ul class="frame">
         {% for section in sections %}
           <li class="tab-item">
-            <button class="tab-button" aria-selected="false">
+            <a href="#{{ section.title|lower}}" class="tab-button" aria-selected="false" role="tab">
               <img class="tab-icon" src="{% static 'mida/components/tabs-iconsgo/img/marcodataportal-data-mapanddataresources-icon-'|add:section.title|lower|add:'.svg' %}"
-                alt="{{ section.title }} icon" /> {{ section.title|lower}}
+                alt="{{ section.title }} icon" />
               <span class="tab-text">{{ section.title }}</span>
-            </button>
+            </a>
           </li>
         {% endfor %}
       </ul>
