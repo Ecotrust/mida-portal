@@ -9,8 +9,7 @@
 
 {% block content %}
     <div class="contain">
-        {% include 'components/breadcrumb/index.html' %}
-  
+
         {% block tabs %}
             {% include 'components/tabs-text/index.html' with items=self.get_detail_children.live %}
         {% endblock %}

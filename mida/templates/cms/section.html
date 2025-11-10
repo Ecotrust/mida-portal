@@ -6,17 +6,29 @@
 
 {% block page_header %}
 
-    <div class="title-line">
-	    <h1>{% block title %}{{ self.title }}{% endblock %}</h1>
+  <div class="hero-grid-container">
+    
+    <div class="hero-left">
+      <div class="title-line">
+        <h1>{% block title %}{{ self.title }}{% endblock %}</h1>
+      </div>
+
+      {% if self.description %}
+        <div class="description">
+          {{ self.description|anchored_richtext }}
+        </div>
+      {% endif %}
     </div>
 
-    {% if self.description %}
-	    <div class="description">
-		    {{ self.description|anchored_richtext }}
-	    </div>
-    {% endif %}
+    <div class="hero-right">
+      <div class="hero-image-wrap">
+        {% image self.feature_image fill-520x400 class="feature" alt="{{ self.title }}" %}
+      </div>
+    </div>
 
-    {% image self.feature_image fill-345x194 class="feature" alt="{{ self.title }}" %}
+  </div>
+
+  {% include 'components/breadcrumb/index.html' %}
 
 {% endblock %}
 

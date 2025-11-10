@@ -72,6 +72,11 @@ img {
  * Typography globals
  */
 
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 h1 {
     color: var(--teal);
     font-family: var(--h1-font-family);
