@@ -6,7 +6,7 @@
 {% endblock extra_css %}
 
 <div class="box">
-    <nav aria-label="Data resources navigation">
+    <nav aria-label="Data resources navigation" role="tablist">
         <section class="container">
             {% for item in items %}
                 <a href="{{ item.url }}" class="tab-text-button {% if item.url == request.path %}selected{% endif %}">{{ item.title }}</a>
