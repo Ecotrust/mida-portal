@@ -3,8 +3,16 @@
  */
 
 .homepage-hero-banner {
-  width: 100%;
   background-color: var(--dark-blue);
+  margin-bottom: var(--space-9);
+  position: relative;
+  width: 100%;
+}
+
+.homepage-hero-contain {
+  margin: 0 auto;
+  max-width: 1240px;
+  width: 100%;
 }
 
 .homepage-hero-banner .overlap-group {
@@ -13,7 +21,6 @@
   grid-template-columns: 1fr;
   gap: 0;
   margin-inline: auto;
-  position: relative;
   width: 100%;
 }
 
@@ -23,7 +30,7 @@
   flex-direction: column;
   gap: clamp(1rem, 2.5vw, 2rem);
   justify-content: center;
-  padding: clamp(1.5rem, 8vh, 4rem) clamp(1.5rem, 5vw, 4rem);
+  padding: clamp(1.5rem, 8vh, 4rem) 20px;
   z-index: 1;
 }
 
@@ -47,6 +54,8 @@
   font-style: var(--h1-font-style);
   letter-spacing: var(--h1-letter-spacing);
   line-height: var(--h1-line-height);
+
+  max-width: 13ch;
 }
 
 .homepage-hero-banner .description,
@@ -69,10 +78,6 @@
 }
 
 @media (min-width: 60rem) {
-  .homepage-hero-banner .overlap-group {
-    grid-template-columns: 1.6fr .4fr; /* 2 columns */
-  }
-
   .homepage-hero-banner .hero-image {
     display: block;
   }
@@ -80,7 +85,7 @@
 
 @media (min-width: 80rem) {
   .homepage-hero-banner .overlap-group {
-    grid-template-columns: 1fr 1fr; /* 2 columns */
+    grid-template-columns: 1fr;
   }
 
   .homepage-hero-banner .hero-image {

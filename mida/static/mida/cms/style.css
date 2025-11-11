@@ -10,14 +10,14 @@
     position: relative;
 }
 
-.hero-image-wrap { 
+.hero-grid-container .hero-image-wrap { 
     background-size: 85%;
     background-position: right top;
     background-repeat: no-repeat;
     border-radius: 0 0% 100% 5%;
 }
 
-.hero-image-wrap img {
+.hero-grid-container .hero-image-wrap img {
     border: 1rem solid var(--white);
     border-radius: 0 0 90% 0;
 }
