@@ -25,11 +25,20 @@ img {
 }
 
 /**
+ * Utilites
+ */
+
+.margin-bottom-9 {
+    margin-bottom: var(--space-9);
+}
+
+
+/**
  * Containers
  */
 
 .contain {
-    margin: 4rem auto;
+    margin: 0 auto var(--space-9);
     padding: 0 20px;
     max-width: 1240px;
 }
