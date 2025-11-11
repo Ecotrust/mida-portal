@@ -21,9 +21,11 @@
     </div>
 
     <div class="hero-right">
-      <div class="hero-image-wrap">
-        {% image self.feature_image fill-520x400 class="feature" alt="{{ self.title }}" %}
-      </div>
+        {% if self.feature_image %}
+            <div class="hero-image-wrap" style="background-image: url('{{ self.feature_image.file.url }}');">
+                {% image self.feature_image fill-520x430 class="feature" alt="{{ self.title }}" %}
+            </div>
+        {% endif %}
     </div>
 
   </div>
