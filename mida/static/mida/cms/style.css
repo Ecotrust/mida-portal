@@ -18,8 +18,8 @@
 }
 
 .hero-image-wrap img {
-    border: .75rem solid var(--white);
-    border-radius: 0 0 85% 0;
+    border: 1rem solid var(--white);
+    border-radius: 0 0 90% 0;
 }
 
 .title-line {
@@ -46,7 +46,7 @@
     line-height: var(--p1-line-height);
 }
 
-@media (min-width: 78rem) {
+@media (min-width: 48rem) {
     .hero-grid-container {
         display: grid; 
         grid-template-columns: 1fr 1fr; 
