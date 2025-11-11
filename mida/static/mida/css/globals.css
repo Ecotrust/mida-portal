@@ -13,6 +13,7 @@
 html,
 body {
     height: auto;
+    letter-spacing: normal;
 }
 
 a {

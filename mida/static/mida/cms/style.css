@@ -23,7 +23,11 @@
 }
 
 .title-line {
-    margin-top: 2rem;
+    margin: 2rem 0;
+}
+
+.title-line h1 {
+    width: auto;
 }
 
 .page-header {
@@ -35,6 +39,7 @@
 .page-header .description {
     border-left: 5px solid var(--yellow);
     padding: 1rem 1.125rem 1.125rem 1.5rem;
+    width: auto;
 }
 
 .page-header .description * {
