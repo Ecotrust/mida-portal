@@ -10,11 +10,6 @@
   height: 100%;
 }
 
-.inactive {
-  box-shadow: 0px -10px 55px #00000012;
-
-}
-
 .frame {
   display: flex;
   width: 100%;
@@ -29,12 +24,14 @@
 }
 
 .tab-button {
+  cursor: pointer;
   width: 100%;
   max-height: 199px;
   background-color: #ffffff;
   border: none;
   border-right: 1px solid var(--light-blue);
-  cursor: pointer;
+  box-shadow: 0px -10px 55px #00000012;
+  color: var(--grey-dark);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -43,9 +40,10 @@
   transition: background-color 0.3s ease;
 }
 
-.tab-button-active {
+.tab-button.is-active {
   background-color: var(--green);
   border: none;
+  color: var(--white);
 }
 
 .tab-icon {
@@ -61,7 +59,6 @@
   letter-spacing: var(--h6-letter-spacing);
   line-height: var(--h6-line-height);
   font-style: var(--h6-font-style);
-  color: var(--grey-dark);
   text-align: center;
 }
 

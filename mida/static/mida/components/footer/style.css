@@ -35,7 +35,7 @@
   --fs-3xl: clamp(2rem, 3.5vw + 1rem, 3.5rem);
 
   /* Max widths */
-  --content-max: 1440px;
+  --content-max: 1240px;
   --form-max: 32rem;    /* ~512px */
 }
 

@@ -1,0 +1,15 @@
+<!-- mida/templates/grid_pages/grid_page_detail.html -->
+{% extends "grid_pages/grid_page.html" %}
+{% load wagtailcore_tags wagtailcustom_tags %}
+
+{% block tabs %}
+    {% include 'components/tabs-text/index.html' with items=self.get_parent.get_detail_children.live %}
+{% endblock %}
+
+{% block child_content %}
+
+    {% if self.sections %}
+        {% include 'components/tabs-iconsgo/index.html' with sections=self.sections.all %}
+    {% endif %}
+
+{% endblock %}
