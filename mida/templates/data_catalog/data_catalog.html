@@ -1,0 +1,20 @@
+<!-- mida/templates/data_catalog/data_catalog.html -->
+{% extends "cms/section.html" %}
+{% load static wagtailimages_tags %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/components/card-resource/style.css' %}">
+{% endblock extra_css %}
+
+{% block body_class %}data-catalog-page{% endblock %}
+
+{% block content %}
+    <div class="bg-light-blue contain contain-padded">
+        <section class="posts">
+            {% for item in themes %}
+                {% include 'components/card-resource/index.html' with item=item %}
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}
