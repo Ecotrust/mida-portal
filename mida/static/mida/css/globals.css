@@ -64,6 +64,12 @@ img {
     background-color: var(--light-blue);
 }
 
+.flex {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
 
 /* Accessibility improvements */
 .visually-hidden {
