@@ -6,7 +6,7 @@
 
 {% block page_header %}
 
-  <div class="hero-grid-container">
+  <div class="hero-flex-container">
     
     <div class="hero-left">
       <div class="title-line">
@@ -20,13 +20,13 @@
       {% endif %}
     </div>
 
-    <div class="hero-right">
-        {% if self.feature_image %}
-            <div class="hero-image-wrap" style="background-image: url('{{ self.feature_image.file.url }}');">
-                {% image self.feature_image fill-520x430 class="feature" alt="{{ self.title }}" %}
-            </div>
-        {% endif %}
-    </div>
+    {% if self.feature_image %}
+      <div class="hero-right">
+        <div class="hero-image-wrap" style="background-image: url('{{ self.feature_image.file.url }}');">
+          {% image self.feature_image fill-520x430 class="feature" alt="{{ self.title }}" %}
+        </div>
+      </div>
+    {% endif %}
 
   </div>
 
@@ -38,11 +38,11 @@
 
   {% for block in page.body %}
     {% if block.block_type == 'table' %}
-        {% include_block block %}
+      {% include_block block %}
     {% elif block.block_type == 'text' %}
-        <div class="page-body">
-          {% include_block block %}
-        </div>
+      <div class="page-body">
+        {% include_block block %}
+      </div>
     {% else %}
       {# rendering for other block types #}
       {% include_block block %}
