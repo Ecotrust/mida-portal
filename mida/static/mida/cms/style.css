@@ -43,7 +43,7 @@
     width: auto;
 }
 
-.page-header .description * {
+.page-header .description *:not(a) {
     color: var(--color-ink);
     font-family: var(--p1-font-family);
     font-weight: var(--p1-font-weight);
