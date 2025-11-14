@@ -15,7 +15,13 @@
     
     <div class="hero-left">
       <div class="title-line">
-        <h4>{% block title %}{{ theme.display_name }}{% endblock %}</h4>
+        <h7>
+            <img class="icon" src="{% static 'mida/data_catalog/img/i-folder.svg' %}" alt="Resource icon" />
+            <span class="count">{{ theme.layer_count }}</span> Resources
+        </h7>
+        <h4>
+            {% block title %}{{ theme.display_name }}{% endblock %}
+        </h4>
       </div>
 
       {% if theme.description %}
