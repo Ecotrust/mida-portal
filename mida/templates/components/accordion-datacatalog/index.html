@@ -1,0 +1,142 @@
+<!-- mida-portal/mida/static/mida/components/accordion-datacatalog/index.html -->
+
+{% load wagtailcore_tags static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/accordion-datacatalog/style.css' %}">
+{% endblock %}
+
+        <details open class="property">
+            <summary>
+                <div class="header-left">
+                    <span class="icon-wrap">
+                        <img class="icon-open vector" src="{% static 'mida/components/accordion-datacatalog/img/vector-2.svg' %}" alt="Collapse icon"
+                            aria-hidden="true" />
+                        <img class="icon-closed expand-icon" src="{% static 'mida/components/accordion-datacatalog/img/vector-3.svg' %}" alt="Expand icon"
+                            aria-hidden="true" />
+                    </span>
+                    <h2 class="text-wrapper">Atlantic Herring</h2>
+                </div>
+                <button class="button-underline"><span class="header-link">HIDE SUBLAYERS</span></button>
+            </summary>
+            <div class="frame">
+                <div class="frame-wrapper">
+                    <div class="frame-2">
+                        <div class="group">
+                            <div class="link-group">
+                                <img class="map-icon" src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-geo-small.svg' %}"
+                                    alt="Map icon" />
+                                <span class="vertical-divider"></span>
+                                <a href="#">
+                                    <div class="inline-link-group">
+                                        <span class="link-text">kml</span>
+                                        <img class="download-icon"
+                                            src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-Download.svg' %}"
+                                            alt="Download icon" />
+                                    </div>
+                                </a>
+                                <span class="vertical-divider"></span>
+
+                                <a href="#">
+                                    <div class="inline-link-group">
+                                        <span class="link-text">data</span>
+                                        <img class="download-icon"
+                                            src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-Download.svg' %}"
+                                            alt="Download icon" />
+                                    </div>
+                                </a>
+                                <span class="vertical-divider"></span>
+
+                                <a href="#">
+                                    <div class="inline-link-group">
+                                        <span class="link-text">metadata</span>
+                                        <img class="download-icon"
+                                            src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-Download.svg' %}"
+                                            alt="Download icon" />
+                                    </div>
+                                </a>
+                                <span class="vertical-divider"></span>
+
+                                <a href="#">
+                                    <div class="inline-link-group">
+                                        <span class="link-text">source</span>
+
+                                        <img class="download-icon"
+                                            src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-Download.svg' %}"
+                                            alt="External link icon" />
+                                    </div>
+
+                                </a>
+                                <span class="vertical-divider"></span>
+
+                                <a href="#">
+                                    <div class="inline-link-group">
+                                        <span class="link-text">tiles</span>
+                                        <img class="download-icon"
+                                            src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-Download.svg' %}"
+                                            alt="External link icon" />
+                                    </div>
+
+                                </a>
+                            </div>
+                        </div>
+                        <p class="p">
+                            Lorem ipsum dolor sit amet consectetur. Vulputate malesuada eget euismod ultrices
+                            nunc
+                            aliquet lorem
+                            nec. Aliquam nulla commodo lobortis nullam sed dapibus. Amet arcu maecenas venenatis
+                            ornare vestibulum
+                            mauris. Nec egestas id enim risus id porttitor id ultrices.
+                        </p>
+                        <p class="source-text">
+                            <span class="key-text">Source:</span>
+                            <span class="value-text-primary">Lorem Ipsum</span>
+                        </p>
+                        <p class="notes-text">
+                            <span class="key-text">Notes:</span>
+                            <span class="value-text-secondary">Lorem ipsum dolor sit amet consectetur. </span>
+                        </p>
+                    </div>
+                </div>
+                <details class="element">
+                    <summary class="default">
+                        <div class="header-left">
+                            <span class="icon-wrap">
+                                <img class="icon-open vector rotate-90" src="{% static 'mida/components/accordion-datacatalog/img/vector-3.svg' %}"
+                                    alt="Collapse icon" aria-hidden="true" />
+                                <img class="icon-closed expand-icon" src="{% static 'mida/components/accordion-datacatalog/img/vector-3.svg' %}" alt="Expand icon"
+                                    aria-hidden="true" />
+                            </span>
+                            <h3 class="text-wrapper blue">Herring Haddock Accountability Measure Areas</h3>
+                        </div>
+                        <span class="button-underline">
+                            <span>
+                                <img class="map-icon" src="{% static 'mida/components/accordion-datacatalog/img/marcodataportal-global-icon-geo-small.svg' %}"
+                                    alt="Map icon" />
+                                <span class="div">VIEW IN MAP</span>
+                            </span>
+                        </span>
+                    </summary>
+                </details>
+                <details class="element">
+                    <summary class="default">
+                        <div class="header-left">
+                            <span class="icon-wrap">
+                                <img class="icon-open vector rotate-90" src="{% static 'mida/components/accordion-datacatalog/img/vector-3.svg' %}"
+                                    alt="Collapse icon" aria-hidden="true" />
+                                <img class="icon-closed expand-icon" src="{% static 'mida/components/accordion-datacatalog/img/vector-3.svg' %}" alt="Expand icon"
+                                    aria-hidden="true" />
+                            </span>
+                            <h3 class="text-wrapper blue">Herring Management Areas</h3>
+                        </div>
+                        <span class="button-underline">
+                            <span>
+                                <img class="map-icon" src="{% static 'mida/components/accordion-datacatalog/img/marcodataportal-global-icon-geo-small.svg' %}"
+                                    alt="Map icon" />
+                                <span class="div">VIEW IN MAP</span>
+                            </span>
+                        </span>
+                    </summary>
+                </details>
+            </div>
+        </details>
