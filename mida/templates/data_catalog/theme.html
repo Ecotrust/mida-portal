@@ -1,0 +1,57 @@
+<!-- mida/templates/data_catalog/theme.html -->
+{% extends "cms/section.html" %}
+{% load static wagtailimages_tags %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/data_catalog/theme.css' %}" type="text/css">
+{% endblock %}
+
+{% block body_class %}data-theme-page{% endblock %}
+
+{% block page_header %}
+
+  <div class="hero-flex-container">
+    
+    <div class="hero-left">
+      <div class="title-line">
+        <h4>{% block title %}{{ theme.display_name }}{% endblock %}</h4>
+      </div>
+
+      {% if theme.description %}
+        <div class="description">
+          {{ theme.description }}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if self.feature_image %}
+      <div class="hero-right">
+        <div class="hero-image-wrap" style="background-image: url('{{ self.feature_image.file.url }}');">
+          {% image self.feature_image fill-520x430 class="feature" alt="{{ self.title }}" %}
+        </div>
+      </div>
+    {% endif %}
+
+  </div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="bg-light-blue contain contain-padded">
+        <section class="posts">
+        
+                <div class="layer-list">
+                    <h3>Child Themes</h3>
+                    <ul>
+                        {% for child in children %}
+                            <li>
+                                <a href="{{ child.get_absolute_url }}">{{ child.display_name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+        </section>
+    </div>
+{% endblock %}
