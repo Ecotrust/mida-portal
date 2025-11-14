@@ -29,6 +29,10 @@ img {
  * Utilites
  */
 
+.min-h-screen {
+    min-height: 100vh;
+}
+
 .margin-bottom-9 {
     margin-bottom: var(--space-9);
 }
