@@ -55,7 +55,7 @@
 }
 
 /* Newsletter Section */
-.newsletter-section {
+.footer .newsletter-section {
   margin-block-start: clamp(var(--space-7), 6vw, var(--space-9));
   border-radius: 0.5rem;
   /* Use a single background layer with low-opacity SVG; no absolute overlay */
@@ -67,7 +67,7 @@
   overflow: hidden;
 }
 
-.newsletter-content {
+.footer .newsletter-content {
   padding: clamp(var(--space-7), 10vw, var(--space-10));
   display: grid;
   grid-template-columns: 1fr minmax(18rem, var(--form-max));
@@ -75,11 +75,11 @@
   align-items: start;
 }
 
-.newsletter-text {
+.footer .newsletter-text {
   min-width: 0;
 }
 
-.newsletter-title {
+.footer .newsletter-title {
   font-family: "Oswald", sans-serif;
   font-size: var(--fs-3xl);
   font-weight: 400;
@@ -89,31 +89,31 @@
   color: var(--white);
 }
 
-.newsletter-description {
+.footer .newsletter-description {
   font-size: var(--fs-lg);
   line-height: 1.6;
   color: var(--white);
   margin: 0 0 var(--space-4) 0;
 }
 
-.newsletter-accent-bar {
+.footer .newsletter-accent-bar {
   width: clamp(4rem, 10vw, 7rem);
   height: 0.25rem;
   background-color: var(--accent);
   border-radius: 999px;
 }
 
-.newsletter-form {
+.footer .newsletter-form {
   width: 100%;
   max-width: var(--form-max);
 }
 
-.form-container {
+.footer .form-container {
   display: grid;
   gap: var(--space-3);
 }
 
-.email-input {
+.footer .email-input {
   /* Design height ~69px; make fluid up to ~70px */
   min-height: clamp(3rem, 5vw, 4.375rem);
   background-color: var(--white);
@@ -124,12 +124,12 @@
   color: var(--ink);
 }
 
-.email-input::placeholder {
+.footer .email-input::placeholder {
   color: var(--ink);
   opacity: 0.9;
 }
 
-.signup-button {
+.footer .signup-button {
   /* Design height 64px; make fluid up to 64px */
   min-height: clamp(3rem, 4.5vw, 4rem);
   background-color: var(--accent);
@@ -144,7 +144,7 @@
 }
 
 /* Main Footer */
-.main-footer {
+.footer .main-footer {
   padding-block-start: clamp(var(--space-7), 6vw, var(--space-9));
   padding-inline: clamp(var(--space-4), 4vw, var(--space-9));
   display: grid;
@@ -153,41 +153,41 @@
   align-items: start;
 }
 
-.left-side {
+.footer .left-side {
   min-width: 0;
   max-width: 42rem;
 }
 
-.logo-container {
+.footer .logo-container {
   margin-block-end: clamp(var(--space-2), 2vw, var(--space-5));
 }
 
-.marco-logo {
+.footer .marco-logo {
   width: 100%;
   height: auto;
   max-width: 32rem;
 }
 
-.description {
+.footer .description {
   font-size: var(--fs-lg);
   line-height: 1.6;
   color: var(--white);
   margin-block-end: clamp(var(--space-4), 3vw, var(--space-7));
 }
 
-.description strong {
+.footer .description strong {
   font-weight: 600;
 }
 
-.main-footer .description p {
+.footer .main-footer .description p {
   color: var(--white);
 }
 
-.marine-planner {
+.footer .marine-planner {
   color: var(--accent);
 }
 
-.visit-button {
+.footer .visit-button {
   padding: 0.75rem 1.25rem;
   background: transparent;
   border: 1px solid var(--white);
@@ -200,18 +200,18 @@
 }
 
 /* Divider between columns (fluid, no fixed height) */
-.divider-line {
+.footer .divider-line {
   display: none; /* hidden on narrow, shown via media query on wide */
   border-left: 1px solid rgba(255, 255, 255, 0.5);
   height: 100%;
   align-self: stretch;
 }
 
-.right-side {
+.footer .right-side {
   min-width: 0;
 }
 
-.contact-title {
+.footer .contact-title {
   font-family: "Fira Sans", sans-serif;
   /* Use Figma token 28/36 with fluid mapping */
   font-size: var(--fira-subtitle-font-size-fluid);
@@ -221,7 +221,7 @@
   line-height: var(--fira-subtitle-line-height-fluid);
 }
 
-.contact-email {
+.footer .contact-email {
   font-size: var(--fs-lg);
   line-height: 1.6;
   color: var(--white);
@@ -229,26 +229,26 @@
   word-break: break-word;
 }
 
-.social-icons {
+.footer .social-icons {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
 }
 
-.social-icon {
+.footer .social-icon {
   /* Design size 60px circles */
   inline-size: clamp(2.5rem, 6vw, 3.75rem);
   block-size: clamp(2.5rem, 6vw, 3.75rem);
   display: inline-block;
 }
 
-.social-icon svg {
+.footer .social-icon svg {
   width: 100%;
   height: 100%;
 }
 
 /* Bottom Footer */
-.bottom-footer {
+.footer .bottom-footer {
   background-color: var(--blue-700);
   display: flex;
   flex-wrap: wrap;
@@ -260,7 +260,7 @@
   margin-block-start: clamp(var(--space-7), 6vw, var(--space-8));
 }
 
-.bottom-footer-container {
+.footer .bottom-footer-container {
   display: flex;
   flex-direction: row;
   gap: var(--space-2);
@@ -271,21 +271,21 @@
   max-width: var(--content-max);
 }
 
-.copyright {
+.footer .copyright {
   display: flex;
   align-items: center;
   gap: var(--space-3);
 }
 
-.copyright-symbol,
-.copyright-text,
-.site-credit {
+.footer .copyright-symbol,
+.footer .copyright-text,
+.footer .site-credit {
   font-size: var(--fs-sm);
   color: var(--white);
   margin: 0;
 }
 
-.footer-icons {
+.footer .footer-icons {
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -300,14 +300,14 @@
   max-width: var(--content-max);
 }
 
-.accessibility-icon,
-.back-to-top {
+.footer .accessibility-icon,
+.footer .back-to-top {
   inline-size: clamp(2.5rem, 6vw, 3.5rem);
   block-size: clamp(2.5rem, 6vw, 3.5rem);
   cursor: pointer;
 }
 
-.feedback-button {
+.footer .feedback-button {
   padding: 0.75rem 1.25rem;
   background: transparent;
   border: 1px solid var(--white);
@@ -327,53 +327,53 @@
   transition: bottom 200ms ease;
 }
 
-.feedback-button.is-raised {
+.footer .feedback-button.is-raised {
   bottom: 8rem;
 }
 
 /* Make any decorative background children non-positioned (kept for DOM compatibility) */
-.newsletter-background,
-.newsletter-mask {
+.footer .newsletter-background,
+.footer .newsletter-mask {
   display: none;
 }
 
 @media (min-width: 56rem) { 
-  .main-footer {
+  .footer .main-footer {
     grid-template-columns: 1fr min-content 1fr; /* left | divider | right */
   }
-  .divider-line {
+  .footer .divider-line {
     display: block;
   }
 
-  .feedback-button.is-raised {
+  .footer .feedback-button.is-raised {
     bottom: 6rem;
   }
 }
 
 @media (min-width: 1480px) {
-  .footer-icons {
+  .footer .footer-icons {
     max-width: calc(var(--content-max) + 40px);
   }
 }
 
 @media (max-width: 48rem) { /* ~768px and below */
-  .newsletter-content {
+  .footer .newsletter-content {
     grid-template-columns: 1fr;
   }
-  .main-footer {
+  .footer .main-footer {
     grid-template-columns: 1fr;
   }
-  .right-side {
+  .footer .right-side {
     margin-top: 0;
   }
-  .bottom-footer {
+  .footer .bottom-footer {
     flex-direction: column;
     align-items: flex-start;
   }
-  .footer-icons {
+  .footer .footer-icons {
     margin-top: var(--space-2);
   }
-  .feedback-button {
+  .footer .feedback-button {
     margin-inline: 0;
     justify-content: center;
   }
