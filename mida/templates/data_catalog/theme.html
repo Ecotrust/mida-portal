@@ -11,53 +11,53 @@
 
 {% block page_header %}
 
-  <div class="hero-flex-container">
-    
-    <div class="hero-left">
-      <div class="title-line">
-        <h7>
-            <img class="icon" src="{% static 'mida/data_catalog/img/i-folder.svg' %}" alt="Resource icon" />
-            <span class="count">{{ theme.layer_count }}</span> Resources
-        </h7>
-        <h4>
-            {% block title %}{{ theme.display_name }}{% endblock %}
-        </h4>
-      </div>
-
-      {% if theme.description %}
-        <div class="description">
-          {{ theme.description }}
+    <div class="hero-flex-container">
+        
+        <div class="hero-left">
+            <div class="title-line">
+                <h7>
+                    <img class="icon" src="{% static 'mida/data_catalog/img/i-folder.svg' %}" alt="Resource icon" />
+                    <span class="count">{{ theme.layer_count }}</span> Resources
+                </h7>
+                <h4>
+                    {% block title %}{{ theme.display_name }}{% endblock %}
+                </h4>
+            </div>
+            
+            {% if theme.description %}
+                <div class="description">
+                    <p>{{ theme.description }}</p>
+                </div>
+            {% endif %}
         </div>
-      {% endif %}
+        
+        {% if theme.wagtail_feature_image %}
+            <div class="hero-right">
+                <div class="hero-image-wrap" style="background-image: url('{{ theme.wagtail_feature_image.file.url }}');">
+                    {% image theme.wagtail_feature_image fill-520x430 class="feature" alt="{{ theme.display_name }}" %}
+                </div>
+            </div>
+        {% endif %}
+        
     </div>
-
-    {% if self.feature_image %}
-      <div class="hero-right">
-        <div class="hero-image-wrap" style="background-image: url('{{ self.feature_image.file.url }}');">
-          {% image self.feature_image fill-520x430 class="feature" alt="{{ self.title }}" %}
-        </div>
-      </div>
-    {% endif %}
-
-  </div>
 
 {% endblock %}
 
 {% block content %}
     <div class="bg-light-blue contain contain-padded">
         <section class="posts">
-        
-                <div class="layer-list">
-                    <h3>Child Themes</h3>
-                    <ul>
-                        {% for child in children %}
-                            <li>
-                                <a href="{{ child.get_absolute_url }}">{{ child.display_name }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
+            
+            <div class="layer-list">
+                <h3>Child Themes</h3>
+                <ul>
+                    {% for child in children %}
+                        <li>
+                            <a href="{{ child.get_absolute_url }}">{{ child.display_name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            
         </section>
     </div>
 {% endblock %}
