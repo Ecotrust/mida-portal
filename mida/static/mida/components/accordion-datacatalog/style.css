@@ -1,0 +1,439 @@
+.wrapper {
+    padding: 30px;
+    width: 100%;
+}
+
+.data-datacatalog {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.element {
+    width: 100%;
+    border-top: 1px solid var(--grey-medium);
+}
+
+.element:last-of-type {
+    border-bottom: 1px solid var(--grey-medium)
+}
+
+
+.text-wrapper {
+    font-family: var(--p3-font-family);
+    font-weight: var(--p3-font-weight);
+    color: #22408f;
+    font-size: var(--p3-font-size);
+    letter-spacing: var(--p3-letter-spacing);
+    line-height: var(--p3-line-height);
+    font-style: var(--p3-font-style);
+}
+
+.inline-link-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.div {
+    font-family: "Oswald-Regular", Helvetica;
+    font-weight: 400;
+    color: #22408f;
+    font-size: var(--p4-font-size);
+    letter-spacing: 0.90px;
+    line-height: 24px;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+.frame-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.vertical-divider,
+.link-bar .divider {
+    border-left: 1px solid #22408f;
+    height: 28px;
+    margin: 0 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.source-text {
+    font-family: "Barlow-SemiBold", Helvetica;
+    font-weight: 600;
+    font-size: var(--p3-font-size);
+    letter-spacing: 0;
+    line-height: 34px;
+}
+
+.notes-text {
+    font-family: "Barlow-SemiBold", Helvetica;
+    font-weight: 400;
+    font-size: var(--p3-font-size);
+    letter-spacing: 0;
+    line-height: 34px;
+}
+
+.default {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white);
+    padding: 15px;
+    width: 100%;
+}
+
+.header-left {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+
+.frame {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+}
+
+
+/* Removed duplicate .div class selector. See lines 108-118 for the consolidated definition. */
+.map-icon {
+    width: 18px;
+    height: 24px;
+}
+
+.frame-2 {
+    gap: 24px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.frame-2 p {
+    font-family: var(--p3-font-family);
+    font-weight: var(--p3-font-weight);
+    color: var(--grey-dark);
+    font-size: var(--p3-font-size);
+    letter-spacing: var(--p3-letter-spacing);
+    line-height: var(--p3-line-height);
+    font-style: var(--p3-font-style);
+}
+
+.frame-2 strong {
+    font-weight: bold;
+}
+
+.group,
+.link-bar {
+    gap: 10px;
+    border: 1px solid;
+    border-color: #22408f;
+    padding: 10px 20px;
+}
+
+.link-bar {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.link-text,
+.link-bar a {
+    font-family: "Barlow-Medium", Helvetica;
+    font-weight: 500;
+    color: #22408f;
+    font-size: var(--p4-font-size);
+    letter-spacing: 0;
+    line-height: 26px;
+    white-space: nowrap;
+}
+
+.link-bar .icon-marco:before {
+    color: var(--green);
+}
+
+.key-text {
+    color: #22408f;
+    font-weight: 600;
+}
+
+.value-text-primary {
+    color: #00a564;
+}
+
+.value-text-secondary {
+    color: #6c6c6c;
+    font-family: "Barlow-Regular", Helvetica;
+}
+
+.expand-icon {
+    width: 10px;
+    height: 18px;
+}
+
+.collapse-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.button-underline {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+details {
+    margin-bottom: 10px;
+}
+
+details.property[open] {
+    background: var(--white);
+    border: 1px solid var(--green);
+    overflow: hidden;
+}
+
+details.property[open]>summary {
+    background: var(--green);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 15px 18px;
+    cursor: pointer;
+}
+
+details.property .text-wrapper {
+    font-family: var(--FAQ-headline-font-family);
+    font-weight: var(--FAQ-headline-font-weight);
+    font-size: var(--FAQ-headline-font-size);
+    letter-spacing: var(--FAQ-headline-letter-spacing);
+    line-height: var(--FAQ-headline-line-height);
+    font-style: var(--FAQ-headline-font-style);
+    white-space: normal;
+    word-break: break-word;
+    width: 100%;
+    display: block;
+    overflow-wrap: break-word;
+}
+
+.catalog-tier details.property .text-wrapper {
+    font-size: var(--p3-font-size);
+}
+
+details.property[open] .text-wrapper {
+    color: var(--white);
+}
+
+details.property:not([open]) .text-wrapper {
+    color: #22408f;
+}
+
+details.element .text-wrapper.blue {
+    color: #22408f;
+}
+
+details.property:not([open]) {
+    background: var(--white);
+    overflow: hidden;
+}
+
+details.property:not([open])>summary {
+    background: var(--white);
+    color: #22408f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 15px 18px;
+    cursor: pointer;
+}
+
+details.property:not([open]) .header {
+    color: #22408f;
+}
+
+
+details.property:not([open]) .header-link {
+    font-family: "Oswald-Regular", Helvetica;
+    font-weight: 400;
+    color: #22408f;
+    font-size: var(--p4-font-size);
+    text-align: right;
+    letter-spacing: 0.90px;
+    line-height: 24px;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+details.property[open] .header-link {
+    font-family: "Oswald-Regular", Helvetica;
+    font-weight: 400;
+    color: var(--white);
+    font-size: var(--p4-font-size);
+    text-align: right;
+    letter-spacing: 0.90px;
+    line-height: 24px;
+    text-decoration: underline;
+    white-space: nowrap;
+}
+
+
+details[open] summary .img {
+    transform: rotate(90deg);
+}
+
+/* Icon visibility: show white arrow when open, blue arrow when closed */
+summary .i-open,
+summary .i-closed {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    transition: opacity 180ms ease-in-out, transform 180ms ease-in-out;
+    opacity: 0;
+}
+
+/* Container that occupies the flex slot; icons are absolutely stacked inside */
+.i-wrap {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.i-wrap img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: opacity 180ms ease-in-out, transform 180ms ease-in-out;
+}
+
+/* Strong override to counter duplicate .vector rules elsewhere */
+.i-wrap .vector,
+.i-wrap img.i-open,
+.i-wrap img.i-closed {
+    width: 100%;
+    height: 100%;
+}
+
+/* Show only one icon at a time in the closest details.element */
+details.element[open]>summary .i-open {
+    opacity: 1;
+}
+
+details.element[open]>summary .i-closed {
+    opacity: 0;
+}
+
+details.element:not([open])>summary .i-open {
+    opacity: 0;
+}
+
+details.element:not([open])>summary .i-closed {
+    opacity: 1;
+}
+
+/* Show only one icon at a time in the closest details.property */
+details.property[open]>summary .i-open {
+    opacity: 1;
+}
+
+details.property[open]>summary .i-closed {
+    opacity: 0;
+}
+
+details.property:not([open])>summary .i-open {
+    opacity: 0;
+}
+
+details.property:not([open])>summary .i-closed {
+    opacity: 1;
+}
+
+/* Ensure only one icon is interactable/visible at a time */
+summary .i-open {
+    pointer-events: none;
+}
+
+summary .i-closed {
+    pointer-events: none;
+}
+
+details[open] summary .i-open.rotate-90 {
+    transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+
+    .text-wrapper {
+        font-size: var(--p4-font-size);
+    }
+
+    .link-text,
+    .frame-2>* {
+        font-size: var(--p6-font-size);
+        letter-spacing: var(--p6-letter-spacing);
+        line-height: var(--p6-line-height);
+        font-style: var(--p6-font-style);
+    }
+
+    .frame-2 {
+        gap: 12px;
+    }
+
+    .div {
+        font-size: var(--p6-font-size);
+    }
+
+    .group {
+        padding: 5px 10px;
+    }
+
+    .default {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        padding: 10px;
+        min-width: 0;
+        box-sizing: border-box;
+    }
+
+    .element {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .text-wrapper {
+        overflow-wrap: break-word;
+        flex-grow: 1;
+        min-width: 0;
+        white-space: normal;
+        word-break: break-word;
+        width: 100%;
+        display: block;
+    }
+
+    .header-left {
+        width: 100%;
+    }
+
+}

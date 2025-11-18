@@ -1,0 +1,71 @@
+<!-- mida/templates/data_catalog/theme.html -->
+{% extends "cms/section.html" %}
+{% load static wagtailimages_tags %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/data_catalog/theme.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'mida/components/accordion-datacatalog/style.css' %}">
+{% endblock %}
+
+{% block body_class %}data-theme-page{% endblock %}
+
+{% block page_header %}
+
+    <div class="hero-flex-container">
+        
+        <div class="hero-left">
+            <div class="title-line">
+                <h7>
+                    <img class="icon" src="{% static 'mida/data_catalog/img/i-folder.svg' %}" alt="Resource icon" />
+                    <span class="count">{{ theme.layer_count }}</span> Resources
+                </h7>
+                <h4>
+                    {% block title %}{{ theme.display_name }}{% endblock %}
+                </h4>
+            </div>
+            
+            {% if theme.description %}
+                <div class="description">
+                    <p>{{ theme.description }}</p>
+                </div>
+            {% endif %}
+
+            <h7>
+                <a class="map-link" href="{{theme.url}}" title="{{theme.display_name}}">
+                    <svg width="17" height="23" viewBox="0 0 17 23" fill="none" class="nav-icon">
+                        <path
+                            d="M8.18481 0C12.7048 0.000130394 16.3694 3.66457 16.3694 8.18457C16.3693 11.8252 13.9911 14.9089 10.7043 15.9717H10.8245L8.29419 22.1104L5.65454 15.9717H5.66431C2.37775 14.9088 0.000349164 11.825 0.000244141 8.18457C0.000244141 3.66449 3.66473 0 8.18481 0ZM8.18579 2.06836C4.73498 2.06836 1.93774 4.86559 1.93774 8.31641C1.9379 11.7671 4.73507 14.5645 8.18579 14.5645C11.6365 14.5644 14.4337 11.767 14.4338 8.31641C14.4338 4.86563 11.6365 2.06842 8.18579 2.06836Z"
+                            fill="var(--dark-blue)" />
+                    </svg>
+                    View All On Map
+                </a>
+            </h7>
+        </div>
+        
+        {% if theme.wagtail_feature_image %}
+            <div class="hero-right">
+                <div class="hero-image-wrap" style="background-image: url('{{ theme.wagtail_feature_image.file.url }}');">
+                    {% image theme.wagtail_feature_image fill-520x430 class="feature" alt="{{ theme.display_name }}" %}
+                </div>
+            </div>
+        {% endif %}
+        
+    </div>
+
+{% endblock %}
+
+{% block content %}
+    <div class="bg-light-blue contain contain-padded">
+        <section class="data-datacatalog">
+            <h3>{{ theme.display_name }}</h3>
+            {% for child in children %}
+                {% include "data_catalog/theme_child.html" with child=child %}
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <script src="{% static 'mida/components/accordion-datacatalog/scripts.js' %}" type="text/javascript"></script>
+{% endblock %}
