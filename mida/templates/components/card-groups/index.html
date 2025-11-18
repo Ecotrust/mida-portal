@@ -1,0 +1,72 @@
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/card-groups/style.css' %}">
+{% endblock extra_css %}
+
+<section class="posts">
+            <article class="card">
+                <div class="img-wrapper">
+                    <img src="{% static 'img/marcodataportal-data-groups-image02.png' %}" alt="" />
+                    <div class="tabs">
+                        <time class="date" datetime="2023-11">
+                            <img class="calendar-icon" src="{% static 'img/marcodataportal-global-icon-calendar.svg' %}"
+                                aria-hidden="true" />
+                            <span class="tab-text">November, 2023</span>
+                        </time>
+                        <div class="members">
+                            <img class="calendar-icon" src="{% static 'img/marcodataportal-global-icon-members.svg' %}"
+                                alt="Members icon" />
+                            <span class="tab-text">5 Group Members</span>
+                        </div>
+                    </div>
+                    <div class="top-right"><span class="text-wrapper-4">Public</span></div>
+                </div>
+                <div class="overlap">
+                    <div class="frame">
+                        <h2 class="text-wrapper">
+                            OSW LBNL
+                        </h2>
+                        <p class="p">
+                            Lorem ipsum dolor sit amet consectetur. Ipsum tellus sapien nam ut aliquam sed cursus
+                            blandit. Purus
+                            ullamcorper posuere tempus et consectetur rhoncus consequat aliquam massa. Nibh sed
+                            congue in pharetra
+                            aliquet non.
+                        </p>
+                    </div>
+                    <a href="#" class="button-small"><span class="button-text">LEARN MORE</span></a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="img-wrapper">
+                    <img src="{% static 'img/marcodataportal-data-groups-image03.png' %}" alt="two harbor seals" />
+                    <div class="tabs">
+                        <time class="date" datetime="2017-05-17">
+                            <img class="calendar-icon" src="{% static 'img/marcodataportal-global-icon-calendar.svg' %}"
+                                aria-hidden="true" />
+                            <span class="tab-text">May 17, 2017</span>
+                        </time>
+                        <div class="members">
+                            <img class="calendar-icon" src="{% static 'img/marcodataportal-global-icon-members.svg' %}"
+                                alt="Members icon" />
+                            <span class="tab-text">6 Group Members</span>
+                        </div>
+                    </div>
+                    <div class="top-right"><span class="text-wrapper-4">Public</span></div>
+                </div>
+                <div class="overlap">
+                    <div class="frame">
+                        <h2 class="text-wrapper">
+                            Long Island Marine Mammals
+                        </h2>
+                        <p class="p">
+                            The following are news releases issued by MARCO partner organizations related to ocean
+                            planning topics
+                            in the Mid-Atlantic region.
+                        </p>
+                    </div>
+                    <a href="#" class="button-small"><span class="button-text">LEARN MORE</span></a>
+                </div>
+            </article>
+        </section>
