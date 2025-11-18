@@ -172,3 +172,28 @@ p {
     letter-spacing: var(--p1-letter-spacing);
     line-height: var(--p1-line-height);
 }
+
+
+/**
+ * Buttons
+ */
+
+.button-big {
+    align-items: center;
+    background-color: var(--yellow-bright);
+    border-radius: 10px;
+    color: var(--white);
+    display: flex;
+    font-family: var(--btn-oswald-font-family);
+    font-size: var(--btn-oswald-font-size);
+    font-style: var(--btn-oswald-font-style);
+    font-weight: var(--btn-oswald-font-weight);
+    gap: 8px;
+    justify-content: center;
+    letter-spacing: var(--btn-oswald-letter-spacing);
+    line-height: var(--btn-oswald-line-height);
+    padding: 1rem clamp(1rem, 5vw, 5rem);
+    position: relative;
+    text-transform: uppercase;
+    width: fit-content;
+}
