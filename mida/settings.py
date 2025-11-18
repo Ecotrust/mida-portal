@@ -51,7 +51,7 @@ ARCGIS_API_KEY = "set in local settings"
 PLANNER_APPS = [
     'visualize',
     'drawing',
-    'survey',
+    # 'survey',
 ]
 
 try:
