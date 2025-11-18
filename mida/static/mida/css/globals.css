@@ -50,7 +50,7 @@ img {
 .contain {
     margin: 0 auto var(--space-9);
     padding: 0 20px;
-    max-width: 1200px;
+    max-width: 1240px;
 }
 
 @media (min-width: 78rem) {
@@ -71,7 +71,7 @@ img {
     margin: 0 auto;
     padding: 0 20px;
     justify-content: space-between;
-    max-width: 1240px;
+    max-width: 1280px;
     width: 100%;
 }
 
