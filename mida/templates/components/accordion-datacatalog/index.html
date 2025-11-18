@@ -4,8 +4,8 @@
 
 <details class="property">
 
-    <summary>
-        <div class="header-left" onclick="window.getCatalogEntry('{{layer.type}}', {{ layer.id }}, {{theme.id}})">
+    <summary onclick="window.getCatalogEntry('{{layer.type}}', {{ layer.id }}, {{theme.id}})">
+        <div class="header-left">
             <span class="i-wrap">
                 <img class="i-open vector" src="{% static 'mida/components/accordion-datacatalog/img/vector-2.svg' %}" alt="Collapse icon" aria-hidden="true" />
                 <img class="i-closed expand-icon" src="{% static 'mida/components/accordion-datacatalog/img/vector-3.svg' %}" alt="Expand icon" aria-hidden="true" />
