@@ -42,6 +42,10 @@ img {
     margin-bottom: var(--space-9);
 }
 
+.margin-top-4 {
+    margin-top: var(--space-4);
+}
+
 
 /**
  * Containers
@@ -192,8 +196,16 @@ p {
     justify-content: center;
     letter-spacing: var(--btn-oswald-letter-spacing);
     line-height: var(--btn-oswald-line-height);
+    opacity: 1;
     padding: 1rem clamp(1rem, 5vw, 5rem);
     position: relative;
     text-transform: uppercase;
+    transition: opacity 0.25s ease-in-out;
     width: fit-content;
+}
+
+.button-big:hover {
+    color: var(--white);
+    opacity: 0.75;
+    text-decoration: none;
 }
