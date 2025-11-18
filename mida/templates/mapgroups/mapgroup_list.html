@@ -1,0 +1,14 @@
+{% extends "cms/section.html" %}
+
+{% block title %}Join a map group{% endblock %}
+{% block page_title %}Join a map group{% endblock %}
+{% block hero_description %}
+<!-- start hero_description -->
+    <div class="description">
+        <p>Groups are an opportunity to share information and resources with like-minded ocean users. Create or join a map group that interests you &mdash; and invite your colleagues! Maps and drawings can be saved and shared through your group with other registered Portal users.</p>
+    </div>
+<!-- end hero_description -->
+
+<a class="button-big" href="{% url 'mapgroups:create' %}">Create your own map group</a>
+
+{% endblock %}
