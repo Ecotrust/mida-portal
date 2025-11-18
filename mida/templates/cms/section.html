@@ -1,4 +1,4 @@
-<!-- mida/templates/cms/section.html -->
+<!-- mida-portal/mida/templates/cms/section.html -->
 {% extends "cms/base.html" %}
 {% load wagtailimages_tags wagtailcore_tags wagtailcustom_tags %}
 
@@ -17,6 +17,9 @@
         <div class="description">
           {{ self.description|anchored_richtext }}
         </div>
+      {% else %}
+        <!-- Allow children to add a description if the page does not have one -->
+        {% block hero_description %}{% endblock %}
       {% endif %}
     </div>
 
