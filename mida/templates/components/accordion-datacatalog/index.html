@@ -6,9 +6,9 @@
 
     <summary>
         <div class="header-left" onclick="window.getCatalogEntry('{{layer.type}}', {{ layer.id }}, {{theme.id}})">
-            <span class="icon-wrap">
-                <img class="icon-open vector" src="{% static 'mida/components/accordion-datacatalog/img/vector-2.svg' %}" alt="Collapse icon" aria-hidden="true" />
-                <img class="icon-closed expand-icon" src="{% static 'mida/components/accordion-datacatalog/img/vector-3.svg' %}" alt="Expand icon" aria-hidden="true" />
+            <span class="i-wrap">
+                <img class="i-open vector" src="{% static 'mida/components/accordion-datacatalog/img/vector-2.svg' %}" alt="Collapse icon" aria-hidden="true" />
+                <img class="i-closed expand-icon" src="{% static 'mida/components/accordion-datacatalog/img/vector-3.svg' %}" alt="Expand icon" aria-hidden="true" />
             </span>
             <h2 class="text-wrapper">{{ layer.name }}</h2>
         </div>
@@ -17,70 +17,11 @@
     <div class="frame">
         <div class="frame-wrapper">
             <div class="frame-2">
-                <div class="group">
-                    <div class="link-group">
-                        <img class="map-icon" src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-geo-small.svg' %}" alt="Map icon" />
-                        <span class="vertical-divider"></span>
-                        <a href="#">
-                            <div class="inline-link-group">
-                                <span class="link-text">kml</span>
-                                <img class="download-icon" 
-                                    src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-Download.svg' %}" 
-                                    alt="Download icon" />
-                            </div>
-                        </a>
-                        <span class="vertical-divider"></span>
-
-                        <a href="#">
-                            <div class="inline-link-group">
-                                <span class="link-text">data</span>
-                                <img class="download-icon"
-                                    src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-Download.svg' %}"
-                                    alt="Download icon" />
-                            </div>
-                        </a>
-                        <span class="vertical-divider"></span>
-
-                        <a href="#">
-                            <div class="inline-link-group">
-                                <span class="link-text">metadata</span>
-                                <img class="download-icon"
-                                    src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-Download.svg' %}"
-                                    alt="Download icon" />
-                            </div>
-                        </a>
-                        <span class="vertical-divider"></span>
-
-                        <a href="#">
-                            <div class="inline-link-group">
-                                <span class="link-text">source</span>
-
-                                <img class="download-icon"
-                                    src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-Download.svg' %}"
-                                    alt="External link icon" />
-                            </div>
-
-                        </a>
-                        <span class="vertical-divider"></span>
-
-                        <a href="#">
-                            <div class="inline-link-group">
-                                <span class="link-text">tiles</span>
-                                <img class="download-icon"
-                                    src="{% static 'mida/components/accordion-datacatalog/img/MARCODataPortal-Global-Icon-Download.svg' %}"
-                                    alt="External link icon" />
-                            </div>
-
-                        </a>
-                    </div>
-                </div>
-                
                 <div id="collapse-layer-{{layer.type}}-{{ layer.id }}">
-                    <div class='layer-loading-panel'>
+                    <div class="layer-loading-panel">
                         <p><img src="{% static 'img/ajax-loader.gif' %}"> Loading...<p>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

@@ -16,3 +16,8 @@ h4 {
 .map-link:hover .nav-icon path {
     fill: var(--green);
 }
+
+.data-datacatalog h3 {
+    text-align: center;
+    margin: 0 0 var(--space-9);
+}

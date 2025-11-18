@@ -8,7 +8,7 @@
     height: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0;
 }
 
 .element {
@@ -55,7 +55,8 @@
     margin-bottom: 20px;
 }
 
-.vertical-divider {
+.vertical-divider,
+.link-bar .divider {
     border-left: 1px solid #22408f;
     height: 28px;
     margin: 0 10px;
@@ -128,11 +129,32 @@
     align-items: flex-start;
 }
 
-.group {
+.frame-2 p {
+    font-family: var(--p3-font-family);
+    font-weight: var(--p3-font-weight);
+    color: var(--grey-dark);
+    font-size: var(--p3-font-size);
+    letter-spacing: var(--p3-letter-spacing);
+    line-height: var(--p3-line-height);
+    font-style: var(--p3-font-style);
+}
+
+.frame-2 strong {
+    font-weight: bold;
+}
+
+.group,
+.link-bar {
     gap: 10px;
     border: 1px solid;
     border-color: #22408f;
     padding: 10px 20px;
+}
+
+.link-bar {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .link-group {
@@ -141,7 +163,8 @@
     flex-wrap: wrap;
 }
 
-.link-text {
+.link-text,
+.link-bar a {
     font-family: "Barlow-Medium", Helvetica;
     font-weight: 500;
     color: #22408f;
@@ -151,14 +174,8 @@
     white-space: nowrap;
 }
 
-.p {
-    font-family: var(--p3-font-family);
-    font-weight: var(--p3-font-weight);
-    color: var(--grey-dark);
-    font-size: var(--p3-font-size);
-    letter-spacing: var(--p3-letter-spacing);
-    line-height: var(--p3-line-height);
-    font-style: var(--p3-font-style);
+.link-bar .icon-marco:before {
+    color: var(--green);
 }
 
 .key-text {
@@ -191,6 +208,10 @@
     cursor: pointer;
 }
 
+details {
+    margin-bottom: 10px;
+}
+
 details.property[open] {
     background: var(--white);
     border: 1px solid var(--green);
@@ -220,6 +241,10 @@ details.property .text-wrapper {
     width: 100%;
     display: block;
     overflow-wrap: break-word;
+}
+
+.catalog-tier details.property .text-wrapper {
+    font-size: var(--p3-font-size);
 }
 
 details.property[open] .text-wrapper {
@@ -285,8 +310,8 @@ details[open] summary .img {
 }
 
 /* Icon visibility: show white arrow when open, blue arrow when closed */
-summary .icon-open,
-summary .icon-closed {
+summary .i-open,
+summary .i-closed {
     width: 18px;
     height: 18px;
     display: inline-block;
@@ -296,7 +321,7 @@ summary .icon-closed {
 }
 
 /* Container that occupies the flex slot; icons are absolutely stacked inside */
-.icon-wrap {
+.i-wrap {
     display: inline-block;
     width: 18px;
     height: 18px;
@@ -304,7 +329,7 @@ summary .icon-closed {
     flex: 0 0 auto;
 }
 
-.icon-wrap img {
+.i-wrap img {
     position: absolute;
     top: 0;
     left: 0;
@@ -315,57 +340,57 @@ summary .icon-closed {
 }
 
 /* Strong override to counter duplicate .vector rules elsewhere */
-.icon-wrap .vector,
-.icon-wrap img.icon-open,
-.icon-wrap img.icon-closed {
+.i-wrap .vector,
+.i-wrap img.i-open,
+.i-wrap img.i-closed {
     width: 100%;
     height: 100%;
 }
 
 /* Show only one icon at a time in the closest details.element */
-details.element[open]>summary .icon-open {
+details.element[open]>summary .i-open {
     opacity: 1;
 }
 
-details.element[open]>summary .icon-closed {
+details.element[open]>summary .i-closed {
     opacity: 0;
 }
 
-details.element:not([open])>summary .icon-open {
+details.element:not([open])>summary .i-open {
     opacity: 0;
 }
 
-details.element:not([open])>summary .icon-closed {
+details.element:not([open])>summary .i-closed {
     opacity: 1;
 }
 
 /* Show only one icon at a time in the closest details.property */
-details.property[open]>summary .icon-open {
+details.property[open]>summary .i-open {
     opacity: 1;
 }
 
-details.property[open]>summary .icon-closed {
+details.property[open]>summary .i-closed {
     opacity: 0;
 }
 
-details.property:not([open])>summary .icon-open {
+details.property:not([open])>summary .i-open {
     opacity: 0;
 }
 
-details.property:not([open])>summary .icon-closed {
+details.property:not([open])>summary .i-closed {
     opacity: 1;
 }
 
 /* Ensure only one icon is interactable/visible at a time */
-summary .icon-open {
+summary .i-open {
     pointer-events: none;
 }
 
-summary .icon-closed {
+summary .i-closed {
     pointer-events: none;
 }
 
-details[open] summary .icon-open.rotate-90 {
+details[open] summary .i-open.rotate-90 {
     transform: rotate(90deg);
 }
 
