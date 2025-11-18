@@ -232,10 +232,6 @@ details.property .text-wrapper {
     overflow-wrap: break-word;
 }
 
-.catalog-tier details.property .text-wrapper {
-    font-size: var(--p3-font-size);
-}
-
 details.property[open] .text-wrapper {
     color: var(--white);
 }
@@ -297,6 +293,43 @@ details.property[open] .header-link {
 details[open] summary .img {
     transform: rotate(90deg);
 }
+
+
+/**
+ * Children property
+ */
+
+.catalog-tier details.property {
+    padding-left: 2rem;
+    margin: 0;
+}
+
+.catalog-tier details.property:after {
+    content: "";
+    display: block;
+    width: calc(100% - 2rem);
+    height: 1px;
+    background-color: var(--dark-blue);
+    margin: 0 auto;
+}
+
+.catalog-tier details.property:first-child {
+    margin-top: -10px;
+}
+
+.catalog-tier details.property:last-child {
+    margin-bottom: 10px;
+}
+
+.catalog-tier details.property:last-child:after {
+    height: 0;
+}
+
+.catalog-tier details.property .text-wrapper {
+    font-size: var(--p3-font-size);
+}
+
+
 
 /* Icon visibility: show white arrow when open, blue arrow when closed */
 summary .i-open,
