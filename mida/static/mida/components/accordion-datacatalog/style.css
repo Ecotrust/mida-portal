@@ -105,18 +105,7 @@
 }
 
 
-.div {
-    height: 24px;
-    font-family: "Oswald-Regular", Helvetica;
-    font-weight: 400;
-    color: #22408f;
-    font-size: var(--p4-font-size);
-    letter-spacing: 0.90px;
-    line-height: 24px;
-    text-decoration: underline;
-    white-space: nowrap;
-}
-
+/* Removed duplicate .div class selector. See lines 108-118 for the consolidated definition. */
 .map-icon {
     width: 18px;
     height: 24px;
