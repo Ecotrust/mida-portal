@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block extra_css %}
+  {{ block.super }}
+  <link href="{% static 'assets/openlayers/ol.css' %}" rel="stylesheet">
+  <link href="{% static 'mapgroups/css/map_group_details.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block page_header %}
+    <a class="btn btn-success" href="{% url 'mapgroups:list' %}">&larr; Groups</a>
+{% endblock %}
+
+
+{% block content %}
+  {% include 'mapgroups/mapgroup_detail_content.html' %}
+{% endblock %}
+
+{% block extra_js %}
+  {{ block.super }}
+  <script type="text/javascript" src="{% static 'assets/openlayers/ol.js' %}"></script>
+  <script type="text/javascript" src="{% static 'mapgroups/js/mapgroup_modal_munging.js' %}"></script>
+
+{% endblock %}
