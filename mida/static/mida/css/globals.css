@@ -177,6 +177,10 @@ p {
     line-height: var(--p1-line-height);
 }
 
+em {
+    font-style: italic;
+}
+
 
 /**
  * Buttons
