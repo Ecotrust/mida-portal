@@ -121,7 +121,7 @@
     align-items: center;
     gap: 8px;
     padding: 2px 12px;
-    background-color: #00788a;
+    background-color: var(--teal);
 }
 
 .top-right {
