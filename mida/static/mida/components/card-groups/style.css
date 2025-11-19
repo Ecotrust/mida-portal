@@ -13,7 +13,7 @@
     justify-content: center;
     gap: 8px;
     padding: 12px 24px;
-    background-color: #22408f;
+    background-color: var(--dark-blue);
     border-radius: 8px;
     cursor: pointer;
 }
