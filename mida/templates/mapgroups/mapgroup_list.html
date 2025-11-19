@@ -1,4 +1,10 @@
 {% extends "cms/section.html" %}
+{% load static %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/mapgroups/mapgroup_list.css' %}">
+{% endblock %}
 
 {% block title %}Join a map group{% endblock %}
 {% block page_title %}Join a map group{% endblock %}
@@ -13,6 +19,10 @@
         <a class="button-big" href="{% url 'mapgroups:create' %}">Create your own map group</a>
     </div>
 
+    <div class="group-form-disclaimer margin-top-4">
+        <p><em>*Note: MARCO reserves the right to review and remove Groups and content shared within them due to inactivity, inappropriate content or other misuse.</em></p>
+    </div>
+
 <!-- end hero_description -->
 {% endblock %}
 
@@ -22,15 +32,13 @@
     <div class="bg-light-blue contain contain-padded">
         <section class="data-datacatalog">
 
-            <div class="group-form-disclaimer">
-            <p><i>*Note: MARCO reserves the right to review and remove Groups and content shared within them due to inactivity, inappropriate content or other misuse.</i></p>
-            </div>
+            
 
             {% if featured_mapgroups %}
             <h3>Featured Map Groups</h3>
             <div class="grid-view">
                 {% for featured in featured_mapgroups %}
-                    {% include 'mapgroups/mapgroup_list_one.html' with mapgroup=featured.map_group %}
+                    {% include 'components/card-groups/index.html' with mapgroup=featured.map_group %}
                 {% endfor %}
             </div>
             {% endif %}
@@ -38,7 +46,7 @@
             <h3>Member Groups</h3>
             <div class="grid-view">
                 {% for mg in mapgroups %}
-                    {% include 'mapgroups/mapgroup_list_one.html' with mapgroup=mg %}
+                    {% include 'components/card-groups/index.html' with mapgroup=mg %}
                 {% endfor %}
             </div>
         
