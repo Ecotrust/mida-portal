@@ -1,1 +1,8 @@
 ARCGIS_API_KEY = "set in local settings"
+
+# Defines which apps/modules interact with the MyPlanner tab in mp-visualize's left nav
+PLANNER_APPS = [
+    'visualize',
+    'drawing',
+    'survey',
+]
