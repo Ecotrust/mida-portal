@@ -13,34 +13,48 @@
 {% endblock %}
 
 {% block header_tag %}
+<!-- start header_tag -->
     {% include 'components/header/index.html' %}
+<!-- end header_tag -->
 {% endblock %}
 
-{% block main %}
-    {% block outer_content %}
-        {% block page_header_container %}
+{% block main %} 
+<!-- start main -->
+    {% block outer_content %} 
+    <!-- start outer_content -->
+        {% block page_header_container %} 
+        <!-- start page_header_container -->
             <div class="contain">
                 <a class="anchor" id="page-header"></a>
                 <div class="page-header">
                     {% block page_header %}
-                    <h1>{% block page_title %}{{ title }}{% endblock %}</h1>
+                    <!-- start page_header -->
+                        <h1>{% block page_title %}{{ title }}{% endblock %}</h1>
+                    <!-- end page_header -->
                     {% endblock %}
                 </div>
             </div>
-        {% endblock %} <!-- page_header_container -->
+        <!-- end page_header_container --> 
+        {% endblock %}
 
-        {% block all_content %}
+        {% block all_content %} 
+        <!-- start all_content -->
             {% block content %}{% endblock %}
             {% block nav_footer %}{% endblock %}
             {% block containerless_content %}{% endblock %}
-        {% endblock %} <!-- all_content -->
+        <!-- end all_content -->
+        {% endblock %}
+    <!-- end outer_content -->
     {% endblock outer_content %}
 
-    {% block footer_wrap %}
-        {% block footer %}
-            <!-- Include Footer Component -->
+    {% block footer_wrap %} 
+    <!-- start footer_wrap -->
+        {% block footer %} 
+        <!-- start footer -->
             {% include 'components/footer/index.html' %}
-            <!-- End Footer Component -->
+        <!-- end footer -->
         {% endblock %}
+    <!-- end footer_wrap -->
     {% endblock footer_wrap %}
+<!-- end main -->
 {% endblock main %}

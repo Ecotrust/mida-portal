@@ -17,6 +17,9 @@
         <div class="description">
           {{ self.description|anchored_richtext }}
         </div>
+      {% else %}
+        <!-- Allow children to add a description if the page does not have one -->
+        {% block hero_description %}{% endblock %}
       {% endif %}
     </div>
 

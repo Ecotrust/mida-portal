@@ -1,0 +1,169 @@
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 345px), 1fr));
+    gap: 1.25rem;
+}
+
+.button-small {
+    box-sizing: border-box;
+    display: flex;
+    width: 180px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background-color: var(--dark-blue);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.button-text {
+    width: fit-content;
+    font-family: var(--h7-font-family);
+    font-weight: var(--h7-font-weight);
+    color: var(--white);
+    font-size: var(--h7-font-size);
+    letter-spacing: var(--h7-letter-spacing);
+    line-height: var(--h7-line-height);
+    white-space: nowrap;
+    font-style: var(--h7-font-style);
+}
+
+.calendar-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.card {
+    width: 100%;
+    max-width: 345px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 35px 3px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    display: grid;
+    grid-template-rows: 195px auto;
+    overflow: hidden;
+}
+
+.overlap {
+    padding: 24px;
+    background-color: var(--white);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 0 0 12px 12px;
+    gap: 24px;
+}
+
+.frame {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.text-wrapper {
+    font-family: var(--FAQ-headline-font-family);
+    font-weight: var(--FAQ-headline-font-weight);
+    color: var(--dark-blue);
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.p {
+    font-family: var(--p4-font-family);
+    font-weight: var(--p4-font-weight);
+    color: var(--black);
+    font-size: var(--p4-font-size);
+    line-height: var(--p4-line-height);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.tabs {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+}
+
+.img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 195px;
+    overflow: hidden;
+}
+
+.date {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 12px;
+    background-color: var(--green);
+}
+
+.tab-text {
+    font-family: var(--p6-font-family);
+    font-weight: var(--p6-font-weight);
+    color: var(--white);
+    font-size: var(--p6-font-size);
+    line-height: var(--p6-line-height);
+    white-space: nowrap;
+}
+
+.members {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 12px;
+    background-color: var(--teal);
+}
+
+.top-right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 2px 12px;
+    background-color: var(--yellow);
+    border-radius: 20px;
+    font-family: var(--p6-font-family);
+    font-weight: var(--p6-font-weight);
+    color: var(--white);
+    font-size: var(--p6-font-size);
+    line-height: var(--p6-line-height);
+}
+
+.top-right .private {
+    color: var(--grey-light);
+}
+
+.tabs>div:last-child {
+    border-right: 5px solid var(--yellow-bright);
+    border-radius: 0px 4px 0px 0px;
+}
+
+@media (max-width: 768px) {
+    .text-wrapper {
+        font-size: 20px;
+    }
+
+    .p {
+        font-size: 16px;
+    }
+
+    .card {
+        grid-template-rows: auto auto;
+    }
+
+    .img-wrapper {
+        height: 100%;
+    }
+}

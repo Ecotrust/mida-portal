@@ -1,0 +1,31 @@
+{% load static %}
+
+<article class="card">
+    <div class="img-wrapper">
+        <img src="{{ mapgroup.image_url }}" alt="map group image" />
+        <div class="tabs">
+            <time class="date" datetime="{{ mapgroup.creation_date|date:'Y-m-d' }}">
+                <img class="calendar-icon" src="{% static 'mida/components/card-groups/img/marcodataportal-global-icon-calendar.svg' %}"
+                    aria-hidden="true" />
+                <span class="tab-text">{{ mapgroup.creation_date|date:"m.Y" }}</span>
+            </time>
+            <div class="members">
+                <img class="calendar-icon" src="{% static 'mida/components/card-groups/img/marcodataportal-global-icon-members.svg' %}"
+                    alt="" aria-hidden="true" />
+                <span class="tab-text">{{ mapgroup.mapgroupmember_set.count }} Group Members</span>
+            </div>
+        </div>
+        <div class="top-right">{% if mapgroup.is_open %}<span class="public">Public</span>{% else %}<span class="private"><em>Private</em></span>{% endif %}</div>
+    </div>
+    <div class="overlap">
+        <div class="frame">
+            <h2 class="text-wrapper">
+                <a href="{% url 'mapgroups:detail' mapgroup.pk mapgroup.slug %}">{{ mapgroup.name }}</a>
+            </h2>
+            <p class="p">
+                {{ mapgroup.blurb }}
+            </p>
+        </div>
+        <a href="{% url 'mapgroups:detail' mapgroup.pk mapgroup.slug %}" class="button-small"><span class="button-text">LEARN MORE</span></a>
+    </div>
+</article>
