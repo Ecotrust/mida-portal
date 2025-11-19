@@ -22,7 +22,7 @@
     width: fit-content;
     font-family: var(--h7-font-family);
     font-weight: var(--h7-font-weight);
-    color: #ffffff;
+    color: var(--white);
     font-size: var(--h7-font-size);
     letter-spacing: var(--h7-letter-spacing);
     line-height: var(--h7-line-height);
