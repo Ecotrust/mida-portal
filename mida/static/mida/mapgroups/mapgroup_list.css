@@ -1,0 +1,5 @@
+.group-form-disclaimer p {
+    font-size: var(--body-regular-font-size);
+    line-height: var(--body-regular-line-height);
+    color: var(--gray-dark);
+}
