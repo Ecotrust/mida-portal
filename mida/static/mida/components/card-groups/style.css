@@ -67,7 +67,7 @@
 .text-wrapper {
     font-family: var(--FAQ-headline-font-family);
     font-weight: var(--FAQ-headline-font-weight);
-    color: #22408f;
+    color: var(--dark-blue);
     font-size: 24px;
     line-height: 1.25;
 }
