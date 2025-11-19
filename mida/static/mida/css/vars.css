@@ -10,8 +10,17 @@
     --dark-blue: rgba(34, 64, 143, 1);
     --teal: rgba(0, 120, 138, 1);
     --grey-dark: rgba(108, 108, 108, 1);
+    --gray-dark: var(--grey-dark);
+    --dark-grey: var(--grey-dark);
+    --dark-gray: var(--grey-dark);
     --grey-medium: rgba(177, 179, 181, 1);
+    --gray-medium: var(--grey-medium);
+    --medium-grey: var(--grey-medium);
+    --medium-gray: var(--grey-medium);
     --grey-light: rgba(245, 246, 246, 1);
+    --gray-light: var(--grey-light);
+    --light-grey: var(--grey-light);
+    --light-gray: var(--grey-light);
     --green: rgba(0, 165, 100, 1);
     --yellow-bright: rgba(255, 164, 0, 1);
     --bright-blue: rgba(21, 105, 220, 1);
