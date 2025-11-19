@@ -4,7 +4,7 @@
     <div class="img-wrapper">
         <img src="{{ mapgroup.image_url }}" alt="map group image" />
         <div class="tabs">
-            <time class="date" datetime="2017-05-17">
+            <time class="date" datetime="{{ mapgroup.creation_date|date:'Y-m-d' }}">
                 <img class="calendar-icon" src="{% static 'mida/components/card-groups/img/marcodataportal-global-icon-calendar.svg' %}"
                     aria-hidden="true" />
                 <span class="tab-text">{{ mapgroup.creation_date|date:"m.Y" }}</span>
