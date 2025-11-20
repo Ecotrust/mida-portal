@@ -9,12 +9,32 @@
 
     <div class="block-with accordion-block">
         <h3 class="heading-leadership margin-bottom-9">Group Information</h3>
-        
-        <div class="frame margin-bottom-9">
-            <div class="element">
-                <p class="text-content">{{ mapgroup.blurb }}</p>
+
+        {% if mapgroup.blurb %}
+            <div class="block margin-bottom-5">
+                <div class="element">
+                    <p class="text-content">{{ mapgroup.blurb }}</p>
+                </div>
             </div>
-        </div>
+        {% endif %}
+
+        {% if user_is_member %}    
+            <div class="block preferences margin-bottom-5">
+                <div class="element">
+                    <p><strong>Preferences</strong></p>
+                    <form method="POST" action="{% url 'mapgroups:preferences' mapgroup.pk mapgroup.slug %}">
+                        {% csrf_token %}
+                        <label>{{ preferences_form.show_real_name }} Share my real name with this group.</label>
+
+                        <script>
+                            document.querySelector('#id_show_real_name').onclick = function() {
+                                this.form.submit();
+                            };
+                        </script>
+                    </form>
+                </div>
+            </div>
+        {% endif %}      
         
         <section class="data-groups">
             <details open class="property">
@@ -68,74 +88,94 @@
             </details>
         </section>
         
-        <section class="data-groups">
-            <details class="property" open>
-                <summary>
-                    <span class="text-wrapper left-items">
-                        <h3 class="text">Shared Items</h3>
-                        <span class="text">30</span>
-                    </span>
-                    <span class="icon-wrap">
-                        <img class="icon-open vector" src="{% static 'mida/components/accordion-block/img/vector-2.svg' %}" alt="Collapse icon" aria-hidden="true" />
-                        <img class="icon-closed expand-icon" src="{% static 'mida/components/accordion-block/img/vector.svg' %}" alt="Expand icon" aria-hidden="true" />
-                    </span>
-                </summary>
-                <div class="overlap" id="accordion-shared-items">
-                    <section class="overlap-group-wrapper">
-                        <div class="overlap-group">
-                            <div class="element-wrapper">
-                                <div class="card-header-contents">
-                                    <img class="polygon" src="img/subtract.svg" alt="Map Bookmarks icon" />
-                                    <h2 class="card-header">Map Bookmarks</h2>
-                                </div>
-                            </div>
-                            <div class="card-contents">
-                                <ul class="list">
-                                    <li>NY Adventurer Recreational Fishing</li>
-                                    <li>Tourism Proposed Boundaries</li>
-                                    <li>Conversationists - shipping lane refrain</li>
-                                    <li>Commercial Fishing</li>
-                                    <li>New Shipping Lane</li>
-                                    <li>M boundaries</li>
-                                    <li>renewed shipping lanes</li>
-                                    <li>Deep Sea Cable -Sanctuary Proposal 2</li>
-                                    <li>Proposal</li>
-                                    <li>The New Deal</li>
-                                    <li>Group 2 Proposed Boundaries</li>
-                                    <li>New hope</li>
-                                </ul>
-                            </div>
-                            
+        {% if shared_items %}
+            {% if mapgroup.is_open or user_is_member or user.is_superuser %}
+                <section class="data-groups">
+                    <details class="property" open>
+                        <summary>
+                            <span class="text-wrapper left-items">
+                                <h3 class="text">Shared Items</h3>
+                            </span>
+                            <span class="icon-wrap">
+                                <img class="icon-open vector" src="{% static 'mida/components/accordion-block/img/vector-2.svg' %}" alt="Collapse icon" aria-hidden="true" />
+                                <img class="icon-closed expand-icon" src="{% static 'mida/components/accordion-block/img/vector.svg' %}" alt="Expand icon" aria-hidden="true" />
+                            </span>
+                        </summary>
+                        
+                        <div class="overlap" id="accordion-shared-items">
+                            {% if shared_items.bookmarks %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <img class="polygon" src="{% static 'mida/components/accordion-block/img/subtract.svg' %}" alt="Map Bookmarks icon" />
+                                                <h2 class="card-header">Map Bookmarks</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.bookmarks %}
+                                                    <li>
+                                                        {% if user_is_member %}
+                                                            <a href="/visualize/#bookmark={{ object.pk }}" target="_blank">{{ object.name }}</a>
+                                                        {% else %}
+                                                            {{ object.name }}
+                                                        {% endif %}
+                                                        {% if object.user == user %}<b>[Yours]</b>{% endif %}
+                                                        {% if user.is_superuser %}
+                                                            <i class="fa fa-info-circle" data-toggle="modal"
+                                                            data-target="#bookmark-audit-modal"
+                                                            data-bookmark_id="{{ object.pk }}"
+                                                            data-bookmark_name="{{ object.name }}"></i>
+                                                        {% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared maps.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+                            {% if shared_items.drawings %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <img class="polygon" src="img/polygon-1.svg" alt="Shapes icon" />
+                                                <h2 class="card-header">Shapes</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.drawings %}
+                                                    <li>{{ object.name }}
+                                                        {% if mapgroup.is_open or user_is_member or user.is_superuser %}
+                                                            {% if object.user == user %}<b>[Yours]</b>{# comment {% else %}[ {{ object.user.username }} ] end_comment #}{% endif %}
+                                                            <i class="fa fa-info-circle" data-toggle="modal"
+                                                                data-target="#drawing-audit-modal"
+                                                                data-drawing_id="{{ object.pk }}"
+                                                                data-drawing_name="{{ object.name }}"
+                                                                data-drawing_owner_id="{{ object.user.pk }}"
+                                                                data-drawing_owner_name="{{ object.user.get_short_name }}"
+                                                                data-drawing_description="{{ object.description }}"
+                                                                data-user_admin_url="{{ user_admin_root_url }}"
+                                                                data-drawing_admin_url="{{ drawing_admin_root_url }}"
+                                                                data-drawing_json="{{ object.geometry_final.geojson }}"></i>
+                                                        {% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared drawings.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}            
                         </div>
-                    </section>
-                    <section class="overlap-group-wrapper">
-                        <div class="overlap-group">
-                            <div class="element-wrapper">
-                                <div class="card-header-contents">
-                                    <img class="polygon" src="img/polygon-1.svg" alt="Shapes icon" />
-                                    <h2 class="card-header">Shapes</h2>
-                                </div>
-                            </div>
-                            <div class="card-contents">
-                                <ul class="list">
-                                    <li>Food Chain <img class="img" src="img/marcodataportal-global-icon-info.svg" alt="Info icon" />
-                                    </li>
-                                    <li>George <img class="img" src="img/marcodataportal-global-icon-info.svg" alt="Info icon" /></li>
-                                    <li>Mr Fenwick <img class="img" src="img/marcodataportal-global-icon-info.svg" alt="Info icon" />
-                                    </li>
-                                    <li>Starfish <img class="img" src="img/marcodataportal-global-icon-info.svg" alt="Info icon" />
-                                    </li>
-                                    <li>The big fish <img class="img" src="img/marcodataportal-global-icon-info.svg" alt="Info icon" />
-                                    </li>
-                                    <li>Turtle <img class="img" src="img/marcodataportal-global-icon-info.svg" alt="Info icon" /></li>
-                                </ul>
-                            </div>
-                            
-                        </div>
-                    </section>
-                    
-                </div>
-            </details>
-        </section>
+                    </details>
+                </section>
+            {% endif %}
+        {% endif %}
     </div>
 </div>
