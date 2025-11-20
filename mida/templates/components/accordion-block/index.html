@@ -171,7 +171,33 @@
                                         </div>
                                     </div>
                                 </section>
-                            {% endif %}            
+                            {% endif %}
+                            {% if shared_items.scenarios %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <img class="polygon" src="img/polygon-1.svg" alt="Shapes icon" />
+                                                <h2 class="card-header">Scenarios</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.scenarios %}
+                                                    <li>
+                                                        {{ object.name }}
+                                                        {% if object.user == user %}<b>[Yours]</b>{% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared scenarios.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+                            
+                            
                         </div>
                     </details>
                 </section>
