@@ -241,8 +241,42 @@
                                     </div>
                                 </section>
                             {% endif %}
-                            
-                            
+                            {% if shared_items.user_imported_layers %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <h2 class="card-header">User-Imported Layers</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.user_imported_layers %}
+                                                    <li>
+                                                        {{ object.name }}
+                                                        {% if object.user == user %}<b>[Yours]</b>{% endif %}
+                                                        {% if mapgroup.is_open or user_is_member or user.is_superuser %}
+                                                            <i class="fa fa-info-circle" data-toggle="modal"
+                                                            data-target="#user-layer-audit-modal"
+                                                            data-userlayer_id="{{ object.pk }}"
+                                                            data-userlayer_name="{{ object.name }}"
+                                                            data-userlayer_owner_id="{{ object.user.pk }}"
+                                                            data-userlayer_owner_name="{{ object.user.get_short_name }}"
+                                                            data-userlayer_description="{{ object.description }}"
+                                                            data-userlayer_user_admin_url="{{ user_admin_root_url }}"
+                                                            data-userlayer_admin_url="{{ user_layer_admin_root_url }}"
+                                                            >
+                                                            </i>
+                                                        {% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared user-imported layers.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
                         </div>
                     </details>
                 </section>
