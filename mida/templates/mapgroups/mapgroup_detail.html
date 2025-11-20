@@ -1,20 +1,92 @@
-{% extends "base.html" %}
+{% extends "cms/section.html" %}
 
-{% load static %}
+{% load static wagtailimages_tags %}
 
 {% block extra_css %}
   {{ block.super }}
-  <link href="{% static 'assets/openlayers/ol.css' %}" rel="stylesheet">
-  <link href="{% static 'mapgroups/css/map_group_details.css' %}" rel="stylesheet">
+  <link href="{% static 'mida/mapgroups/mapgroup_detail.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block page_header %}
-    <a class="btn btn-success" href="{% url 'mapgroups:list' %}">&larr; Groups</a>
+
+    <div class="hero-flex-container header-data-groups">
+        
+        <div class="hero-left group-info">
+            <div class="title-line">
+                <h4>
+                    {% block title %}{{ mapgroup.name }}{% endblock %}
+                </h4>
+            </div>
+
+            {% if mapgroup.is_open or user_is_member or user.is_superuser %}
+
+                <div class="group-info">
+                    <div class="frame-2">
+                    <div class="frame-3">
+                        <img class="icon" src="{% static 'mida/mapgroups/img/property-1-green.svg' %}" alt="Calendar icon" />
+                        <p class="text-wrapper">SINCE: {{ mapgroup.creation_date|date }}</p>
+                    </div>
+                    <div class="frame-3">
+                        <img class="icon" src="{% static 'mida/mapgroups/img/marcodataportal-global-icon-1member-green-1.svg' %}" alt="Owner icon" />
+                            <p class="text-wrapper">OWNED BY: {% if user_is_member %}{{ owner.user_name_for_group }}{% else %}{{ owner.user.get_short_name }}{% endif %}</p>
+                    </div>
+                    <div class="frame-3">
+                        <img class="icon members" src="{% static 'mida/mapgroups/img/marcodataportal-global-icon-members.svg' %}" alt="Members icon" />
+                        <p class="text-wrapper">MEMBERS: {{ sorted_member_list|length }}</p>
+                    </div>
+                    </div>
+                </div>
+            {% endif%}
+
+            {% if user_is_member %}
+                {% if request.user != mapgroup.owner %}
+                  <button type="button" class="button-big" data-toggle="modal" data-target="#rus-leave">Leave group</button>
+                {% endif %}
+
+            {% else %}
+                {% if mapgroup.is_open %}
+                    {# Anonymous users must use GET, otherwise the request will #}
+                    {# be lost in the all the login redirects #}
+                    <form method="{% if request.user.is_anonymous %}GET{% else %}POST{% endif %}" style="display: inline" action="{% url 'mapgroups:join' mapgroup.pk mapgroup.slug %}">
+                        {% csrf_token %}
+                        <button class="button-big" type="submit">Join Group</button>
+                    </form>
+                {% else %}
+                    {% if membership and membership.status == 'Pending' %}
+                      <div class='well'>Your membership request is submitted and up for review.</div>
+                    {% elif membership and membership.status == 'Banned' %}
+                      <div class='well'>You may not join this group.</div>
+                    {% else %}
+                      <form method="POST" style="display: inline" action="{% url 'mapgroups:request-join' mapgroup.pk mapgroup.slug %}">
+                          {% csrf_token %}
+                          <p>Request to join this group.</p>
+                          <button class="button-big" type="submit">Join Group</button>
+                      </form>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+
+            {% if request.user == mapgroup.owner %}
+                <a class="button-big" href="{% url 'mapgroups:edit' mapgroup.pk mapgroup.slug %}">Manage map group</a>
+            {% endif %}
+
+        </div>
+        
+        {% if mapgroup.image_url %}
+            <div class="hero-right">
+                <div class="hero-image-wrap" style="background-image: url('{{ mapgroup.image_url }}');">
+                    <image src="{{ mapgroup.image_url }}" alt="{{ mapgroup.display_name }}" />
+                </div>
+            </div>
+        {% endif %}
+        
+    </div>
+
 {% endblock %}
 
 
 {% block content %}
-  {% include 'mapgroups/mapgroup_detail_content.html' %}
+  {% include 'components/accordion-block/index.html' with mapgroup=mapgroup %}
 {% endblock %}
 
 {% block extra_js %}
