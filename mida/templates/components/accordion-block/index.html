@@ -142,7 +142,7 @@
                                     <div class="overlap-group">
                                         <div class="element-wrapper">
                                             <div class="card-header-contents">
-                                                <img class="polygon" src="img/polygon-1.svg" alt="Shapes icon" />
+                                                <img class="polygon" src="{% static 'mida/components/accordion-block/img/polygon-1.svg' %}" alt="Shapes icon" />
                                                 <h2 class="card-header">Shapes</h2>
                                             </div>
                                         </div>
@@ -177,7 +177,6 @@
                                     <div class="overlap-group">
                                         <div class="element-wrapper">
                                             <div class="card-header-contents">
-                                                <img class="polygon" src="img/polygon-1.svg" alt="Shapes icon" />
                                                 <h2 class="card-header">Scenarios</h2>
                                             </div>
                                         </div>
@@ -196,7 +195,29 @@
                                     </div>
                                 </section>
                             {% endif %}
-                            
+                            {% if shared_items.leaseblock_selections %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <h2 class="card-header">Lease Block Selections</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.leaseblock_selections %}
+                                                    <li>
+                                                        {{ object.name }}
+                                                        {% if object.user == user %}<b>[Yours]</b>{% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared lease block selections.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
                             
                         </div>
                     </details>
