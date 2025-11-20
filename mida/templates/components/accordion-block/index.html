@@ -218,6 +218,30 @@
                                     </div>
                                 </section>
                             {% endif %}
+                            {% if shared_items.windenergysites %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <h2 class="card-header">Wind Energy Sites</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.windenergysites %}
+                                                    <li>
+                                                        {{ object.name }}
+                                                        {% if object.user == user %}<b>[Yours]</b>{% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared wind energy sites.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+                            
                             
                         </div>
                     </details>
