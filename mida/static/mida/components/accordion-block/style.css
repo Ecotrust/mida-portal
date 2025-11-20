@@ -2,6 +2,10 @@
  *  mida-portal/mida/static/mida/components/accordion-block/style.css
  */
 
+.accordion-block .block {
+  display: block;
+}
+
 .accordion-block ul {
   list-style: inside;
 }
@@ -40,6 +44,14 @@
 .accordion-block .element {
   background-color: #ffffff;
   padding: 4rem 2rem;
+}
+
+.accordion-block .preferences .element {
+  padding: 2rem 2rem;
+}
+
+.accordion-block .preferences .element p {
+  color: var(--dark-blue);
 }
 
 .accordion-block .text-content {
@@ -262,7 +274,8 @@
   color: var(--white);
 }
 
-.accordion-block details.property[open] .text-wrapper {
+.accordion-block details.property[open] .text-wrapper,
+.accordion-block details.property[open] .text-wrapper h3 {
   color: var(--white);
 }
 
