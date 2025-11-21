@@ -194,6 +194,35 @@ strong {
  * Buttons
  */
 
+.button {
+    background-color: var(--yellow-bright);
+    border: none;
+    border-radius: 10px;
+    color: var(--white);
+    font-family: var(--btn-oswald-font-family);
+    font-size: .9375em;
+    letter-spacing: var(--btn-oswald-letter-spacing);
+    line-height: var(--btn-oswald-line-height);
+    opacity: 1;
+    padding: .25em .75em;
+    text-transform: uppercase;
+    transition: opacity 0.25s ease-in-out;
+}
+
+.button:hover {
+    color: var(--white);
+    opacity: 0.75;
+    text-decoration: none;
+}
+
+.button-red {
+    background-color: var(--red);
+}
+
+.button-green {
+    background-color: var(--green);
+}
+
 .button-big {
     align-items: center;
     background-color: var(--yellow-bright);
