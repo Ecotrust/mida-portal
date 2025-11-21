@@ -21,6 +21,19 @@
     text-transform: uppercase;
 }
 
+.header-data-groups .title-line .over-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--h7-font-family);
+    font-weight: var(--h7-font-weight);
+    color: var(--dark-blue);
+    font-size: var(--h7-font-size);
+    letter-spacing: var(--h7-letter-spacing);
+    line-height: var(--h7-line-height);
+    font-style: var(--h7-font-style);
+}
+
 .header-data-groups .frame-2 {
     display: flex;
     flex-wrap: wrap;

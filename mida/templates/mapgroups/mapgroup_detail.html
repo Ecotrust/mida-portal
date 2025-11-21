@@ -16,6 +16,15 @@
         <div class="hero-left group-info">
         
             <div class="title-line">
+                <div class="over-title margin-bottom-3">
+                    {% if mapgroup.is_open %}
+                        <img class="icon" src="{% static 'mida/mapgroups/img/marcodataportal-global-icon-members-blue.svg' %}" alt="Members icon" />
+                        <span class="public">Public</span>
+                    {% else %}
+                        <img class="icon" src="{% static 'mida/mapgroups/img/marcodataportal-global-icon-lock.svg' %}" alt="Lock icon" />
+                        <span class="private">Private</span>
+                    {% endif %}
+                </div>
                 <h4>
                     {% block title %}{{ mapgroup.name }}{% endblock %}
                 </h4>
