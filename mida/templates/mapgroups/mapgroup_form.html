@@ -13,63 +13,66 @@
 
 {% block content %}
 
-    <div class="contain">
-        <h2>Create a map group</h2>
-        <div class="group-form-disclaimer">
-            <p><i>*Note: MARCO reserves the right to review and remove Groups and content shared within them due to inactivity, inappropriate content or other misuse.</i></p>
+    <section class="create-map-group">
+        <div class="create-map-group contain">
+            <h2>Create a map group</h2>
+            <div class="group-form-disclaimer">
+                <p><i>*Note: MARCO reserves the right to review and remove Groups and content shared within them due to inactivity, inappropriate content or other misuse.</i></p>
+            </div>
         </div>
-    </div>
-    <div class="bg-light-blue contain contain-padded">
-        <form class="create-group-form" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-grid">
-                <div class="form-row">
-                    <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
-                    <div class="form-field">
-                        {{ form.name }}
-                        {{ form.name.errors }}
-                    </div>
-                </div>
 
-                <div class="form-row">
-                    <label>Group Type</label>
-                    <div class="form-field form-field--toggle">
-                        <div class="toggle-options">
-                            <input id="id_is_open" name="is_open"
-                                    type="checkbox" checked="checked"
-                                    data-toggle="toggle" data-on="Public"
-                                    data-off="Private"
-                                    data-onstyle="success"
-                                    data-offstyle="danger">
+        <div class="bg-light-blue contain contain-padded">
+            <form class="create-group-form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <div class="form-row">
+                        <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                        <div class="form-field">
+                            {{ form.name }}
+                            {{ form.name.errors }}
                         </div>
-                        {{ form.is_open.errors }}
-                        <p class="field-tip">Tip: Anyone can join a public group. Group owners approve private group membership requests.</p>
+                    </div>
+
+                    <div class="form-row">
+                        <label>Group Type</label>
+                        <div class="form-field form-field--toggle">
+                            <div class="toggle-options">
+                                <input id="id_is_open" name="is_open"
+                                        type="checkbox" checked="checked"
+                                        data-toggle="toggle" data-on="Public"
+                                        data-off="Private"
+                                        data-onstyle="success"
+                                        data-offstyle="danger">
+                            </div>
+                            {{ form.is_open.errors }}
+                            <p class="field-tip">Tip: Anyone can join a public group. Group owners approve private group membership requests.</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="{{ form.blurb.id_for_label }}">Description</label>
+                        <div class="form-field">
+                            {{ form.blurb }}
+                            {{ form.blurb.errors }}
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
+                        <div class="form-field">
+                            {{ form.image }}<br>
+                            {{ form.image.errors }}
+                            <p class="field-tip">Tip: the best image sizes are 345x195 or larger.</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="form-row">
-                    <label for="{{ form.blurb.id_for_label }}">Description</label>
-                    <div class="form-field">
-                        {{ form.blurb }}
-                        {{ form.blurb.errors }}
-                    </div>
+                <div class="form-actions">
+                    <button class="button-big" type="submit">Create Group</button>
                 </div>
-
-                <div class="form-row">
-                    <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
-                    <div class="form-field">
-                        {{ form.image }}<br>
-                        {{ form.image.errors }}
-                        <p class="field-tip">Tip: the best image sizes are 345x195 or larger.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button class="button-big" type="submit">Create Group</button>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
+    </section>
 {% endblock %}
 
 {% block extra_js %}
