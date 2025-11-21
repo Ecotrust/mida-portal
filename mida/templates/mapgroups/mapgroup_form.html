@@ -65,7 +65,7 @@
                                 <label for=remove-image-submit class="button button-red remove-image">Remove Image</label>
                             {% endif %}
                             {% if mapgroup.image_url %}
-                                <img src="{{ mapgroup.image_url }}" alt="{{ mapgroup.name }} group image" style="width: 100%">
+                                <img src="{{ mapgroup.image_url }}" class="current-image" alt="current group image"/>
                             {% endif %}
                             {{ form.image }}<br>
                             {{ form.image.errors }}
