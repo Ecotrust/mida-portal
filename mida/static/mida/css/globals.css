@@ -219,14 +219,6 @@ strong {
     text-decoration: none;
 }
 
-.button-red {
-    background-color: var(--red);
-}
-
-.button-green {
-    background-color: var(--green);
-}
-
 .button-big {
     align-items: center;
     background-color: var(--yellow-bright);
@@ -280,4 +272,16 @@ strong {
     background: transparent;
     border: 1px solid var(--dark-blue);
     color: var(--dark-blue);
+}
+
+.button-red {
+    background-color: var(--red);
+}
+
+.button-green {
+    background-color: var(--green);
+}
+
+.button-grey {
+    background-color: var(--gray-medium);
 }
