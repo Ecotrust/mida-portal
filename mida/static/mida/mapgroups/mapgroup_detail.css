@@ -1,0 +1,190 @@
+.header-data-groups .frame,
+.header-data-groups .text,
+.header-data-groups .div,
+.header-data-groups .group-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.header-data-groups .title-line h4 {
+    width: min(39rem, 100%);
+    margin-top: 0;
+    font-family: var(--h4-bold-font-family);
+    font-weight: var(--h4-bold-font-weight);
+    color: var(--teal);
+    font-size: clamp(2rem, 4vw, var(--h4-bold-font-size));
+    letter-spacing: var(--h4-bold-letter-spacing);
+    line-height: clamp(2.5rem, 4.5vw, var(--h4-bold-line-height));
+    font-style: var(--h4-bold-font-style);
+    text-transform: uppercase;
+}
+
+.header-data-groups .frame-2 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: clamp(1rem, 3vw, 2rem);
+}
+
+.header-data-groups .frame-3 {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 1.75rem;
+}
+
+.header-data-groups .marcodataportal,
+.header-data-groups .icon:not(.members) {
+    width: 1.25rem;
+    height: 1.25rem;
+    flex-shrink: 0;
+}
+
+.header-data-groups .img,
+.header-data-groups .icon.members {
+    width: 1.875rem;
+    height: 1.3125rem;
+    flex-shrink: 0;
+}
+
+.header-data-groups .text-wrapper {
+    font-family: var(--h7-font-family);
+    font-weight: var(--h7-font-weight);
+    color: var(--dark-blue);
+    font-size: var(--h7-font-size);
+    letter-spacing: var(--h7-letter-spacing);
+    line-height: var(--h7-line-height);
+    white-space: nowrap;
+    font-style: var(--h7-font-style);
+}
+
+.header-data-groups .button-big {
+    display: inline-flex;
+    width: min(30.625rem, 100%);
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    min-height: 4rem;
+    background-color: var(--yellow-bright);
+    border: none;
+    border-radius: 0.625rem;
+    cursor: pointer;
+    transition: background-color 150ms ease, transform 150ms ease;
+}
+
+.header-data-groups .button-big:hover {
+    background-color: color-mix(in srgb, var(--yellow-bright) 90%, white);
+    transform: translateY(-1px);
+}
+
+.header-data-groups .button-big:focus-visible {
+    outline: 2px solid var(--dark-blue);
+    outline-offset: 3px;
+}
+
+.header-data-groups .sign-in {
+    font-family: var(--btn-oswald-font-family);
+    font-weight: var(--btn-oswald-font-weight);
+    color: var(--white);
+    font-size: var(--btn-oswald-font-size);
+    letter-spacing: var(--btn-oswald-letter-spacing);
+    line-height: var(--btn-oswald-line-height);
+    white-space: nowrap;
+    font-style: var(--btn-oswald-font-style);
+}
+
+.header-data-groups .MARCO-data-portal {
+    width: min(40.3125rem, 100%);
+    height: auto;
+    justify-self: center;
+    border-radius: 1rem;
+    object-fit: cover;
+    box-shadow: 0 20px 60px rgba(15, 36, 62, 0.15);
+}
+
+.header-data-groups .divider {
+    width: 100%;
+    height: 1px;
+    margin-block: clamp(2rem, 4vw, 3rem);
+    background: var(--grey-medium);
+    border: none;
+}
+
+.header-data-groups .breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: clamp(1rem, 3vw, 1.5rem);
+    padding: 0;
+}
+
+.header-data-groups .breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header-data-groups .breadcrumb li {
+    display: flex;
+    align-items: center;
+    font-family: var(--p4-font-family);
+    font-weight: var(--p4-font-weight);
+    font-size: var(--p4-font-size);
+    letter-spacing: var(--p4-letter-spacing);
+    line-height: var(--p4-line-height);
+    font-style: var(--p4-font-style);
+}
+
+.header-data-groups .breadcrumb li:not(:last-child)::after {
+    content: "/";
+    margin-inline: 0.5rem;
+    color: var(--dark-blue);
+    font-family: var(--body-regular-font-family);
+    font-size: var(--body-regular-font-size);
+    line-height: var(--body-regular-line-height);
+}
+
+.header-data-groups .element-item-label {
+    color: var(--grey-dark);
+    white-space: nowrap;
+}
+
+.header-data-groups .last-item-label {
+    color: var(--light-blue);
+    white-space: nowrap;
+}
+
+@media (min-width: 64rem) {
+    .header-data-groups .frame {
+        max-width: 39rem;
+    }
+}
+
+@media (max-width: 48rem) {
+    .header-data-groups .long-island-marine {
+        font-size: clamp(1.75rem, 8vw, 2.25rem);
+        line-height: clamp(2.25rem, 10vw, 2.75rem);
+    }
+
+    .header-data-groups .frame-2 {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .header-data-groups .button-big {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .header-data-groups .button-big {
+        transition: none;
+    }
+}
