@@ -226,6 +226,7 @@ strong {
 .button-big {
     align-items: center;
     background-color: var(--yellow-bright);
+    border: none;
     border-radius: 10px;
     color: var(--white);
     display: flex;
