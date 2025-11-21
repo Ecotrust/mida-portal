@@ -1,0 +1,59 @@
+.create-map-group h2 {
+    color: var(--teal);
+    text-align: center;
+}
+
+.create-map-group .form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.create-map-group .form-row {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.create-map-group .form-row > label {
+    font-family: var(--FAQ-headline-font-family);
+    font-size: var(--FAQ-headline-font-size);
+    line-height: var(--FAQ-headline-line-height);
+    font-weight: var(--FAQ-headline-font-weight);
+    color: var(--dark-blue);
+}
+
+.create-map-group .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.create-map-group .form-field--toggle .toggle-options {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.create-map-group .field-tip {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.create-map-group .form-actions {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.create-map-group .form-actions .button-big {
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .create-map-group .form-row {
+    grid-template-columns: 200px minmax(0, 1fr);
+    align-items: start;
+  }
+}
