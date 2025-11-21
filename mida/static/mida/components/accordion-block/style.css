@@ -156,6 +156,8 @@
 .accordion-block .overlap {
   display: flex;
   background-color: #ffffff;
+  flex-wrap: wrap;
+  gap: 2rem;
   padding: 29px;
   justify-content: space-between;
 }
