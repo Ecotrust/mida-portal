@@ -75,10 +75,7 @@
                         
                         <form method="POST" style="display: inline" action="{% url 'mapgroups:request-join' mapgroup.pk mapgroup.slug %}">
                             {% csrf_token %}
-                            <div class="description">
-                                <p>Request to join this group.</p>
-                            </div>
-                            <button class="button-big" type="submit">Join Group</button>
+                            <button class="button-big" type="submit">Request To Join Group</button>
                         </form>
 
                     {% endif %}
