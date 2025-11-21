@@ -1,6 +1,7 @@
 .mapgroup-form h2 {
     color: var(--teal);
     text-align: center;
+    text-transform: uppercase;
 }
 
 .mapgroup-form .form-grid {
