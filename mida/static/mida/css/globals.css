@@ -250,3 +250,29 @@ strong {
     opacity: 0.75;
     text-decoration: none;
 }
+
+.button-small {
+    align-items: center;
+    background: var(--yellow-bright);
+    border: none;
+    border-radius: 8px;
+    color: var(--white);
+    display: flex;
+    font-family: var(--h7-font-family);
+    font-size: var(--h7-font-size);
+    font-style: var(--h7-font-style);
+    font-weight: var(--h7-font-weight);
+    justify-content: center;
+    letter-spacing: var(--h7-letter-spacing);
+    line-height: var(--h7-line-height);
+    padding: 12px 24px;
+    position: relative;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+.button-small.property-outline {
+    background: transparent;
+    border: 1px solid var(--dark-blue);
+    color: var(--dark-blue);
+}
