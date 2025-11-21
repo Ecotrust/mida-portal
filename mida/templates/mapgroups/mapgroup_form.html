@@ -13,16 +13,17 @@
 
 {% block content %}
 
-    <section class="create-map-group">
-        <div class="create-map-group contain">
-            <h2>Create a map group</h2>
+    <section class="mapgroup-form">
+        
+        <div class="contain">
+            <h2>{% block mapgroup_form_title %}Create a map group{% endblock %}</h2>
             <div class="group-form-disclaimer">
-                <p><i>*Note: MARCO reserves the right to review and remove Groups and content shared within them due to inactivity, inappropriate content or other misuse.</i></p>
+                <p>{% block mapgroup_form_disclaimer %}<i>*Note: MARCO reserves the right to review and remove Groups and content shared within them due to inactivity, inappropriate content or other misuse.</i>{% endblock %}</p>
             </div>
         </div>
 
         <div class="bg-light-blue contain contain-padded">
-            <form class="create-group-form" method="POST" enctype="multipart/form-data">
+            <form class="create-group-form" method="POST" enctype="multipart/form-data" {% block form_action %}{% endblock %}>
                 {% csrf_token %}
                 <div class="form-grid">
                     <div class="form-row">
@@ -60,6 +61,12 @@
                     <div class="form-row">
                         <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
                         <div class="form-field">
+                            {% if mapgroup.image %}
+                                <label for=remove-image-submit class="button button-red remove-image">Remove Image</label>
+                            {% endif %}
+                            {% if mapgroup.image_url %}
+                                <img src="{{ mapgroup.image_url }}" style="width: 100%">
+                            {% endif %}
                             {{ form.image }}<br>
                             {{ form.image.errors }}
                             <p class="field-tip">Tip: the best image sizes are 345x195 or larger.</p>
@@ -68,9 +75,14 @@
                 </div>
 
                 <div class="form-actions">
-                    <button class="button-big" type="submit">Create Group</button>
+                    {% block form_buttons %}
+                        <button class="button-big" type="submit">Create Group</button>
+                    {% endblock %}
                 </div>
             </form>
+
+            {% block additional_forms %}{% endblock %}
+
         </div>
     </section>
 {% endblock %}

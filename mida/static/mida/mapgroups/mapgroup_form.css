@@ -1,9 +1,9 @@
-.create-map-group h2 {
+.mapgroup-form h2 {
     color: var(--teal);
     text-align: center;
 }
 
-.create-map-group .form-grid {
+.mapgroup-form .form-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
@@ -11,12 +11,13 @@
   width: 80%;
 }
 
-.create-map-group .form-row {
+.mapgroup-form .form-row {
   display: grid;
   gap: 0.5rem;
 }
 
-.create-map-group .form-row > label {
+.mapgroup-form .form-row > label,
+.mapgroup-form .delete-form label {
     font-family: var(--FAQ-headline-font-family);
     font-size: var(--FAQ-headline-font-size);
     line-height: var(--FAQ-headline-line-height);
@@ -24,35 +25,53 @@
     color: var(--dark-blue);
 }
 
-.create-map-group .form-field {
+.mapgroup-form .form-field {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  position: relative;
 }
 
-.create-map-group .form-field--toggle .toggle-options {
+.mapgroup-form .form-field--toggle .toggle-options {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
 }
 
-.create-map-group .field-tip {
+.mapgroup-form .field-tip {
   margin: 0;
   font-size: 0.9rem;
   color: #6b7280;
 }
 
-.create-map-group .form-actions {
+.mapgroup-form .form-actions {
   margin-top: 2rem;
   text-align: center;
 }
 
-.create-map-group .form-actions .button-big {
-  margin: 0 auto;
+.mapgroup-form .form-actions .button-big {
+  margin: 1rem auto;
+}
+
+.mapgroup-form .form-actions a {
+    color: var(--dark-blue);
+    text-decoration: underline;
+}
+
+.mapgroup-form .delete-form {
+    background: var(--white);
+    margin: var(--space-9) auto 0 auto;
+    padding: var(--space-7);
+}
+
+.mapgroup-form .remove-image {
+    position: absolute;
+    right: 10px;
+    top: 10px;
 }
 
 @media (min-width: 768px) {
-  .create-map-group .form-row {
+  .mapgroup-form .form-row {
     grid-template-columns: 200px minmax(0, 1fr);
     align-items: start;
   }
