@@ -36,57 +36,86 @@
             </div>
         {% endif %}      
         
-        <section class="data-groups">
-            <details open class="property">
-                <summary>
-                    <span class="text-wrapper left-items">
-                        <h3 class="text">Group Members</h3>
-                        <span class="text">6</span>
-                    </span>
-                    <span class="icon-wrap">
-                        <img class="icon-open vector" src="{% static 'mida/components/accordion-block/img/vector-2.svg' %}" alt="Collapse icon" aria-hidden="true" />
-                        <img class="icon-closed expand-icon" src="{% static 'mida/components/accordion-block/img/vector.svg' %}" alt="Expand icon" aria-hidden="true" />
-                    </span>
-                </summary>
-                <div class="overlap accordion-center" id="accordion-group-members">
-                    <div class="rectangle">
-                        <ul class="frame">
-                            <li class="list-item">
-                                <img class="marcodataportal" src="img/marcodataportal-global-icon-1member-green.svg"
-                                alt="Owner icon" />
-                                <span class="list-text">Madison (owner)</span>
-                            </li>
-                            <li class="list-item">
-                                <img class="marcodataportal" src="img/marcodataportal-global-icon-1member-blue.svg"
-                                alt="Member icon" />
-                                <span class="list-text">Dr. Artie K</span>
-                            </li>
-                            <li class="list-item">
-                                <img class="marcodataportal" src="img/marcodataportal-global-icon-1member-blue.svg"
-                                alt="Member icon" />
-                                <span class="list-text">Kate</span>
-                            </li>
-                            <li class="list-item">
-                                <img class="marcodataportal" src="img/marcodataportal-global-icon-1member-blue.svg"
-                                alt="Member icon" />
-                                <span class="list-text">Katherine</span>
-                            </li>
-                            <li class="list-item">
-                                <img class="marcodataportal" src="img/marcodataportal-global-icon-1member-blue.svg"
-                                alt="Member icon" />
-                                <span class="list-text">Ryan</span>
-                            </li>
-                            <li class="list-item">
-                                <img class="marcodataportal" src="img/marcodataportal-global-icon-1member-blue.svg"
-                                alt="Member icon" />
-                                <span class="list-text">williamsocnwld</span>
-                            </li>
-                        </ul>
+        {% if mapgroup.is_open or user_is_member or user.is_superuser %}
+            <section class="data-groups">
+                <details open class="property">
+                    <summary>
+                        <span class="text-wrapper left-items">
+                            <h3 class="text">Group Members</h3>
+                        </span>
+                        <span class="icon-wrap">
+                            <img class="icon-open vector" src="{% static 'mida/components/accordion-block/img/vector-2.svg' %}" alt="Collapse icon" aria-hidden="true" />
+                            <img class="icon-closed expand-icon" src="{% static 'mida/components/accordion-block/img/vector.svg' %}" alt="Expand icon" aria-hidden="true" />
+                        </span>
+                    </summary>
+                    <div class="overlap accordion-center" id="accordion-group-members">
+                        <div class="rectangle">
+                            <ul class="frame">
+                                {% for member in sorted_member_list %}
+                                    <li class="list-item">
+                                        {% if request.user == member.user %}
+                                            <img class="marcodataportal" src="{% static 'mida/components/accordion-block/img/marcodataportal-global-icon-1member-green.svg' %}" alt="Owner icon" />
+                                            (you{% if request.user == mapgroup.owner %}, owner{% elif member.is_manager %}, manager{% endif %})
+                                        {% else %}
+                                            {% if member.user == mapgroup.owner %}
+                                                <img class="marcodataportal" src="{% static 'mida/components/accordion-block/img/marcodataportal-global-icon-1member-green.svg' %}" alt="Owner icon" /> (owner)
+                                            {% elif member.is_manager %}
+                                                <img class="marcodataportal" src="{% static 'mida/components/accordion-block/img/marcodataportal-global-icon-1member-teal.svg' %}" alt="Manager icon" /> (manager)
+                                            {% else %}
+                                                <img class="marcodataportal" src="{% static 'mida/components/accordion-block/img/marcodataportal-global-icon-1member-blue.svg' %}" alt="Member icon" />
+                                            {% endif %}
+                                        {% endif %}
+                                        
+                                        <span class="list-text">
+                                            {% if membership %}
+                                                {{ member.user_name_for_group }} <!-- Show real name -->
+                                            {% else %}
+                                                {{ member.user.get_short_name }} <!-- Show pref name -->
+                                            {% endif %}
+                                        </span>
+
+                                        {% if not mapgroup_is_open and user_is_manager %}
+                                            {% if not member.is_manager %}
+                                                <button type="button" class="button button-green" data-toggle="modal"
+                                                data-target="#rus-membership-status"
+                                                data-member_id="{{ member.pk }}"
+                                                data-member_name="{{ member.user.get_short_name }}"
+                                                data-act="promote"
+                                                data-title="Confirm Member Promotion"
+                                                >Promote</button>
+                                            {% else %}
+                                                {% if not member.user == mapgroup.owner %}
+                                                <button type="button" class="button" data-toggle="modal"
+                                                    data-target="#rus-membership-status"
+                                                    data-member_id="{{ member.pk }}"
+                                                    data-member_name="{{ member.user.get_short_name }}"
+                                                    data-act="demote"
+                                                    data-title="Confirm Member Demotion"
+                                                >Demote</button>
+                                                {% endif %}
+                                            {% endif %}
+                                            {% if member.user != mapgroup.owner %}
+                                                {% if member.user == request.user %}
+                                                <button type="button" class="button" data-toggle="modal" data-target="#rus-leave">Leave group</button>
+                                                {% else %}
+                                                <button type="button" class="button button-red" data-toggle="modal"
+                                                    data-target="#rus-membership-status"
+                                                    data-member_id="{{ member.pk }}"
+                                                    data-member_name="{{ member.user.get_short_name }}"
+                                                    data-act="remove"
+                                                    data-title="Confirm Member Removal"
+                                                >Remove</button>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>   
                     </div>
-                    
-                </div>
-            </details>
-        </section>
+                </details>
+            </section>
+        {% endif %}
         
         {% if shared_items %}
             {% if mapgroup.is_open or user_is_member or user.is_superuser %}
@@ -282,5 +311,136 @@
                 </section>
             {% endif %}
         {% endif %}
+
+        {% if not mapgroup_is_open and user_is_manager and member_requests|length > 0 %}
+            <h3>Manage Group</h3>
+            <h4>Join Requests</h4>
+            <table class="group-membership-list">
+                {% for member_request in member_requests %}
+                    <tr>
+                        <td>
+                            <img src="{{ member_request.user.userdata.profile_image }}" width="32" height="32" />
+                        </td>
+                        <td>
+                            <b>{{ member_request.user.get_short_name }}</b>
+                        </td>
+                        <td>
+                            <button type="button" class="button" data-toggle="modal"
+                            data-target="#rus-membership-approval"
+                            data-member_id="{{ member_request.pk }}"
+                            data-member_name="{{ member_request.user.get_short_name }}"
+                            data-act="approve"
+                            data-title="Confirm Membership Approval"
+                            >Approve</button>
+                            
+                        </td>
+                        <td>
+                            <button type="button" class="button-red" data-toggle="modal"
+                            data-target="#rus-membership-approval"
+                            data-member_id="{{ member_request.pk }}"
+                            data-member_name="{{ member_request.user.get_short_name }}"
+                            data-act="deny"
+                            data-title="Confirm Membership Rejection"
+                            >Deny</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="bookmark-audit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" id="bookmark-modal-title">
+              Bookmark Details
+          </div>
+          <div class="modal-body" id="bookmark-modal-content">
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="drawing-audit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" id="drawing-modal-title">
+              Drawing Details
+          </div>
+          {% if user.is_superuser %}
+            <div id="drawing-modal-admin-link"></div>
+          {% endif %}
+          <div class="modal-body" id="drawing-modal-content">
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="user-layer-audit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" id="user-layer-modal-title">
+              User-Imported Layer Details
+          </div>
+          {% if user.is_superuser %}
+          <div id="user-layer-modal-admin-link"></div>
+          {% endif %}
+          <div class="modal-body" id="user-layer-modal-content">
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="rus-membership-approval" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" id="approve-title">
+                Confirm Membership Approval
+            </div>
+            <div class="modal-body">
+                Are you sure you want to <span id='approval-act'>approve</span>
+                the membership request from <span id="approve-username"></span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <form method="POST" id="approve-member-button-form" style="display: inline" action="">
+                    {% csrf_token %}
+                    <button class="btn btn-success" type="submit">I'm sure</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="rus-membership-status" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" id="rus-status-title">
+                Confirm Member Removal
+            </div>
+            <div class="modal-body">
+                Are you sure you want to <span id='status-act'>remove</span>
+                member <span id="status-username"></span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <form method="POST" id="status-member-button-form" style="display: inline" action="">
+                    {% csrf_token %}
+                    <button class="btn btn-success rus-submit" type="submit">I'm sure</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
