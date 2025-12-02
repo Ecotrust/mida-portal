@@ -1,0 +1,20 @@
+<!-- mida/templates/ocean_stories/ocean_stories.html -->
+{% extends "cms/section.html" %}
+{% load static wagtailimages_tags %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/components/card-oceanstory/style.css' %}">
+{% endblock extra_css %}
+
+{% block body_class %}data-catalog-page{% endblock %}
+
+{% block content %}
+    <div class="contain">
+        <section class="posts posts-ocean-stories">
+            {% for item in self.get_detail_children.live %}
+                {% include 'components/card-oceanstory/index.html' with item=item %}
+            {% endfor %}
+        </section>
+    </div>
+{% endblock %}
