@@ -1,0 +1,133 @@
+.posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 384px), 1fr));
+    gap: 1.25rem;
+}
+
+.posts-ocean-stories .img-overlay {
+    position: relative;
+}
+
+.posts-ocean-stories .img-overlay:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%);
+    pointer-events: none;
+}
+
+.posts-ocean-stories .img-wrapper {
+    height: auto;
+    width: 100%;
+}
+
+.posts-ocean-stories .card {
+    width: 100%;
+    max-width: 384px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.posts-ocean-stories .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px 40px 46px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    /* don't let content exceed card height */
+}
+
+
+.posts-ocean-stories .body-text {
+    font-family: var(--p3-font-family);
+    font-weight: var(--p3-font-weight);
+    color: var(--white);
+    font-size: var(--p3-font-size);
+    letter-spacing: var(--p3-letter-spacing);
+    line-height: var(--p3-line-height);
+    font-style: var(--p3-font-style);
+    /* start hidden: take no space and be transparent */
+    flex: 0 0 0;
+    height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: opacity 250ms ease-in-out;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+
+.posts-ocean-stories .header {
+    width: 100%;
+    font-family: var(--fira-subtitle-font-family);
+    font-weight: var(--fira-subtitle-font-weight);
+    color: var(--white);
+    font-size: var(--fira-subtitle-font-size);
+    letter-spacing: var(--fira-subtitle-letter-spacing);
+    line-height: var(--fira-subtitle-line-height);
+    font-style: var(--fira-subtitle-font-style);
+}
+
+.posts-ocean-stories .card:hover .content,
+.posts-ocean-stories .card:focus-within .content {
+    padding-bottom: 70px;
+}
+
+.posts-ocean-stories .card:hover .body-text,
+.posts-ocean-stories .card:focus-within .body-text {
+    flex: 1 1 auto;
+    height: auto;
+    opacity: 1;
+    overflow: hidden;
+    -webkit-line-clamp: 8;
+    line-clamp: 8;
+}
+
+.posts-ocean-stories .card .header {
+    flex: 0 0 auto;
+    transform: translateY(0);
+    transition: transform 220ms ease-in-out;
+}
+
+.posts-ocean-stories .card:hover .header,
+.posts-ocean-stories .card:focus-within .header {
+    transform: translateY(-8px);
+}
+
+@media (max-width: 768px) {
+    
+    .posts-ocean-stories .card {
+        margin: 0;
+    }
+    
+    .posts-ocean-stories .card:hover .content,
+    .posts-ocean-stories .card:focus-within .content {
+        padding-bottom: 24px;
+    }
+    
+    .posts-ocean-stories .card:hover .body-text,
+    .posts-ocean-stories .card:focus-within .body-text {
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+    }
+    
+    .posts-ocean-stories .img-wrapper {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .posts-ocean-stories .header,
+    .posts-ocean-stories .body-text {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+}
