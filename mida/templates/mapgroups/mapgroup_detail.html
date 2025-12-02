@@ -11,13 +11,13 @@
 
 {% block page_header %}
 <!-- start page_header -->
-
-    <a class="button-small property-outline" href="{% url 'mapgroups:list'%}">Back to Groups</a>
     
     <div class="hero-flex-container header-data-groups">
         
         <div class="hero-left group-info">
-        
+            
+            <a class="button-small property-outline" href="{% url 'mapgroups:list'%}">Back to Groups</a>
+
             <div class="title-line">
                 <div class="over-title margin-bottom-3">
                     {% if mapgroup.is_open %}
