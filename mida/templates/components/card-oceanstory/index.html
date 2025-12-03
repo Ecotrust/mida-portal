@@ -6,7 +6,7 @@ Template For: Ocean Story template
 {% load static wagtailcore_tags wagtailimages_tags %}
 
 <article class="card">
-    <a href="{{ item.url }}">
+    <a href="{{ item.url }}" aria-label="{{ item.title }}">
 
         {% if item.feature_image %}
             <div class="img-overlay">
