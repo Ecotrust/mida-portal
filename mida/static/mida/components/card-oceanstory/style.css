@@ -25,11 +25,11 @@
 }
 
 .posts-ocean-stories .card {
-    width: 100%;
     max-width: 384px;
     margin: 20px auto;
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .posts-ocean-stories .content {
@@ -42,7 +42,7 @@
     display: flex;
     flex-direction: column;
     max-height: 100%;
-    /* don't let content exceed card height */
+    transition: padding 350ms ease-in-out;
 }
 
 
@@ -54,12 +54,10 @@
     letter-spacing: var(--p3-letter-spacing);
     line-height: var(--p3-line-height);
     font-style: var(--p3-font-style);
-    /* start hidden: take no space and be transparent */
-    flex: 0 0 0;
-    height: 0;
+    max-height: 0;
     opacity: 0;
     overflow: hidden;
-    transition: opacity 250ms ease-in-out;
+    transition: max-height 350ms ease, opacity 300ms ease;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
@@ -79,23 +77,19 @@
 
 .posts-ocean-stories .card:hover .content,
 .posts-ocean-stories .card:focus-within .content {
-    padding-bottom: 70px;
+    padding-bottom: 0;
 }
 
 .posts-ocean-stories .card:hover .body-text,
 .posts-ocean-stories .card:focus-within .body-text {
-    flex: 1 1 auto;
-    height: auto;
+    max-height: 240px;
     opacity: 1;
-    overflow: hidden;
-    -webkit-line-clamp: 8;
-    line-clamp: 8;
 }
 
 .posts-ocean-stories .card .header {
     flex: 0 0 auto;
     transform: translateY(0);
-    transition: transform 220ms ease-in-out;
+    transition: transform 250ms ease;
 }
 
 .posts-ocean-stories .card:hover .header,
@@ -111,23 +105,17 @@
     
     .posts-ocean-stories .card:hover .content,
     .posts-ocean-stories .card:focus-within .content {
-        padding-bottom: 24px;
-    }
-    
-    .posts-ocean-stories .card:hover .body-text,
-    .posts-ocean-stories .card:focus-within .body-text {
-        -webkit-line-clamp: 4;
-        line-clamp: 4;
+        padding-bottom: 0px;
     }
     
     .posts-ocean-stories .img-wrapper {
         height: auto;
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 3 / 4;
     }
 
     .posts-ocean-stories .header,
     .posts-ocean-stories .body-text {
-        font-size: 18px;
-        line-height: 1.4;
+        font-size: 1.125em;
+        line-height: normal;
     }
 }
