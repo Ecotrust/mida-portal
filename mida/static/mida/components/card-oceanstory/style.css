@@ -1,4 +1,4 @@
-.posts {
+.posts-ocean-stories {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 384px), 1fr));
     gap: 1.25rem;
