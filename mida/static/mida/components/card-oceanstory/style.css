@@ -105,7 +105,7 @@
     
     .posts-ocean-stories .card:hover .content,
     .posts-ocean-stories .card:focus-within .content {
-        padding-bottom: 0px;
+        padding-bottom: 0;
     }
     
     .posts-ocean-stories .img-wrapper {
@@ -115,7 +115,7 @@
 
     .posts-ocean-stories .header,
     .posts-ocean-stories .body-text {
-        font-size: 1.125em;
+        font-size: 1.125rem;
         line-height: normal;
     }
 }
