@@ -10,7 +10,14 @@ Template For: Ocean Story template
 
         {% if item.feature_image %}
             <div class="img-overlay">
-                {% image item.feature_image fill-768x1048 class="img-wrapper" alt="{{ item.title }}" %}
+                {% comment %} 
+                <!-- 
+                    This worked yesterday and doesn't today? WTF 
+                    Preferered larger image for retina displays, but using 384x524 for now.
+                --> 
+                {% image item.feature_image fill-768x1048 class="img-wrapper" %} 
+                {% endcomment %}
+                {% image item.feature_image fill-384x524 class="img-wrapper" %}
             </div>
         {% endif %}
 
