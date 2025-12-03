@@ -1,0 +1,34 @@
+<!-- 
+mida/templates/components/card-oceanstory/index.html 
+Template For: Ocean Story template
+-->
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<article class="card">
+    <a href="{{ item.url }}" aria-label="{{ item.title }}">
+
+        {% if item.feature_image %}
+            <div class="img-overlay">
+                {% image item.feature_image fill-768x1048 class="img-wrapper" alt="{{ item.title }}" %}
+            </div>
+        {% endif %}
+
+        <div class="content">
+            
+            {% block heading %}
+                <h2 class="header">{{ item.title }}</h2>
+            {% endblock %}
+
+            {% block text %}
+                {% if item.search_description %}
+                    <p class="body-text">{{ item.search_description|striptags|truncatechars:180 }}</p>
+                {% else %}
+                    <p class="body-text">{{ item.description|striptags|truncatechars:180 }}</p>
+                {% endif %}
+            {% endblock %}
+
+        </div>
+
+    </a>
+</article>
