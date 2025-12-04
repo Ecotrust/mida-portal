@@ -1,3 +1,130 @@
 .ocean-story-hero h1.ocean-story-title {
     color: var(--teal);
 }
+
+/**
+ * MAP
+**/
+div.curtain-container {}
+
+.curtain {
+    position: fixed;
+    width: 100%;
+    background: #84837d;
+    overflow: hidden;
+    z-index: 800;
+}
+
+.clickable {
+    pointer-events: auto;
+}
+
+.ocean-story #map {
+    cursor: inherit;
+    position: relative;
+    top: 50%;
+    width: 100%;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    -o-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+}
+
+.ocean-story #map.full {
+    height: calc(100vh - 50px);
+}
+
+.ocean-story #map.half {
+    height: 40vh;
+}
+
+@-webkit-keyframes bounce {
+    0% {
+        -webkit-transform: translateY(0);
+        opacity: 1;
+    }
+
+    33% {
+        -webkit-transform: translateY(-25%);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+
+    66% {
+        -webkit-transform: translateY(35%);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+}
+
+/* Mozilla Firefox 15 below */
+@-moz-keyframes bounce {
+    0% {
+        -moz-transform: translateY(0);
+        opacity: 1;
+    }
+
+    33% {
+        -moz-transform: translateY(-25%);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+
+    66% {
+        -moz-transform: translateY(35%);
+        opacity: 1;
+    }
+
+    100% {
+        -moz-transform: translateY(0);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+}
+
+/* W3, Opera 12+, Firefox 16+ */
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    33% {
+        transform: translateY(-25%);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+
+    66% {
+        transform: translateY(35%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+}
+
+.legend-well {
+    float: right;
+    width: 200px;
+    margin-top: 84px;
+}
+
+.legend-well.no-headline {
+    margin-top: 18px;
+}
+
+.legend-well>.well {
+    text-align: left;
+    background-color: white;
+    overflow-y: auto;
+    max-height: 400px;
+}
