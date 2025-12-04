@@ -1,13 +1,83 @@
-{% extends "ocean_stories/ocean_story.html" %}
+<!-- mida/templates/ocean_stories/ocean_story.html -->
+{% extends "cms/section.html" %}
+{% load static wagtailimages_tags %}
 
-{% block extra_css %}
+{% comment %} {% block extra_css %}
   <!-- EXTRA CSS!!! -->
   {{ block.super }}
   <link rel="stylesheet" href="/static/portal/ocean_story/css/mida_ocean_story.css" type="text/css">
   <!-- / EXTRA CSS!!! -->
+{% endblock %} {% endcomment %}
+
+{% block extra_css %}
+<!-- start extra_css -->
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/ocean_stories/ocean_story.css' %}" type="text/css">
+    {% include "ocean_stories/extra_css.html" %}
+<!-- end extra_css -->
+{% endblock %}
+
+{% block body_class %}ocean-story{% endblock %}
+
+{% block page_header %}
+
+    <div class="ocean-story-hero hero-flex-container">
+        
+        <div class="hero-left">
+            <div class="title-line">
+                {% if self.hook %}
+                    <h1 class="ocean-story-title">{{ self.hook }}</h1>
+                {% endif %}
+            </div>
+            
+            {% if item.description %}
+                <div class="description">
+                    <p>{{ item.description }}</p>
+                </div>
+            {% endif %}
+
+            <h7>
+                <a class="button-big" href="{{ self.explore_url }}" title="{{ self.explore_title }}" target="_blank">{{ self.explore_title }}</a>
+            </h7>
+        </div>
+        
+        {% if item.feature_image %}
+            <div class="hero-right">
+                <div class="hero-image-wrap" style="background-image: url('{{ item.feature_image.file.url }}');">
+                    {% image item.feature_image fill-520x430 class="feature" alt="{{ item.display_name }}" %}
+                </div>
+            </div>
+        {% endif %}
+        
+    </div>
+
+{% endblock %}
+
+{% block header %}
+    {{ block.super }}
+    <div class="curtain-container">
+        <div class="curtain">
+            {% if MAP_LIBRARY %}
+                <div id="map"></div>
+            {% else %}
+                <div id="ocean-story-map"></div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="contain">
+        {% include "ocean_stories/content.html" %}
+    </div>
+    
 {% endblock %}
 
 
 {% block extra_js %}
-  {{ block.super }}
+<!-- start extra_js -->
+    {{ block.super }}
+    {% include "ocean_stories/extra_js.html" %}
+<!-- end extra_js -->
 {% endblock %}
