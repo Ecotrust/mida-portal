@@ -1,18 +1,11 @@
 <!-- mida/templates/ocean_stories/ocean_story.html -->
 {% extends "cms/section.html" %}
-{% load static wagtailimages_tags %}
-
-{% comment %} {% block extra_css %}
-  <!-- EXTRA CSS!!! -->
-  {{ block.super }}
-  <link rel="stylesheet" href="/static/portal/ocean_story/css/mida_ocean_story.css" type="text/css">
-  <!-- / EXTRA CSS!!! -->
-{% endblock %} {% endcomment %}
+{% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block extra_css %}
 <!-- start extra_css -->
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'mida/ocean_stories/ocean_story.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'mida/ocean_stories/ocean_story.css' %}">
     {% include "ocean_stories/extra_css.html" %}
 <!-- end extra_css -->
 {% endblock %}
@@ -51,19 +44,6 @@
         
     </div>
 
-{% endblock %}
-
-{% block header %}
-    {{ block.super }}
-    <div class="curtain-container">
-        <div class="curtain">
-            {% if MAP_LIBRARY %}
-                <div id="map"></div>
-            {% else %}
-                <div id="ocean-story-map"></div>
-            {% endif %}
-        </div>
-    </div>
 {% endblock %}
 
 {% block content %}
