@@ -48,6 +48,18 @@
 
 {% block content %}
 
+    <div class="contain relative">
+        <div class="curtain-container">
+            <div class="curtain">
+                {% if MAP_LIBRARY %}
+                    <div id="map"></div>
+                {% else %}
+                    <div id="ocean-story-map"></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
     <div class="contain">
         {% include "ocean_stories/content.html" %}
     </div>
