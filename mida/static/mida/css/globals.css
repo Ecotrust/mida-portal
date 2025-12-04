@@ -54,6 +54,9 @@ img {
     margin-top: var(--space-4);
 }
 
+.relative {
+    position: relative;
+}
 
 /**
  * Containers
