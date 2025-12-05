@@ -67,6 +67,44 @@
     padding: 2rem 0;
 }
 
+.ocean-story .content .title {
+    color: var(--dark-blue, #22408F);
+    font-family: var(--h4-font-family);
+    font-size: var(--h4-font-size);
+    font-weight: var(--h4-font-weight);
+    line-height: var(--h4-line-height);
+    letter-spacing: var(--h4-letter-spacing);
+    margin: var(--space-7) 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.ocean-story .content .description {
+    margin: var(--space-7) auto var(--space-9);
+}
+
+.ocean-story .content .description p {
+    color: var(--color-ink, #030B39);
+    font-family: var(--p1-font-family);
+    font-size: var(--p1-font-size);
+    font-weight: var(--p1-font-weight);
+    line-height: var(--p1-line-height);
+    text-align: center;
+}
+
+.ocean-story .content section {
+    margin: var(--space-7) auto;
+}
+
+.ocean-story .content section p {
+    color: var(--grey-dark, #6C6C6C);
+    font-family: var(--p3-font-family);
+    font-size: var(--p3-font-size);
+    font-style: var(--p3-font-style);
+    font-weight: var(--p3-font-weight);
+    line-height: var(--p3-line-height);
+}
+
 .legend-well {
     float: none;
     width: auto;
