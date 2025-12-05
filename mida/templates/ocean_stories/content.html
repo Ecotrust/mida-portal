@@ -1,13 +1,18 @@
 {% load wagtailcore_tags static %}
 <div class="content">
+    <h2 class="title">{{ self.hook }}</h2>
+    <div class="description">{{ self.description|safe }}</div>
+
     {% if self.sections %}
-    {% for section in self.sections.all %}
-    <a class="anchor anchor-clear" id="section-{{forloop.counter}}"></a>
-    {% if section.map_legend %}
-    <section class="has-legend">
-        <div class="legend-well
-                  {# if there's a section title, move the legend in line with the top of the body text #}
-                  {% if not section.title %}no-headline{% endif %}">
+        {% for section in self.sections.all %}
+        
+            <a class="anchor anchor-clear" id="section-{{forloop.counter}}"></a>
+            
+            {% if section.map_legend %}
+                <section class="has-legend">
+                    <div class="legend-well
+                        {# if there's a section title, move the legend in line with the top of the body text #}
+                        {% if not section.title %}no-headline{% endif %}">
         <div class="well">
             <p style="text-align: center">
                 <a target="_blank" href="{{ section.parsed_map_state.url }}" title="View data layers in Marine Planner"><span class="icon icon-marco"></span></a> <strong class="deep-blue">Legend</strong>
