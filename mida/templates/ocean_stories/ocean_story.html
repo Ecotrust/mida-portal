@@ -13,6 +13,7 @@
 {% block body_class %}ocean-story{% endblock %}
 
 {% block page_header %}
+<!-- start page_header -->
 
     <div class="ocean-story-hero hero-flex-container">
         
@@ -37,27 +38,25 @@
         {% endif %}
         
     </div>
-
+<!-- end page_header -->
 {% endblock %}
 
 {% block content %}
-
-    <div class="contain relative">
-        <div class="curtain-container">
-            <div class="curtain">
-                {% if MAP_LIBRARY %}
-                    <div id="map"></div>
-                {% else %}
-                    <div id="ocean-story-map"></div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
-
+<!-- start content -->
     <div class="contain">
+        
+        <div class="curtain">
+            {% if MAP_LIBRARY %}
+                <div id="map"></div>
+            {% else %}
+                <div id="ocean-story-map"></div>
+            {% endif %}
+        </div>
+
         {% include "ocean_stories/content.html" %}
+        
     </div>
-    
+<!-- end content -->
 {% endblock %}
 
 
