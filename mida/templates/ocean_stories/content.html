@@ -1,7 +1,6 @@
 {% load wagtailcore_tags static %}
 <div class="content">
   <link rel="stylesheet" href="{% static 'visualize/css/legends.css' %}" />
-  <script src="{% static 'jquery/dist/jquery.js' %}"></script>
   {% if self.sections %}
       {% for section in self.sections.all %}
           <a class="anchor anchor-clear" id="section-{{forloop.counter}}"></a>
