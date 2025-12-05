@@ -5,9 +5,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'assets/openlayers/ol8/ol.css' %}">
   {% endif %}
 
-  {% if MAP_LIBRARY != 'ol2' %}
+  {% comment %} {% if MAP_LIBRARY != 'ol2' %}
     <link rel="stylesheet" href="{% static 'portal/ocean_story/css/ocean_story.css' %}" type="text/css">
-  {% endif %}
+  {% endif %} {% endcomment %}
 
 {% else %}
   <link rel="stylesheet" href="{% static 'ol3-unofficial/ol.css' %}" />
