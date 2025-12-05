@@ -1,6 +1,22 @@
+.ocean-story-hero .hero-left {
+    align-self: center;
+}
+
+.ocean-story-hero .title-line {
+    margin: 0 0 2rem;
+}
+
 .ocean-story-hero h1.ocean-story-title {
     color: var(--teal);
+    font-size: var(--h3-font-size-fluid);
+    line-height: var(--h3-line-height-fluid);
+    margin-top: 0;
 }
+
+.ocean-story-hero .button-big {
+    padding: 1rem clamp(1rem, 3vw, 4rem);
+}
+
 
 /**
  * MAP
@@ -36,6 +52,37 @@
 .ocean-story #map.half {
     height: 40vh;
 }
+
+
+/**
+ * Content
+**/
+
+.legend-well {
+    float: right;
+    width: 200px;
+    margin-top: 84px;
+}
+
+.legend-well.no-headline {
+    margin-top: 18px;
+}
+
+.legend-well>.well {
+    text-align: left;
+    background-color: white;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.ocean-story .anchor-clear {
+    clear: right;
+}
+
+.legend-well .legend-header {
+    text-align: center;
+}
+
 
 @-webkit-keyframes bounce {
     0% {
@@ -109,21 +156,4 @@
         padding-bottom: 12px;
         opacity: 1;
     }
-}
-
-.legend-well {
-    float: right;
-    width: 200px;
-    margin-top: 84px;
-}
-
-.legend-well.no-headline {
-    margin-top: 18px;
-}
-
-.legend-well>.well {
-    text-align: left;
-    background-color: white;
-    overflow-y: auto;
-    max-height: 400px;
 }

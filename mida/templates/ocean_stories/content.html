@@ -4,7 +4,7 @@
   <script src="{% static 'jquery/dist/jquery.js' %}"></script>
   {% if self.sections %}
       {% for section in self.sections.all %}
-          <a style="clear:right" class="anchor" id="section-{{forloop.counter}}"></a>
+          <a class="anchor anchor-clear" id="section-{{forloop.counter}}"></a>
           {% if section.map_legend %}
           <section class="has-legend">
               <div class="legend-well
