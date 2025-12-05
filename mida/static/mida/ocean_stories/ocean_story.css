@@ -105,29 +105,34 @@
     line-height: var(--p3-line-height);
 }
 
-.legend-well {
+
+/**
+ * Content - Legends
+**/
+
+.ocean-story .legend-well {
     float: none;
     width: auto;
     margin: var(--space-7) 0;
 }
 
 @media (min-width: 64rem) {
-    .legend-well {
+    .ocean-story .legend-well {
         float: right;
-        width: 18rem;
+        width: 35%;
         margin-top: var(--space-8);
         margin-left: var(--space-7);
     }
 }
 
-.legend-well.no-headline {
+.ocean-story .legend-well.no-headline {
     margin-top: var(--space-5);
 }
 
-.legend-well > .well {
-    background-color: var(--white);
+.ocean-story .legend-well > .well {
+    background-color: var(--grey-light, #f5f6f6);
     border-radius: var(--radius-md);
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: none;
     box-shadow: var(--shadow);
     padding: var(--space-5);
     text-align: left;
@@ -135,7 +140,7 @@
     overflow-y: auto;
 }
 
-.legend-well .legend-header {
+.ocean-story .legend-well .legend-header {
     text-align: center;
     font-family: var(--fira-subtitle-font-family);
     font-size: var(--fira-subtitle-font-size-fluid);
@@ -145,7 +150,7 @@
     margin-bottom: var(--space-4);
 }
 
-.legend-well .font-condensed {
+.ocean-story .legend-well .font-condensed {
     font-family: var(--p3-font-family);
     font-size: var(--fs-sm);
     color: var(--color-ink);
