@@ -22,22 +22,16 @@
                     <h1 class="ocean-story-title">{{ self.hook }}</h1>
                 {% endif %}
             </div>
-            
-            {% if item.description %}
-                <div class="description">
-                    <p>{{ item.description }}</p>
-                </div>
-            {% endif %}
 
             <h7>
                 <a class="button-big" href="{{ self.explore_url }}" title="{{ self.explore_title }}" target="_blank">{{ self.explore_title }}</a>
             </h7>
         </div>
         
-        {% if item.feature_image %}
+        {% if self.feature_image %}
             <div class="hero-right">
-                <div class="hero-image-wrap" style="background-image: url('{{ item.feature_image.file.url }}');">
-                    {% image item.feature_image fill-520x430 class="feature" alt="{{ item.display_name }}" %}
+                <div class="hero-image-wrap" style="background-image: url('{{ self.feature_image.file.url }}');">
+                    {% image self.feature_image fill-520x430 class="feature" alt="{{ self.display_name }}" %}
                 </div>
             </div>
         {% endif %}
