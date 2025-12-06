@@ -18,6 +18,13 @@
 }
 
 
+.ocean-story .ocean-story-pagination {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
 /**
  * MAP
 **/
