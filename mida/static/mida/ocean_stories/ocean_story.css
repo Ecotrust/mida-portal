@@ -92,10 +92,6 @@
     text-align: center;
 }
 
-.ocean-story .content section {
-    margin: var(--space-7) auto;
-}
-
 .ocean-story .content section p {
     color: var(--grey-dark, #6C6C6C);
     font-family: var(--p3-font-family);
@@ -117,12 +113,27 @@
 .ocean-story .content h3,
 .ocean-story .content b {
     color: var(--dark-blue, #22408F);
+    display: block;
     font-family: var(--fira-subtitle-font-family);
     font-size: var(--fira-subtitle-font-size);
     font-weight: var(--fira-subtitle-font-weight);
     line-height: var(--fira-subtitle-line-height);
+    margin: var(--space-7) auto var(--space-5);
 }
 
+.ocean-story .content section {
+    /* Flex .section-body and .legend-well */
+    display: flex;
+    margin: var(--space-7) auto;
+}
+
+.ocean-story .content .has-legend {
+    flex-direction: row-reverse;
+}
+
+.ocean-story .content .section-body {
+    flex: 1;
+}
 
 /**
  * Content - Legends
@@ -136,8 +147,7 @@
 
 @media (min-width: 64rem) {
     .ocean-story .legend-well {
-        float: right;
-        width: 35%;
+        flex: .5;
         margin-top: var(--space-8);
         margin-left: var(--space-7);
     }

@@ -202,8 +202,8 @@
 
                         {% if section.media_position == 'left' %}            
                             {% if section.media_image or section.media_embed_url %}
-                                <div class="story-media-left thumbnail">
-                                    {% include "portal/components/media.html" with item=section only %}
+                                <div class="story-media-leftstory-media-right thumbnail">
+                                    {% include "ocean_stories/include_media.html" with item=section only %}
                                 </div>
                             {% endif %}
                         {% endif %}
@@ -211,7 +211,7 @@
                         {% if section.media_position == 'right' %}
                             {% if section.media_image or section.media_embed_url %}
                                 <div class="story-media-right thumbnail">
-                                    {% include "portal/components/media.html" with item=section only %}
+                                    {% include "ocean_stories/include_media.html" with item=section only %}
                                 </div>
                             {% endif %}
                         {% endif %}
@@ -229,7 +229,7 @@
                         {% if section.media_position == 'full' %}
                             {% if section.media_image or section.media_embed_url %}
                                 <div class="media-full">
-                                    {% include "portal/components/media.html" with item=section only %}
+                                    {% include "ocean_stories/include_media.html" with item=section only %}
                                 </div>
                             {% endif %}
                         {% endif %}
