@@ -110,6 +110,10 @@
     margin: var(--space-5) 0;
 }
 
+.ocean-story .content h2:empty {
+    display: none;
+}
+
 .ocean-story .content h3,
 .ocean-story .content b {
     color: var(--dark-blue, #22408F);
