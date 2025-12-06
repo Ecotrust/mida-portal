@@ -55,7 +55,7 @@
 }
 
 .ocean-story #map.half {
-    height: clamp(20rem, 45vh, 28rem);
+    height: 384px;
 }
 
 
@@ -103,6 +103,24 @@
     font-style: var(--p3-font-style);
     font-weight: var(--p3-font-weight);
     line-height: var(--p3-line-height);
+}
+
+.ocean-story .content h2 {
+    color: var(--color-ink, #030B39);
+    font-family: var(--h4-font-family);
+    font-size: var(--h4-font-size);
+    font-weight: var(--h4-font-weight);
+    line-height: var(--h4-line-height);
+    margin: var(--space-5) 0;
+}
+
+.ocean-story .content h3,
+.ocean-story .content b {
+    color: var(--dark-blue, #22408F);
+    font-family: var(--fira-subtitle-font-family);
+    font-size: var(--fira-subtitle-font-size);
+    font-weight: var(--fira-subtitle-font-weight);
+    line-height: var(--fira-subtitle-line-height);
 }
 
 
