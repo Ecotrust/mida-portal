@@ -26,7 +26,6 @@
     position: sticky;
     top: 0;
     width: 100%;
-    height: clamp(22rem, 60vh, 34rem);
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), transparent), var(--grey-light);
     border-radius: var(--radius-lg);
     overflow: hidden;
@@ -144,21 +143,19 @@
 **/
 
 .ocean-story .legend-well {
+    flex: 1;
     float: none;
-    width: auto;
     margin: var(--space-7) 0;
 }
 
 @media (min-width: 64rem) {
     .ocean-story .legend-well {
         flex: .5;
-        margin-top: var(--space-8);
-        margin-left: var(--space-7);
     }
 }
 
 .ocean-story .legend-well.no-headline {
-    margin-top: var(--space-5);
+    margin-top: 0;
 }
 
 .ocean-story .legend-well > .well {
@@ -189,6 +186,15 @@
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     padding-top: var(--space-3);
     margin-top: var(--space-3);
+}
+
+
+/**
+ * Content - Media
+**/
+
+.ocean-story .media-full {
+    display: block;
 }
 
 
