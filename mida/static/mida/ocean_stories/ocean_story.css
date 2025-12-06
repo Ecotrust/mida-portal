@@ -1,3 +1,16 @@
+/**
+ * Page customizations
+**/
+
+.ocean-story .contain:first-of-type {
+    margin-bottom: 0;
+}
+
+
+/**
+ * Hero
+**/
+
 .ocean-story-hero .hero-left {
     align-self: center;
 }
@@ -18,10 +31,39 @@
 }
 
 
-.ocean-story .ocean-story-pagination {
+/**
+ * Pagination
+**/
+
+.ocean-story-pagination {
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+.ocean-story-pagination a {
+    align-items: center;
+    background: var(--green);
+    color: var(--white, #FFF);
+    display: flex;
+    font-family: var(--h7-font-family);
+    font-size: var(--h7-font-size);
+    font-weight: var(--h7-font-weight);
+    justify-content: space-around;
+    line-height: var(--h7-line-height);
+    letter-spacing: 0.9px;
+    overflow: hidden;
+    padding: 1rem .25rem;
+    text-overflow: ellipsis;
+    width: 120px;
+}
+
+.ocean-story-pagination .next-page {
+    border-radius: 8px 0 0 8px;
+}
+
+.ocean-story-pagination .previous-page {
+    border-radius: 0 8px 8px 0;
 }
 
 
@@ -134,6 +176,7 @@
 .ocean-story .content section {
     /* Flex .section-body and .legend-well */
     display: flex;
+    gap: .5rem;
     margin: var(--space-7) auto;
 }
 
@@ -169,7 +212,7 @@
     background-color: var(--grey-light, #f5f6f6);
     border-radius: var(--radius-md);
     border: none;
-    box-shadow: var(--shadow);
+    box-shadow: none;
     padding: var(--space-5);
     text-align: left;
     max-height: clamp(18rem, 40vh, 25rem);
@@ -193,6 +236,11 @@
     border-top: 1px solid rgba(0, 0, 0, 0.08);
     padding-top: var(--space-3);
     margin-top: var(--space-3);
+}
+
+/* Padding for legend tables */
+.ocean-story td {
+    padding: 0 5px 0px 0;
 }
 
 
