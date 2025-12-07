@@ -230,7 +230,6 @@
                         {% if section.media_position == 'full' %}
                             {% if section.media_image or section.media_embed_url %}
                                 <div class="media-full">
-                                    <h1> Full </h1>
                                     {% include "ocean_stories/include_media.html" with item=section only %}
                                 </div>
                             {% endif %}
