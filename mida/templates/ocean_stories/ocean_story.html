@@ -1,13 +1,93 @@
-{% extends "ocean_stories/ocean_story.html" %}
+<!-- mida/templates/ocean_stories/ocean_story.html -->
+{% extends "cms/section.html" %}
+{% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block extra_css %}
-  <!-- EXTRA CSS!!! -->
-  {{ block.super }}
-  <link rel="stylesheet" href="/static/portal/ocean_story/css/mida_ocean_story.css" type="text/css">
-  <!-- / EXTRA CSS!!! -->
+<!-- start extra_css -->
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/ocean_stories/ocean_story.css' %}">
+    <link rel="stylesheet" href="{% static 'visualize/css/legends.css' %}" />
+    {% include "ocean_stories/extra_css.html" %}
+<!-- end extra_css -->
+{% endblock %}
+
+{% block body_class %}ocean-story{% endblock %}
+
+{% block page_header %}
+<!-- start page_header -->
+
+    <div class="ocean-story-hero hero-flex-container">
+        
+        <div class="hero-left">
+            <div class="title-line">
+                {% if self.hook %}
+                    <h1 class="ocean-story-title">{{ self.hook }}</h1>
+                {% endif %}
+            </div>
+
+            <h7>
+                <a class="button-big" href="{{ self.explore_url }}" title="{{ self.explore_title }}" target="_blank">{{ self.explore_title }}</a>
+            </h7>
+        </div>
+        
+        {% if self.feature_image %}
+            <div class="hero-right">
+                <div class="hero-image-wrap" style="background-image: url('{{ self.feature_image.file.url }}');">
+                    {% image self.feature_image fill-520x430 class="feature" alt="{{ self.display_name }}" %}
+                </div>
+            </div>
+        {% endif %}
+        
+    </div>
+<!-- end page_header -->
+{% endblock %}
+
+{% block content %}
+<!-- start content -->
+
+    <div class="ocean-story-pagination">
+        {% with page=self.os_prev_sibling %}
+            {% if page %}
+                <a class="previous-page" href="{% pageurl page %}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4.4442 10.7804L13.3445 19.6805C13.5503 19.8865 13.8251 20 14.1181 20C14.4111 20 14.6859 19.8865 14.8918 19.6805L15.5472 19.0252C15.9737 18.5982 15.9737 17.9042 15.5472 17.4779L8.07344 10.0041L15.5555 2.52209C15.7613 2.31608 15.875 2.04145 15.875 1.7486C15.875 1.45544 15.7613 1.1808 15.5555 0.974627L14.9 0.31951C14.694 0.113495 14.4194 1.90735e-06 14.1264 1.90735e-06C13.8334 1.90735e-06 13.5586 0.113495 13.3527 0.31951L4.4442 9.22773C4.23786 9.4344 4.12453 9.71033 4.12518 10.0037C4.12453 10.2981 4.23786 10.5739 4.4442 10.7804Z" fill="#FFA400"/>
+                    </svg>
+                    Previous
+                </a>
+            {% endif %}
+        {% endwith %}
+        {% with page=self.os_next_sibling %}
+            {% if page %}
+                <a class="next-page" href="{% pageurl page %}">
+                    Next
+                    <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="12" height="20" viewBox="0 0 12 20" fill="none">
+                        <path d="M11.4308 9.2196L2.53055 0.31951C2.3247 0.113495 2.0499 0 1.7569 0C1.46389 0 1.1891 0.113495 0.983244 0.31951L0.327802 0.974789C-0.0986982 1.40178 -0.0986982 2.09576 0.327802 2.52209L7.80156 9.99585L0.31951 17.4779C0.113658 17.6839 0 17.9586 0 18.2514C0 18.5446 0.113658 18.8192 0.31951 19.0254L0.974951 19.6805C1.18097 19.8865 1.4556 20 1.7486 20C2.04161 20 2.3164 19.8865 2.52226 19.6805L11.4308 10.7723C11.6371 10.5656 11.7505 10.2897 11.7498 9.99634C11.7505 9.70187 11.6371 9.4261 11.4308 9.2196Z" fill="#FFA400"/>
+                    </svg>
+                </a>
+            {% endif %}
+        {% endwith %}
+    </div>
+
+    <div class="contain">
+        
+        <div class="curtain">
+            {% if MAP_LIBRARY %}
+                <div id="map"></div>
+            {% else %}
+                <div id="ocean-story-map"></div>
+            {% endif %}
+        </div>
+
+        {% include "ocean_stories/content.html" %}
+
+    </div>
+<!-- end content -->
 {% endblock %}
 
 
 {% block extra_js %}
-  {{ block.super }}
+<!-- start extra_js -->
+    {{ block.super }}
+    {% include "ocean_stories/extra_js.html" %}
+<!-- end extra_js -->
 {% endblock %}
