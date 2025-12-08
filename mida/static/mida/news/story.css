@@ -1,0 +1,13 @@
+.story .hero-flex-container {
+    align-items: center;
+}
+
+.story .story-title {
+    font-family: var(--h4-bold-font-family);
+    font-weight: var(--h4-bold-font-weight);
+    color: var(--teal);
+    font-size: var(--h4-bold-font-size);
+    letter-spacing: var(--h4-bold-letter-spacing);
+    line-height: var(--h4-bold-line-height);
+    font-style: var(--h4-bold-font-style);
+}
