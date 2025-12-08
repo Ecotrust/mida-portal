@@ -22,6 +22,24 @@
                     {% block title %}{{ self.title }}{% endblock %}
                 </h1>
             </div>
+
+            <div class="share-section">
+                <p class="share-text">SHARE THIS POST:</p>
+
+                <div class="share-icons">
+                    {% load social_share %}
+
+                    {% post_to_facebook object_or_url %}
+
+                    {% post_to_twitter "http://portal.midatlanticocean.org{{ self.url }} - Mid-Atlantic Ocean Data Portal" %}
+
+                    <a class="fa-stack fa-lg"
+                    href="mailto:?subject={{self.title}}%20From%20Mid-Atlantic%20Ocean%20Data%20Portal"
+                    target="_blank" title="Email">
+                        <img class="share-icon" src="{% static 'mida/news/img/marcodataportal-global-icon-share-email-1.svg' %}" alt="Email icon" />
+                    </a>
+                </div>
+            </div>
         </div>
         
         {% if self.feature_image %}

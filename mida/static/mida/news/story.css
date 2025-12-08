@@ -11,3 +11,52 @@
     line-height: var(--h4-bold-line-height);
     font-style: var(--h4-bold-font-style);
 }
+
+.story .share-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.story .share-text {
+    font-family: var(--h7-font-family);
+    font-weight: var(--h7-font-weight);
+    color: var(--dark-blue);
+    font-size: var(--h7-font-size);
+    letter-spacing: var(--h7-letter-spacing);
+    line-height: var(--h7-line-height);
+    font-style: var(--h7-font-style);
+}
+
+.story .share-icons {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.story .share-icon,
+.story .fa-stack {
+    width: 24px;
+    line-height: 24px;
+    height: 24px;
+}
+
+.story .fa {
+    background: transparent;
+    font-size: 24px;
+}
+
+.story .fa-circle:before {
+    border: 1px solid var(--dark-blue);
+    border-radius: 50%;
+    content: '';
+    display: block;
+    height: 24px;
+    width: 24px;
+}
+
+.story .fab {
+    color: var(--dark-blue);
+    font-size: 12px;
+    line-height: 24px;
+}
