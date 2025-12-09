@@ -1,5 +1,5 @@
 {% extends "cms/section.html" %}
-{% load static %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block extra_css %}
     {{ block.super }}
@@ -8,37 +8,54 @@
 
 {% block content %}
     <div class="bg-light-blue contain contain-padded">
-        <section class="posts">
+        <section class="calendar-grid" aria-label="Upcoming events">
             {% for item in self.events %}
-                <article class="event">
-                    <a href="#" class="button-small"><span class="text-wrapper">LEARN MORE</span></a>
-                    <div class="frame-4">
-                        <div class="event-details">
-                        <div class="frame-2">
-                            <img class="marcodataportal" src="img/subtract.svg" alt="Location icon" />
-                            <span class="text-wrapper-2">LOCATION</span>
+                <article class="event-card">
+                    {% if item.feature_image %}
+                        <a class="event-card__media" href="{{ item.url }}">
+                            {% image item.feature_image fill-640x420 class="event-card__image" %}
+                        </a>
+                    {% endif %}
+
+                    <div class="event-card__body">
+                        <div class="event-card__meta">
+                            {% if item.location %}
+                                <span class="event-chip">{{ item.location }}</span>
+                            {% endif %}
+                            {% if item.event_date %}
+                                <time class="event-chip" datetime="{{ item.event_date|date:'c' }}">
+                                    {{ item.event_date|date:"F j, Y" }}
+                                </time>
+                            {% endif %}
+                            {% if item.event_type %}
+                                <span class="event-tag">{{ item.event_type }}</span>
+                            {% else %}
+                                <span class="event-tag">Event</span>
+                            {% endif %}
                         </div>
-                        <div class="frame-3">
-                            <img class="img" src="img/property-1-green.svg" alt="Calendar icon" />
-                            <span class="text-wrapper-2">JULY 16</span>
-                        </div>
-                        </div>
-                        <h2 class="event-title">2024 State of the Science Workshop</h2>
-                        <p class="event-description">
-                        On behalf of the Offshore Wind Environmental Technical Working Group (E-TWG), the New York State Energy
-                        Resource and Development Authority (NYSERDA) is pleased to announce that the next State of the Science on
-                        Offshore Wind Energy, Wildlife, and Fisheries…
-                        </p>
-                    </div>
-                    <img class="event-image" src="img/marcodataportal-eventsandwebinars-image02-1.png" alt="Event image" />
-                    <div class="tag">
-                        <div class="overlap-group">
-                        <span class="text-wrapper-4">Event</span>
-                        <img class="tag-icon" src="img/marcodataportal-eventsandwebinars-icon-event-1.svg" alt="Event icon" />
+
+                        <h3 class="event-card__title">
+                            <a href="{{ item.url }}">{{ item.title }}</a>
+                        </h3>
+
+                        {% if item.search_description or item.description %}
+                            <p class="event-card__excerpt">
+                                {% if item.search_description %}
+                                    {{ item.search_description|striptags }}
+                                {% else %}
+                                    {{ item.description|striptags }}
+                                {% endif %}
+                            </p>
+                        {% endif %}
+
+                        <div class="event-card__actions">
+                            <a class="button-ghost" href="{{ item.url }}">Learn more</a>
                         </div>
                     </div>
                 </article>
+            {% empty %}
+                <p>No upcoming events right now.</p>
             {% endfor %}
         </section>
-    </div> 
+    </div>
 {% endblock %}
