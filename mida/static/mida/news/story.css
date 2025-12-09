@@ -109,3 +109,39 @@
     font-weight: var(--p3-font-weight);
     line-height: var(--p3-line-height);
 }
+
+
+/**
+ * Pagination
+**/
+
+.story-pagination {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.story-pagination a {
+    align-items: center;
+    background: var(--green);
+    color: var(--white, #FFF);
+    display: flex;
+    font-family: var(--h7-font-family);
+    font-size: var(--h7-font-size);
+    font-weight: var(--h7-font-weight);
+    justify-content: space-around;
+    line-height: var(--h7-line-height);
+    letter-spacing: 0.9px;
+    overflow: hidden;
+    padding: 1rem .25rem;
+    text-overflow: ellipsis;
+    width: 120px;
+}
+
+.story-pagination .next-page {
+    border-radius: 8px 0 0 8px;
+}
+
+.story-pagination .previous-page {
+    border-radius: 0 8px 8px 0;
+}
