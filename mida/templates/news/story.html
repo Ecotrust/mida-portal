@@ -83,33 +83,27 @@
     {% endif %}
 
     <div class="contain">
-
-        {% if self.description %}
-            <div class="description">{{ self.description|anchored_richtext }}</div>
-        {% endif %}
-        
         <article class="content">
 
-            {% if self.story_sections %}
+            {% if self.description %}
+                <div class="description">{{ self.description|anchored_richtext }}</div>
+            {% endif %}
 
+            {% if self.story_sections %}
                 {% for section in self.story_sections.all %}
 
                     <a class="anchor" id="section-{{ forloop.counter }}"></a>
 
-                    <section>
-                        
+                    <section>   
                         <h2 class="section-header">{{ section.header }}</h2>
 
                         <div class="section-body {{ section.media_position }}">
-                        
                             {% if section.media_image or section.media_embed_url %}
-                                
                                 <div class="section-media">
-                                
                                     {% if section.media_image %}
-                                
+
                                         {% image section.media_image fill-1060x600 %}
-                                    
+    
                                     {% elif section.media_embed_url %}
                                 
                                         <div class="embed-responsive">
@@ -121,9 +115,7 @@
                                     {% if section.media_caption %}
                                         <div class="caption">{{section.media_caption}}</div>
                                     {% endif %}
-
                                 </div>
-
                             {% endif %}
 
                             <div class="section-body-content">
@@ -131,16 +123,10 @@
                                     {{ section.body|anchored_richtext }}
                                 {% endblock %}
                             </div>
-
                         </div>
-
                     </section>
-
                 {% endfor %}
             {% endif %}
-
         </article>
-
     </div>
-
 {% endblock %}
