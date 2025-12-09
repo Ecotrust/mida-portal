@@ -1,0 +1,44 @@
+{% extends "cms/section.html" %}
+{% load static %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/calendar/calendar.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="bg-light-blue contain contain-padded">
+        <section class="posts">
+            {% for item in self.events %}
+                <article class="event">
+                    <a href="#" class="button-small"><span class="text-wrapper">LEARN MORE</span></a>
+                    <div class="frame-4">
+                        <div class="event-details">
+                        <div class="frame-2">
+                            <img class="marcodataportal" src="img/subtract.svg" alt="Location icon" />
+                            <span class="text-wrapper-2">LOCATION</span>
+                        </div>
+                        <div class="frame-3">
+                            <img class="img" src="img/property-1-green.svg" alt="Calendar icon" />
+                            <span class="text-wrapper-2">JULY 16</span>
+                        </div>
+                        </div>
+                        <h2 class="event-title">2024 State of the Science Workshop</h2>
+                        <p class="event-description">
+                        On behalf of the Offshore Wind Environmental Technical Working Group (E-TWG), the New York State Energy
+                        Resource and Development Authority (NYSERDA) is pleased to announce that the next State of the Science on
+                        Offshore Wind Energy, Wildlife, and Fisheries…
+                        </p>
+                    </div>
+                    <img class="event-image" src="img/marcodataportal-eventsandwebinars-image02-1.png" alt="Event image" />
+                    <div class="tag">
+                        <div class="overlap-group">
+                        <span class="text-wrapper-4">Event</span>
+                        <img class="tag-icon" src="img/marcodataportal-eventsandwebinars-icon-event-1.svg" alt="Event icon" />
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </section>
+    </div> 
+{% endblock %}
