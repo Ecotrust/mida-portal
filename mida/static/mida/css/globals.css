@@ -196,6 +196,26 @@ strong {
     font-weight: bold;
 }
 
+.content ul {
+    list-style-type: disc;
+}
+
+.content ol {
+    list-style-type: decimal;
+}
+
+.content ol, 
+.content ul {
+    padding-left: 1.5em;
+    margin: var(--space-5) 0;
+    font: inherit;
+}
+
+.content li {
+    margin-bottom: var(--space-5);
+    padding-left: .5em;
+}
+
 
 /**
  * Buttons
