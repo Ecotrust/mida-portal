@@ -129,7 +129,7 @@
     gap: .5rem;
 }
 
-@media (min-width: 40em) {
+@media (min-width: 64rem) {
 
     .story .section-body.right {
         flex-direction: row-reverse;
@@ -138,7 +138,7 @@
     .story .section-body.left {
         flex-direction: row;
     }
-    
+
 }
 
 .story .section-media {
