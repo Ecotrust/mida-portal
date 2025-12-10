@@ -62,54 +62,45 @@
     line-height: 24px;
 }
 
-.event-content {
-    max-width: 69.25rem;
-    padding: clamp(1rem, 3vw, 2.5rem);
-    margin: 0 auto;
+
+/**
+ * Event Content Styles
+**/
+
+.event-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }
 
-.event-content .frame {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
-    gap: clamp(2rem, 6vw, 5rem);
-    align-items: start;
+@media (min-width: 64em) {
+    .event-wrap {
+        flex-direction: row;
+        gap: clamp(2rem, 6vw, 5rem);
+    }
 }
 
-.event-details,
-.event-sidebar {
+.event .event-details,
+.event .event-sidebar {
     display: flex;
     flex-direction: column;
     gap: clamp(1.5rem, 3vw, 2.5rem);
     width: 100%;
 }
 
-.event-content .element,
-.event-content .event-timing,
-.event-content .element-2,
-.event-content .organizer-contact {
+.event .event-timing {
     background-color: var(--grey-light);
     border-radius: 0.75rem;
     padding: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.event-content .event-sidebar {
+.event .event-sidebar {
     background-color: var(--white);
     box-shadow: 0 0 35px #0000001a;
     border-radius: 0.75rem;
     padding: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-.event-content .frame-2,
-.event-content .frame-3,
-.event-content .div,
-.event-content .div-2 {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-}
-
-.event-content .text-wrapper,
 .section-title {
     font-family: var(--h6-font-family);
     font-weight: var(--h6-font-weight);
@@ -119,14 +110,10 @@
     margin-bottom: 0.75rem;
 }
 
-.event-content .text-wrapper-2,
-.event-content .p,
-.event-content .on-behalf-of-the,
-.event-content .event-date,
+.event .event-date,
 .description-text,
 .deadline-date,
-.contact-info,
-.event-content .please-go-to-www {
+.contact-info {
     font-family: "Barlow", Helvetica, sans-serif;
     font-weight: 400;
     font-size: 1.375rem;
@@ -134,8 +121,7 @@
     color: var(--grey-dark);
 }
 
-.event-content .text-wrapper-3,
-.deadline-title {
+.event .deadline-title {
     font-family: var(--h7-font-family);
     font-weight: var(--h7-font-weight);
     font-size: var(--h7-font-size);
@@ -145,22 +131,13 @@
     letter-spacing: var(--h7-letter-spacing);
 }
 
-.event-content .text-wrapper-4,
-.event-content .text-wrapper-5 {
-    font-family: var(--h5-font-family);
-    font-weight: var(--h5-font-weight);
-    font-size: var(--h5-font-size);
-    line-height: var(--h5-line-height);
-    color: var(--dark-blue);
-}
-
-.event-content .group {
+.event .group {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.event-content .map,
+.event .map,
 .location-map {
     width: 100%;
     aspect-ratio: 4 / 3;
@@ -168,8 +145,7 @@
     border-radius: 0.5rem;
 }
 
-.address,
-.long-island-new-york {
+.event .address {
     font-family: var(--p3-font-family);
     font-weight: var(--p3-font-weight);
     font-size: var(--p3-font-size);
@@ -177,41 +153,19 @@
     color: var(--grey-dark);
 }
 
-.event-content .icon {
+.event .icon {
     display: inline-flex;
     align-items: center;
     gap: 0.75rem;
 }
 
-.event-content .marcodataportal,
-.share-icon {
+.event .marcodataportal {
     width: 1.5rem;
     height: 1.5rem;
 }
 
-.contact-link {
-    color: #00788a;
-    text-decoration: none;
-}
-
-.contact-link:hover,
-.event-content .text-wrapper-6 {
-    text-decoration: underline;
-    color: #00788a;
-}
-
-.share-icons {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-}
-
-.event-card__title {
-    color: var(--teal);
-}
-
 @media (min-width: 64em) {
-    .event-content .event-sidebar {
+    .event .event-sidebar {
         position: sticky;
         top: 2rem;
     }
@@ -226,24 +180,18 @@
 }
 
 @media (max-width: 48em) {
-    .event-content .frame {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .event-content .element,
-    .event-content .event-timing,
-    .event-content .event-sidebar,
-    .event-content .element-2,
-    .event-content .organizer-contact {
+   
+    .event .event-timing,
+    .event .event-sidebar,
+    .event .organizer-contact {
         padding: 1.25rem;
     }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .event-content *,
-    .event-content *::before,
-    .event-content *::after {
+    .event *,
+    .event *::before,
+    .event *::after {
         transition: none !important;
     }
 }
