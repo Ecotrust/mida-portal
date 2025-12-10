@@ -105,7 +105,7 @@
     min-width: 160px;
     background: var(--yellow-bright);
     border-radius: 8px;
-    color: var(--dark-blue);
+    color: var(--white);
     text-decoration: none;
 }
 
@@ -210,10 +210,6 @@
 
 .event-card__actions {
     margin-top: auto;
-}
-
-.button-small {
-    color: var(--white);
 }
 
 @media (max-width: 1024px) {
