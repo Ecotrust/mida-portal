@@ -148,6 +148,11 @@ h3 {
     line-height: var(--h3-line-height);
 }
 
+.page-body h3 {
+    font-size: var(--h3-font-size-fluid);
+    line-height: var(--h3-line-height-fluid);
+}
+
 h4 {
     font-family: var(--h4-font-family);
     font-weight: var(--h4-font-weight);
@@ -188,6 +193,13 @@ p {
     line-height: var(--p1-line-height);
 }
 
+.page-body p {
+    font-family: var(--p3-font-family);
+    font-weight: var(--p3-font-weight);
+    font-size: var(--p3-font-size);
+    line-height: var(--p3-line-height);
+}
+
 em {
     font-style: italic;
 }
@@ -196,22 +208,27 @@ strong {
     font-weight: bold;
 }
 
-.content ul {
+.content ul,
+.page-body ul {
     list-style-type: disc;
 }
 
-.content ol {
+.content ol,
+.page-body ol {
     list-style-type: decimal;
 }
 
 .content ol, 
-.content ul {
+.content ul,
+.page-body ol,
+.page-body ul {
     padding-left: 1.5em;
     margin: var(--space-5) 0;
     font: inherit;
 }
 
-.content li {
+.content li,
+.page-body li {
     margin-bottom: var(--space-5);
     padding-left: .5em;
 }
