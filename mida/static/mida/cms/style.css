@@ -1,3 +1,8 @@
+/**
+ * CMS Styles
+ * mida-portal/mida/static/mida/cms/style.css
+**/
+
 .hero-flex-container {
     display: flex; 
     flex-direction: column;
@@ -50,6 +55,10 @@
     font-size: var(--p1-font-size);
     letter-spacing: var(--p1-letter-spacing);
     line-height: var(--p1-line-height);
+}
+
+.page .page-body h3 {
+    margin: var(--space-7) 0 var(--space-5);
 }
 
 @media (min-width: 48rem) {
