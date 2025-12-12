@@ -57,9 +57,6 @@
     line-height: var(--p1-line-height);
 }
 
-.page .page-body h3 {
-    margin: var(--space-7) 0 var(--space-5);
-}
 
 @media (min-width: 48rem) {
     .hero-flex-container {
