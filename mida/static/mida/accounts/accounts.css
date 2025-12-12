@@ -1,0 +1,136 @@
+/**
+ * /mida-portal/mida/static/mida/accounts/accounts.css
+ * Styles for login, register, and password management pages
+**/
+
+
+/**
+ * MARCO Overrides for account pages
+**/
+
+.accounts .login {
+    border: none;
+    width: 90vw;
+}
+
+@media (min-width: 48rem) {
+    .accounts .login {
+        width: 60vw;
+    }
+}
+
+@media (min-width: 78rem) {
+    .accounts .login {
+        width: 40vw;
+    }
+}
+
+.accounts .login .login-header {
+    color: var(--teal);
+    margin-bottom: var(--space-5);
+    text-align: center;
+}
+
+.accounts .login p {
+    color: var(--color-ink, #030B39);
+    font-family: var(--p2-font-family);
+    font-size: var(--p2-font-size);
+    font-style: var(--p2-font-style);
+    font-weight: var(--p2-font-weight);
+    line-height: var(--p2-line-height);
+}
+
+.accounts .login-form {
+    margin: var(--space-5) auto;
+}
+
+.accounts form.login-form>div {
+    width: 100%;
+}
+
+.accounts .form-control {
+    border: none;
+    border-bottom: 1px solid var(--gray-dark, #6C6C6C);
+    box-shadow: none;
+    color: var(--gray-dark, #6C6C6C);
+    font-family: var(--p4-font-family);
+    font-size: var(--p4-font-size);
+    font-style: var(--p4-font-style);
+    font-weight: var(--p4-font-weight);
+    line-height: var(--p4-line-height);
+    height: auto;
+    padding: var(--space-3);
+}
+
+.accounts form.login-form .left-inner-addon i {
+    padding: 0 10px;
+}
+
+.accounts form.login-form .left-inner-addon i:before {
+    padding: 100% 0;
+    position: absolute;
+}
+
+.accounts .login .login-form label {
+    color: var(--teal, #00788A);
+    font-family: var(--h5-font-family);
+    font-size: var(--h5-font-size);
+    font-style: var(--h5-font-style);
+    font-weight: var(--h5-font-weight);
+    line-height: var(--h5-line-height);
+    margin: var(--space-4) 0 var(--space-2);
+}
+
+.accounts .login .errorlist {
+    color: var(--red, #D93025);
+}
+
+
+/**
+ * MidA style overrides
+**/
+
+.accounts .button-big {
+    margin: var(--space-7) 0;
+    width: 100%;
+}
+
+
+/**
+ * Login form styles
+**/
+
+.accounts .forgot-password {
+    display: block;
+    margin-top: var(--space-2);
+    text-align: right;
+}
+
+
+/**
+ * Account links styles
+**/
+
+.accounts .account-links {
+    color: var(--gray-dark, #6C6C6C);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-5);
+    text-align: center;
+}
+
+.accounts .account-links a {
+    font-family: var(--p4-font-family);
+    font-size: var(--p4-font-size);
+    font-style: var(--p4-font-style);
+    font-weight: var(--p4-font-weight);
+    line-height: var(--p4-line-height);
+}
+
+@media (min-width: 48rem) {
+    .accounts .account-links {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
