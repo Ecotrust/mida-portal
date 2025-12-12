@@ -25,19 +25,14 @@
 
             {{ form.as_div }}
 
-            <div class="text-center">
-                <button class="btn btn-success btn-lg" onclick='this.form.submit()'>Log in &rarr;</button>
-            </div>
+            <a class="forgot-password" href="{% url 'account:forgot_password' %}">Forgot Password?</a>
+
+            <button class="button-big" onclick='this.form.submit()'>Log in &rarr;</button>
         </form>
 
-        <div>
-            <br />
-            <br />
-            <p class="text-center">
-                <a href="{% url 'account:forgot_password' %}">I forgot my password</a>
-                &bull; <a href="{% url 'account:register' %}">I want to register</a>
-                &bull; <a href="/help/">Help</a>
-            </p>
+        <div class="account-links">
+            <span>Not a Member? <a href="{% url 'account:register' %}">Register Now</a></span>
+            <a href="/help/">Need Help?</a>
         </div>
 
     </section>
