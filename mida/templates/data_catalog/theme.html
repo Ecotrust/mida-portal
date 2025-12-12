@@ -44,11 +44,15 @@
         </div>
         
         {% if theme.wagtail_feature_image %}
+
+            {% image theme.wagtail_feature_image min-520x430 as feat_img %}
+      
             <div class="hero-right">
-                <div class="hero-image-wrap" style="background-image: url('{{ theme.wagtail_feature_image.file.url }}');">
-                    {% image theme.wagtail_feature_image fill-520x430 class="feature" alt="{{ theme.display_name }}" %}
+                <div class="hero-image-wrap" style="background-image: url('{{ feat_img.url }}');">
+                <img class="feature" src="{{ feat_img.url }}" alt="{{ theme.display_name }}" />
                 </div>
             </div>
+            
         {% endif %}
         
     </div>

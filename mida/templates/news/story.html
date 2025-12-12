@@ -43,12 +43,18 @@
         </div>
         
         {% if self.feature_image %}
+      
+            {% image self.feature_image fill-520x430 as feat_img %}
+            
             <div class="hero-right">
-                <div class="hero-image-wrap" style="background-image: url('{{ self.feature_image.file.url }}');">
-                    {% image self.feature_image fill-520x430 class="feature" alt="{{ self.display_name }}" %}
+                <div class="hero-image-wrap" style="background-image: url('{{ feat_img.url }}');">
+                    <img class="feature" src="{{ feat_img.url }}" alt="{{ self.title }}" />
                 </div>
             </div>
+            
         {% endif %}
+
+        
         
     </div>
 
