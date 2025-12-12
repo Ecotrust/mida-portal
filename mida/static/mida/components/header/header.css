@@ -1,10 +1,10 @@
 /**
- *  mida-portal/mida/static/mida/components/header/style.css
- */
+ *  mida-portal/mida/static/mida/components/header/header.css
+**/
 
 /**
  * Header component styles 
- */
+**/
 
 .header {
     align-items: center;
@@ -17,23 +17,24 @@
 
 
 /**
- * Top navigation styles
- */
-
-.header .top-nav {
-    background-color: var(--green);
-    /* align-content: space-between; */
-    /* align-items: center; */
-    /* align-self: stretch; */
-    display: flex;
-    /* flex-wrap: wrap; */
-    justify-content: flex-end;
-    padding: 0.5rem 0;
-    width: 100%;
-}
+ * Global overrides/modifications
+**/
 
 .header .top-nav .threelane-container {
     justify-content: flex-end;
+}
+
+
+/**
+ * Top navigation styles
+**/
+
+.header .top-nav {
+    background-color: var(--green);
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.5rem 0;
+    width: 100%;
 }
 
 .header .top-nav-desktop {
@@ -55,7 +56,6 @@
     display: flex;
     gap: 2rem;
 }
-
 
 .header .top-nav .top-nav-links .top-nav-link {
     color: var(--white, #FFF);
@@ -115,7 +115,7 @@
 }
 
 .header .button-login:hover,
-.header.button-login:focus {
+.header .button-login:focus {
     background-color: var(--dark-blue);
 }
 
@@ -134,10 +134,13 @@
     font-family: var(--p4-font-family);
     font-weight: var(--font-weight-medium);
     margin-left: 1rem;
-    font-size: calc(var(--p4-font-size) - 2px);;
+    font-size: calc(var(--p4-font-size) - 2px);
 }
 
-/* Serach */
+
+/** 
+ * Search 
+**/
 
 .header .search-wrapper {
     margin: 0 .5rem;
@@ -205,7 +208,7 @@
 /**
  * Main navigation styles
  */
- 
+
 .header .main-nav {
     align-items: center;
     align-self: stretch;
@@ -293,7 +296,8 @@
 .header .mobile-menu-overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--grey-light);
+    z-index: -1;
 }
 
 .header.mobile-menu-content {
@@ -343,7 +347,10 @@
 }
 
 
-/* Responsive styles */
+/** 
+ * Responsive styles 
+**/
+
 @media (min-width: 768px) {
     .header .top-nav-desktop {
         display: flex;
@@ -354,8 +361,9 @@
     }
 }
 
+
 @media (min-width: 1024px) {
-    
+
     .header .top-nav .top-nav-links {
         display: flex;
         flex: auto;
@@ -380,7 +388,11 @@
     }
 }
 
-/* Hover Effects */
+
+/**
+ * Hover Effects 
+**/
+
 @media (hover: hover) {
 
     .header .social-icon:hover,
@@ -392,4 +404,5 @@
     .header .mobile-nav-link:hover {
         transition: all 0.2s ease-in-out;
     }
+    
 }
