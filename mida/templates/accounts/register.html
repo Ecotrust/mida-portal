@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'mida/accounts/accounts.css' %}">
+{% endblock %}
+
+{% block body_class %}accounts register-page{% endblock %}
+
+{% block content %}
+    
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <section class="contain login">
+
+        <h2 class="login-header">SIGN UP</h2>
+
+        <p>Unlock the full potential of the Portal by becoming a registered user.</p>
+
+        <form class="login-form" id="register-form" method="POST" action="{% url 'account:register' %}#form-begin">
+            {% csrf_token %}
+
+            {{ form.as_div }}
+
+            <button class="button-big" onclick='this.form.submit()'>Sign Up &rarr;</button>
+        </form>
+
+        <div class="account-links">
+            <a href="/help/">Need Help?</a>
+        </div>
+
+    </section>
+
+{% endblock %}
+
