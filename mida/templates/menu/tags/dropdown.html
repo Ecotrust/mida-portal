@@ -1,7 +1,7 @@
 {% for menu in menus %}
   {% if menu.is_user_menu and not request.user.is_authenticated %}
-    <li>
-      <a href="{% url 'account:index' %}?next={{ request.path }}">LOG IN <span class="fa fa-user"></span></a>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'account:index' %}?next={{ request.path }}">Login <span class="fa fa-user"></span></a>
     </li>
   {% else %}
     <li class="dropdown nav-item {% if active %} active{% endif %}">
