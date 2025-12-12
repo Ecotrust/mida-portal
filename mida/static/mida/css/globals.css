@@ -193,18 +193,13 @@ p {
     line-height: var(--p1-line-height);
 }
 
-.page-body p {
-    font-family: var(--p3-font-family);
-    font-weight: var(--p3-font-weight);
-    font-size: var(--p3-font-size);
-    line-height: var(--p3-line-height);
-}
-
 em {
     font-style: italic;
 }
 
-strong {
+
+strong,
+b {
     font-weight: bold;
 }
 

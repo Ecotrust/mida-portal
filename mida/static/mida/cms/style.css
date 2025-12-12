@@ -57,6 +57,12 @@
     line-height: var(--p1-line-height);
 }
 
+.cms-page .page-body p {
+    font-family: var(--p3-font-family);
+    font-weight: var(--p3-font-weight);
+    font-size: var(--p3-font-size);
+    line-height: var(--p3-line-height);
+}
 
 @media (min-width: 48rem) {
     .hero-flex-container {
