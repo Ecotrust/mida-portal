@@ -1,4 +1,11 @@
 <!-- mida-portal/mida/templates/pages/page.html -->
 {% extends "cms/section.html" %}
 
-{% block body_class %}page{% endblock %}
+{% load static wagtailcore_tags %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/pages/page.css' %}">
+{% endblock %}
+
+{% block body_class %}page cms-page mida-page{% endblock %}

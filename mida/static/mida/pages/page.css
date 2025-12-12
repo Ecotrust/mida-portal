@@ -1,0 +1,18 @@
+.page .page-body h3,
+.page .page-body h2 {
+    margin: var(--space-7) 0 var(--space-5);
+}
+
+.page .page-body iframe,
+.page .page-body embed {
+    max-width: 100%;
+}
+
+.page .page-body {
+    color: var(--grey-dark);
+    font-family: var(--p2-font-family);
+    font-size: var(--p2-font-size);
+    font-style: var(--p2-font-style);
+    font-weight: var(--p2-font-weight);
+    line-height: var(--p2-line-height);
+}
