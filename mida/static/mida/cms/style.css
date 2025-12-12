@@ -3,6 +3,10 @@
  * mida-portal/mida/static/mida/cms/style.css
 **/
 
+/**
+ * Hero Section
+**/
+
 .hero-flex-container {
     display: flex; 
     flex-direction: column;
