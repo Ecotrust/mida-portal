@@ -13,7 +13,7 @@
                 <article class="event-card">
                     {% if item.feature_image %}
                         <a class="event-card__media" href="{{ item.url }}">
-                            {% image item.feature_image fill-640x420 class="event-card__image" %}
+                            {% image item.feature_image min-640x420 class="event-card__image" %}
                         </a>
                     {% endif %}
 
