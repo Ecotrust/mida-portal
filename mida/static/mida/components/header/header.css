@@ -296,7 +296,8 @@
 .header .mobile-menu-overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--grey-light);
+    z-index: -1;
 }
 
 .header.mobile-menu-content {
