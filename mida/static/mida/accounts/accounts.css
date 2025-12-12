@@ -1,0 +1,31 @@
+.login {
+    border: none;
+    width: 50vw;
+}
+
+.login .login-header {
+    color: var(--teal);
+    text-align: center;
+}
+
+.login p {
+    color: var(--color-ink, #030B39);
+    font-family: var(--p2-font-family);
+    font-size: var(--p2-font-size);
+    font-style: var(--p2-font-style);
+    font-weight: var(--p2-font-weight);
+    line-height: var(--p2-line-height);
+}
+
+.login .login-form label {
+    color: var(--teal, #00788A);
+    font-family: var(--h5-font-family);
+    font-size: var(--h5-font-size);
+    font-style: var(--h5-font-style);
+    font-weight: var(--h5-font-weight);
+    line-height: var(--h5-line-height);
+}
+
+.login .errorlist {
+    color: var(--red, #D93025);
+}
