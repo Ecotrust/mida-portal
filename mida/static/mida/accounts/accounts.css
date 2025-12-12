@@ -1,6 +1,36 @@
+/**
+ * /mida/accounts/accounts.css
+**/
+
+
+/**
+ * Overrides for login page
+**/
+
+form.login-form>div {
+    width: 100%;
+}
+
+
+/**
+ * Login page styles
+**/
+
 .login {
     border: none;
-    width: 50vw;
+    width: 90vw;
+}
+
+@media (min-width: 48rem) {
+    .login {
+        width: 60vw;
+    }
+}
+
+@media (min-width: 78rem) {
+    .login {
+        width: 40vw;
+    }
 }
 
 .login .login-header {
