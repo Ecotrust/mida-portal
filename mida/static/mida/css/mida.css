@@ -27,6 +27,19 @@ body {
 }
 
 
+/**
+ * MARCO Overrides for account pages
+**/
+
+/* 
+ * legacy Trash 
+ * Remove when account:index page is replaced
+ */
+.classless-page .mapgroup {
+  overflow: hidden;
+}
+
+
 /*
 ++++++++++++ NEWS ++++++++++++
 */
