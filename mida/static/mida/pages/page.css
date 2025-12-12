@@ -1,3 +1,36 @@
+/**
+ * mida-portal/mida/static/mida/pages/page.css
+ * Styles for MIDA Pages
+**/
+
+
+/**
+ * Page Header
+**/
+
+.page .page-header .description {
+    color: var(--color-ink);
+    font-family: var(--p1-font-family);
+    font-size: var(--p1-font-size);
+    font-style: var(--p1-font-style);
+    font-weight: var(--p1-font-weight);
+    line-height: var(--p1-line-height);
+}
+
+
+/**
+ * Page Body
+**/
+
+.page .page-body {
+    color: var(--grey-dark);
+    font-family: var(--p2-font-family);
+    font-size: var(--p2-font-size);
+    font-style: var(--p2-font-style);
+    font-weight: var(--p2-font-weight);
+    line-height: var(--p2-line-height);
+}
+
 .page .page-body h3,
 .page .page-body h2 {
     margin: var(--space-7) 0 var(--space-5);
@@ -8,11 +41,10 @@
     max-width: 100%;
 }
 
-.page .page-body {
-    color: var(--grey-dark);
-    font-family: var(--p2-font-family);
-    font-size: var(--p2-font-size);
-    font-style: var(--p2-font-style);
-    font-weight: var(--p2-font-weight);
-    line-height: var(--p2-line-height);
+.page .page-body p {
+    font-family: var(--p3-font-family);
+    font-weight: var(--p3-font-weight);
+    font-size: var(--p3-font-size);
+    line-height: var(--p3-line-height);
+    margin: 0 0 var(--space-5);
 }
