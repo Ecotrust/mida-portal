@@ -23,24 +23,34 @@
                     </a>
                 </nav>
 
-                <!-- Center: Navigation Links -->
-                <nav class="top-nav-links">
-                    <a href="/about-us/" class="top-nav-link">About the Portal</a>
-                    <a href="/how-use-portal/" class="top-nav-link">How-to Guide</a>
-                </nav>
+                <!-- Hide hard coded navigation links
+                        DLP: 12/12/2025
+                        TODO: repleace with wagtail managed links
+                        Note: Leaving here so the class names can be reused when repleaced
 
-                <!-- Right: User Actions & Search -->
-                <div class="user-actions">
-                    <a href="/account?next=/"class="button-login" aria-label="Log In">
-                        <span class="icon-user">
-                            <img class="vector" src="{% static 'mida/components/header/img/icon-useraccount.svg' %}" alt="User icon" />
-                        </span>
-                        <span class="button-text">Log In</span>
-                    </a>
-                </div>
+                    <nav class="top-nav-links">
+                        <a href="/about-us/" class="top-nav-link">About the Portal</a>
+                        <a href="/how-use-portal/" class="top-nav-link">How-to Guide</a>
+                    </nav>
+                -->
 
-                <div class="search-wrapper">
-                    {% if not SEARCH_DISABLED %}
+                <!-- Hide redesign user login button
+                        DLP: 12/12/2025
+                        TODO: use wagtail managed login button
+                        Note: Leaving here so the class names can be reused when repleaced
+
+                    <div class="user-actions">
+                        <a href="/account?next=/"class="button-login" aria-label="Log In">
+                            <span class="icon-user">
+                                <img class="vector" src="{% static 'mida/components/header/img/icon-useraccount.svg' %}" alt="User icon" />
+                            </span>
+                            <span class="button-text">Log In</span>
+                        </a>
+                    </div>
+                -->
+
+                {% if not SEARCH_DISABLED %}
+                    <div class="search-wrapper">
                         <ul class="nav-list">
                             <li class="dropdown search-dropdown">
                                 <a href="#" class="button-search dropdown-toggle" data-toggle="dropdown">
@@ -53,23 +63,30 @@
                                 </ul>
                             </li>
                         </ul>
-                    {% endif %}
-                </div>
+                    </div>
+                {% endif %}
+
             </div>
         
             <!-- Mobile Layout -->
             <div class="top-nav-mobile">
-                <div class="user-actions">
-                    <button class="button-login" aria-label="Log In">
-                        <span class="icon-user">
-                            <img class="vector" src="{% static 'mida/components/header/img/icon-useraccount.svg' %}" alt="User icon" />
-                        </span>
-                        <span class="button-text">Log In</span>
-                    </button>
-                </div>
 
-                <div class="search-wrapper">
-                    {% if not SEARCH_DISABLED %}
+                <!-- Hide redesign user login button
+                        DLP: 12/12/2025
+                        TODO: use wagtail managed login button
+                        Note: Leaving here so the class names can be reused when repleaced
+                    <div class="user-actions">
+                        <button class="button-login" aria-label="Log In">
+                            <span class="icon-user">
+                                <img class="vector" src="{% static 'mida/components/header/img/icon-useraccount.svg' %}" alt="User icon" />
+                            </span>
+                            <span class="button-text">Log In</span>
+                        </button>
+                    </div>
+                -->
+
+                {% if not SEARCH_DISABLED %}
+                    <div class="search-wrapper">
                         <ul class="nav-list">
                             <li class="dropdown search-dropdown">
                                 <a href="#" class="button-search dropdown-toggle" data-toggle="dropdown">
@@ -82,8 +99,9 @@
                                 </ul>
                             </li>
                         </ul>
-                    {% endif %}
-                </div>
+                    </div>
+                {% endif %}
+
             </div>
         </div>
     </div>
@@ -110,7 +128,9 @@
                             </a>
                         </li>
 
+                        <!-- Wagtail managed navigation links -->
                         {% menus %}
+
                     </ul>
                 </nav>
             </div>
@@ -124,6 +144,7 @@
                     <line x1="3" y1="18" x2="21" y2="18" />
                 </svg>
             </button>
+            
         </div>
 
         <!-- Mobile Menu Overlay -->
@@ -141,11 +162,14 @@
                     </button>
                 </div>
                 <nav class="mobile-menu-nav">
+                    <!-- Wagtail managed navigation links -->
                     {% menus %}
                 </nav>
             </div>
         </div>
+
     </div>
+
 </header>
 
 {% block extra_js %}
