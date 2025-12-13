@@ -7,6 +7,9 @@
     {{ block.super }}
     <!-- EXTRA_CSS MIDA base.html -->
     <link rel="stylesheet" href="{% static 'mida/css/vars.css' %}">
+    {% block reset_styles %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    {% endblock %}
     <link rel="stylesheet" href="{% static 'mida/css/globals.css' %}">
     <link rel="stylesheet" href="{% static 'mida/css/mida.css' %}">
     <!-- END EXTRA_CSS -->
