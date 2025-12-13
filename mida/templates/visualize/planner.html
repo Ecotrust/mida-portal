@@ -1,24 +1,28 @@
+<!-- mida-portal/mida/templates/visualize/planner.html -->
 {% extends "visualize/planner.html" %}
 {% load static %}
+
+{% block body_class %}{{ block.super }} planner-page{% endblock %}
 
 {% block templatename %}
     {{ block.super }}
     <!-- (MIDA)PLANNER: mida-portal/mida/templates/visualize/planner.html -->
-    {% endblock templatename %}
+{% endblock templatename %}
+
+{% block extra_css %}
     
-    {% block extra_css %}
     {{ block.super }}
-    <!-- MIDA extra css -->
-    <link rel="stylesheet" href="{% static 'mida/css/header.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'mida/visualize/planner.css' %}" type="text/css">
+    {% block reset_styles %}{% endblock %}
 {% endblock %}
 
 {% block extra_js %}
-  {{ block.super }}
-  <!-- MIDA extra js -->
-  <script src="{% static 'legacy_portal/js/wrappers/ol6/ol6_events.js' %}"></script>
+    {{ block.super }}
+    <!-- MIDA extra js -->
+    <script src="{% static 'legacy_portal/js/wrappers/ol6/ol6_events.js' %}"></script>
 {% endblock %}
 
 {% block ADDITIONAL_APP_JAVASCRIPT %}
-{{ block.super }}
-<script src="{% static 'mida/js/mida_models.js' %}"></script>
+    {{ block.super }}
+    <script src="{% static 'mida/js/mida_models.js' %}"></script>
 {% endblock %}
