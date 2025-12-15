@@ -10,10 +10,10 @@
 {% endblock templatename %}
 
 {% block extra_css %}
-    
     {{ block.super }}
-    <link rel="stylesheet" href="{% static 'mida/visualize/planner.css' %}" type="text/css">
     {% block reset_styles %}{% endblock %}
+    <link rel="stylesheet" href="{% static 'mida/css/vars.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'mida/visualize/planner.css' %}" type="text/css">
 {% endblock %}
 
 {% block extra_js %}
