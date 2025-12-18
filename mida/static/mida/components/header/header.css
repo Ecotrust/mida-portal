@@ -174,6 +174,11 @@
     right: 0;
 }
 
+/* Overrides hidden visibility in output.css */
+.header .search-dropdown.open .dropdown-menu {
+    visibility: visible;
+}
+
 .header .search-dropdown .dropdown-menu form {
     display: flex;
     align-items: center;
@@ -240,7 +245,7 @@
 .header .main-nav .nav-menu .nav-list {
     align-items: center;
     display: flex;
-    gap: 30px;
+    gap: 2.5rem;
     list-style: none;
     flex-direction: row;
     justify-content: flex-end;
@@ -387,6 +392,13 @@
     .header .mobile-menu {
         display: none !important;
     }
+
+    /** Overrides for legacy styles in output.css **/
+    .header .main-nav .dropdown:last-child .dropdown-menu {
+        left: auto;
+        right: 0;
+    }
+    
 }
 
 
