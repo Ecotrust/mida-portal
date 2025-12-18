@@ -7,26 +7,30 @@
 
 <article class="card">
 
-    {% if item.wagtail_feature_image %}
-        <div class="img-wrapper">
-            <a href="{{ item.name }}">
+    <div class="img-wrapper">
+        <a href="{{ item.name }}">
+
+            {% if item.wagtail_feature_image %}
                 {% image item.wagtail_feature_image fill-355x195 class="feature" alt="{{ item.title }}" %}
-        
-                <div class="date">
-                    <img class="resource-icon" src="{% static 'mida/components/card-resource/img/property-1-white.svg' %}" alt="" aria-hidden="true" />
-                    <span class="date-text">
-                        {% if item.layer_count and item.badge_text %}
-                            {{ item.layer_count }} {{ item.badge_text }}
-                        {% elif item.layer_count %}
-                            {{ item.layer_count }} Resources
-                        {% else %}
-                            No Records Available
-                        {% endif %}
-                    </span>
-                </div>
-            </a>
-        </div>
-    {% endif %}
+            {% else %}
+                <img class="feature" src="{% static 'mida/components/card-resource/img/MARCODataPortal-News-NewsFromOurPartners.png' %}" alt="Default feature image" />
+            {% endif %}
+    
+            <div class="date">
+                <img class="resource-icon" src="{% static 'mida/components/card-resource/img/property-1-white.svg' %}" alt="" aria-hidden="true" />
+                <span class="date-text">
+                    {% if item.layer_count and item.badge_text %}
+                        {{ item.layer_count }} {{ item.badge_text }}
+                    {% elif item.layer_count %}
+                        {{ item.layer_count }} Resources
+                    {% else %}
+                        No Records Available
+                    {% endif %}
+                </span>
+            </div>
+
+        </a>
+    </div>
 
     <div class="overlap">
         <div class="frame">
