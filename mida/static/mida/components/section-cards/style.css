@@ -52,9 +52,21 @@
   /* Fill the grid area height */
   height: 100%;
   width: 100%;
+  scale: 1;
+  transition: scale 0.15s cubic-bezier(.4, 0, .2, 1);
 
   /* Enable container queries based on card width */
   container-type: inline-size;
+}
+
+.card:hover {
+  scale: 1.05;
+}
+
+/* Override default link-block behavior inside cards */
+.card .link-block:hover {
+  scale: 1;
+  text-decoration: none;
 }
 
 /* Map the first three cards to the desktop grid areas */

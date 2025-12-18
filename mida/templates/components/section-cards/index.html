@@ -11,30 +11,30 @@
       
       {% for item in items %}
         <section class="card collaborate">
-          {% block heading %}
-            <header class="card-header">
-              <a href="{{ item.url }}">
+          <a href="{{ item.url }}" description="{{ item.title}}" class="link-block">
+
+            {% block heading %}
+              <header class="card-header">              
                 <h2 class="card-title">{{ item.title }}</h2>
-              </a>
-              <p class="card-description">
-                {% block text %}
-                  {% if item.search_description %}
-                    {{ item.search_description|striptags|truncatechars:93 }}
-                  {% else %}
-                    {{ item.description|striptags|truncatechars:93 }}
-                  {% endif %}
-                {% endblock %}
-              </p>
-            </header>
-          {% endblock %}
-        
-          {% block feature %}
-            {% if item.feature_image %}
-              <a href="{{ item.url }}" description="{{ item.title}}">
+                <p class="card-description">
+                  {% block text %}
+                    {% if item.search_description %}
+                      {{ item.search_description|striptags|truncatechars:93 }}
+                    {% else %}
+                      {{ item.description|striptags|truncatechars:93 }}
+                    {% endif %}
+                  {% endblock %}
+                </p>
+              </header>
+            {% endblock %}
+          
+            {% block feature %}
+              {% if item.feature_image %}
                 {% image item.feature_image max-800x800 class="card-image" %}
-              </a>
-            {% endif %}
-          {% endblock %}
+              {% endif %}
+            {% endblock %}
+
+          </a>
         </section>
       {% endfor %}
       

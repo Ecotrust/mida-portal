@@ -15,6 +15,11 @@ body {
     letter-spacing: normal;
 }
 
+
+/**
+ * Links
+**/
+
 a {
     color: var(--dark-blue);
     text-decoration: none;
@@ -22,6 +27,16 @@ a {
 
 a:hover {
     cursor: pointer;
+}
+
+.link-block {
+    scale: 1;
+    transition: scale 0.15s cubic-bezier(.4, 0, .2, 1);
+}
+
+.link-block:hover {
+    scale: 1.05;
+    text-decoration: none;
 }
 
 img {
