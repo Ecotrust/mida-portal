@@ -280,6 +280,11 @@
     width: 14px;
 }
 
+
+/** 
+ * Mobile Menu 
+**/
+
 .header .mobile-menu-button {
     display: block;
     padding: 0.5rem;
@@ -287,7 +292,6 @@
     background: transparent;
 }
 
-/* Mobile Menu */
 .header .mobile-menu {
     display: block;
     inset: 0;
@@ -350,6 +354,10 @@
     border-bottom: 1px solid #e5e7eb;
 }
 
+.header .mobile-menu-header .logo {
+    max-width: 70%;
+}
+
 .header .mobile-menu-header h2 {
     font-size: 1.125rem;
     font-weight: 600;
@@ -371,6 +379,15 @@
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+.header .mobile-menu-nav .dropdown-menu {
+    background-color: var(--light-grey);
+    border: none;
+    box-shadow: none;
+    float: none;
+    position: relative;
+    width: 100%;
 }
 
 .header .mobile-menu-content .mobile-menu-nav a {

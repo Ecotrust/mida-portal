@@ -152,7 +152,9 @@
             <div class="mobile-menu-overlay"></div>
             <div class="mobile-menu-content">
                 <div class="mobile-menu-header">
-                    <h2>Menu</h2>
+                    <a href="/" class="logo">
+                        <img src="{% static 'mida/components/header/img/logo-marco-full.svg' %}" alt="MARCO Portal Logo" />
+                    </a>
                     <button class="mobile-menu-close" aria-label="Close menu">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -177,7 +179,7 @@
 
                         <!-- Wagtail managed navigation links -->
                         {% menus %}
-                        
+
                     </ul>
                 </nav>
             </div>
