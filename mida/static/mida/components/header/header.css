@@ -393,12 +393,18 @@
     display: flex;
     font-weight: var(--font-weight-medium);
     gap: 0.5rem;
+    justify-content: space-between;
+    padding: .3125rem .6375rem;
     text-decoration: none;
     transition: color 0.2s;
 }
 
 .header .mobile-menu-content .mobile-menu-nav a:hover {
     color: var(--green);
+}
+
+.header .mobile-menu-content #map-label {
+    flex-grow: 1;
 }
 
 
