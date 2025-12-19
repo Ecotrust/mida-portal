@@ -6,7 +6,7 @@
   {% else %}
     <li class="dropdown nav-item {% if active %} active{% endif %}">
         {% if menu.is_user_menu %}
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ request.user.first_name }}&nbsp<span class="fa fa-user"></span><span class="caret"></span></a>
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ request.user.first_name }} <span class="fa fa-user"></span><span class="caret"></span></a>
         {% else %}
           {% if menu.entries.all.count == 1 %}
             <a class="nav-link" href="{{ menu.entries.all.0.destination }}"{% if entry.external %} target="_blank"{% endif %}>
