@@ -285,11 +285,13 @@
  * Mobile Menu 
 **/
 
-.header .mobile-menu-button {
+.header .mobile-menu-button,
+.header .mobile-menu-close {
+    background: var(--yellow);
+    border: none;
+    color: var(--white);
     display: block;
     padding: 0.5rem;
-    color: #22408f;
-    background: transparent;
 }
 
 .header .mobile-menu {
@@ -297,13 +299,11 @@
     inset: 0;
     pointer-events: none;
     position: fixed;
-    visibility: hidden;
     z-index: 2000;
 }
 
 .header .mobile-menu.show {
     pointer-events: auto;
-    visibility: visible;
 }
 
 .header .mobile-menu-overlay {
@@ -312,10 +312,12 @@
     opacity: 0;
     position: fixed;
     transition: opacity 0.2s;
+    visibility: visible;
 }
 
 .header .mobile-menu.show .mobile-menu-overlay {
     opacity: 0.5;
+    visibility: visible;
 }
 
 .header .mobile-menu-content {
@@ -361,11 +363,6 @@
 .header .mobile-menu-header h2 {
     font-size: 1.125rem;
     font-weight: 600;
-}
-
-.header .mobile-menu-close {
-    padding: 0.5rem;
-    background: transparent;
 }
 
 .header .mobile-menu-nav {
