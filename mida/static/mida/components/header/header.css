@@ -312,7 +312,7 @@
     opacity: 0;
     position: fixed;
     transition: opacity 0.2s;
-    visibility: visible;
+    visibility: hidden;
 }
 
 .header .mobile-menu.show .mobile-menu-overlay {
