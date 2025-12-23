@@ -1,10 +1,68 @@
 <!-- mida/templates/cms/base.html -->
 {% extends "base.html" %}
-{% load static %}
+{% load static wagtailimages_tags wagtailcore_tags wagtailcustom_tags %}
 
 {% block extra_css %}
     {{ block.super }}
     <link rel="stylesheet" type="text/css" href="{% static 'mida/cms/style.css' %}"/>
 {% endblock %}
 
-{% block body_class %}mida-cms-base {{ self.get_verbose_name|slugify }}-page{% endblock %}
+{% block body_class %}mida-cms-base {{ self.get_verbose_name|slugify }}-page cms-page{% endblock %}
+
+{% block layout %}section{% endblock %}
+
+{% block page_header %}
+
+  <div class="hero-flex-container">
+    
+    <div class="hero-left">
+      <div class="title-line">
+        <h1>{% block title %}{{ self.title }}{% endblock %}</h1>
+      </div>
+
+      {% if self.description %}
+        <div class="description">
+          {{ self.description|anchored_richtext }}
+        </div>
+      {% else %}
+        <!-- Allow children to add a description if the page does not have one -->
+        {% block hero_description %}{% endblock %}
+      {% endif %}
+    </div>
+    
+    {% if self.feature_image %}
+      
+      {% image self.feature_image min-520x430 as feat_img %}
+      
+      <div class="hero-right">
+        <div class="hero-image-wrap" style="background-image: url('{{ feat_img.url }}');">
+          <img class="feature" src="{{ feat_img.url }}" alt="{{ self.title }}" />
+        </div>
+      </div>
+      
+    {% endif %}
+
+  </div>
+
+  {% include 'components/breadcrumb/index.html' %}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="contain">
+    {% for block in page.body %}
+      {% if block.block_type == 'table' %}
+        {% include_block block %}
+      {% elif block.block_type == 'text' %}
+        <div class="page-body">
+          {% include_block block %}
+        </div>
+      {% else %}
+        {# rendering for other block types #}
+        {% include_block block %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+{% endblock %}
