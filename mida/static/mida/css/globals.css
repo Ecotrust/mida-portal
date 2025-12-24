@@ -137,6 +137,10 @@ img {
     -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+    font-size: 1em;
+}
+
 h1 {
     color: var(--teal);
     font-family: var(--h1-font-family);

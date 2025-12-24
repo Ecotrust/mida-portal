@@ -207,3 +207,37 @@
 
     --btn-oswald-font-size-fluid: clamp(1rem, 0.9rem + 0.3vw, 1.4375rem); /* 23px */
 }
+
+
+@media screen and (max-width: 480px) {
+    :root {
+        --h1-font-size: 4.75rem;
+        --h1-line-height: 5.25rem;
+        --h2-font-size: 3.75rem;
+        --h2-line-height: 4.5rem;
+        --h3-font-size: 3.5rem;
+        --h3-line-height: 4rem;
+        --h4-font-size: 2.5rem;
+        --h4-line-height: 3rem;
+        --h5-font-size: 2rem;
+        --h5-line-height: 2.75rem;
+        --h6-font-size: 1.5rem;
+        --h6-line-height: 2rem;
+        --h7-font-size: 1.125rem;
+        --h7-line-height: 1.375rem;
+        --p1-font-size: 1.375rem;
+        --p1-line-height: 2rem;
+        --p2-font-size: 1.25rem;
+        --p2-line-height: 1.875rem;
+        --p3-font-size: 1.125rem;
+        --p3-line-height: 1.875rem;
+        --p4-font-size: 1rem;
+        --p4-line-height: 1.5rem;
+        --btn-oswald-font-size: 1.25rem;
+        --btn-oswald-line-height: 2rem; 
+        --FAQ-headline-font-size: 1.25rem;
+        --FAQ-headline-line-height: 2rem;
+        --fira-subtitle-font-size: 1.375rem;
+        --fira-subtitle-line-height: 1.75rem;
+    }
+}

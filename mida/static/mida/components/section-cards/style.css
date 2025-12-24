@@ -133,16 +133,8 @@
   background-color: var(--teal);
 }
 
-@media screen and (max-width: 54rem) {
-  .card-title {
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    min-block-size: calc(2lh);
-  }
-}
-
 /* Desktop/tablet layout: two columns with the second card spanning both rows */
-@media screen and (min-width: 54rem) {
+@media screen and (min-width: 48rem) {
   .card-border {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
