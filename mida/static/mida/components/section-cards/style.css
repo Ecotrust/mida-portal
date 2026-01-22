@@ -27,13 +27,14 @@
   grid-template-areas:
     "a"
     "b"
-    "c";
+    "c"
+    "d";
   grid-auto-flow: row;
   position: relative;
 }
 
 .card-border:after {
-  bottom: 2vw;
+  bottom: -2vw;
   border: 1px solid var(--dark-blue, #003366);
   content: '';
   position: absolute;
@@ -73,6 +74,7 @@
 .card:nth-of-type(1) { grid-area: a; }
 .card:nth-of-type(2) { grid-area: b; }
 .card:nth-of-type(3) { grid-area: c; }
+.card:nth-of-type(4) { grid-area: d; }
 
 .card-header {
   background-color: var(--teal);
@@ -121,16 +123,20 @@
   width: 100%;
 }
 
-.card:nth-of-type(3n + 1) .card-header {
+.card:nth-of-type(4n + 1) .card-header {
   background-color: var(--dark-blue);
 }
 
-.card:nth-of-type(3n + 2) .card-header {
+.card:nth-of-type(4n + 2) .card-header {
   background-color: var(--green);
 }
 
-.card:nth-of-type(3n + 3) .card-header {
+.card:nth-of-type(4n + 3) .card-header {
   background-color: var(--teal);
+}
+
+.card:nth-of-type(4n + 4) .card-header {
+  background-color: var(--yellow);
 }
 
 /* Desktop/tablet layout: two columns with the second card spanning both rows */
@@ -140,12 +146,7 @@
     grid-template-rows: auto auto;
     grid-template-areas:
       "a b"
-      "c b";
+      "c d";
     align-items: stretch;
-  }
-
-  /* Make the tall (right) card's image taller to match the mock */
-  .card:nth-of-type(2) .card-image {
-    aspect-ratio: 4 / 5;
   }
 }
