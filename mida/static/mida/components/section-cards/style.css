@@ -33,7 +33,7 @@
 }
 
 .card-border:after {
-  bottom: 2vw;
+  bottom: -2vw;
   border: 1px solid var(--dark-blue, #003366);
   content: '';
   position: absolute;
