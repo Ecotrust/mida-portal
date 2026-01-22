@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{% static 'mida/components/homepage-herobanner/style.css' %}">
 {% endblock extra_css %}
 
-<header class="homepage-hero-banner" data-model-id="1835:774">
+<header class="homepage-hero-banner">
     <div class="homepage-hero-contain">
         <div class="overlap-group">
             <div class="content">
@@ -13,8 +13,11 @@
                 <h2 class="subtitle">Mid-Atlantic Ocean Data Portal</h2>
                 <p class="description">Ocean data for state, federal, and local users</p>
             </div>
-            <div class="hero-image-wrap">
-                <img class="hero-image" src="{% static 'mida/components/homepage-herobanner/img/marcodataportal-homepage-image01.png' %}" alt="Marina with boats" />
+
+            <div class="hero-right">
+                <div class="hero-image-wrap" style="background-image: url('{% static 'mida/components/homepage-herobanner/img/homepage-hero.jpg' %}');">
+                    <img class="hero-image" src="{% static 'mida/components/homepage-herobanner/img/homepage-hero.jpg' %}" alt="MidA Hero Image" />
+                </div>
             </div>
         </div>
     </div>

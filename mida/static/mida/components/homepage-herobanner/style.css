@@ -69,8 +69,22 @@
   font-style: var(--p1-font-style);
 }
 
-.homepage-hero-banner .hero-image {
+.homepage-hero-banner .hero-image-wrap {
+  background-size: 95%;
+  background-position: left top;
+  background-repeat: no-repeat;
+  border-radius: 0% 0% 0% 100%;
   display: none;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+}
+
+.homepage-hero-banner .hero-image {
+  border: .75rem solid var(--white);
+  border-radius: 0% 0% 0% 95%;
   height: 100%;
   position: absolute;
   top: 0;
@@ -78,7 +92,7 @@
 }
 
 @media (min-width: 60rem) {
-  .homepage-hero-banner .hero-image {
+  .homepage-hero-banner .hero-image-wrap {
     display: block;
   }
 }
@@ -88,7 +102,7 @@
     grid-template-columns: 1fr;
   }
 
-  .homepage-hero-banner .hero-image {
+  .homepage-hero-banner .hero-image-wrap {
     display: block;
   }
 }
