@@ -19,9 +19,9 @@
                 <p class="card-description">
                   {% block text %}
                     {% if item.search_description %}
-                      {{ item.search_description|striptags|truncatechars:93 }}
+                      {{ item.search_description|striptags|truncatechars:120 }}
                     {% else %}
-                      {{ item.description|striptags|truncatechars:93 }}
+                      {{ item.description|striptags|truncatechars:120 }}
                     {% endif %}
                   {% endblock %}
                 </p>
