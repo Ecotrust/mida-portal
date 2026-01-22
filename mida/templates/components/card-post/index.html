@@ -10,7 +10,7 @@
     <div class="img-wrapper">
         <a href="{{ item.url }}">
             {% if item.feature_image %}
-                {% image item.feature_image fill-355x195 class="feature" %}
+                {% image item.feature_image fill-355x195 class="feature" alt=item.title %}
             {% else %}
                 <img class="feature" src="{% static 'mida/components/card-post/img/marcodataportal-homepage-image09.png' %}" alt="Image placeholder" />
             {% endif %}
