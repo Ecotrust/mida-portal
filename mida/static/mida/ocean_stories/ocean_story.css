@@ -78,7 +78,7 @@
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), transparent), var(--grey-light);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: 0 1.5rem 1.5rem rgba(255,255,255,0.95);
     z-index: 10;
 }
 
@@ -115,6 +115,12 @@
     padding: 2rem 0;
 }
 
+@media (min-width: 64rem) {
+    .ocean-story .content {
+        padding: 4rem 0;
+    }
+}
+
 .ocean-story .content .title {
     color: var(--dark-blue, #22408F);
     font-family: var(--h4-font-family);
@@ -122,13 +128,14 @@
     font-weight: var(--h4-font-weight);
     line-height: var(--h4-line-height);
     letter-spacing: var(--h4-letter-spacing);
-    margin: var(--space-7) 0;
+    margin: var(--space-7) 0 var(--space-9);
     text-align: center;
     text-transform: uppercase;
 }
 
 .ocean-story .content .description {
     margin: var(--space-7) auto var(--space-9);
+    width: 70%;
 }
 
 .ocean-story .content .description p {
@@ -155,7 +162,7 @@
     font-size: var(--h4-font-size);
     font-weight: var(--h4-font-weight);
     line-height: var(--h4-line-height);
-    margin: var(--space-5) 0;
+    margin: var(--space-7) 0;
 }
 
 .ocean-story .content h2:empty {
@@ -170,14 +177,14 @@
     font-size: var(--fira-subtitle-font-size);
     font-weight: var(--fira-subtitle-font-weight);
     line-height: var(--fira-subtitle-line-height);
-    margin: var(--space-7) auto var(--space-5);
+    margin: var(--space-9) auto var(--space-7);
 }
 
 .ocean-story .content section {
     /* Flex .section-body and .legend-well */
     display: flex;
-    gap: .5rem;
-    margin: var(--space-7) auto;
+    gap: var(--space-7);
+    margin: var(--space-9) auto;
 }
 
 .ocean-story .content .has-legend {
@@ -250,8 +257,27 @@
 
 .ocean-story .media-full {
     display: block;
+    margin: var(--space-9) auto;
 }
 
+.ocean-story .story-media-right,
+.ocean-story .story-media-left {
+    margin: var(--space-9) auto;
+}
+
+/* Overrides for when there is also a legend next to the media */
+.ocean-story .has-legend .story-media-right,
+.ocean-story .has-legend .story-media-left {
+    margin: 0 auto var(--space-9);
+}
+
+.ocean-story .media-object {
+    margin: 5px auto;
+}
+
+.ocean-story .has-legend .media-object {
+    display: inline; /* So that media does not extend beyond its container */
+}
 
 @-webkit-keyframes bounce {
     0% {
