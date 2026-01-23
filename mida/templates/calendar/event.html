@@ -16,6 +16,16 @@
         <div class="hero-left">
             <div class="title-line">
                 <h7 class="event-card__meta">
+
+                    {% if self.date %}
+                        <div class="event-chip">
+                            <img src="{% static 'mida/calendar/img/marcodataportal-global-icon-calendar.svg' %}" alt="Calendar icon">
+                            <time datetime="{{ self.date|date:'c' }}">
+                                {{ self.date|date:"F j, Y" }}
+                            </time>
+                        </div>
+                    {% endif %}
+                    
                     <div class="event-location">
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="25" viewBox="0 0 18 25" fill="none">
@@ -29,15 +39,6 @@
                         {% endif %}
 
                     </div>
-
-                    {% if self.date %}
-                        <div class="event-chip">
-                            <img src="{% static 'mida/calendar/img/marcodataportal-global-icon-calendar.svg' %}" alt="Calendar icon">
-                            <time datetime="{{ self.date|date:'c' }}">
-                                {{ self.date|date:"F j, Y" }}
-                            </time>
-                        </div>
-                    {% endif %}
 
                 </h7>
 
