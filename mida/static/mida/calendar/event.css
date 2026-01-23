@@ -75,6 +75,7 @@
 
 @media (min-width: 64em) {
     .event-wrap {
+        align-items: flex-start;
         flex-direction: row;
         gap: clamp(2rem, 6vw, 5rem);
     }
