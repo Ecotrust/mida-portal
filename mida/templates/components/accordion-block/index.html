@@ -38,7 +38,7 @@
         
         {% if mapgroup.is_open or user_is_member or user.is_superuser %}
             <section class="data-groups">
-                <details open class="property">
+                <details closed class="property">
                     <summary>
                         <span class="text-wrapper left-items">
                             <h3 class="text">Group Members</h3>
@@ -120,7 +120,7 @@
         {% if shared_items %}
             {% if mapgroup.is_open or user_is_member or user.is_superuser %}
                 <section class="data-groups">
-                    <details class="property" open>
+                    <details closed class="property">
                         <summary>
                             <span class="text-wrapper left-items">
                                 <h3 class="text">Shared Items</h3>
