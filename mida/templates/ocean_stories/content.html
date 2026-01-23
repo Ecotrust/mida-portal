@@ -217,6 +217,14 @@
                             {% endif %}
                         {% endif %}
 
+                        {% if section.media_position == 'full' %}
+                            {% if section.media_image or section.media_embed_url %}
+                                <div class="media-full">
+                                    {% include "ocean_stories/include_media.html" with item=section only %}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+
                         <div class="story-media-body">
                             <div class="item-text">
                                 {% block body %}
@@ -226,14 +234,6 @@
                                 {% endblock %}
                             </div>
                         </div>
-
-                        {% if section.media_position == 'full' %}
-                            {% if section.media_image or section.media_embed_url %}
-                                <div class="media-full">
-                                    {% include "ocean_stories/include_media.html" with item=section only %}
-                                </div>
-                            {% endif %}
-                        {% endif %}
 
                         {% if section.media_position == 'left' and section.media_image %}
                             </div>
