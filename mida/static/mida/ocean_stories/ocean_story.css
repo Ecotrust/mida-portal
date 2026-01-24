@@ -158,6 +158,8 @@
 
 .ocean-story .content h2 {
     color: var(--color-ink, #030B39);
+    clear: both;
+    display: block;
     font-family: var(--h4-font-family);
     font-size: var(--h4-font-size);
     font-weight: var(--h4-font-weight);
@@ -167,6 +169,10 @@
 
 .ocean-story .content h2:empty {
     display: none;
+}
+
+.ocean-story .content h3 {
+    clear: both;
 }
 
 .ocean-story .content h3,
@@ -260,6 +266,27 @@
     margin: var(--space-9) auto;
 }
 
+/* Sections with media on the right or left */
+.ocean-story .story-with-media-right,
+.ocean-story .story-with-media-left {
+    display: flex;
+    gap: var(--space-7);
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.ocean-story .story-with-media-right {
+    flex-direction: row-reverse;
+}
+
+.ocean-story .story-with-media-right .story-media-right,
+.ocean-story .story-with-media-left .story-media-left,
+.ocean-story .story-with-media-right .story-media-body,
+.ocean-story .story-with-media-left .story-media-body {
+    flex: 1;
+    margin-top: 0;
+}
+
 .ocean-story .story-media-right,
 .ocean-story .story-media-left {
     margin: var(--space-9) auto;
@@ -277,6 +304,25 @@
 
 .ocean-story .has-legend .media-object {
     display: inline; /* So that media does not extend beyond its container */
+}
+
+/* Rich text media */
+.ocean-story img.richtext-image.full-width {
+    display: block;
+    margin: var(--space-9) auto;
+    max-width: 100%;
+}
+
+.ocean-story img.richtext-image.left {
+    float: left;
+    margin: 0 var(--space-5) var(--space-9) 0;
+    max-width: 50%;
+}
+
+.ocean-story img.richtext-image.right {
+    float: right;
+    margin: 0 0 var(--space-9) var(--space-5);
+    max-width: 50%;
 }
 
 @-webkit-keyframes bounce {
