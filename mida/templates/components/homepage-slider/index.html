@@ -1,5 +1,5 @@
 <!-- mida-portal/mida/static/mida/components/homepage-slider/index.html -->
-{% load static %}
+{% load static wagtailcore_tags wagtailcustom_tags wagtailimages_tags %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'mida/components/homepage-slider/style.css' %}">
@@ -43,6 +43,22 @@
                     </button>
                 </div>
             </div>
+
+            {% for slide in page.slides.all %}
+                    <div class="slide">
+                            <a href="{{ slide.link }}">
+                                <div class="slide-wrap">
+                                <div class="slide-bg">
+                                    {% image slide.slide_image min-1200x500 %}
+                                </div>
+                                <div class="slide-content">
+                                    <h2 class="slide-title">{{ slide.title }}</h2>
+                                    <div class="slide-body">{{ slide.body|anchored_richtext }}</div>
+                                </div>
+                                </div>
+                            </a>
+                    </div>
+                {% endfor %}
 
             <!-- Slider Container -->
             <div class="slider-wrapper">
