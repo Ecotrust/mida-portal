@@ -10,7 +10,9 @@
     
     {% include 'components/homepage-herobanner/index.html' %}
 
-    {% include 'components/homepage-slider/index.html' %}
+    {% if page.slides.all %}
+        {% include 'components/homepage-slider/index.html' %}
+    {% endif %}
 
     {% include 'components/combo-textimagebutton/index.html' %}
     
