@@ -309,9 +309,6 @@
 
 /* Responsive */
 @media (min-width: 768px) {
-    .homepage-slider .container {
-        padding: 48px 32px;
-    }
 
     .homepage-slider .homepage-slider-header {
         flex-direction: row;
