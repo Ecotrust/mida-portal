@@ -1,0 +1,325 @@
+/* Header */
+.homepage-slider .homepage-slider-header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.homepage-slider .title {
+    font-family: 'Oswald', sans-serif;
+    color: #030b39;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 400;
+}
+
+.homepage-slider .slider-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.homepage-slider .arrow-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.homepage-slider .arrow-buttons.mobile-only {
+    display: none;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.homepage-slider .arrow-button {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    opacity: 1;
+    padding: 0;
+}
+
+.homepage-slider .arrow-button:hover:not(:disabled) {
+    opacity: 0.8;
+}
+
+.homepage-slider .arrow-button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.homepage-slider .arrow-button:disabled .arrow-group {
+    opacity: 0.4;
+}
+
+.homepage-slider .arrow-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.homepage-slider .all-news-button {
+    border: 1px solid #22408f;
+    background: transparent;
+    transition: all 0.3s;
+}
+
+.homepage-slider .all-news-button:hover {
+    background: #22408f;
+    text-decoration: none;
+}
+
+.homepage-slider .all-news-text {
+    color: #22408f;
+    transition: color 0.3s;
+    white-space: nowrap;
+}
+
+.homepage-slider .all-news-button:hover .all-news-text {
+    color: white;
+}
+
+/* Slider */
+.homepage-slider .slider-wrapper {
+    overflow: hidden;
+    margin-bottom: 32px;
+    padding: 10px;
+}
+
+.homepage-slider .slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    user-select: none;
+    cursor: grab;
+}
+
+.homepage-slider .slider.dragging {
+    cursor: grabbing;
+}
+
+.homepage-slider .slide {
+    padding: 0 10px;
+    flex-shrink: 0;
+    transition: opacity 0.5s;
+}
+
+/* .homepage-slider .slide.partial {
+    opacity: 0.5;
+    pointer-events: none;
+} */
+
+.homepage-slider .slide a {
+    text-decoration: none;
+}
+
+/* News Post */
+.homepage-slider .news-post {
+    height: 514px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+    border-radius: 12px;
+    background: white;
+    overflow: hidden;
+    transition: transform 0.15s cubic-bezier(.4, 0, .2, 1);
+}
+
+.homepage-slider .news-post:hover {
+    transform: scale(1.05);
+}
+
+.homepage-slider .news-image-section {
+    position: relative;
+    height: 195px;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+.homepage-slider .news-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.homepage-slider .overlay-text-update {
+    background: #ffa400;
+    padding: 0 16px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.homepage-slider .overlay-text-update p {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.homepage-slider .date-badge {
+    position: absolute;
+    left: 0;
+    top: 165px;
+    background: #00a564;
+    padding: 2px 12px;
+    border-radius: 0 4px 0 0;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.homepage-slider .date-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.homepage-slider .date-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.homepage-slider .date-text {
+    font-family: 'Barlow', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 26px;
+    color: white;
+}
+
+.homepage-slider .news-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.homepage-slider .news-title {
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    color: #22408f;
+    min-height: 90px;
+}
+
+.homepage-slider .news-description {
+    font-family: 'Barlow', sans-serif;
+    font-size: 18px;
+    line-height: 26px;
+    color: #010101;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    min-height: 104px;
+}
+
+.homepage-slider .read-more-button {
+    align-items: center;
+    background: #22408f;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    height: 50px;
+    justify-content: center;
+    margin-top: 16px;
+    padding: 12px 24px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.homepage-slider .read-more-button:hover {
+    background: #1a3270;
+}
+
+.homepage-slider .read-more-text {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: white;
+    letter-spacing: 0.9px;
+    line-height: 24px;
+}
+
+/* Pagination */
+.homepage-slider .pagination {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.homepage-slider .dot {
+    background: #22408f;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 12px;
+    height: 12px;
+    opacity: 0.4;
+}
+
+.homepage-slider .dot:hover {
+    opacity: 0.6;
+}
+
+.homepage-slider .dot.active {
+    width: 48px;
+    height: 12px;
+    opacity: 1;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+
+    .homepage-slider .homepage-slider-header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 32px;
+    }
+
+    .homepage-slider .title {
+        font-size: 46px;
+        line-height: 56px;
+    }
+
+    .homepage-slider .arrow-buttons.desktop-only {
+        display: flex;
+    }
+
+    .homepage-slider .arrow-buttons.mobile-only {
+        display: none;
+    }
+}
+
+@media (min-width: 64rem) {
+    /* Slider */
+    .homepage-slider {
+        overflow: hidden;
+        padding: var(--space-5) 0;
+        width: 100%;
+    }
+
+    .homepage-slider .slider-wrapper {
+        overflow: visible;
+    }
+}
+
+@media (max-width: 767px) {
+    .homepage-slider .arrow-buttons.desktop-only {
+        display: none;
+    }
+
+    .homepage-slider .arrow-buttons.mobile-only {
+        display: flex;
+    }
+}

@@ -1,0 +1,106 @@
+<!-- mida-portal/mida/static/mida/components/homepage-slider/index.html -->
+{% load static wagtailcore_tags wagtailcustom_tags wagtailimages_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/homepage-slider/style.css' %}">
+{% endblock extra_css %}
+
+{% block extra_js %}
+    <script src="{% static 'mida/components/homepage-slider/homepage-slider.js' %}"></script>
+{% endblock extra_js %}
+
+<section class="homepage-slider">
+    <div class="contain">
+
+        <!-- Header -->
+        <div class="homepage-slider-header">
+            <h1 class="title">Recent News &amp; Updates</h1>
+            
+            <div class="slider-controls">
+                <!-- Navigation Arrows - Hidden on mobile -->
+                <div class="arrow-buttons desktop-only">
+                    <button id="news-prevBtn" class="arrow-button" aria-label="Previous slide">
+                        <svg class="arrow-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 60 60">
+                            <g class="arrow-group">
+                                <path d="M29.6187 57.2375C44.8722 57.2375 57.2375 44.8722 57.2375 29.6187C57.2375 14.3653 44.8722 2 29.6187 2C14.3653 2 2 14.3653 2 29.6187C2 44.8722 14.3653 57.2375 29.6187 57.2375Z" fill="#FFA400" />
+                                <path d="M25 19L36 30L25 41" stroke="white" stroke-linecap="round" stroke-width="2" transform="translate(60, 0) scale(-1, 1)"/>
+                            </g>
+                        </svg>
+                    </button>
+                    <button id="news-nextBtn" class="arrow-button" aria-label="Next slide">
+                        <svg class="arrow-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 60 60">
+                            <g class="arrow-group">
+                                <path d="M29.6187 57.2375C44.8722 57.2375 57.2375 44.8722 57.2375 29.6187C57.2375 14.3653 44.8722 2 29.6187 2C14.3653 2 2 14.3653 2 29.6187C2 44.8722 14.3653 57.2375 29.6187 57.2375Z" fill="#FFA400" />
+                                <path d="M25 19L36 30L25 41" stroke="white" stroke-linecap="round" stroke-width="2"/>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Go to All News Button -->
+                <a href="/news" class="all-news-button button-small">
+                    <span class="all-news-text">GO TO ALL NEWS</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Slider Container -->
+        <div class="slider-wrapper">
+            <div id="slider" class="slider">
+                {% for slide in page.slides.all %}
+                    <div class="slide">
+                        <a href="{{ slide.link }}" class="slide-link">
+                            <div class="news-post">
+                                <div class="news-image-section">
+                                    {% image slide.slide_image fill-800x390 as slide_img %}
+                                    <img src="{{ slide_img.url }}" alt="{{ slide.title }}" class="news-image">
+
+                                    {% if slide.link_page and slide.link_page.first_published_at %}
+                                        <div class="date-badge">
+                                            <div class="date-icon">
+                                                <img src="{% static 'mida/components/homepage-slider/img/calendar.svg' %}" alt="Calendar icon" />
+                                            </div>
+                                            <p class="date-text">{{ slide.link_page.first_published_at|date:"F j, Y" }}</p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+
+                                <div class="news-content">
+                                    <h3 class="news-title">{{ slide.title }}</h3>
+                                    <p class="news-description">{{ slide.body|striptags }}</p>
+                                    <span class="read-more-button">
+                                        <span class="read-more-text">READ MORE</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Arrows -->
+        <div class="arrow-buttons mobile-only">
+            <button id="news-prevBtnMobile" class="arrow-button" aria-label="Previous slide">
+                <svg class="arrow-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 60 60">
+                    <g class="arrow-group">
+                        <path d="M29.6187 57.2375C44.8722 57.2375 57.2375 44.8722 57.2375 29.6187C57.2375 14.3653 44.8722 2 29.6187 2C14.3653 2 2 14.3653 2 29.6187C2 44.8722 14.3653 57.2375 29.6187 57.2375Z" fill="#FFA400" />
+                        <path d="M25 19L36 30L25 41" stroke="white" stroke-linecap="round" stroke-width="2" transform="translate(60, 0) scale(-1, 1)"/>
+                    </g>
+                </svg>
+            </button>
+            <button id="news-nextBtnMobile" class="arrow-button" aria-label="Next slide">
+                <svg class="arrow-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 60 60">
+                    <g class="arrow-group">
+                        <path d="M29.6187 57.2375C44.8722 57.2375 57.2375 44.8722 57.2375 29.6187C57.2375 14.3653 44.8722 2 29.6187 2C14.3653 2 2 14.3653 2 29.6187C2 44.8722 14.3653 57.2375 29.6187 57.2375Z" fill="#FFA400" />
+                        <path d="M25 19L36 30L25 41" stroke="white" stroke-linecap="round" stroke-width="2"/>
+                    </g>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Pagination Dots -->
+        <div id="pagination" class="pagination"></div>
+
+    </div>
+</section>
