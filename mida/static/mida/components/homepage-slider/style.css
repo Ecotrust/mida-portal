@@ -1,7 +1,3 @@
-.homepage-slider .container {
-    padding: 48px 16px;
-}
-
 .homepage-slider .max-width {
     max-width: 1400px;
     margin: 0 auto;
@@ -94,6 +90,7 @@
 .homepage-slider .slider-wrapper {
     overflow: hidden;
     margin-bottom: 32px;
+    padding: 10px;
 }
 
 .homepage-slider .slider {
