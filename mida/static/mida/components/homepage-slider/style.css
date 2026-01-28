@@ -337,8 +337,9 @@
 @media (min-width: 64rem) {
     /* Slider */
     .homepage-slider {
-        width: 100%;
         overflow: hidden;
+        padding: var(--space-5) 0;
+        width: 100%;
     }
 
     .homepage-slider .slider-wrapper {
