@@ -7,10 +7,10 @@
     function initHomepageSlider() {
         const slider = document.getElementById('slider');
         const pagination = document.getElementById('pagination');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const prevBtnMobile = document.getElementById('prevBtnMobile');
-        const nextBtnMobile = document.getElementById('nextBtnMobile');
+        const prevBtn = document.getElementById('news-prevBtn');
+        const nextBtn = document.getElementById('news-nextBtn');
+        const prevBtnMobile = document.getElementById('news-prevBtnMobile');
+        const nextBtnMobile = document.getElementById('news-nextBtnMobile');
 
         if (!slider || !pagination) return;
 

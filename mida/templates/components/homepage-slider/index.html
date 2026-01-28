@@ -9,17 +9,17 @@
     <script src="{% static 'mida/components/homepage-slider/homepage-slider.js' %}"></script>
 {% endblock extra_js %}
 
-<section class="homepage-slider">
-    <div class="container">
+<div class="contain">
+    <section class="homepage-slider">
         <div class="max-width">
             <!-- Header -->
-            <div class="header">
+            <div class="homepage-slider-header">
                 <h1 class="title">Latest News</h1>
                 
-                <div class="header-controls">
+                <div class="slider-controls">
                     <!-- Navigation Arrows - Hidden on mobile -->
                     <div class="arrow-buttons desktop-only">
-                        <button id="prevBtn" class="arrow-button" aria-label="Previous slide">
+                        <button id="news-prevBtn" class="arrow-button" aria-label="Previous slide">
                             <svg class="arrow-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 60 60">
                                 <g class="arrow-group">
                                     <path d="M29.6187 57.2375C44.8722 57.2375 57.2375 44.8722 57.2375 29.6187C57.2375 14.3653 44.8722 2 29.6187 2C14.3653 2 2 14.3653 2 29.6187C2 44.8722 14.3653 57.2375 29.6187 57.2375Z" fill="#FFA400" />
@@ -27,7 +27,7 @@
                                 </g>
                             </svg>
                         </button>
-                        <button id="nextBtn" class="arrow-button" aria-label="Next slide">
+                        <button id="news-nextBtn" class="arrow-button" aria-label="Next slide">
                             <svg class="arrow-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 60 60">
                                 <g class="arrow-group">
                                     <path d="M29.6187 57.2375C44.8722 57.2375 57.2375 44.8722 57.2375 29.6187C57.2375 14.3653 44.8722 2 29.6187 2C14.3653 2 2 14.3653 2 29.6187C2 44.8722 14.3653 57.2375 29.6187 57.2375Z" fill="#FFA400" />
@@ -38,7 +38,7 @@
                     </div>
 
                     <!-- Go to All News Button -->
-                    <button class="all-news-button">
+                    <button class="all-news-button button-small">
                         <span class="all-news-text">GO TO ALL NEWS</span>
                     </button>
                 </div>
@@ -79,7 +79,7 @@
 
             <!-- Mobile Navigation Arrows -->
             <div class="arrow-buttons mobile-only">
-                <button id="prevBtnMobile" class="arrow-button" aria-label="Previous slide">
+                <button id="news-prevBtnMobile" class="arrow-button" aria-label="Previous slide">
                     <svg class="arrow-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 60 60">
                         <g class="arrow-group">
                             <path d="M29.6187 57.2375C44.8722 57.2375 57.2375 44.8722 57.2375 29.6187C57.2375 14.3653 44.8722 2 29.6187 2C14.3653 2 2 14.3653 2 29.6187C2 44.8722 14.3653 57.2375 29.6187 57.2375Z" fill="#FFA400" />
@@ -87,7 +87,7 @@
                         </g>
                     </svg>
                 </button>
-                <button id="nextBtnMobile" class="arrow-button" aria-label="Next slide">
+                <button id="news-nextBtnMobile" class="arrow-button" aria-label="Next slide">
                     <svg class="arrow-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 60 60">
                         <g class="arrow-group">
                             <path d="M29.6187 57.2375C44.8722 57.2375 57.2375 44.8722 57.2375 29.6187C57.2375 14.3653 44.8722 2 29.6187 2C14.3653 2 2 14.3653 2 29.6187C2 44.8722 14.3653 57.2375 29.6187 57.2375Z" fill="#FFA400" />
@@ -99,6 +99,7 @@
 
             <!-- Pagination Dots -->
             <div id="pagination" class="pagination"></div>
+
         </div>
-    </div>
-</section>
+    </section>
+</div>
