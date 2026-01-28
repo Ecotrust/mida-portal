@@ -171,7 +171,34 @@
             }
         });
 
-        window.addEventListener('keydown', handleKeyDown);
+        // Make slider focusable for keyboard navigation if it isn't already.
+        if (!slider.hasAttribute('tabindex')) {
+            slider.setAttribute('tabindex', '0');
+        }
+
+        // Scope keyboard handling to the slider and ignore text-input/contenteditable contexts.
+        const handleSliderKeyDown = function (event) {
+            const target = event.target;
+            if (!target || target === slider) {
+                return handleKeyDown(event);
+            }
+
+            const tagName = target.tagName && target.tagName.toLowerCase();
+            const isInputLike = tagName === 'input' || tagName === 'textarea';
+            const isContentEditable =
+                typeof target.isContentEditable === 'boolean'
+                    ? target.isContentEditable
+                    : (typeof target.getAttribute === 'function' &&
+                        String(target.getAttribute('contenteditable')).toLowerCase() === 'true');
+
+            if (isInputLike || isContentEditable) {
+                return;
+            }
+
+            handleKeyDown(event);
+        };
+
+        slider.addEventListener('keydown', handleSliderKeyDown);
         window.addEventListener('resize', updateSlidesToShow);
 
         updateSlidesToShow();
