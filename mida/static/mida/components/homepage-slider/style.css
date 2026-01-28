@@ -107,10 +107,10 @@
     transition: opacity 0.5s;
 }
 
-.homepage-slider .slide.partial {
+/* .homepage-slider .slide.partial {
     opacity: 0.5;
     pointer-events: none;
-}
+} */
 
 .homepage-slider .slide a {
     text-decoration: none;
