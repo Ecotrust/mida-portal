@@ -62,12 +62,12 @@
             slides.forEach((slide, index) => {
                 slide.style.width = `${100 / slidesToShow}%`;
 
-                const isPartiallyVisible = index === Math.floor(currentSlide + slidesToShow);
-                if (isPartiallyVisible) {
-                    slide.classList.add('partial');
-                } else {
-                    slide.classList.remove('partial');
-                }
+                // const isPartiallyVisible = index === Math.floor(currentSlide + slidesToShow);
+                // if (isPartiallyVisible) {
+                //     slide.classList.add('partial');
+                // } else {
+                //     slide.classList.remove('partial');
+                // }
             });
 
             if (prevBtn) prevBtn.disabled = currentSlide === 0;
