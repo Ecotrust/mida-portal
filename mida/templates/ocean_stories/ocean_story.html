@@ -26,7 +26,13 @@
             </div>
 
             <h7>
-                <a class="button-big" href="{{ self.explore_url }}" title="{{ self.explore_title }}" target="_blank">{{ self.explore_title }}</a>
+                <a class="button-big" href="{{ self.explore_url }}" target="_blank">
+                    {% if self.explore_title %}
+                        {{ self.explore_title }}
+                    {% else %}
+                        Explore Layers in Marine Planner
+                    {% endif %}
+                </a>
             </h7>
         </div>
 
