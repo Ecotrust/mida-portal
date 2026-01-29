@@ -175,8 +175,7 @@
     clear: both;
 }
 
-.ocean-story .content h3,
-.ocean-story .content b {
+.ocean-story .content h3 {
     color: var(--dark-blue, #22408F);
     display: block;
     font-family: var(--fira-subtitle-font-family);
