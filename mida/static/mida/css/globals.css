@@ -301,6 +301,10 @@ b {
     text-decoration: none;
 }
 
+.button-big.full-width {
+    width: 100%;
+}
+
 .button-small {
     align-items: center;
     background: var(--yellow-bright);

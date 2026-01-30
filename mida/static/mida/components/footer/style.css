@@ -71,12 +71,12 @@
   padding: clamp(var(--space-7), 10vw, var(--space-10));
   display: grid;
   grid-template-columns: 1fr minmax(18rem, var(--form-max));
-  gap: clamp(var(--space-6), 4.5vw, var(--space-10));
-  align-items: start;
+  gap: clamp(var(--space-6), 3.5vw, var(--space-8));
+  align-items: center;
 }
 
 .footer .newsletter-text {
-  min-width: 0;
+  min-width: auto;
 }
 
 .footer .newsletter-title {
