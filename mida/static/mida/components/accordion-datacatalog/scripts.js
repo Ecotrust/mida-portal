@@ -10,6 +10,10 @@
             }
 
             const anchor = document.getElementById(id);
+            if (!anchor) {
+                // Hash does not match any element; ignore and keep script running
+                return;
+            }
             const summary = anchor.querySelector('summary');
 
             if (summary) {
