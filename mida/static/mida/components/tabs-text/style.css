@@ -1,0 +1,42 @@
+.box .container {
+    display: flex;
+    background-color: var(--light-blue);
+    padding: 1rem;
+    width: fit-content;
+    border-radius: 12px;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 50%;
+}
+
+.tab-text-button {
+    background: none;
+    border: none;
+    border-radius: 8px;
+    color: var(--teal);
+    cursor: pointer;
+    flex: 1;
+    font-family: var(--h6-font-family);
+    font-weight: var(--h6-font-weight);
+    font-size: var(--h7-font-size);
+    font-style: var(--h6-font-style);
+    letter-spacing: var(--h6-letter-spacing);
+    line-height: var(--h6-line-height);
+    padding: 1rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.selected {
+    background: var(--green);
+    color: var(--white);
+}
+
+@media (min-width: 48rem) {
+    .tab-text-button {
+        font-family: var(--h6-font-family);
+        font-weight: var(--h6-font-weight);
+        font-size: var(--h6-font-size);
+        font-style: var(--h6-font-style);
+    }
+}

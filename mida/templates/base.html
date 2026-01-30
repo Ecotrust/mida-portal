@@ -1,22 +1,63 @@
+<!-- mida-portal/mida/static/mida/templates/base.html -->
+
 {% extends "base.html" %}
 {% load static %}
 
 {% block extra_css %}
-  {{ block.super }}
-  <!-- EXTRA MIDA CSS -->
-  <link rel="stylesheet" href="{% static 'mida/css/header.css' %}" type="text/css">
-  <link rel="stylesheet" href="{% static 'mida/css/footer.css' %}" type="text/css">
-  <link rel="stylesheet" href="{% static 'mida/css/home.css' %}" type="text/css">
-  <link rel="stylesheet" href="{% static 'mida/css/mida.css' %}" type="text/css">
-  <!-- END EXTRA CSS -->
+    {{ block.super }}
+    <!-- EXTRA_CSS MIDA base.html -->
+    <link rel="stylesheet" href="{% static 'mida/css/vars.css' %}">
+    {% block reset_styles %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'mida/css/globals.css' %}">
+    <link rel="stylesheet" href="{% static 'mida/css/mida.css' %}">
+    <!-- END EXTRA_CSS -->
 {% endblock %}
 
-{% block footer_wrap %}
-<footer>
-    {% block footer %}
-    <div class="container">
-        {% include 'marco_site/includes/footer.html' %}
-    </div>
-    {% endblock %}
-</footer>
-{% endblock footer_wrap %}
+{% block header_tag %}
+<!-- start header_tag -->
+    {% include 'components/header/index.html' %}
+<!-- end header_tag -->
+{% endblock %}
+
+{% block main %} 
+<!-- start main -->
+    {% block outer_content %} 
+    <!-- start outer_content -->
+        {% block page_header_container %} 
+        <!-- start page_header_container -->
+            <div class="contain">
+                <a class="anchor" id="page-header"></a>
+                <div class="page-header">
+                    {% block page_header %}
+                    <!-- start page_header -->
+                        <h1>{% block page_title %}{{ title }}{% endblock %}</h1>
+                    <!-- end page_header -->
+                    {% endblock %}
+                </div>
+            </div>
+        <!-- end page_header_container --> 
+        {% endblock %}
+
+        {% block all_content %} 
+        <!-- start all_content -->
+            {% block content %}{% endblock %}
+            {% block nav_footer %}{% endblock %}
+            {% block containerless_content %}{% endblock %}
+        <!-- end all_content -->
+        {% endblock %}
+    <!-- end outer_content -->
+    {% endblock outer_content %}
+
+    {% block footer_wrap %} 
+    <!-- start footer_wrap -->
+        {% block footer %} 
+        <!-- start footer -->
+            {% include 'components/footer/index.html' %}
+        <!-- end footer -->
+        {% endblock %}
+    <!-- end footer_wrap -->
+    {% endblock footer_wrap %}
+<!-- end main -->
+{% endblock main %}

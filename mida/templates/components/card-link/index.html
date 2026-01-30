@@ -1,0 +1,28 @@
+<!-- mida/templates/components/card-link/index.html -->
+<!-- Unused! inserted directly into tabs-iconsgo -->
+
+{% comment %} {% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/card-link/style.css' %}">
+{% endblock extra_css %}
+
+
+{% for item in sections %}
+<div class="tabs-link-container" id="{{ item.title|slugify }}">    
+    <section class="links">
+        <article class="link-wrapper">
+        <div class="link-container">
+            <div class="link-right">
+
+            </div>
+
+            <div class="link-middle">
+            <h2 class="text-wrapper">
+                {{ item.body|safe }}
+            </h2>
+            </div>
+        </article>
+    </section>
+</div>
+{% endfor %} {% endcomment %}

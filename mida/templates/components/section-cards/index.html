@@ -1,0 +1,43 @@
+<!-- mida-portal/mida/static/mida/components/section-cards/index.html -->
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/section-cards/style.css' %}">
+{% endblock extra_css %}
+
+<div class="contain">
+  <div class="section-with-cards">
+    <div class="card-border">
+      
+      {% for item in items %}
+        <section class="card collaborate">
+          <a href="{{ item.url }}" description="{{ item.title}}" class="link-block">
+
+            {% block heading %}
+              <header class="card-header">              
+                <h2 class="card-title">{{ item.title }}</h2>
+                <p class="card-description">
+                  {% block text %}
+                    {% if item.search_description %}
+                      {{ item.search_description|striptags|truncatechars:120 }}
+                    {% else %}
+                      {{ item.description|striptags|truncatechars:120 }}
+                    {% endif %}
+                  {% endblock %}
+                </p>
+              </header>
+            {% endblock %}
+          
+            {% block feature %}
+              {% if item.feature_image %}
+                {% image item.feature_image max-800x800 class="card-image" %}
+              {% endif %}
+            {% endblock %}
+
+          </a>
+        </section>
+      {% endfor %}
+      
+    </div>
+  </div>
+</div>

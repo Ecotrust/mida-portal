@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'mida/accounts/accounts.css' %}">
+{% endblock %}
+
+{% block body_class %}accounts login-page{% endblock %}
+
+{% block page_header %}{% endblock %}
+
+{% block content %}
+
+    <section class="contain login">
+
+        <h2 class="login-header">SIGN IN</h2>
+
+        <p>Anyone can join the {{ APP_NAME }}&mdash;<a href="{% url 'account:register' %}">becoming a member</a> allows you
+        to join and create interest groups, custom data layers, and share
+        map views with your collaborators.</p>
+
+        <form class="login-form" method="POST" action="{% url 'account:index' %}{% if next %}?next={{ next }}{% endif %}">
+            {% csrf_token %}
+
+            {{ form.as_div }}
+
+            <a class="forgot-password" href="{% url 'account:forgot_password' %}">Forgot Password?</a>
+
+            <button class="button-big" onclick='this.form.submit()'>Log in &rarr;</button>
+        </form>
+
+        <div class="account-links">
+            <span>Not a Member? <a href="{% url 'account:register' %}">Register Now</a></span>
+            <a href="/help/">Need Help?</a>
+        </div>
+
+    </section>
+
+
+{% endblock %}

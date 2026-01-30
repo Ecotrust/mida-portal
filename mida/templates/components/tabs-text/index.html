@@ -1,0 +1,16 @@
+<!-- mida-portal/mida/static/mida/components/tabs-text/index.html -->
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/tabs-text/style.css' %}">
+{% endblock extra_css %}
+
+<div class="box">
+    <nav aria-label="Data resources navigation" role="tablist">
+        <section class="container">
+            {% for item in items %}
+                <a href="{{ item.url }}" class="tab-text-button {% if item.url == request.path %}selected{% endif %}">{{ item.title }}</a>
+            {% endfor %}
+        </section>
+    </nav>
+</div>

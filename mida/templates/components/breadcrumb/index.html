@@ -1,0 +1,24 @@
+<!-- mida-portal/mida/static/mida/components/breadcrumb/index.html -->
+{% load static wagtailcore_tags wagtailcustom_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/breadcrumb/style.css' %}">
+{% endblock extra_css %}
+
+<nav aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+        {% for ancestor in page.get_ancestors %}
+            {% if not forloop.first %}
+                <li class="breadcrumb-item">
+                    <a href="{{ ancestor.get_url }}" class="element-item-label">{{ ancestor.title }}</a>
+                </li>
+                {% if not forloop.last %}
+                    <li class="breadcrumb-separator" aria-hidden="true">
+                        <span class="separator">/</span>
+                    </li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}    
+    </ol>
+</nav>
+

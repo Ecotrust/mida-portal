@@ -1,0 +1,152 @@
+.section-with-cards {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 3vw, 3rem);
+  padding: clamp(1rem, 4vw, 4rem) clamp(1rem, 6vw, 6rem) 0;
+  position: relative;
+  width: 100%;
+}
+
+.section-with-cards:before {
+  background: var(--light-blue, #ECF4FF);
+  content: '';
+  left: 0;
+  height: 20%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.card-border {
+  align-items: stretch;
+  display: grid;
+  gap: clamp(16px, 2vw, 80px);
+  /* Mobile-first: stack cards */
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    "a"
+    "b"
+    "c"
+    "d";
+  grid-auto-flow: row;
+  position: relative;
+}
+
+.card-border:after {
+  bottom: -2vw;
+  border: 1px solid var(--dark-blue, #003366);
+  content: '';
+  position: absolute;
+  left: -2vw;
+  top: -2vw;
+  right: -2vw;
+  pointer-events: none;
+}
+
+.card {
+  background-color: var(--surface, #ffffff);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  /* Fill the grid area height */
+  height: 100%;
+  width: 100%;
+  scale: 1;
+  transition: scale 0.15s cubic-bezier(.4, 0, .2, 1);
+
+  /* Enable container queries based on card width */
+  container-type: inline-size;
+}
+
+.card:hover {
+  scale: 1.05;
+}
+
+/* Override default link-block behavior inside cards */
+.card .link-block:hover {
+  scale: 1;
+  text-decoration: none;
+}
+
+/* Map the first three cards to the desktop grid areas */
+.card:nth-of-type(1) { grid-area: a; }
+.card:nth-of-type(2) { grid-area: b; }
+.card:nth-of-type(3) { grid-area: c; }
+.card:nth-of-type(4) { grid-area: d; }
+
+.card-header {
+  background-color: var(--teal);
+  padding: clamp(0.5rem, 1.5vw, 0.75rem) clamp(0.75rem, 2vw, 1rem);
+  text-align: center;
+}
+
+.card-title {
+  color: var(--white);
+  font-family: var(--h6-font-family);
+  font-weight: var(--h6-font-weight);
+  font-size: var(--h6-font-size);
+  letter-spacing: var(--h6-letter-spacing);
+  line-height: var(--h6-line-height);
+  margin: 0 0 0.5rem 0;
+  text-align: center;
+  text-transform: uppercase;
+
+  /* Equal height across cards */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  min-block-size: calc(1lh);
+}
+
+.card-description {
+  color: var(--white);
+  font-family: var(--p4-font-family);
+  font-weight: var(--p4-font-weight);
+  font-size: var(--p4-font-size);
+  letter-spacing: var(--p4-letter-spacing);
+  line-height: var(--p4-line-height);
+  margin: 0;
+  text-align: center;
+
+}
+
+.card-image {
+  aspect-ratio: 16 / 10;
+  display: block;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card:nth-of-type(4n + 1) .card-header {
+  background-color: var(--dark-blue);
+}
+
+.card:nth-of-type(4n + 2) .card-header {
+  background-color: var(--green);
+}
+
+.card:nth-of-type(4n + 3) .card-header {
+  background-color: var(--teal);
+}
+
+.card:nth-of-type(4n + 4) .card-header {
+  background-color: var(--yellow);
+}
+
+/* Desktop/tablet layout: two columns with the second card spanning both rows */
+@media screen and (min-width: 48rem) {
+  .card-border {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "a b"
+      "c d";
+    align-items: stretch;
+  }
+}

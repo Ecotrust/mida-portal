@@ -1,0 +1,24 @@
+<!-- mida-portal/mida/static/mida/components/homepage-herobanner/index.html -->
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/homepage-herobanner/style.css' %}">
+{% endblock extra_css %}
+
+<header class="homepage-hero-banner">
+    <div class="homepage-hero-contain">
+        <div class="overlap-group">
+            <div class="content">
+                <h1 class="title">Ocean Planning Resource Center &amp; Interactive Mapping Tool</h1>
+                <h2 class="subtitle">Mid-Atlantic Ocean Data Portal</h2>
+                <p class="description">Ocean data for state, federal, and local users</p>
+            </div>
+
+            <div class="hero-right">
+                <div class="hero-image-wrap" style="background-image: url('{% static 'mida/components/homepage-herobanner/img/homepage-hero.jpg' %}');">
+                    <img class="hero-image" src="{% static 'mida/components/homepage-herobanner/img/homepage-hero.jpg' %}" alt="MidA Hero Image" />
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

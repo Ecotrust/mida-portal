@@ -1,0 +1,46 @@
+.tabs-link-container {
+    height: 0;
+    opacity: .5;
+    visibility: hidden;
+    transition: 1s opacity ease;
+}
+
+.tabs-link-container.is-active {
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.link-wrapper {
+    border-radius: 12px;
+    box-shadow: 0px 0px 30px #00000012;
+    padding: 1.5rem 3rem;
+}
+
+.link-wrapper p:not(:empty),
+.link-wrapper li {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow: 0px 0px 30px #00000012;
+    color: #22408f;
+    font-family: var(--FAQ-headline-font-family);
+    font-size: var(--FAQ-headline-font-size);
+    font-style: var(--FAQ-headline-font-style);
+    font-weight: var(--FAQ-headline-font-weight);
+    letter-spacing: var(--FAQ-headline-letter-spacing);
+    line-height: var(--FAQ-headline-line-height);
+    margin: 1rem 0 0 0;
+    padding: 1.25rem;
+}
+
+.img {
+    width: 24px;
+    height: 26px;
+}

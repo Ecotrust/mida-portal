@@ -1,0 +1,57 @@
+<!-- mida/templates/mapgroups/mapgroup_list.html -->
+{% extends "cms/base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'mida/mapgroups/mapgroup_list.css' %}">
+    <link rel="stylesheet" href="{% static 'mida/components/card-groups/style.css' %}">
+{% endblock %}
+
+{% block title %}Join a map group{% endblock %}
+{% block page_title %}Join a map group{% endblock %}
+{% block hero_description %}
+<!-- start hero_description -->
+    
+    <div class="description">
+        <p>Groups are an opportunity to share information and resources with like-minded ocean users. Create or join a map group that interests you &mdash; and invite your colleagues! Maps and drawings can be saved and shared through your group with other registered Portal users.</p>
+    </div>
+    
+    <div class="margin-top-4">
+        <a class="button-big" href="{% url 'mapgroups:create' %}">Create your own map group</a>
+    </div>
+
+    <div class="group-form-disclaimer margin-top-4">
+        <p><em>*Note: MARCO reserves the right to review and remove Groups and content shared within them due to inactivity, inappropriate content or other misuse.</em></p>
+    </div>
+
+<!-- end hero_description -->
+{% endblock %}
+
+{% block content %}
+<!-- start content -->
+
+    <div class="bg-light-blue contain contain-padded">
+        <section class="data-datacatalog">
+
+            {% if featured_mapgroups %}
+                <h3>Featured Map Groups</h3>
+                <section class="posts">
+                    {% for featured in featured_mapgroups %}
+                        {% include 'components/card-groups/index.html' with mapgroup=featured.map_group %}
+                    {% endfor %}
+                </section>
+            {% endif %}
+
+            <h3>Member Groups</h3>
+            <section class="posts">
+                {% for mg in mapgroups %}
+                    {% include 'components/card-groups/index.html' with mapgroup=mg %}
+                {% endfor %}
+            </section>
+        
+        </section>
+    </div>
+
+<!-- end content -->
+{% endblock%}

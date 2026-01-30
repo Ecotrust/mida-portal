@@ -1,0 +1,76 @@
+/**
+ * CMS Styles
+ * mida-portal/mida/static/mida/cms/style.css
+**/
+
+/**
+ * Hero Section
+**/
+
+.hero-flex-container {
+    display: flex; 
+    flex-direction: column;
+    gap: 2rem 0; 
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.hero-left,
+.hero-right {
+    flex: 1;
+}
+
+.hero-flex-container .hero-image-wrap { 
+    background-size: 85%;
+    background-position: right top;
+    background-repeat: no-repeat;
+    border-radius: 0 0% 100% 5%;
+}
+
+.hero-flex-container .hero-image-wrap img {
+    border: .75rem solid var(--white);
+    border-radius: 0 0 90% 0;
+}
+
+.title-line {
+    margin: 2rem 0;
+}
+
+.title-line h1 {
+    width: auto;
+}
+
+.page-header {
+    border-bottom: 1px solid var(--blue);
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+}
+
+.page-header .description {
+    border-left: 5px solid var(--yellow);
+    padding: 1rem 1.125rem 1.125rem 1.5rem;
+    width: auto;
+}
+
+.page-header .description *:not(a) {
+    color: var(--color-ink);
+    font-family: var(--p1-font-family);
+    font-weight: var(--p1-font-weight);
+    font-size: var(--p1-font-size);
+    letter-spacing: var(--p1-letter-spacing);
+    line-height: var(--p1-line-height);
+}
+
+.cms-page .page-body p {
+    font-family: var(--p3-font-family);
+    font-weight: var(--p3-font-weight);
+    font-size: var(--p3-font-size);
+    line-height: var(--p3-line-height);
+}
+
+@media (min-width: 48rem) {
+    .hero-flex-container {
+        flex-direction: row;
+        gap: 0% .75rem;
+    }
+}

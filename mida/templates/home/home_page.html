@@ -1,0 +1,24 @@
+<!-- mida/templates/home/home_page.html -->
+ 
+{% extends "home/home_page.html" %}
+{% load wagtailcore_tags wagtailcustom_tags wagtailimages_tags static %}
+
+{% block content %}
+    {% if page.intro != '<p><br/></p>' %} <!-- this is as empty as a richtext field gets -->
+        <div class="intro">{{ page.intro|anchored_richtext }}</div>
+    {% endif %}
+    
+    {% include 'components/homepage-herobanner/index.html' %}
+
+    {% include 'components/combo-textimagebutton/index.html' %}
+
+    {% if page.slides.all %}
+        {% include 'components/homepage-slider/index.html' %}
+    {% endif %}
+    
+    {% if page.cards.all %}
+      {% include "components/section-cards/index.html" with items=page.cards.all %}
+    {% endif %}
+
+    {% include 'components/cta-visitmarco/index.html' %}
+{% endblock %}

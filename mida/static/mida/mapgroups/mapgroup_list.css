@@ -1,0 +1,10 @@
+.group-form-disclaimer p {
+    font-size: var(--body-regular-font-size);
+    line-height: var(--body-regular-line-height);
+    color: var(--gray-dark);
+}
+
+.data-datacatalog > h3 {
+    text-align: center;
+    margin: 0 0 var(--space-9);
+}

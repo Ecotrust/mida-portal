@@ -1,0 +1,10 @@
+{% include "components/accordion-datacatalog/index.html" with layer=child %}
+<div id="collapse-parent-{{child.type}}-{{ child.id }}" class="collapse in catalog-tier">
+    {% for grandchild in child.children %}
+        {% if grandchild.type == 'layer' %}
+            {% include "components/accordion-datacatalog/index.html" with layer=grandchild %}
+        {% else %}
+            {% include "data_catalog/theme_child.html" with child=grandchild %}
+        {% endif %}
+    {% endfor %}
+</div>

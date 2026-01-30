@@ -1,0 +1,47 @@
+<!-- 
+    mida-portal/mida/templates/components/card-post/index.html
+    Template For: News (blog) template
+-->
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<article class="card">
+    
+    <div class="img-wrapper">
+        <a href="{{ item.url }}">
+            {% if item.feature_image %}
+                {% image item.feature_image fill-355x195 class="feature" alt=item.title %}
+            {% else %}
+                <img class="feature" src="{% static 'mida/components/card-post/img/marcodataportal-homepage-image09.png' %}" alt="Image placeholder" />
+            {% endif %}
+        </a>
+        <time class="date" datetime="{{ item.posted|date:"Y-m-d" }}">
+            <img class="calendar-icon" src="{% static 'mida/components/card-post/img/marcodataportal-global-icon-calendar.svg' %}" alt="" aria-hidden="true" />
+            <span class="date-text">{{ item.posted|date:"M d Y" }}</span>
+        </time>
+    </div>
+        
+    <div class="overlap">
+        <div class="frame">
+            
+            {% block heading %}
+                <a href="{{ item.url }}">
+                    <h2 class="text-wrapper">
+                        {{ item.title }}
+                    </h2>
+                </a>
+            {% endblock %}
+
+            {% block text %}
+                {% if item.search_description %}
+                    <p class="p">{{ item.search_description|striptags|truncatechars:256 }}</p>
+                {% else %}
+                    <p class="p">{{ item.description|striptags|truncatechars:256 }}</p>
+                {% endif %}
+            {% endblock %}
+
+        </div>
+
+        <a href="{{ item.url }}" class="button-small"><span class="button-text">READ MORE</span></a>
+    </div>
+</article>

@@ -1,0 +1,399 @@
+/**
+ * Page customizations
+**/
+
+.ocean-story .contain:first-of-type {
+    margin-bottom: 0;
+}
+
+
+/**
+ * Hero
+**/
+
+.ocean-story-hero .hero-left {
+    align-self: center;
+}
+
+.ocean-story-hero .title-line {
+    margin: 0 0 2rem;
+}
+
+.ocean-story-hero h1.ocean-story-title {
+    color: var(--teal);
+    font-size: var(--h3-font-size-fluid);
+    line-height: var(--h3-line-height-fluid);
+    margin-top: 0;
+}
+
+.ocean-story-hero .button-big {
+    padding: 1rem clamp(1rem, 3vw, 4rem);
+}
+
+
+/**
+ * Pagination
+**/
+
+.ocean-story-pagination {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.ocean-story-pagination a {
+    align-items: center;
+    background: var(--green);
+    color: var(--white, #FFF);
+    display: flex;
+    font-family: var(--h7-font-family);
+    font-size: var(--h7-font-size);
+    font-weight: var(--h7-font-weight);
+    justify-content: space-around;
+    line-height: var(--h7-line-height);
+    letter-spacing: 0.9px;
+    overflow: hidden;
+    padding: 1rem .25rem;
+    text-overflow: ellipsis;
+    width: 120px;
+}
+
+.ocean-story-pagination .next-page {
+    border-radius: 8px 0 0 8px;
+}
+
+.ocean-story-pagination .previous-page {
+    border-radius: 0 8px 8px 0;
+}
+
+
+/**
+ * MAP
+**/
+
+.curtain {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), transparent), var(--grey-light);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 1.5rem 1.5rem rgba(255,255,255,0.95);
+    z-index: 10;
+}
+
+.clickable {
+    pointer-events: auto;
+}
+
+.ocean-story #map,
+#ocean-story-map {
+    cursor: grab;
+    width: 100%;
+    height: 100%;
+}
+
+.ocean-story #map:active,
+#ocean-story-map:active {
+    cursor: grabbing;
+}
+
+.ocean-story #map.full {
+    height: clamp(60vh, 80vh, 90vh);
+}
+
+.ocean-story #map.half {
+    height: 384px;
+}
+
+
+/**
+ * Content
+**/
+
+.ocean-story .content {
+    padding: 2rem 0;
+}
+
+@media (min-width: 64rem) {
+    .ocean-story .content {
+        padding: 4rem 0;
+    }
+}
+
+.ocean-story .content .title {
+    color: var(--dark-blue, #22408F);
+    font-family: var(--h4-font-family);
+    font-size: var(--h4-font-size);
+    font-weight: var(--h4-font-weight);
+    line-height: var(--h4-line-height);
+    letter-spacing: var(--h4-letter-spacing);
+    margin: var(--space-7) 0 var(--space-9);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.ocean-story .content .description {
+    margin: var(--space-7) auto var(--space-9);
+    width: 70%;
+}
+
+.ocean-story .content .description p {
+    color: var(--color-ink, #030B39);
+    font-family: var(--p1-font-family);
+    font-size: var(--p1-font-size);
+    font-weight: var(--p1-font-weight);
+    line-height: var(--p1-line-height);
+    text-align: center;
+}
+
+.ocean-story .content section p {
+    color: var(--grey-dark, #6C6C6C);
+    font-family: var(--p3-font-family);
+    font-size: var(--p3-font-size);
+    font-style: var(--p3-font-style);
+    font-weight: var(--p3-font-weight);
+    line-height: var(--p3-line-height);
+}
+
+.ocean-story .content h2 {
+    color: var(--color-ink, #030B39);
+    clear: both;
+    display: block;
+    font-family: var(--h4-font-family);
+    font-size: var(--h4-font-size);
+    font-weight: var(--h4-font-weight);
+    line-height: var(--h4-line-height);
+    margin: var(--space-7) 0;
+}
+
+.ocean-story .content h2:empty {
+    display: none;
+}
+
+.ocean-story .content h3 {
+    clear: both;
+}
+
+.ocean-story .content h3 {
+    color: var(--dark-blue, #22408F);
+    display: block;
+    font-family: var(--fira-subtitle-font-family);
+    font-size: var(--fira-subtitle-font-size);
+    font-weight: var(--fira-subtitle-font-weight);
+    line-height: var(--fira-subtitle-line-height);
+    margin: var(--space-9) auto var(--space-7);
+}
+
+.ocean-story .content section {
+    /* Flex .section-body and .legend-well */
+    display: flex;
+    gap: var(--space-7);
+    margin: var(--space-9) auto;
+}
+
+.ocean-story .content .has-legend {
+    flex-direction: row-reverse;
+}
+
+.ocean-story .content .section-body {
+    flex: 1;
+}
+
+/**
+ * Content - Legends
+**/
+
+.ocean-story .legend-well {
+    flex: 1;
+    float: none;
+    margin: var(--space-7) 0;
+}
+
+@media (min-width: 64rem) {
+    .ocean-story .legend-well {
+        flex: .5;
+    }
+}
+
+.ocean-story .legend-well.no-headline {
+    margin-top: 0;
+}
+
+.ocean-story .legend-well > .well {
+    background-color: var(--grey-light, #f5f6f6);
+    border-radius: var(--radius-md);
+    border: none;
+    box-shadow: none;
+    padding: var(--space-5);
+    text-align: left;
+    max-height: clamp(18rem, 40vh, 25rem);
+    overflow-y: auto;
+}
+
+.ocean-story .legend-well .legend-header {
+    text-align: center;
+    font-family: var(--fira-subtitle-font-family);
+    font-size: var(--fira-subtitle-font-size-fluid);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-dark-blue);
+    margin-bottom: var(--space-4);
+}
+
+.ocean-story .legend-well .font-condensed {
+    font-family: var(--p3-font-family);
+    font-size: var(--fs-sm);
+    color: var(--color-ink);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: var(--space-3);
+    margin-top: var(--space-3);
+}
+
+/* Padding for legend tables */
+.ocean-story td {
+    padding: 0 5px 0px 0;
+}
+
+
+/**
+ * Content - Media
+**/
+
+.ocean-story .media-full {
+    display: block;
+    margin: var(--space-9) auto;
+}
+
+/* Sections with media on the right or left */
+.ocean-story .story-with-media-right,
+.ocean-story .story-with-media-left {
+    display: flex;
+    gap: var(--space-7);
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.ocean-story .story-with-media-right {
+    flex-direction: row-reverse;
+}
+
+.ocean-story .story-with-media-right .story-media-right,
+.ocean-story .story-with-media-left .story-media-left,
+.ocean-story .story-with-media-right .story-media-body,
+.ocean-story .story-with-media-left .story-media-body {
+    flex: 1;
+    margin-top: 0;
+}
+
+.ocean-story .story-media-right,
+.ocean-story .story-media-left {
+    margin: var(--space-9) auto;
+}
+
+/* Overrides for when there is also a legend next to the media */
+.ocean-story .has-legend .story-media-right,
+.ocean-story .has-legend .story-media-left {
+    margin: 0 auto var(--space-9);
+}
+
+.ocean-story .media-object {
+    margin: 5px auto;
+}
+
+.ocean-story .has-legend .media-object {
+    display: inline; /* So that media does not extend beyond its container */
+}
+
+/* Rich text media */
+.ocean-story img.richtext-image.full-width {
+    display: block;
+    margin: var(--space-9) auto;
+    max-width: 100%;
+}
+
+.ocean-story img.richtext-image.left {
+    float: left;
+    margin: 0 var(--space-5) var(--space-9) 0;
+    max-width: 50%;
+}
+
+.ocean-story img.richtext-image.right {
+    float: right;
+    margin: 0 0 var(--space-9) var(--space-5);
+    max-width: 50%;
+}
+
+@-webkit-keyframes bounce {
+    0% {
+        -webkit-transform: translateY(0);
+        opacity: 1;
+    }
+
+    33% {
+        -webkit-transform: translateY(-25%);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+
+    66% {
+        -webkit-transform: translateY(35%);
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+}
+
+/* Mozilla Firefox 15 below */
+@-moz-keyframes bounce {
+    0% {
+        -moz-transform: translateY(0);
+        opacity: 1;
+    }
+
+    33% {
+        -moz-transform: translateY(-25%);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+
+    66% {
+        -moz-transform: translateY(35%);
+        opacity: 1;
+    }
+
+    100% {
+        -moz-transform: translateY(0);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+}
+
+/* W3, Opera 12+, Firefox 16+ */
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    33% {
+        transform: translateY(-25%);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+
+    66% {
+        transform: translateY(35%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(0);
+        padding-bottom: 12px;
+        opacity: 1;
+    }
+}

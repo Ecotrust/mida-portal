@@ -1,0 +1,23 @@
+h4 {
+    color: var(--teal);
+    margin: var(--space-2) 0;
+}
+
+.map-link {
+    color: var(--dark-blue);
+    display: block;
+    margin: var(--space-6) 0 0;
+}
+
+.map-link:hover {
+    color: var(--green);
+}
+
+.map-link:hover .nav-icon path {
+    fill: var(--green);
+}
+
+.data-datacatalog h3 {
+    text-align: center;
+    margin: 0 0 var(--space-9);
+}

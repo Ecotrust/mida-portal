@@ -1,0 +1,29 @@
+<!-- mida-portal/mida/static/mida/components/combo-textimagebutton/index.html -->
+
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/combo-textimagebutton/style.css' %}">
+{% endblock extra_css %}
+
+<div class="contain">
+    <article class="text-image-and" data-model-id="2041:8185">
+        <h1 class="data-catalog">MAP VISUALIZATION TOOL</h1>
+        <div class="fifty-fifty-layout">
+            <img
+            class="marcodataportal-data"
+            src="{% static 'mida/components/combo-textimagebutton/img/homepageGIF.gif' %}"
+            alt="Marina with boats"
+            />
+            <div class="fifty-right">
+                <section class="frame">
+                    <p>Explore comprehensive oceanic data and interactive maps of the Mid-Atlantic region with the Mid-Atlantic Ocean Data Portal Visualization Tool. Navigate through various layers, including marine habitats, maritime commerce, and environmental factors, to gain insights into the region's oceanic environment.</p>
+                </section>
+                    
+                <a href="/visualize/" class="button-border">
+                    <p class="spatial-data">INTERACT WITH THE MAP</p>
+                </a>
+            </div>
+        </div>
+    </article>
+</div>

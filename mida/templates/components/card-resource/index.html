@@ -1,0 +1,69 @@
+<!-- 
+    mida/templates/components/card-resource/index.html 
+    Template For: Data Catalog template
+-->
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+<article class="card">
+
+    <div class="img-wrapper">
+        <a href="{{ item.name }}">
+
+            {% if item.wagtail_feature_image %}
+                {% image item.wagtail_feature_image fill-355x195 class="feature" alt=item.name %}
+            {% else %}
+                <img class="feature" src="{% static 'mida/components/card-resource/img/MARCODataPortal-News-NewsFromOurPartners.png' %}" alt="Default feature image" />
+            {% endif %}
+    
+            <div class="date">
+                <img class="resource-icon" src="{% static 'mida/components/card-resource/img/property-1-white.svg' %}" alt="" aria-hidden="true" />
+                <span class="date-text">
+                    {% if item.layer_count and item.badge_text %}
+                        {{ item.layer_count }} {{ item.badge_text }}
+                    {% elif item.layer_count %}
+                        {{ item.layer_count }} Resources
+                    {% else %}
+                        No Records Available
+                    {% endif %}
+                </span>
+            </div>
+
+        </a>
+    </div>
+
+    <div class="overlap">
+        <div class="frame">
+            
+            {% block heading %}
+                <a href="{{ item.name }}" title="{{ item.display_name }}">
+                    <h2 class="text-wrapper">
+                        {{ item.display_name }}
+                    </h2>
+                </a>
+            {% endblock %}
+
+            {% block text %}
+                {% if item.search_description %}
+                    <p class="p">{{ item.search_description|striptags|truncatechars:256 }}</p>
+                {% else %}
+                    <p class="p">{{ item.description|striptags|truncatechars:256 }}</p>
+                {% endif %}
+            {% endblock %}
+
+        </div>
+
+        <div class="flex">
+            <a href="{{ item.name }}" class="button-small"><span class="button-text">LEARN MORE</span></a>
+
+            <a class="map-link" href="{{item.url}}" title="{{item.display_name}}">
+                <svg width="22" height="30" viewBox="0 0 17 23" fill="none" class="nav-icon">
+                    <path
+                        d="M8.18481 0C12.7048 0.000130394 16.3694 3.66457 16.3694 8.18457C16.3693 11.8252 13.9911 14.9089 10.7043 15.9717H10.8245L8.29419 22.1104L5.65454 15.9717H5.66431C2.37775 14.9088 0.000349164 11.825 0.000244141 8.18457C0.000244141 3.66449 3.66473 0 8.18481 0ZM8.18579 2.06836C4.73498 2.06836 1.93774 4.86559 1.93774 8.31641C1.9379 11.7671 4.73507 14.5645 8.18579 14.5645C11.6365 14.5644 14.4337 11.767 14.4338 8.31641C14.4338 4.86563 11.6365 2.06842 8.18579 2.06836Z"
+                        fill="var(--dark-blue)" />
+                </svg>
+            </a>
+        </div>
+
+    </div>
+</article>

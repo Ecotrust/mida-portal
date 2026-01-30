@@ -1,0 +1,446 @@
+<!-- mida-portal/mida/static/mida/components/accordion-block/index.html -->
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'mida/components/accordion-block/style.css' %}">
+{% endblock extra_css %}
+
+<div class="bg-light-blue contain contain-padded">
+
+    <div class="block-with accordion-block">
+        <h3 class="heading-leadership margin-bottom-9">Group Information</h3>
+
+        {% if mapgroup.blurb %}
+            <div class="block margin-bottom-5">
+                <div class="element">
+                    <p class="text-content">{{ mapgroup.blurb }}</p>
+                </div>
+            </div>
+        {% endif %}
+
+        {% if user_is_member %}    
+            <div class="block preferences margin-bottom-5">
+                <div class="element">
+                    <p><strong>Preferences</strong></p>
+                    <form method="POST" action="{% url 'mapgroups:preferences' mapgroup.pk mapgroup.slug %}">
+                        {% csrf_token %}
+                        <label>{{ preferences_form.show_real_name }} Share my real name with this group.</label>
+
+                        <script>
+                            document.querySelector('#id_show_real_name').onclick = function() {
+                                this.form.submit();
+                            };
+                        </script>
+                    </form>
+                </div>
+            </div>
+        {% endif %}      
+        
+        {% if mapgroup.is_open or user_is_member or user.is_superuser %}
+            <section class="data-groups">
+                <details class="property">
+                    <summary>
+                        <span class="text-wrapper left-items">
+                            <h3 class="text">Group Members</h3>
+                        </span>
+                        <span class="icon-wrap">
+                            <img class="icon-open vector" src="{% static 'mida/components/accordion-block/img/vector-2.svg' %}" alt="Collapse icon" aria-hidden="true" />
+                            <img class="icon-closed expand-icon" src="{% static 'mida/components/accordion-block/img/vector.svg' %}" alt="Expand icon" aria-hidden="true" />
+                        </span>
+                    </summary>
+                    <div class="overlap accordion-center" id="accordion-group-members">
+                        <div class="rectangle">
+                            <ul class="frame">
+                                {% for member in sorted_member_list %}
+                                    <li class="list-item">
+                                        {% if request.user == member.user %}
+                                            <img class="marcodataportal" src="{% static 'mida/components/accordion-block/img/marcodataportal-global-icon-1member-green.svg' %}" alt="Owner icon" />
+                                            (you{% if request.user == mapgroup.owner %}, owner{% elif member.is_manager %}, manager{% endif %})
+                                        {% else %}
+                                            {% if member.user == mapgroup.owner %}
+                                                <img class="marcodataportal" src="{% static 'mida/components/accordion-block/img/marcodataportal-global-icon-1member-green.svg' %}" alt="Owner icon" /> (owner)
+                                            {% elif member.is_manager %}
+                                                <img class="marcodataportal" src="{% static 'mida/components/accordion-block/img/marcodataportal-global-icon-1member-teal.svg' %}" alt="Manager icon" /> (manager)
+                                            {% else %}
+                                                <img class="marcodataportal" src="{% static 'mida/components/accordion-block/img/marcodataportal-global-icon-1member-blue.svg' %}" alt="Member icon" />
+                                            {% endif %}
+                                        {% endif %}
+                                        
+                                        <span class="list-text">
+                                            {% if membership %}
+                                                {{ member.user_name_for_group }} <!-- Show real name -->
+                                            {% else %}
+                                                {{ member.user.get_short_name }} <!-- Show pref name -->
+                                            {% endif %}
+                                        </span>
+
+                                        {% if not mapgroup_is_open and user_is_manager %}
+                                            {% if not member.is_manager %}
+                                                <button type="button" class="button button-green" data-toggle="modal"
+                                                data-target="#rus-membership-status"
+                                                data-member_id="{{ member.pk }}"
+                                                data-member_name="{{ member.user.get_short_name }}"
+                                                data-act="promote"
+                                                data-title="Confirm Member Promotion"
+                                                >Promote</button>
+                                            {% else %}
+                                                {% if not member.user == mapgroup.owner %}
+                                                <button type="button" class="button" data-toggle="modal"
+                                                    data-target="#rus-membership-status"
+                                                    data-member_id="{{ member.pk }}"
+                                                    data-member_name="{{ member.user.get_short_name }}"
+                                                    data-act="demote"
+                                                    data-title="Confirm Member Demotion"
+                                                >Demote</button>
+                                                {% endif %}
+                                            {% endif %}
+                                            {% if member.user != mapgroup.owner %}
+                                                {% if member.user == request.user %}
+                                                <button type="button" class="button" data-toggle="modal" data-target="#rus-leave">Leave group</button>
+                                                {% else %}
+                                                <button type="button" class="button button-red" data-toggle="modal"
+                                                    data-target="#rus-membership-status"
+                                                    data-member_id="{{ member.pk }}"
+                                                    data-member_name="{{ member.user.get_short_name }}"
+                                                    data-act="remove"
+                                                    data-title="Confirm Member Removal"
+                                                >Remove</button>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>   
+                    </div>
+                </details>
+            </section>
+        {% endif %}
+        
+        {% if shared_items %}
+            {% if mapgroup.is_open or user_is_member or user.is_superuser %}
+                <section class="data-groups">
+                    <details class="property">
+                        <summary>
+                            <span class="text-wrapper left-items">
+                                <h3 class="text">Shared Items</h3>
+                            </span>
+                            <span class="icon-wrap">
+                                <img class="icon-open vector" src="{% static 'mida/components/accordion-block/img/vector-2.svg' %}" alt="Collapse icon" aria-hidden="true" />
+                                <img class="icon-closed expand-icon" src="{% static 'mida/components/accordion-block/img/vector.svg' %}" alt="Expand icon" aria-hidden="true" />
+                            </span>
+                        </summary>
+                        
+                        <div class="overlap" id="accordion-shared-items">
+                            {% if shared_items.bookmarks %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <img class="polygon" src="{% static 'mida/components/accordion-block/img/subtract.svg' %}" alt="Map Bookmarks icon" />
+                                                <h2 class="card-header">Map Bookmarks</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.bookmarks %}
+                                                    <li>
+                                                        {% if user_is_member %}
+                                                            <a href="/visualize/#bookmark={{ object.pk }}" target="_blank">{{ object.name }}</a>
+                                                        {% else %}
+                                                            {{ object.name }}
+                                                        {% endif %}
+                                                        {% if object.user == user %}<b>[Yours]</b>{% endif %}
+                                                        {% if user.is_superuser %}
+                                                            <i class="fa fa-info-circle" data-toggle="modal"
+                                                            data-target="#bookmark-audit-modal"
+                                                            data-bookmark_id="{{ object.pk }}"
+                                                            data-bookmark_name="{{ object.name }}"></i>
+                                                        {% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared maps.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+                            {% if shared_items.drawings %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <img class="polygon" src="{% static 'mida/components/accordion-block/img/polygon-1.svg' %}" alt="Shapes icon" />
+                                                <h2 class="card-header">Shapes</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.drawings %}
+                                                    <li>{{ object.name }}
+                                                        {% if mapgroup.is_open or user_is_member or user.is_superuser %}
+                                                            {% if object.user == user %}<b>[Yours]</b>{# comment {% else %}[ {{ object.user.username }} ] end_comment #}{% endif %}
+                                                            <i class="fa fa-info-circle" data-toggle="modal"
+                                                                data-target="#drawing-audit-modal"
+                                                                data-drawing_id="{{ object.pk }}"
+                                                                data-drawing_name="{{ object.name }}"
+                                                                data-drawing_owner_id="{{ object.user.pk }}"
+                                                                data-drawing_owner_name="{{ object.user.get_short_name }}"
+                                                                data-drawing_description="{{ object.description }}"
+                                                                data-user_admin_url="{{ user_admin_root_url }}"
+                                                                data-drawing_admin_url="{{ drawing_admin_root_url }}"
+                                                                data-drawing_json="{{ object.geometry_final.geojson }}"></i>
+                                                        {% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared drawings.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+                            {% if shared_items.scenarios %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <h2 class="card-header">Scenarios</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.scenarios %}
+                                                    <li>
+                                                        {{ object.name }}
+                                                        {% if object.user == user %}<b>[Yours]</b>{% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared scenarios.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+                            {% if shared_items.leaseblock_selections %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <h2 class="card-header">Lease Block Selections</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.leaseblock_selections %}
+                                                    <li>
+                                                        {{ object.name }}
+                                                        {% if object.user == user %}<b>[Yours]</b>{% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared lease block selections.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+                            {% if shared_items.windenergysites %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <h2 class="card-header">Wind Energy Sites</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.windenergysites %}
+                                                    <li>
+                                                        {{ object.name }}
+                                                        {% if object.user == user %}<b>[Yours]</b>{% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared wind energy sites.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+                            {% if shared_items.user_imported_layers %}
+                                <section class="overlap-group-wrapper">
+                                    <div class="overlap-group">
+                                        <div class="element-wrapper">
+                                            <div class="card-header-contents">
+                                                <h2 class="card-header">User-Imported Layers</h2>
+                                            </div>
+                                        </div>
+                                        <div class="card-contents">
+                                            <ul class="list">
+                                                {% for object in shared_items.user_imported_layers %}
+                                                    <li>
+                                                        {{ object.name }}
+                                                        {% if object.user == user %}<b>[Yours]</b>{% endif %}
+                                                        {% if mapgroup.is_open or user_is_member or user.is_superuser %}
+                                                            <i class="fa fa-info-circle" data-toggle="modal"
+                                                            data-target="#user-layer-audit-modal"
+                                                            data-userlayer_id="{{ object.pk }}"
+                                                            data-userlayer_name="{{ object.name }}"
+                                                            data-userlayer_owner_id="{{ object.user.pk }}"
+                                                            data-userlayer_owner_name="{{ object.user.get_short_name }}"
+                                                            data-userlayer_description="{{ object.description }}"
+                                                            data-userlayer_user_admin_url="{{ user_admin_root_url }}"
+                                                            data-userlayer_admin_url="{{ user_layer_admin_root_url }}"
+                                                            >
+                                                            </i>
+                                                        {% endif %}
+                                                    </li>
+                                                {% empty %}
+                                                    <li>No shared user-imported layers.</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </section>
+                            {% endif %}
+                        </div>
+                    </details>
+                </section>
+            {% endif %}
+        {% endif %}
+
+        {% if not mapgroup_is_open and user_is_manager and member_requests|length > 0 %}
+            <h3>Manage Group</h3>
+            <h4>Join Requests</h4>
+            <table class="group-membership-list">
+                {% for member_request in member_requests %}
+                    <tr>
+                        <td>
+                            <img src="{{ member_request.user.userdata.profile_image }}" width="32" height="32" />
+                        </td>
+                        <td>
+                            <b>{{ member_request.user.get_short_name }}</b>
+                        </td>
+                        <td>
+                            <button type="button" class="button" data-toggle="modal"
+                            data-target="#rus-membership-approval"
+                            data-member_id="{{ member_request.pk }}"
+                            data-member_name="{{ member_request.user.get_short_name }}"
+                            data-act="approve"
+                            data-title="Confirm Membership Approval"
+                            >Approve</button>
+                            
+                        </td>
+                        <td>
+                            <button type="button" class="button-red" data-toggle="modal"
+                            data-target="#rus-membership-approval"
+                            data-member_id="{{ member_request.pk }}"
+                            data-member_name="{{ member_request.user.get_short_name }}"
+                            data-act="deny"
+                            data-title="Confirm Membership Rejection"
+                            >Deny</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+    </div>
+</div>
+
+
+<div class="modal fade" id="bookmark-audit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" id="bookmark-modal-title">
+              Bookmark Details
+          </div>
+          <div class="modal-body" id="bookmark-modal-content">
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="drawing-audit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" id="drawing-modal-title">
+              Drawing Details
+          </div>
+          {% if user.is_superuser %}
+            <div id="drawing-modal-admin-link"></div>
+          {% endif %}
+          <div class="modal-body" id="drawing-modal-content">
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="user-layer-audit-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header" id="user-layer-modal-title">
+              User-Imported Layer Details
+          </div>
+          {% if user.is_superuser %}
+          <div id="user-layer-modal-admin-link"></div>
+          {% endif %}
+          <div class="modal-body" id="user-layer-modal-content">
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Dismiss</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" id="rus-membership-approval" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" id="approve-title">
+                Confirm Membership Approval
+            </div>
+            <div class="modal-body">
+                Are you sure you want to <span id='approval-act'>approve</span>
+                the membership request from <span id="approve-username"></span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <form method="POST" id="approve-member-button-form" style="display: inline" action="">
+                    {% csrf_token %}
+                    <button class="btn btn-success" type="submit">I'm sure</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="rus-membership-status" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" id="rus-status-title">
+                Confirm Member Removal
+            </div>
+            <div class="modal-body">
+                Are you sure you want to <span id='status-act'>remove</span>
+                member <span id="status-username"></span>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <form method="POST" id="status-member-button-form" style="display: inline" action="">
+                    {% csrf_token %}
+                    <button class="btn btn-success rus-submit" type="submit">I'm sure</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

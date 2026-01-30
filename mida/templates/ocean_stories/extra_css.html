@@ -1,0 +1,11 @@
+<!-- mida/templates/ocean_stories/extra_css.html -->
+{% load wagtailcore_tags static %}
+{% if MAP_LIBRARY %}
+
+  {% if MAP_LIBRARY == 'ol8' %}
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/openlayers/ol8/ol.css' %}">
+  {% endif %}
+
+{% else %}
+  <link rel="stylesheet" href="{% static 'ol3-unofficial/ol.css' %}" />
+{% endif %}

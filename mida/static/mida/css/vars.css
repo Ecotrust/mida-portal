@@ -1,0 +1,243 @@
+/**
+ *  mida-portal/mida/static/mida/css/vars.css
+ */
+
+:root {
+    --black: rgba(1, 1, 1, 1);
+    --white: rgba(255, 255, 255, 1);
+    --yellow: rgba(234, 177, 58, 1);
+    --light-blue: rgba(236, 244, 255, 1);
+    --dark-blue: rgba(34, 64, 143, 1);
+    --teal: rgba(0, 120, 138, 1);
+    --grey-dark: rgba(108, 108, 108, 1);
+    --gray-dark: var(--grey-dark);
+    --dark-grey: var(--grey-dark);
+    --dark-gray: var(--grey-dark);
+    --grey-medium: rgba(177, 179, 181, 1);
+    --gray-medium: var(--grey-medium);
+    --medium-grey: var(--grey-medium);
+    --medium-gray: var(--grey-medium);
+    --grey-light: rgba(245, 246, 246, 1);
+    --gray-light: var(--grey-light);
+    --light-grey: var(--grey-light);
+    --light-gray: var(--grey-light);
+    --green: rgba(0, 165, 100, 1);
+    --yellow-bright: rgba(255, 164, 0, 1);
+    --bright-blue: rgba(21, 105, 220, 1);
+    --blue: rgba(146, 198, 224, 1);
+    --red: rgba(224, 44, 44, 1);
+    --h1-font-family: "Oswald", Helvetica;
+    --h1-font-weight: 400;
+    --h1-font-size: 6.25rem;
+    --h1-letter-spacing: 0px;
+    --h1-line-height: 6.75rem;
+    --h1-font-style: normal;
+    --h2-font-family: "Oswald", Helvetica;
+    --h2-font-weight: 500;
+    --h2-font-size: 5rem;
+    --h2-letter-spacing: 0.1rem;
+    --h2-line-height: 6.125rem;
+    --h2-font-style: normal;
+    --h3-font-family: "Oswald", Helvetica;
+    --h3-font-weight: 400;
+    --h3-font-size: 3.5rem;
+    --h3-letter-spacing: 0.042rem;
+    --h3-line-height: 4rem;
+    --h3-font-style: normal;
+    --h4-font-family: "Oswald", Helvetica;
+    --h4-font-weight: 400;
+    --h4-font-size: 2.875rem;
+    --h4-letter-spacing: 0px;
+    --h4-line-height: 3.5rem;
+    --h4-font-style: normal;
+    --h4-bold-font-family: "Oswald", Helvetica;
+    --h4-bold-font-weight: 500;
+    --h4-bold-font-size: 3rem;
+    --h4-bold-letter-spacing: 0.06rem;
+    --h4-bold-line-height: 4rem;
+    --h4-bold-font-style: normal;
+    --h5-font-family: "Oswald", Helvetica;
+    --h5-font-weight: 500;
+    --h5-font-size: 2.5rem;
+    --h5-letter-spacing: 0.05rem;
+    --h5-line-height: 3.5rem;
+    --h5-font-style: normal;
+    --h6-font-family: "Oswald", Helvetica;
+    --h6-font-weight: 400;
+    --h6-font-size: 1.75rem;
+    --h6-letter-spacing: 0px;
+    --h6-line-height: 2.25rem;
+    --h6-font-style: normal;
+    --h7-font-family: "Oswald", Helvetica;
+    --h7-font-weight: 400;
+    --h7-font-size: 1.125rem;
+    --h7-letter-spacing: 0.05625rem;
+    --h7-line-height: 1.5rem;
+    --h7-font-style: normal;
+    --fira-subtitle-font-family: "Fira Sans", Helvetica;
+    --fira-subtitle-font-weight: 600;
+    --fira-subtitle-font-size: 1.75rem;
+    --fira-subtitle-letter-spacing: 0px;
+    --fira-subtitle-line-height: 2.25rem;
+    --fira-subtitle-font-style: normal;
+    --FAQ-headline-font-family: "Fira Sans", Helvetica;
+    --FAQ-headline-font-weight: 500;
+    --FAQ-headline-font-size: 1.5rem;
+    --FAQ-headline-letter-spacing: 0px;
+    --FAQ-headline-line-height: 2.375rem;
+    --FAQ-headline-font-style: normal;
+    --p1-font-family: "Barlow", Helvetica;
+    --p1-font-weight: 400;
+    --p1-font-size: 1.625rem;
+    --p1-letter-spacing: 0px;
+    --p1-line-height: 2.25rem;
+    --p1-font-style: normal;
+    --p2-font-family: "Barlow", Helvetica;
+    --p2-font-weight: 400;
+    --p2-font-size: 1.5rem;
+    --p2-letter-spacing: 0px;
+    --p2-line-height: 2.125rem;
+    --p2-font-style: normal;
+    --p3-font-family: "Barlow", Helvetica;
+    --p3-font-weight: 400;
+    --p3-font-size: 1.375rem;
+    --p3-letter-spacing: 0px;
+    --p3-line-height: 2.125rem;
+    --p3-font-style: normal;
+    --p4-font-family: "Barlow", Helvetica;
+    --p4-font-weight: 400;
+    --p4-font-size: 1.125rem;
+    --p4-letter-spacing: 0px;
+    --p4-line-height: 1.625rem;
+    --p4-font-style: normal;
+    --btn-oswald-font-family: "Oswald", Helvetica;
+    --btn-oswald-font-weight: 500;
+    --btn-oswald-font-size: 1.4375rem;
+    --btn-oswald-letter-spacing: 0px;
+    --btn-oswald-line-height: 2.25rem;
+    --btn-oswald-font-style: normal;
+    --p6-font-family: "Barlow", Helvetica;
+    --p6-font-weight: 500;
+    --p6-font-size: 0.875rem;
+    --p6-letter-spacing: 0px;
+    --p6-line-height: 1.625rem;
+    --p6-font-style: normal;
+    --p5-font-family: "Barlow", Helvetica;
+    --p5-font-weight: 500;
+    --p5-font-size: 1rem;
+    --p5-letter-spacing: 0px;
+    --p5-line-height: normal;
+    --p5-font-style: normal;
+    --p2-link-font-family: "Barlow", Helvetica;
+    --p2-link-font-weight: 600;
+    --p2-link-font-size: 1.5rem;
+    --p2-link-letter-spacing: normal;
+    --p2-link-line-height: 2.125rem;
+    --p2-link-font-style: normal;
+    --body-regular-font-family: "Barlow", Helvetica;
+    --body-regular-font-weight: 400;
+    --body-regular-font-size: 1rem;
+    --body-regular-letter-spacing: normal;
+    --body-regular-line-height: auto;
+    --body-regular-font-style: normal;
+    --shadow: 0 0 1.875rem 0.1875rem rgba(21, 47, 96, 0.05);
+    --variable-collection-yellow-2: rgba(255, 164, 0, 1);
+    --gray-dark: rgba(108, 108, 108, 1);
+    --fields-text-1-font-family: "Inter", Helvetica;
+    --fields-text-1-font-weight: 400;
+    --fields-text-1-font-size: 1rem;
+    --fields-text-1-letter-spacing: 0px;
+    --fields-text-1-line-height: 1.5rem;
+    --fields-text-1-font-style: normal;
+    --primitives-color-grey-500: rgba(78, 86, 86, 1);
+    --primitives-grey-blue: rgba(236, 245, 255, 1);
+    --primitives-color-black: rgba(41, 41, 41, 1);
+    --gray-medium: rgba(177, 179, 181, 1);
+    --variable-collection-green: rgba(0, 165, 100, 1);
+    --font-weight-medium: 500;
+
+    /* --- Responsive design tokens (non-breaking additions) --- */
+    /* Color aliases (match Figma naming) */
+    --color-dark-blue: var(--dark-blue);        /* #22408F */
+    --color-bright-blue: var(--bright-blue);    /* #1569DC */
+    --color-yellow-bright: var(--yellow-bright);/* #FFA400 */
+    --color-ink: #030b39;                     /* dark blue used for body text in footer */
+
+    /* Spacing scale */
+    --space-1: 0.25rem; /* 4px */
+    --space-2: 0.5rem;  /* 8px */
+    --space-3: 0.75rem; /* 12px */
+    --space-4: 1rem;    /* 16px */
+    --space-5: 1.25rem; /* 20px */
+    --space-6: 1.5rem;  /* 24px */
+    --space-7: 2rem;    /* 32px */
+    --space-8: 3rem;    /* 48px */
+    --space-9: 4rem;    /* 64px */
+
+    /* Radius scale (from Figma: ~6.8px, 8px, 10px) */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.625rem;
+
+    /* Layout containers */
+    --container-max: 80rem; /* ~1280px */
+    --form-max: 32rem;      /* ~512px */
+
+    /* Fluid type scale (base) */
+    --fs-xs: clamp(0.75rem, 0.6vw + 0.6rem, 0.9rem);
+    --fs-sm: clamp(0.875rem, 0.6vw + 0.7rem, 1rem);
+    --fs-md: clamp(1rem, 0.7vw + 0.85rem, 1.25rem);
+    --fs-lg: clamp(1.125rem, 0.8vw + 0.9rem, 1.375rem);
+    --fs-xl: clamp(1.25rem, 1vw + 1rem, 1.5rem);
+    --fs-2xl: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
+    --fs-3xl: clamp(2rem, 3.5vw + 1rem, 3.5rem);
+
+    /* Fluid mappings to existing Figma tokens (keep originals for desktop) */
+    --h3-font-size-fluid: clamp(2rem, 1.2rem + 2.5vw, 3.5rem); /* H3 56px */
+    --h3-line-height-fluid: 1.15; /* ~64px at max */
+
+    --fira-subtitle-font-size-fluid: clamp(1.125rem, 0.9rem + 0.6vw, 1.75rem); /* 28px */
+    --fira-subtitle-line-height-fluid: 1.3; /* ~36px at max */
+
+    --p3-font-size-fluid: clamp(1rem, 0.85rem + 0.25vw, 1.125rem);
+    --p3-line-height-fluid: 1.5;
+
+    --p4-font-size-fluid: clamp(0.85rem, 0.75rem + 0.2vw, 1rem);
+    --p4-line-height-fluid: 1.45; /* ~26px at max */
+
+    --btn-oswald-font-size-fluid: clamp(1rem, 0.9rem + 0.3vw, 1.4375rem); /* 23px */
+}
+
+
+@media screen and (max-width: 480px) {
+    :root {
+        --h1-font-size: 4.75rem;
+        --h1-line-height: 5.25rem;
+        --h2-font-size: 3.75rem;
+        --h2-line-height: 4.5rem;
+        --h3-font-size: 3.5rem;
+        --h3-line-height: 4rem;
+        --h4-font-size: 2.5rem;
+        --h4-line-height: 3rem;
+        --h5-font-size: 2rem;
+        --h5-line-height: 2.75rem;
+        --h6-font-size: 1.5rem;
+        --h6-line-height: 2rem;
+        --h7-font-size: 1.125rem;
+        --h7-line-height: 1.375rem;
+        --p1-font-size: 1.375rem;
+        --p1-line-height: 2rem;
+        --p2-font-size: 1.25rem;
+        --p2-line-height: 1.875rem;
+        --p3-font-size: 1.125rem;
+        --p3-line-height: 1.875rem;
+        --p4-font-size: 1rem;
+        --p4-line-height: 1.5rem;
+        --btn-oswald-font-size: 1.25rem;
+        --btn-oswald-line-height: 2rem; 
+        --FAQ-headline-font-size: 1.25rem;
+        --FAQ-headline-line-height: 2rem;
+        --fira-subtitle-font-size: 1.375rem;
+        --fira-subtitle-line-height: 1.75rem;
+    }
+}

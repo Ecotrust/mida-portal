@@ -1,0 +1,389 @@
+/**
+ *  mida-portal/mida/static/mida/components/footer/style.css
+ */
+
+/* CSS for MARCO Footer */
+
+:root {
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 2rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5rem;
+  --space-11: 6rem;
+
+  /* Colors */
+  --blue-900: #22408f;
+  --blue-700: #1569dc;
+  --white: #ffffff;
+  --ink: #030b39;
+  --accent: #ffa400;
+
+  /* Type scale (fluid) */
+  --fs-xs: clamp(0.75rem, 0.6vw + 0.6rem, 0.9rem);
+  --fs-sm: clamp(0.875rem, 0.6vw + 0.7rem, 1rem);
+  --fs-md: clamp(1rem, 0.7vw + 0.85rem, 1.25rem);
+  --fs-lg: clamp(1.125rem, 0.8vw + 0.9rem, 1.375rem);
+  --fs-xl: clamp(1.25rem, 1vw + 1rem, 1.5rem);
+  --fs-2xl: clamp(1.5rem, 2.5vw + 1rem, 2.25rem);
+  --fs-3xl: clamp(2rem, 3.5vw + 1rem, 3.5rem);
+
+  /* Max widths */
+  --content-max: 1240px;
+  --form-max: 32rem;    /* ~512px */
+}
+
+/* Overrides */
+body footer a {
+  color: var(--accent);
+}
+
+/* Footer wrapper */
+.footer {
+  background-color: var(--blue-900);
+  color: var(--white);
+  width: 100%;
+  padding-block-start: var(--space-8);
+  display: block;
+}
+
+.footer-container {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Newsletter Section */
+.footer .newsletter-section {
+  margin-block-start: clamp(var(--space-7), 6vw, var(--space-9));
+  border-radius: 0.5rem;
+  /* Use a single background layer with low-opacity SVG; no absolute overlay */
+  background-color: var(--blue-700);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1203 382"><path d="M882.5 -25C965.619 -25 1033 42.3811 1033 125.5C1033 192.436 989.302 249.165 928.878 268.718H929.277L884.522 381.593L835.975 268.718H836.122C775.698 249.165 732 192.436 732 125.5C732 42.3811 799.381 -25 882.5 -25ZM882.501 13.0293C819.045 13.0295 767.604 64.4715 767.604 127.928C767.604 191.384 819.045 242.825 882.501 242.825C945.957 242.825 997.399 191.384 997.399 127.928C997.399 64.4714 945.957 13.0293 882.501 13.0293Z" fill="white" fill-opacity="0.2"/></svg>');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.footer .newsletter-content {
+  padding: clamp(var(--space-7), 10vw, var(--space-10));
+  display: grid;
+  grid-template-columns: 1fr minmax(18rem, var(--form-max));
+  gap: clamp(var(--space-6), 3.5vw, var(--space-8));
+  align-items: center;
+}
+
+.footer .newsletter-text {
+  min-width: auto;
+}
+
+.footer .newsletter-title {
+  font-family: "Oswald", sans-serif;
+  font-size: var(--fs-3xl);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--space-4) 0;
+  color: var(--white);
+}
+
+.footer .newsletter-description {
+  font-size: var(--fs-lg);
+  line-height: 1.6;
+  color: var(--white);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.footer .newsletter-accent-bar {
+  width: clamp(4rem, 10vw, 7rem);
+  height: 0.25rem;
+  background-color: var(--accent);
+  border-radius: 999px;
+}
+
+.footer .newsletter-form {
+  width: 100%;
+  max-width: var(--form-max);
+}
+
+.footer .form-container {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.footer .email-input {
+  /* Design height ~69px; make fluid up to ~70px */
+  min-height: clamp(3rem, 5vw, 4.375rem);
+  background-color: var(--white);
+  border: 0;
+  border-radius: 0.5rem;
+  padding-inline: var(--space-6);
+  font-size: var(--fs-md);
+  color: var(--ink);
+}
+
+.footer .email-input::placeholder {
+  color: var(--ink);
+  opacity: 0.9;
+}
+
+.footer .signup-button {
+  /* Design height 64px; make fluid up to 64px */
+  min-height: clamp(3rem, 4.5vw, 4rem);
+  background-color: var(--accent);
+  border: 0;
+  border-radius: 0.625rem;
+  color: var(--white);
+  font-family: "Oswald", sans-serif;
+  font-size: var(--fs-xl);
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Main Footer */
+.footer .main-footer {
+  padding-block-start: clamp(var(--space-7), 6vw, var(--space-9));
+  padding-inline: clamp(var(--space-4), 4vw, var(--space-9));
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1fr);
+  gap: clamp(var(--space-7), 6vw, var(--space-9));
+  align-items: start;
+}
+
+.footer .left-side {
+  min-width: 0;
+  max-width: 42rem;
+}
+
+.footer .logo-container {
+  margin-block-end: clamp(var(--space-2), 2vw, var(--space-5));
+}
+
+.footer .marco-logo {
+  width: 100%;
+  height: auto;
+  max-width: 32rem;
+}
+
+.footer .description {
+  font-size: var(--fs-lg);
+  line-height: 1.6;
+  color: var(--white);
+  margin-block-end: clamp(var(--space-4), 3vw, var(--space-7));
+}
+
+.footer .description strong {
+  font-weight: 600;
+}
+
+.footer .main-footer .description p {
+  color: var(--white);
+}
+
+.footer .marine-planner {
+  color: var(--accent);
+}
+
+.footer .visit-button {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--white);
+  border-radius: 0.5rem;
+  color: var(--white);
+  font-family: "Oswald", sans-serif;
+  font-size: var(--fs-md);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+/* Divider between columns (fluid, no fixed height) */
+.footer .divider-line {
+  display: none; /* hidden on narrow, shown via media query on wide */
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  height: 100%;
+  align-self: stretch;
+}
+
+.footer .right-side {
+  min-width: 0;
+}
+
+.footer .contact-title {
+  font-family: "Fira Sans", sans-serif;
+  /* Use Figma token 28/36 with fluid mapping */
+  font-size: var(--fira-subtitle-font-size-fluid);
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 var(--space-2) 0;
+  line-height: var(--fira-subtitle-line-height-fluid);
+}
+
+.footer .contact-email {
+  font-size: var(--fs-lg);
+  line-height: 1.6;
+  color: var(--white);
+  margin: 0 0 var(--space-5) 0;
+  word-break: break-word;
+}
+
+.footer .social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.footer .social-icon {
+  /* Design size 60px circles */
+  inline-size: clamp(2.5rem, 6vw, 3.75rem);
+  block-size: clamp(2.5rem, 6vw, 3.75rem);
+  display: inline-block;
+}
+
+.footer .social-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Bottom Footer */
+.footer .bottom-footer {
+  background-color: var(--blue-700);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4) clamp(var(--space-4), 4vw, var(--space-7));
+  position: relative;
+  margin-block-start: clamp(var(--space-7), 6vw, var(--space-8));
+}
+
+.footer .bottom-footer-container {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-2);
+  justify-content: space-between;
+  padding-block: var(--space-2);
+  padding-inline: clamp(var(--space-4), 4vw, var(--space-9));
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+.footer .copyright {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.footer .copyright-symbol,
+.footer .copyright-text,
+.footer .site-credit {
+  font-size: var(--fs-sm);
+  color: var(--white);
+  margin: 0;
+}
+
+.footer .site-credit a {
+  font-weight: bold;
+}
+
+.footer .footer-icons {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  justify-content: space-between;
+  /* Center align absolute positioned element */
+  left: 50%;
+  transform: translate(-50%);
+  padding: 0 1vw;
+  position: absolute;
+  top: -25%;
+  width: 100%;
+  max-width: var(--content-max);
+}
+
+.footer .accessibility-icon,
+.footer .back-to-top {
+  inline-size: clamp(2.5rem, 6vw, 3.5rem);
+  block-size: clamp(2.5rem, 6vw, 3.5rem);
+  cursor: pointer;
+}
+
+.footer .feedback-button {
+  padding: 0.75rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--white);
+  border-radius: 0.5rem;
+  bottom: 0;
+  color: var(--white);
+  font-family: "Oswald", sans-serif;
+  font-size: var(--fs-md);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  position: fixed;
+  right: 2vw;
+  width: auto;
+  height: auto;
+  margin-block-start: clamp(var(--space-5), 3vw, var(--space-7));
+  z-index: 1000;
+  transition: bottom 200ms ease;
+}
+
+.footer .feedback-button.is-raised {
+  bottom: 8rem;
+}
+
+/* Make any decorative background children non-positioned (kept for DOM compatibility) */
+.footer .newsletter-background,
+.footer .newsletter-mask {
+  display: none;
+}
+
+@media (min-width: 56rem) { 
+  .footer .main-footer {
+    grid-template-columns: 1fr min-content 1fr; /* left | divider | right */
+  }
+  .footer .divider-line {
+    display: block;
+  }
+
+  .footer .feedback-button.is-raised {
+    bottom: 6rem;
+  }
+}
+
+@media (min-width: 1480px) {
+  .footer .footer-icons {
+    max-width: calc(var(--content-max) + 40px);
+  }
+}
+
+@media (max-width: 48rem) { /* ~768px and below */
+  .footer .newsletter-content {
+    grid-template-columns: 1fr;
+  }
+  .footer .main-footer {
+    grid-template-columns: 1fr;
+  }
+  .footer .right-side {
+    margin-top: 0;
+  }
+  .footer .bottom-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .footer .footer-icons {
+    margin-top: var(--space-2);
+  }
+  .footer .feedback-button {
+    margin-inline: 0;
+    justify-content: center;
+  }
+}
