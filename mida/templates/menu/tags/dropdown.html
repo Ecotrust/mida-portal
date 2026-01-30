@@ -17,7 +17,7 @@
           {% endif %}
         {% endif %}
         {% if menu.entries.all.count > 1 %}
-          <ul class="dropdown-menu" role="menu">
+          <ul class="dropdown-menu">
               {% for entry in menu.entries.all %}
                   {# This logic should _NOT_ Be in the template, but template tags don't know who the user is :( #}
                   {# A = all users, O = only signed out users, I = only signed in users (see models.py) #}

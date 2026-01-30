@@ -39,6 +39,11 @@
   --form-max: 32rem;    /* ~512px */
 }
 
+/* Overrides */
+body footer a {
+  color: var(--accent);
+}
+
 /* Footer wrapper */
 .footer {
   background-color: var(--blue-900);
@@ -71,12 +76,12 @@
   padding: clamp(var(--space-7), 10vw, var(--space-10));
   display: grid;
   grid-template-columns: 1fr minmax(18rem, var(--form-max));
-  gap: clamp(var(--space-6), 4.5vw, var(--space-10));
-  align-items: start;
+  gap: clamp(var(--space-6), 3.5vw, var(--space-8));
+  align-items: center;
 }
 
 .footer .newsletter-text {
-  min-width: 0;
+  min-width: auto;
 }
 
 .footer .newsletter-title {
@@ -283,6 +288,10 @@
   font-size: var(--fs-sm);
   color: var(--white);
   margin: 0;
+}
+
+.footer .site-credit a {
+  font-weight: bold;
 }
 
 .footer .footer-icons {
