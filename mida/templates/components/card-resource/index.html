@@ -11,7 +11,7 @@
         <a href="{{ item.name }}">
 
             {% if item.wagtail_feature_image %}
-                {% image item.wagtail_feature_image fill-355x195 class="feature" alt="{{ item.title }}" %}
+                {% image item.wagtail_feature_image fill-355x195 class="feature" alt=item.name %}
             {% else %}
                 <img class="feature" src="{% static 'mida/components/card-resource/img/MARCODataPortal-News-NewsFromOurPartners.png' %}" alt="Default feature image" />
             {% endif %}
