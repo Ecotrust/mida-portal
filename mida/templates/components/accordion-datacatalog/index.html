@@ -2,8 +2,7 @@
 
 {% load wagtailcore_tags static %}
 
-<details class="property">
-    <span id="layer-info-{{ layer.slug_name }}"></span>
+<details class="property" id="layer-info-{{ layer.slug_name }}">
     <summary onclick="window.getCatalogEntry('{{layer.type}}', {{ layer.id }}, {{theme.id}})">
         <div class="header-left">
             <span class="i-wrap">
