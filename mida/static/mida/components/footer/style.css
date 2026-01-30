@@ -39,6 +39,11 @@
   --form-max: 32rem;    /* ~512px */
 }
 
+/* Overrides */
+body footer a {
+  color: var(--accent);
+}
+
 /* Footer wrapper */
 .footer {
   background-color: var(--blue-900);
@@ -283,6 +288,10 @@
   font-size: var(--fs-sm);
   color: var(--white);
   margin: 0;
+}
+
+.footer .site-credit a {
+  font-weight: bold;
 }
 
 .footer .footer-icons {
