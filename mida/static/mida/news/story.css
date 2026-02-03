@@ -177,8 +177,7 @@
     line-height: var(--p3-line-height);
 }
 
-.story .content h3,
-.story .content b {
+.story .content h3 {
     color: var(--dark-blue, #22408F);
     display: block;
     font-family: var(--fira-subtitle-font-family);
