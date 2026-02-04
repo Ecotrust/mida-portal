@@ -193,11 +193,18 @@
 }
 
 .ocean-story .content .has-legend {
-    flex-direction: row-reverse;
+    flex-direction: column;
+}
+
+@media (min-width: 64rem) { 
+    .ocean-story .content .has-legend {
+        flex-direction: row-reverse;
+    }
 }
 
 .ocean-story .content .section-body {
     flex: 1;
+    overflow-x: auto;
 }
 
 /**
@@ -208,6 +215,8 @@
     flex: 1;
     float: none;
     margin: var(--space-7) 0;
+    /* override legacy code from output.css */
+    width: auto;
 }
 
 @media (min-width: 64rem) {
@@ -269,13 +278,20 @@
 .ocean-story .story-with-media-right,
 .ocean-story .story-with-media-left {
     display: flex;
+    flex-direction: column;
     gap: var(--space-7);
     align-items: flex-start;
     justify-content: center;
 }
 
-.ocean-story .story-with-media-right {
-    flex-direction: row-reverse;
+@media (min-width: 64rem) {
+    .ocean-story .story-with-media-left {
+        flex-direction: row;
+    }
+
+    .ocean-story .story-with-media-right {
+        flex-direction: row-reverse;
+    }
 }
 
 .ocean-story .story-with-media-right .story-media-right,

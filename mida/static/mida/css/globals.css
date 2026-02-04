@@ -114,6 +114,17 @@ img {
     justify-content: space-between;
 }
 
+/** Media Containers */
+.embed-responsive,
+.description div iframe {
+    display: block;
+    height: 560px;
+    margin: var(--space-5) auto;
+    max-height: 55vh;
+    max-width: 100%;
+    width: 900px;
+}
+
 
 /* Accessibility improvements */
 .visually-hidden {
