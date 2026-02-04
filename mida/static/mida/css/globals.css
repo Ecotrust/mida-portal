@@ -117,7 +117,7 @@ img {
 /** Media Containers */
 .embed-responsive,
 .description div iframe {
-    display: flex;
+    display: block;
     height: 560px;
     margin: var(--space-5) auto;
     max-height: 55vh;
