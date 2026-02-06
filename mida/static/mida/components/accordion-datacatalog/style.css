@@ -214,7 +214,7 @@ details.property[open]>summary {
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 15px 18px;
+    padding: 15px 8px;
     cursor: pointer;
 }
 
