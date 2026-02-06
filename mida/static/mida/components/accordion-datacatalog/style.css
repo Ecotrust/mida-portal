@@ -311,7 +311,7 @@ details[open] summary .img {
 .catalog-tier details.property:after {
     content: "";
     display: block;
-    width: calc(100% - 0);
+    width: 100%;
     height: 1px;
     background-color: var(--dark-blue);
     margin: 0 auto;
