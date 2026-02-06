@@ -245,18 +245,18 @@ details.element .text-wrapper.blue {
 }
 
 details.property:not([open]) {
-    background: var(--white);
+    /* background: var(--white); */
     overflow: hidden;
 }
 
 details.property:not([open])>summary {
-    background: var(--white);
+    /* background: var(--white); */
     color: #22408f;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 1rem;
-    padding: 15px 18px;
+    padding: 15px 8px;
     cursor: pointer;
 }
 
@@ -299,22 +299,26 @@ details[open] summary .img {
  * Children property
  */
 
-.catalog-tier details.property {
+.catalog-tier {
     padding-left: 2rem;
+}
+
+.catalog-tier details.property {
+    /* padding-left: 2rem; */
     margin: 0;
 }
 
 .catalog-tier details.property:after {
     content: "";
     display: block;
-    width: calc(100% - 2rem);
+    width: calc(100% - 0);
     height: 1px;
     background-color: var(--dark-blue);
     margin: 0 auto;
 }
 
 .catalog-tier details.property:first-child {
-    margin-top: -10px;
+    margin-top: 0;
 }
 
 .catalog-tier details.property:last-child {
@@ -350,6 +354,8 @@ summary .i-closed {
     position: relative;
     flex: 0 0 auto;
 }
+
+/* Don't show for the top level properties, because they have no data in the dropdown */
 
 .i-wrap img {
     position: absolute;
