@@ -352,8 +352,6 @@ summary .i-closed {
     flex: 0 0 auto;
 }
 
-/* Don't show for the top level properties, because they have no data in the dropdown */
-
 .i-wrap img {
     position: absolute;
     top: 0;
