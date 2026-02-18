@@ -149,6 +149,11 @@
     flex: 1;
 }
 
+.story .full .section-media img {
+    display: block;
+    margin: 0 auto;
+}
+
 .story .section-body-content {
     flex: 1;
 }
