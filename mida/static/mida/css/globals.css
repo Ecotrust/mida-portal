@@ -5,14 +5,12 @@
 @import url("https://fonts.googleapis.com/css?family=Fira+Sans:500,600|Barlow:400,500,600|Oswald:400,500");
 
 * {
-    -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
 }
 
 html,
 body {
     height: auto;
-    letter-spacing: normal;
 }
 
 
@@ -39,10 +37,16 @@ a:hover {
     text-decoration: none;
 }
 
+
+/**
+ * Media
+ */
+
 img {
     height: auto;
     max-width: 100%;
 }
+
 
 /**
  * Utilites
@@ -71,6 +75,7 @@ img {
 .relative {
     position: relative;
 }
+
 
 /**
  * Containers
@@ -139,17 +144,19 @@ img {
     border: 0;
 }
 
+
 /**
  * Typography globals
  */
 
-* {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
 html {
     font-size: 1em;
+}
+
+body {
+    letter-spacing: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
@@ -222,10 +229,10 @@ p {
     line-height: var(--p1-line-height);
 }
 
-em {
+em,
+i {
     font-style: italic;
 }
-
 
 strong,
 b {
