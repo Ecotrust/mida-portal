@@ -76,7 +76,7 @@
   height: 100%;
 }
 
-iframe { 
+.box-tabs-iconsgo iframe { 
   border: none;
   display: block;
   height: 500px;
@@ -102,7 +102,7 @@ iframe {
     border-bottom: none;
   }
 
-  iframe {
+  .box-tabs-iconsgo iframe {
     height: 400px;
   }
 }
@@ -129,7 +129,7 @@ iframe {
     margin-bottom: 0px;
   }
 
-  iframe {
+  .box-tabs-iconsgo iframe {
     height: 300px;
   }
 }
