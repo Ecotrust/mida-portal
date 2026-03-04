@@ -76,6 +76,15 @@
   height: 100%;
 }
 
+.box-tabs-iconsgo iframe { 
+  border: none;
+  display: block;
+  height: 500px;
+  margin: 0 auto;
+  max-width: 900px;
+  width: 100%;
+}
+
 @media (max-width: 1240px) {
   .frame {
     flex-wrap: wrap;
@@ -91,6 +100,10 @@
 
   .tab-item:last-child .tab-button {
     border-bottom: none;
+  }
+
+  .box-tabs-iconsgo iframe {
+    height: 400px;
   }
 }
 
@@ -114,5 +127,9 @@
     height: 30px;
     margin-right: 8px;
     margin-bottom: 0px;
+  }
+
+  .box-tabs-iconsgo iframe {
+    height: 300px;
   }
 }
