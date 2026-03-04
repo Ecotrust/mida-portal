@@ -1,5 +1,5 @@
 <!-- mida/templates/components/tabs-iconsgo/index.html -->
-{% load static wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailembeds_tags %}
 
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'mida/components/tabs-iconsgo/style.css' %}">
@@ -8,29 +8,28 @@
 
 
 <div class="box-tabs-iconsgo">
-    <nav class="tabs" aria-label="Data resource categories">
-      <ul class="frame">
-        {% for section in sections %}
-          <li class="tab-item">
-            <a href="#{{ section.title|lower}}" class="tab-button" aria-selected="false" role="tab">
-              <img class="tab-icon" src="{% static 'mida/components/tabs-iconsgo/img/marcodataportal-data-mapanddataresources-icon-'|add:section.title|lower|add:'.svg' %}"
-                alt="{{ section.title }} icon" />
-              <span class="tab-text">{{ section.title }}</span>
-            </a>
-          </li>
-        {% endfor %}
-      </ul>
-    </nav>
-    
-    {% for item in sections %}
-      <div class="tabs-link-container" id="{{ item.title|slugify }}">    
-        <article class="link-wrapper">
-            <p>{{ item.body|safe }}</p>
-        </article>
-      </div>
-    {% endfor %}
+  <nav class="tabs" aria-label="Data resource categories">
+    <ul class="frame">
+      {% for section in sections %}
+        <li class="tab-item">
+          <a href="#{{ section.title|lower}}" class="tab-button" aria-selected="false" role="tab">
+            <img class="tab-icon" src="{% static 'mida/components/tabs-iconsgo/img/marcodataportal-data-mapanddataresources-icon-'|add:section.title|lower|add:'.svg' %}" alt="{{ section.title }} icon" />
+            <span class="tab-text">{{ section.title }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+  
+  {% for item in sections %}
+    <div class="tabs-link-container" id="{{ item.title|slugify }}">    
+      <article class="link-wrapper">
+          {{ item.body|richtext }}
+      </article>
+    </div>
+  {% endfor %}
 
-  </div>
+</div>
 
 {% block extra_js %}
   <script src="{% static 'mida/components/tabs-iconsgo/scripts.js' %}"></script>

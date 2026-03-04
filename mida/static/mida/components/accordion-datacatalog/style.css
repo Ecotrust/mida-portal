@@ -104,11 +104,35 @@
     padding: 24px;
 }
 
+.data-datacatalog ul, 
+.data-datacatalog ol {
+    padding-left: 1.5em;
+    margin: var(--space-5) 0;
+    font: inherit;
+}
+
+.data-datacatalog ul {
+    list-style: disc;
+}
+
+.data-datacatalog ol {
+    list-style: decimal;
+}
 
 /* Removed duplicate .div class selector. See lines 108-118 for the consolidated definition. */
 .map-icon {
     width: 18px;
     height: 24px;
+}
+
+.data-datacatalog {
+    font-family: var(--p3-font-family);
+    font-weight: var(--p3-font-weight);
+    color: var(--grey-dark);
+    font-size: var(--p3-font-size);
+    letter-spacing: var(--p3-letter-spacing);
+    line-height: var(--p3-line-height);
+    font-style: var(--p3-font-style);
 }
 
 .frame-2 {
