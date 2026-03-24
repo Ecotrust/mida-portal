@@ -27,7 +27,7 @@
             
             {% if theme.description %}
                 <div class="description">
-                    <p>{{ theme.description }}</p>
+                    <p>{{ theme.description|safe }}</p>
                 </div>
             {% endif %}
 
