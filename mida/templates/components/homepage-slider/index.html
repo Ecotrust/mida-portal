@@ -74,7 +74,9 @@
 
                                 <div class="news-content">
                                     <h3 class="news-title">{{ slide.title }}</h3>
-                                    <p class="news-description">{{ slide.body|striptags }}</p>
+                                    {% autoescape off %}
+                                        <p class="news-description">{{ slide.body|striptags }}</p>
+                                    {% endautoescape %}
                                     <span class="read-more-button">
                                         <span class="read-more-text">READ MORE</span>
                                     </span>
