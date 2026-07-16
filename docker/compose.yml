@@ -1,0 +1,18 @@
+services:
+  app:
+    image: mida-portal:dev
+    build:
+      context: ../../madrona-apps/mida-portal
+      dockerfile: docker/Dockerfile
+      args:
+        BASE_TAG: ${BASE_TAG:-latest}
+    env_file:
+      - .env
+    volumes:
+      - ../../madrona-apps/mida-portal/docker/static:/vol/web/static
+      - ../../madrona-apps/mida-portal/docker/media:/usr/local/apps/madrona-portal/media
+      # live-edit mounts (dev):
+      - ../marco:/usr/local/apps/madrona-portal/marco
+      - ../../madrona-apps/mida-portal:/usr/local/apps/madrona-portal/apps/mida-portal
+      # add mp-* mounts only for apps you're actively editing, e.g.:
+      # - ../../madrona-apps/mp-visualize:/usr/local/apps/madrona-portal/apps/mp-visualize
