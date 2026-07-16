@@ -2,7 +2,7 @@ ARG BASE_IMAGE=ghcr.io/ecotrust/madrona-portal
 ARG BASE_TAG=dockerdecouple
 FROM ${BASE_IMAGE}:${BASE_TAG}
 
-# Build context = mida-portal repo root: docker build -f docker/Dockerfile .
+# Build context is mida-portal repo root
 COPY --chown=madrona_user:madrona_user . ./apps/mida-portal
 
 RUN pip install --no-deps -e ./apps/mida-portal && \
