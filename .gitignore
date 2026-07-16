@@ -2,3 +2,6 @@
 *.pyc
 wcoa.egg-info/PKG-INFO
 deploy/sync_prod_content.sh
+docker/.env
+docker/static/
+docker/media/

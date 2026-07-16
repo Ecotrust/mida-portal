@@ -1,0 +1,32 @@
+services:
+  app:
+    image: mida-portal:dev
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        BASE_TAG: ${BASE_TAG:-latest}
+    env_file:
+      - .env
+    environment:
+      - MP_PROJECT_CONFIG=/usr/local/apps/madrona-portal/apps/mida-portal/docker/config.mida.docker.ini
+    volumes:
+      - ./static:/vol/web/static
+      - ./media:/usr/local/apps/madrona-portal/media
+      - ../../../madrona-portal/marco:/usr/local/apps/madrona-portal/marco
+      - ..:/usr/local/apps/madrona-portal/apps/mida-portal
+      - ../../mp-data-manager:/usr/local/apps/madrona-portal/apps/mp-data-manager
+      - ../../mp-layers:/usr/local/apps/madrona-portal/apps/mp-layers
+      - ../../mp-accounts:/usr/local/apps/madrona-portal/apps/mp-accounts
+      - ../../mp-drawing:/usr/local/apps/madrona-portal/apps/mp-drawing
+      - ../../mp-visualize:/usr/local/apps/madrona-portal/apps/mp-visualize
+      - ../../madrona-features:/usr/local/apps/madrona-portal/apps/madrona-features
+      - ../../madrona-manipulators:/usr/local/apps/madrona-portal/apps/madrona-manipulators
+      - ../../madrona-scenarios:/usr/local/apps/madrona-portal/apps/madrona-scenarios
+      - ../../mp-map-groups:/usr/local/apps/madrona-portal/apps/mp-map-groups
+      - ../../mp-explore:/usr/local/apps/madrona-portal/apps/mp-explore
+      - ../../mp-proxy:/usr/local/apps/madrona-portal/apps/mp-proxy
+      - ../../p97-nursery:/usr/local/apps/madrona-portal/apps/p97-nursery
+      - ../../django_url_shortener:/usr/local/apps/madrona-portal/apps/django_url_shortener
+      - ../../madrona-analysistools:/usr/local/apps/madrona-portal/apps/madrona-analysistools
+      - ../../mp-survey:/usr/local/apps/madrona-portal/apps/mp-survey

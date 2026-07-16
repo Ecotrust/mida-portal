@@ -1,0 +1,49 @@
+version: '3'
+
+vars:
+  CORE: ../../madrona-portal
+  COMPOSE: docker compose -f {{.CORE}}/docker/compose.base.yml -f docker/compose.yml --env-file docker/.env
+
+tasks:
+  base:
+    desc: build the platform base image locally
+    cmds:
+      - sh -c 'if [ -f docker/.env ]; then set -a; . docker/.env; set +a; fi; docker build -t ghcr.io/ecotrust/madrona-portal:${BASE_TAG:-latest} -f {{.CORE}}/docker/Dockerfile {{.CORE}}/../'
+
+  build:
+    desc: build the mida portal image
+    cmds:
+      - '{{.COMPOSE}} build'
+
+  up:
+    desc: start mida services
+    cmds:
+      - '{{.COMPOSE}} up'
+
+  init:
+    desc: first run with migrations, fixtures, and superuser bootstrap
+    cmds:
+      - DB_INIT=1 {{.COMPOSE}} up
+
+  down:
+    desc: stop mida services
+    cmds:
+      - '{{.COMPOSE}} down'
+
+  logs:
+    desc: tail app logs
+    cmds:
+      - '{{.COMPOSE}} logs -f app'
+
+  manage:
+    desc: run a Django manage.py command (pass with -- cmd="...")
+    requires:
+      vars:
+        - cmd
+    cmds:
+      - '{{.COMPOSE}} exec app python marco/manage.py {{.cmd}}'
+
+  shell:
+    desc: open Django shell
+    cmds:
+      - '{{.COMPOSE}} exec app python marco/manage.py shell'

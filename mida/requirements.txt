@@ -1,3 +1,1 @@
--e git+https://github.com/Ecotrust/mida-portal.git@master#egg=mida
-
 # pip3 install selenium
