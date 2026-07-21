@@ -52,9 +52,7 @@
                         <a href="{{ slide.link }}" class="slide-link">
                             <div class="news-post">
                                 <div class="news-image-section">
-                                    {% image slide.slide_image fill-800x390 as slide_img %}
-                                    <img src="{{ slide_img.url }}" alt="{{ slide.title }}" class="news-image">
-
+                                    {% image slide.slide_image fill-800x390 alt=slide.title class="news-image" %}
                                     {% if slide.link_page and slide.link_page.story %}
                                         <div class="date-badge">
                                             <div class="date-icon">
