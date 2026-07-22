@@ -3,6 +3,15 @@ Mid-Atlantic Ocean Data Portal
 
 Django web application and Wagtail CMS for the Mid-Atlantic Ocean Data Portal.
 
+## Docker quickstart
+
+Use the split base/overlay workflow.
+
+```bash
+cp docker/.env.example docker/.env
+task base build init
+```
+
 ## Local Vagrant Development Env
 
 requirements:
