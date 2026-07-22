@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 env:
-  BASE_TAG: 2026.07
+  BASE_TAG: bc0fe1d
   IMAGE_NAME: ghcr.io/ecotrust/mida-portal
 
 jobs:
