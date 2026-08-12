@@ -12,6 +12,16 @@ cp docker/.env.example docker/.env
 task base build init
 ```
 
+## Docker production deployment
+
+The production stack is self-contained and does not layer the shared development Compose files.
+It uses a pinned `ghcr.io/ecotrust/mida-portal` image, PostGIS, and Redis; nginx and TLS remain
+on the host. Follow [docs/AWS_DEPLOY_MIDA.md](docs/AWS_DEPLOY_MIDA.md) for host preparation,
+production configuration, data restore, service management, backups, and release procedures.
+
+The local `Taskfile.yml` workflow is for development and requires the sibling repositories used by
+the bind mounts in `docker/compose.yml`. It is not the production deployment workflow.
+
 ## Local Vagrant Development Env
 
 requirements:
