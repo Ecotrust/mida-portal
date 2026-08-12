@@ -1,24 +1,6 @@
 import os, pathlib
-# PROJECT_REGION = {
-#     'name': 'West Coast',
-#     'init_zoom': 5,
-#     'init_lat': 40.5,
-#     'init_lon': -124.5,
-#     'srid': 4326,
-#     'map': 'ocean',
-# }
-
-# GEOPORTAL_VERSION = 129
-
-# SOLR_COLLECTION = 'collection129'
-
-# SOLR_ENDPOINT = 'https://portal.westcoastoceans.org/solr/%s/select?' % SOLR_COLLECTION
 
 DATA_MANAGER_ADMIN = True
-
-DATA_CATALOG_ENABLED = True
-
-# HANDLER_404 = 'wcoa.views.page_not_found'
 
 FEEDBACK_IFRAME_URL = "//docs.google.com/forms/d/e/1FAIpQLSfI6jIDyQzY1viSzEQHYGo4Z_yhFR49DhMpUIUTErBdkEvtxA/viewform?usp=sf_link"
 
