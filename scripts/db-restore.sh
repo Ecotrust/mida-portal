@@ -6,17 +6,13 @@
 #   ./scripts/db-restore.sh <dump.sql>
 #   ./scripts/db-restore.sh --drop <dump.sql>                    # drop & recreate DB first
 #   ./scripts/db-restore.sh --env-file <path> <dump.sql>
-#   ./scripts/db-restore.sh --core-compose <path> <dump.sql>
 #   ./scripts/db-restore.sh --project-compose <path> <dump.sql>
 #
 # Run from anywhere — this script always operates relative to madrona-apps/mida-portal/.
 #
 # Prerequisites:
-#   1. Docker Compose stack is running with both decoupled compose files:
-#        docker compose \
-#          -f ../../madrona-portal/docker/compose.base.yml \
-#          -f docker/compose.yml \
-#          --env-file docker/.env up -d
+#   1. Docker Compose stack is running with the production stack:
+#        docker compose -f docker/compose.prod.yml --env-file docker/.env up -d
 #   2. mida-portal/docker/.env exists and contains DB_NAME, DB_USER, DB_PASSWORD.
 #
 # Options:
@@ -25,19 +21,16 @@
 #                       import from prod. Without this flag the dump is applied
 #                       on top of existing data.
 #   --env-file <path>   Path to the .env file (default: ./docker/.env).
-#   --core-compose <path>
-#                       Path to compose.base.yml
-#                       (default: ../../madrona-portal/docker/compose.base.yml).
 #   --project-compose <path>
-#                       Path to mida-portal compose overlay
-#                       (default: ./docker/compose.yml).
+#                       Path to the production compose file
+#                       (default: ./docker/compose.prod.yml).
 #
 # Notes:
 #   - The dump is streamed directly into the db container (no temp files).
 #   - psql warnings (e.g. "already exists") are normal when importing a dump
 #     produced on a different Postgres version (12 → 16) and are not fatal.
 #   - After a --drop restore, run migrations to pick up any schema drift:
-#       docker compose -f <core-compose> -f <project-compose> --env-file <env-file> \
+#       docker compose -f <project-compose> --env-file <env-file> \
 #         exec app python marco/manage.py migrate
 # -----------------------------------------------------------------------------
 set -euo pipefail
@@ -52,8 +45,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 DEFAULT_ENV_FILE="$PROJECT_ROOT/docker/.env"
-DEFAULT_CORE_COMPOSE="$PROJECT_ROOT/../../madrona-portal/docker/compose.base.yml"
-DEFAULT_PROJECT_COMPOSE="$PROJECT_ROOT/docker/compose.yml"
+DEFAULT_PROJECT_COMPOSE="$PROJECT_ROOT/docker/compose.prod.yml"
 
 resolve_to_abs() {
   local path="$1"
@@ -70,7 +62,6 @@ resolve_to_abs() {
 DROP_FIRST=false
 DUMP_FILE=""
 ENV_FILE="$DEFAULT_ENV_FILE"
-CORE_COMPOSE_FILE="$DEFAULT_CORE_COMPOSE"
 PROJECT_COMPOSE_FILE="$DEFAULT_PROJECT_COMPOSE"
 
 while [[ $# -gt 0 ]]; do
@@ -78,19 +69,16 @@ while [[ $# -gt 0 ]]; do
     --drop)     DROP_FIRST=true; shift ;;
     --env-file) [[ -n "${2:-}" ]] || die "--env-file requires a path argument"
                 ENV_FILE="$2"; shift 2 ;;
-    --core-compose)
-                [[ -n "${2:-}" ]] || die "--core-compose requires a path argument"
-                CORE_COMPOSE_FILE="$2"; shift 2 ;;
     --project-compose)
                 [[ -n "${2:-}" ]] || die "--project-compose requires a path argument"
                 PROJECT_COMPOSE_FILE="$2"; shift 2 ;;
-    -*)         die "Unknown option: '$1'. Usage: $0 [--drop] [--env-file <path>] [--core-compose <path>] [--project-compose <path>] <dump.sql>" ;;
+    -*)         die "Unknown option: '$1'. Usage: $0 [--drop] [--env-file <path>] [--project-compose <path>] <dump.sql>" ;;
     *)          [[ -z "$DUMP_FILE" ]] || die "Unexpected argument: '$1'"
                 DUMP_FILE="$1"; shift ;;
   esac
 done
 
-[[ -n "$DUMP_FILE" ]] || die "Usage: $0 [--drop] [--env-file <path>] [--core-compose <path>] [--project-compose <path>] <dump.sql>"
+[[ -n "$DUMP_FILE" ]] || die "Usage: $0 [--drop] [--env-file <path>] [--project-compose <path>] <dump.sql>"
 
 # Resolve dump path before we cd away.
 DUMP_ABS="$(resolve_to_abs "$DUMP_FILE")"
@@ -98,9 +86,6 @@ DUMP_ABS="$(resolve_to_abs "$DUMP_FILE")"
 
 ENV_FILE_ABS="$(resolve_to_abs "$ENV_FILE")"
 [[ -f "$ENV_FILE_ABS" ]] || die "Env file not found: $ENV_FILE"
-
-CORE_COMPOSE_ABS="$(resolve_to_abs "$CORE_COMPOSE_FILE")"
-[[ -f "$CORE_COMPOSE_ABS" ]] || die "Core compose file not found: $CORE_COMPOSE_FILE"
 
 PROJECT_COMPOSE_ABS="$(resolve_to_abs "$PROJECT_COMPOSE_FILE")"
 [[ -f "$PROJECT_COMPOSE_ABS" ]] || die "Project compose file not found: $PROJECT_COMPOSE_FILE"
@@ -126,14 +111,13 @@ DB_PASSWORD="${DB_PASSWORD:?DB_PASSWORD must be set in .env}"
 # Compose command helpers
 # ---------------------------------------------------------------------------
 compose() {
-  docker compose -f "$CORE_COMPOSE_ABS" -f "$PROJECT_COMPOSE_ABS" --env-file "$ENV_FILE_ABS" "$@"
+  docker compose -f "$PROJECT_COMPOSE_ABS" --env-file "$ENV_FILE_ABS" "$@"
 }
 
 psql_exec() {
   compose exec -T -e "PGPASSWORD=$DB_PASSWORD" db psql -U "$DB_USER" "$@"
 }
 
-info "Using core compose:    $CORE_COMPOSE_ABS"
 info "Using project compose: $PROJECT_COMPOSE_ABS"
 info "Using env file:        $ENV_FILE_ABS"
 
@@ -142,7 +126,7 @@ info "Using env file:        $ENV_FILE_ABS"
 # ---------------------------------------------------------------------------
 info "Checking db service health..."
 compose ps db | grep -q "healthy" \
-  || die "db container is not healthy. Is the stack running? Try: docker compose -f $CORE_COMPOSE_ABS -f $PROJECT_COMPOSE_ABS --env-file $ENV_FILE_ABS up -d"
+  || die "db container is not healthy. Is the stack running? Try: docker compose -f $PROJECT_COMPOSE_ABS --env-file $ENV_FILE_ABS up -d"
 
 # ---------------------------------------------------------------------------
 # Optional: terminate connections, drop, and recreate the database
@@ -180,4 +164,4 @@ info "Restore complete."
 info ""
 info "Next steps:"
 info "  Apply any pending migrations:"
-info "    docker compose -f $CORE_COMPOSE_ABS -f $PROJECT_COMPOSE_ABS --env-file $ENV_FILE_ABS exec app python marco/manage.py migrate"
+info "    docker compose -f $PROJECT_COMPOSE_ABS --env-file $ENV_FILE_ABS exec app python marco/manage.py migrate"
