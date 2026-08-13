@@ -42,6 +42,9 @@ cp docker/.env.example docker/.env
 
 Set development values for `SECRET_KEY`, `DB_PASSWORD`, and `REDIS_PASSWORD` in `docker/.env`.
 
+> *Note:* The `.env.example` file includes Google's reCAPTCHA v2 test keys. 
+> Replace both `RECAPTCHA_PUBLIC_KEY` and `RECAPTCHA_PRIVATE_KEY` with keys for the deployed hostname in production. You can find the reCAPTCHA keys in 1Password. The reCAPTCHA test-key system check is automatically silenced when `DEBUG=True`.
+
 Build the shared base and MidA overlay, then initialize the database:
 
 ```bash
@@ -118,6 +121,8 @@ ALLOWED_HOSTS=portal.midatlanticocean.org,prod.mida.ecotrust.org
 SECRET_KEY=<fresh-secret>
 DB_PASSWORD=<fresh-password>
 REDIS_PASSWORD=<fresh-password>
+RECAPTCHA_PUBLIC_KEY=<site-key-for-the-deployed-hostname>
+RECAPTCHA_PRIVATE_KEY=<secret-key>
 DB_INIT=0
 ```
 
