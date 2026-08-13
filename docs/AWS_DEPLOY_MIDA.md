@@ -1,7 +1,6 @@
 # AWS Deployment Runbook - MidA Portal
 
-This runbook deploys the self-contained MidA Docker stack on one EC2 host. The stack contains the
-MidA app, PostGIS, and Redis. Nginx and TLS run on the host.
+This runbook deploys the self-contained MidA Docker stack on one EC2 host. The stack contains the MidA app, PostGIS, and Redis. Nginx and TLS run on the host.
 
 ## Sizing and prerequisites
 
@@ -14,11 +13,7 @@ Start with:
 - A GHCR read token for `ghcr.io`
 - The current production database dump and media archive
 
-Do not provision GeoPortal, Elasticsearch, Kibana, WAR files, or an Elasticsearch snapshot directory.
-
-Before deployment, confirm the production values from the legacy host for the region, email, social
-auth, analytics, ArcGIS, ReCAPTCHA, and catalog settings. These values are intentionally not copied
-from development configuration.
+Before deployment, confirm the production values from the legacy host for the region, email, social auth, analytics, ArcGIS, ReCAPTCHA, and catalog settings. These values are intentionally not copied from development configuration.
 
 ## Clone and prepare the host
 
@@ -32,8 +27,7 @@ mkdir -p docker/static docker/media docker/backups/sql
 chmod 600 docker/.env
 ```
 
-If the repository is private, authenticate Git before cloning. Copy the production media archive into
-`docker/media` before the first public cutover.
+Copy the production media archive into `docker/media` before the first public cutover.
 
 ## Configure Docker
 
@@ -61,6 +55,9 @@ DB_USER=postgres
 DB_PASSWORD=<fresh-production-password>
 REDIS_PASSWORD=<fresh-production-password>
 DB_INIT=0
+
+RECAPTCHA_PUBLIC_KEY=<site-key-for-the-deployed-hostname>
+RECAPTCHA_PRIVATE_KEY=<secret-key>
 ```
 
 `IMAGE_TAG` is required and must be a pinned MidA image tag. Never use `latest` in production.
