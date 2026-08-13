@@ -2,7 +2,7 @@ name: Build and publish mida-portal image
 
 on:
   push:
-    branches: [main]
+    branches: [main, dockerdecouple]
   workflow_dispatch:
 
 env:
