@@ -8,7 +8,7 @@ on:
 env:
   BASE_TAG: latest
   IMAGE_NAME: ghcr.io/ecotrust/mida-portal
-  IMAGE_PLATFORMS: linux/amd64,linux/arm64
+  IMAGE_PLATFORMS: linux/amd64,linux/arm64/v8
 
 jobs:
   build-and-push:
