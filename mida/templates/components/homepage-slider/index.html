@@ -55,7 +55,21 @@
                                     {% image slide.slide_image fill-800x390 as slide_img %}
                                     <img src="{{ slide_img.url }}" alt="{{ slide.title }}" class="news-image">
 
-                                    {% if slide.link_page and slide.link_page.first_published_at %}
+                                    {% if slide.link_page and slide.link_page.story %}
+                                        <div class="date-badge">
+                                            <div class="date-icon">
+                                                <img src="{% static 'mida/components/homepage-slider/img/calendar.svg' %}" alt="Calendar icon" />
+                                            </div>
+                                            <p class="date-text">{{ slide.link_page.story.posted|date:"F j, Y" }}</p>
+                                        </div>
+                                    {% elif slide.link_page and slide.link_page.event %}
+                                        <div class="date-badge">
+                                            <div class="date-icon">
+                                                <img src="{% static 'mida/components/homepage-slider/img/calendar.svg' %}" alt="Calendar icon" />
+                                            </div>
+                                            <p class="date-text">{{ slide.link_page.event.date|date:"F j, Y" }}</p>
+                                        </div>
+                                    {% elif slide.link_page and slide.link_page.first_published_at %}
                                         <div class="date-badge">
                                             <div class="date-icon">
                                                 <img src="{% static 'mida/components/homepage-slider/img/calendar.svg' %}" alt="Calendar icon" />
@@ -67,7 +81,9 @@
 
                                 <div class="news-content">
                                     <h3 class="news-title">{{ slide.title }}</h3>
-                                    <p class="news-description">{{ slide.body|striptags }}</p>
+                                    {% autoescape off %}
+                                        <p class="news-description">{{ slide.body|striptags }}</p>
+                                    {% endautoescape %}
                                     <span class="read-more-button">
                                         <span class="read-more-text">READ MORE</span>
                                     </span>
