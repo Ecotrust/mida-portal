@@ -3,5 +3,6 @@
 wcoa.egg-info/PKG-INFO
 deploy/sync_prod_content.sh
 docker/.env
+docker/.env.prod
 docker/static/
 docker/media/
