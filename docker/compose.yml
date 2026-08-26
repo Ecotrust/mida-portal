@@ -1,0 +1,100 @@
+services:
+  app:
+    image: mida-portal:dev
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+      args:
+        BASE_TAG: ${BASE_TAG:-latest}
+    env_file:
+      - .env
+    environment:
+      - MP_PROJECT_CONFIG=/usr/local/apps/madrona-portal/apps/mida-portal/docker/config.mida.docker.ini
+    volumes:
+      - ./static:/vol/web/static
+      - ./media:/usr/local/apps/madrona-portal/media
+      - type: bind
+        source: ../../../madrona-portal/marco
+        target: /usr/local/apps/madrona-portal/marco
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ..
+        target: /usr/local/apps/madrona-portal/apps/mida-portal
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../mp-data-manager
+        target: /usr/local/apps/madrona-portal/apps/mp-data-manager
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../mp-layers
+        target: /usr/local/apps/madrona-portal/apps/mp-layers
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../mp-accounts
+        target: /usr/local/apps/madrona-portal/apps/mp-accounts
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../mp-drawing
+        target: /usr/local/apps/madrona-portal/apps/mp-drawing
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../mp-visualize
+        target: /usr/local/apps/madrona-portal/apps/mp-visualize
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../madrona-features
+        target: /usr/local/apps/madrona-portal/apps/madrona-features
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../madrona-manipulators
+        target: /usr/local/apps/madrona-portal/apps/madrona-manipulators
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../madrona-scenarios
+        target: /usr/local/apps/madrona-portal/apps/madrona-scenarios
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../mp-map-groups
+        target: /usr/local/apps/madrona-portal/apps/mp-map-groups
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../mp-explore
+        target: /usr/local/apps/madrona-portal/apps/mp-explore
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../mp-proxy
+        target: /usr/local/apps/madrona-portal/apps/mp-proxy
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../p97-nursery
+        target: /usr/local/apps/madrona-portal/apps/p97-nursery
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../django_url_shortener
+        target: /usr/local/apps/madrona-portal/apps/django_url_shortener
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../madrona-analysistools
+        target: /usr/local/apps/madrona-portal/apps/madrona-analysistools
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ../../mp-survey
+        target: /usr/local/apps/madrona-portal/apps/mp-survey
+        bind:
+          create_host_path: false
