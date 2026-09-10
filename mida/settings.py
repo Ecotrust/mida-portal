@@ -29,6 +29,7 @@ TEMPLATES = [
 
 SUPPORT_INVERTED_COORDINATES = False
 ARCGIS_API_KEY = "set in local settings"
+CARTO_API_KEY = "set in local settings"
 
 # Defines which apps/modules interact with the MyPlanner tab in mp-visualize's left nav
 # Add 'survey' to this list once Surveys are live on MidA production
