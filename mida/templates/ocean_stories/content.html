@@ -72,10 +72,22 @@
                                                         }
                                                         for (var k = 0; k < layer.legend.length; k++) {
                                                             entry = layer.legend[k];
-                                                            html += "<tr valign='middle'>";
-                                                            html += "<td><img src=\"" + url + "/" + layer_id + "/images/" + entry.url + "\"></td>";
-                                                            html += "<td>" + entry.label + "</td>";
-                                                            html += "</tr>";
+                                                            if (entry.url === undefined && entry.label === undefined) {
+                                                                html += "<tr valign='middle'><td><em>Legend not available</em></td></tr>";
+                                                            } else if (entry.label === undefined) {
+                                                                html += "<tr valign='middle'>";
+                                                                html += "<td><img src=\"" + url + "/" + layer_id + "/images/" + entry.url + "\"></td>";
+                                                                html += "</tr>";
+                                                            } else if (entry.url === undefined) {
+                                                                html += "<tr valign='middle'>";
+                                                                html += "<td>" + entry.label + "</td>";
+                                                                html += "</tr>";
+                                                            } else {
+                                                                html += "<tr valign='middle'>";
+                                                                html += "<td><img src=\"" + url + "/" + layer_id + "/images/" + entry.url + "\"></td>";
+                                                                html += "<td>" + entry.label + "</td>";
+                                                                html += "</tr>";
+                                                            }
                                                         }
                                                         html += "</tbody></table>";
                                                     }
@@ -161,8 +173,9 @@
                                             </script>
 
                                         {% else %}
-
-                                            <img src="{{ legend.legend }}">
+                                            <div class="img-wrap">
+                                                <img src="{{ legend.legend }}" alt="Legend image" onerror="this.parentElement.innerHTML='<em>Legend not available</em>';">
+                                            </div>
 
                                         {% endif %}
 
