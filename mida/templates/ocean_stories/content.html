@@ -76,7 +76,7 @@
                                                                 html += "<tr valign='middle'><td><em>Legend not available</em></td></tr>";
                                                             } else if (entry.label === undefined) {
                                                                 html += "<tr valign='middle'>";
-                                                                html += "<td><img src=\"" + url + "/" + layer_id + "/images/" + entry.url + "\"></td>";
+                                                                    html += "<td><img src=\"" + url + "/" + layer_id + "/images/" + entry.url + "\" onerror=\"this.parentElement.innerHTML='<em>Legend not available</em>';\"></td>";
                                                                 html += "</tr>";
                                                             } else if (entry.url === undefined) {
                                                                 html += "<tr valign='middle'>";
