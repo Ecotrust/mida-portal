@@ -72,6 +72,8 @@
                                                         }
                                                         for (var k = 0; k < layer.legend.length; k++) {
                                                             entry = layer.legend[k];
+                                                            entry.url = entry.url === null || entry.url === '' ? undefined : entry.url;
+                                                             entry.label = entry.label === null || entry.label === '' ? undefined : entry.label;
                                                             if (entry.url === undefined && entry.label === undefined) {
                                                                 html += "<tr valign='middle'><td><em>Legend not available</em></td></tr>";
                                                             } else if (entry.label === undefined) {
