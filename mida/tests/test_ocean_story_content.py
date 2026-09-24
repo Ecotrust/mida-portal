@@ -14,6 +14,13 @@ class OceanStoryContentLegendTest(SimpleTestCase):
             / "content.html"
         )
         cls.template = template_path.read_text()
+        loop_start = cls.template.index(
+            "for (var k = 0; k < layer.legend.length; k++)"
+        )
+        loop_end = cls.template.index(
+            'html += "</tbody></table>";', loop_start
+        )
+        cls.url_legend_loop = cls.template[loop_start:loop_end]
 
     def test_legend_row_requires_valid_label_or_visualization(self):
         self.assertIn(
@@ -59,28 +66,43 @@ class OceanStoryContentLegendTest(SimpleTestCase):
     def test_url_legend_renders_unavailable_when_label_and_url_missing(self):
         self.assertIn(
             "if (entry.url === undefined && entry.label === undefined)",
-            self.template,
+            self.url_legend_loop,
         )
-        self.assertIn("<em>Legend not available</em>", self.template)
+        self.assertIn(
+            'html += "<tr valign=\'middle\'><td><em>Legend not available</em></td></tr>";',
+            self.url_legend_loop,
+        )
 
     def test_url_legend_renders_image_when_label_missing(self):
-        self.assertIn("} else if (entry.label === undefined)", self.template)
         self.assertIn(
-            'url + "/" + layer_id + "/images/" + entry.url',
-            self.template,
+            "} else if (entry.label === undefined)",
+            self.url_legend_loop,
+        )
+        self.assertIn(
+            'html += "<td><img src=\\\"" + url + "/" + layer_id + "/images/" + entry.url + "\\\"></td>";',
+            self.url_legend_loop,
         )
 
     def test_url_legend_renders_label_when_url_missing(self):
-        self.assertIn("} else if (entry.url === undefined)", self.template)
-        self.assertIn('html += "<td>" + entry.label + "</td>";', self.template)
+        self.assertIn(
+            "} else if (entry.url === undefined)",
+            self.url_legend_loop,
+        )
+        self.assertIn(
+            'html += "<td>" + entry.label + "</td>";',
+            self.url_legend_loop,
+        )
 
     def test_url_legend_renders_image_and_label_when_both_present(self):
-        both_values_branch = self.template[self.template.index(
-            "} else {\n                                                                html += \"<tr valign='middle'>\";"
-        ):]
-
+        self.assertIn(
+            "} else {",
+            self.url_legend_loop,
+        )
         self.assertIn(
             'html += "<td><img src=\\\"" + url + "/" + layer_id + "/images/" + entry.url + "\\\"></td>";',
-            both_values_branch,
+            self.url_legend_loop,
         )
-        self.assertIn('html += "<td>" + entry.label + "</td>";', both_values_branch)
+        self.assertIn(
+            'html += "<td>" + entry.label + "</td>";',
+            self.url_legend_loop,
+        )
