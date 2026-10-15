@@ -218,7 +218,7 @@ $(find "$d" -maxdepth 8 -type f -name manage.py \
 fi
 
 APP_PORT="${APP_PORT:-8001}"
-APP_URL="http://localhost:${APP_PORT}${HTTP_CHECK_PATH}"
+APP_URL="http://127.0.0.1:${APP_PORT}${HTTP_CHECK_PATH}"
 log "Checking HTTP response on ${APP_URL} ..."
 check_http_with_retries "$APP_URL" "$HTTP_CHECK_RETRIES" "$HTTP_CHECK_DELAY_SECONDS"
 

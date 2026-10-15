@@ -32,7 +32,7 @@ services:
       tasks:
         condition: service_healthy
     ports:
-      - "${APP_PORT:-8001}:8008"
+      - "127.0.0.1${APP_PORT:-8001}:8008"
     networks:
       - madronanetwork
     restart: unless-stopped
