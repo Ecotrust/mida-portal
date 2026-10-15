@@ -18,7 +18,7 @@ tasks:
       - '{{.COMPOSE}} build'
 
   up:
-    desc: Start the MidA development stack without running database initialization.
+    desc: Start the MidA development stack
     cmds:
       - '{{.COMPOSE}} up'
 
