@@ -1,6 +1,6 @@
 # AWS Deployment Runbook - MidA Portal
 
-This runbook deploys the self-contained MidA Docker stack on one EC2 host. The stack contains the MidA app, PostGIS, and Redis. Nginx and TLS run on the host.
+This runbook deploys the self-contained MidA Docker stack on one EC2 host. Complete the shared host preparation in the [Madrona Portal AWS guide](https://github.com/Ecotrust/madrona-portal/blob/main/docs/AWS_DEPLOY.md) first. This runbook covers MidA-specific image, configuration, data, and service setup. The stack contains the MidA app, PostGIS, and Redis; nginx and TLS run on the host.
 
 ## Sizing and prerequisites
 
@@ -24,7 +24,6 @@ cd /home/ubuntu/portals
 git clone https://github.com/Ecotrust/mida-portal.git
 cd mida-portal
 mkdir -p docker/static docker/media docker/backups/sql
-chmod 600 docker/.env
 ```
 
 Copy the production media archive into `docker/media` before the first public cutover.
@@ -62,7 +61,7 @@ RECAPTCHA_PRIVATE_KEY=<secret-key>
 
 `IMAGE_TAG` is required and must be a pinned MidA image tag. Never use `latest` in production.
 `APP_PORT` is the host port; Gunicorn listens on container port `8008`. Keep `DB_PORT` and Redis on
-loopback only through the production compose file.
+loopback only through the production compose file. The app is also bound to `127.0.0.1`; host nginx is the public ingress.
 
 Confirm that `docker/config.mida.prod.ini` contains the verified production values. It is mounted and
 selected through `MP_PROJECT_CONFIG`; the development INI is not used by this stack.
@@ -75,24 +74,38 @@ docker compose -f docker/compose.prod.yml --env-file docker/.env config >/dev/nu
 docker compose -f docker/compose.prod.yml --env-file docker/.env pull
 ```
 
-For the first boot only, initialize the application database:
+In most cases you will have an existing production database to import. In this case start the stack without running fixtures:
 
 ```bash
-DB_INIT=1 docker compose -f docker/compose.prod.yml --env-file docker/.env up -d
+docker compose -f docker/compose.prod.yml --env-file docker/.env up -d
 ```
 
-Set `DB_INIT=0` in `docker/.env` after initialization. Check the services:
+If for some reason you do not have an existing production database to import, then use initial fixtures by setting `DB_INIT=1` in `docker/.env` for the first start:
+
+```bash
+docker compose -f docker/compose.prod.yml --env-file docker/.env up -d
+```
+
+After initialization, set `DB_INIT=0` in `docker/.env` and recreate the app:
+
+```bash
+docker compose -f docker/compose.prod.yml --env-file docker/.env up -d --force-recreate app
+```
+
+Check that the database and dependencies are healthy before continuing:
 
 ```bash
 docker compose -f docker/compose.prod.yml --env-file docker/.env ps
 ```
 
-## Restore production data
+## Restore/Import production data
 
-Restore the dump after the database is healthy:
+Import the production database to restore the dump after the database is healthy:
 
 ```bash
+docker compose -f docker/compose.prod.yml --env-file docker/.env stop app
 ./scripts/db-restore.sh --drop /path/to/mida-production.sql
+docker compose -f docker/compose.prod.yml --env-file docker/.env up -d app
 ```
 
 Apply migrations and rebuild static assets:
