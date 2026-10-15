@@ -33,10 +33,10 @@ cp docker/.env.example docker/.env
 # Set local SECRET_KEY, DB_PASSWORD, REDIS_PASSWORD, and DJANGO_SUPERUSER_PASSWORD.
 task build-base
 task build-portal
-task init
+task up
 ```
 
-Use `task init` only for a fresh database, then `task up` for subsequent starts. The app is available at <http://localhost:8001/>. 
+The app is available at <http://localhost:8001/>. 
 
 For more task commands see [Taskfile.yml](Taskfile.yml)  
 
