@@ -5,45 +5,44 @@ vars:
   COMPOSE: docker compose -f docker/compose.yml -f {{.CORE}}/docker/compose.base.yml --env-file docker/.env
 
 tasks:
-  base:
-    desc: build the platform base image locally
+  build-base:
+    aliases: [base]
+    desc: Build the shared Madrona platform base image locally.
     cmds:
       - sh -c 'if [ -f docker/.env ]; then set -a; . docker/.env; set +a; fi; docker build -t ghcr.io/ecotrust/madrona-portal:${BASE_TAG:-latest} -f {{.CORE}}/docker/Dockerfile {{.CORE}}/../'
 
-  build:
-    desc: build the mida portal image
+  build-portal:
+    aliases: [build]
+    desc: Build the MidA development image on the shared platform base.
     cmds:
       - '{{.COMPOSE}} build'
 
   up:
-    desc: start mida services
+    desc: Start the MidA development stack without running database initialization.
     cmds:
       - '{{.COMPOSE}} up'
 
   init:
-    desc: first run with migrations, fixtures, and superuser bootstrap
+    desc: Initialize a fresh MidA database, then start the development stack.
     cmds:
       - DB_INIT=1 {{.COMPOSE}} up
 
   down:
-    desc: stop mida services
+    desc: Stop and remove MidA development containers and network; preserve volumes.
     cmds:
       - '{{.COMPOSE}} down'
 
   logs:
-    desc: tail app logs
+    desc: Follow the MidA application container logs.
     cmds:
       - '{{.COMPOSE}} logs -f app'
 
   manage:
-    desc: run a Django manage.py command (pass with -- cmd="...")
-    requires:
-      vars:
-        - cmd
+    desc: Run a Django management command, e.g. task manage -- migrate.
     cmds:
-      - '{{.COMPOSE}} exec app python marco/manage.py {{.cmd}}'
+      - '{{.COMPOSE}} exec app python marco/manage.py {{.CLI_ARGS}}'
 
   shell:
-    desc: open Django shell
+    desc: Open the Django shell in the running MidA app container.
     cmds:
       - '{{.COMPOSE}} exec app python marco/manage.py shell'
