@@ -123,15 +123,15 @@ Open <http://localhost:8001/>
 
 ## Taskfile commands
 
-Run tasks from the MidA repository root. `task --list` shows the current descriptions.
+Run tasks from the MidA repository root. `task --list` shows the current descriptions:
 
 | Command | Purpose |
 | --- | --- |
 | `task build-base` | Builds a madrona-portal image – *Run initially and when shared dependencies change* |
 | `task build-portal` | Builds a mida-portal dev image – *Run initially and when dependencies change* |
-| `task up` | Docker up |
-| `task down` | Docker down |
-| `task logs` | Docker logs |
+| `task up` | Start the stack (Docker up) |
+| `task down` | Stop the stack (Docker down) |
+| `task logs` | See the stack logs (Docker logs) |
 | `task manage -- migrate` | Run a Django management command in the app container |
 | `task shell` | Open the Django shell in the app container |
 | `task init` | Initialize a fresh database and Docker up |
@@ -139,5 +139,5 @@ Run tasks from the MidA repository root. `task --list` shows the current descrip
 ## Troubleshooting and tips
 
 - If the app port is occupied, change `APP_PORT` in `docker/.env`
-- After changing a Python dependency in `docker/requirements.txt`, run `task build-portal` again.
-- After shared dependency changes, run `task build-base` followed by `task build-portal`.
+- After changing a Python dependency in `docker/requirements.txt`, run `task build-portal` again
+- After shared dependency changes, run `task build-base` followed by `task build-portal`
