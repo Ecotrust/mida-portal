@@ -1,6 +1,6 @@
 # AWS Deployment Runbook - MidA Portal
 
-This runbook deploys the self-contained MidA Docker stack on one EC2 host. The stack contains the MidA app, PostGIS, and Redis. Nginx and TLS run on the host.
+This runbook deploys the self-contained MidA Docker stack on one EC2 host. Complete the shared host preparation in the [Madrona Portal AWS guide](https://github.com/Ecotrust/madrona-portal/blob/main/docs/AWS_DEPLOY.md) first. This runbook covers MidA-specific image, configuration, data, and service setup. The stack contains the MidA app, PostGIS, and Redis; nginx and TLS run on the host.
 
 ## Sizing and prerequisites
 
@@ -18,13 +18,12 @@ Before deployment, confirm the production values from the legacy host for the re
 ## Clone and prepare the host
 
 ```bash
-sudo mkdir -p /home/ubuntu/portals
-sudo chown ubuntu:ubuntu /home/ubuntu/portals
-cd /home/ubuntu/portals
+sudo mkdir -p /home/ubuntu/portals/madrona-apps
+sudo chown ubuntu:ubuntu /home/ubuntu/portals /home/ubuntu/portals/madrona-apps
+cd /home/ubuntu/portals/madrona-apps
 git clone https://github.com/Ecotrust/mida-portal.git
 cd mida-portal
 mkdir -p docker/static docker/media docker/backups/sql
-chmod 600 docker/.env
 ```
 
 Copy the production media archive into `docker/media` before the first public cutover.
@@ -60,12 +59,11 @@ RECAPTCHA_PUBLIC_KEY=<site-key-for-the-deployed-hostname>
 RECAPTCHA_PRIVATE_KEY=<secret-key>
 ```
 
-`IMAGE_TAG` is required and must be a pinned MidA image tag. Never use `latest` in production.
+`IMAGE_TAG` is required and must be a pinned MidA image tag
 `APP_PORT` is the host port; Gunicorn listens on container port `8008`. Keep `DB_PORT` and Redis on
-loopback only through the production compose file.
+loopback only through the production compose file. The app is also bound to `127.0.0.1`; host nginx is the public ingress.
 
-Confirm that `docker/config.mida.prod.ini` contains the verified production values. It is mounted and
-selected through `MP_PROJECT_CONFIG`; the development INI is not used by this stack.
+Confirm that `docker/config.mida.prod.ini` contains the verified production values. It is mounted and selected through `MP_PROJECT_CONFIG`.
 
 ## Authenticate and start the stack
 
@@ -75,24 +73,38 @@ docker compose -f docker/compose.prod.yml --env-file docker/.env config >/dev/nu
 docker compose -f docker/compose.prod.yml --env-file docker/.env pull
 ```
 
-For the first boot only, initialize the application database:
+In most cases you will have an existing production database to import. In this case start the stack without running fixtures:
 
 ```bash
-DB_INIT=1 docker compose -f docker/compose.prod.yml --env-file docker/.env up -d
+docker compose -f docker/compose.prod.yml --env-file docker/.env up -d
 ```
 
-Set `DB_INIT=0` in `docker/.env` after initialization. Check the services:
+If for some reason you do not have an existing production database to import, then use initial fixtures by setting `DB_INIT=1` in `docker/.env` for the first start:
+
+```bash
+docker compose -f docker/compose.prod.yml --env-file docker/.env up -d
+```
+
+After initialization, set `DB_INIT=0` in `docker/.env` and recreate the app:
+
+```bash
+docker compose -f docker/compose.prod.yml --env-file docker/.env up -d --force-recreate app
+```
+
+Check that the database and dependencies are healthy before continuing:
 
 ```bash
 docker compose -f docker/compose.prod.yml --env-file docker/.env ps
 ```
 
-## Restore production data
+## Restore/Import production data
 
-Restore the dump after the database is healthy:
+Import the production database to restore the dump after the database is healthy:
 
 ```bash
+docker compose -f docker/compose.prod.yml --env-file docker/.env stop app
 ./scripts/db-restore.sh --drop /path/to/mida-production.sql
+docker compose -f docker/compose.prod.yml --env-file docker/.env up -d app
 ```
 
 Apply migrations and rebuild static assets:
@@ -103,13 +115,11 @@ docker compose -f docker/compose.prod.yml --env-file docker/.env exec app python
 docker compose -f docker/compose.prod.yml --env-file docker/.env exec app python marco/manage.py compress --force
 ```
 
-Copy the production media archive into `docker/media` and verify that uploaded files remain after a
-`docker compose ... down` followed by `up -d`.
+Copy the production media archive into `docker/media` and verify that uploaded files remain after a `docker compose ... down` followed by `up -d`.
 
 ## Host nginx and TLS
 
-Replace the legacy uWSGI server block with a host nginx configuration that points to the Docker app
-port and the bind-mounted asset directories. The application locations should be equivalent to:
+Replace the legacy uWSGI server block with a host nginx configuration that points to the Docker app port and the bind-mounted asset directories. The application locations should be equivalent to:
 
 ```nginx
 server {
@@ -120,11 +130,11 @@ server {
     client_max_body_size 50M;
 
     location /static/ {
-        alias /home/ubuntu/portals/mida-portal/docker/static/;
+        alias /home/ubuntu/portals/madrona-apps/mida-portal/docker/static/;
     }
 
     location /media/ {
-        alias /home/ubuntu/portals/mida-portal/docker/media/;
+        alias /home/ubuntu/portals/madrona-apps/mida-portal/docker/media/;
     }
 
     location / {
@@ -156,9 +166,6 @@ Request certificates after DNS points both names at the host:
 sudo certbot --nginx -d portal.midatlanticocean.org -d prod.mida.ecotrust.org
 ```
 
-If `prod.mida.ecotrust.org` is no longer live, omit it from nginx and certbot after confirming the
-legacy DNS and application usage.
-
 ## systemd service
 
 Disable the legacy services before enabling the Docker unit:
@@ -179,7 +186,7 @@ Requires=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-WorkingDirectory=/home/ubuntu/portals/mida-portal/docker
+WorkingDirectory=/home/ubuntu/portals/madrona-apps/mida-portal/docker
 ExecStart=/usr/bin/docker compose -f compose.prod.yml --env-file .env up -d
 ExecStop=/usr/bin/docker compose -f compose.prod.yml --env-file .env down
 TimeoutStartSec=0
@@ -202,11 +209,10 @@ sudo systemctl status mida.service --no-pager
 Install a nightly database dump with retention:
 
 ```cron
-15 2 * * * cd /home/ubuntu/portals/mida-portal && /bin/bash -lc './scripts/db_dump.sh -c ./docker/compose.prod.yml -e ./docker/.env -d ./docker/backups/sql && find ./docker/backups/sql -type f -name "*.sql" -mtime +10 -delete' >> /home/ubuntu/portals/mida-portal/docker/backups/db_dump.log 2>&1
+15 2 * * * cd /home/ubuntu/portals/madrona-apps/mida-portal && /bin/bash -lc './scripts/db_dump.sh -c ./docker/compose.prod.yml -e ./docker/.env -d ./docker/backups/sql && find ./docker/backups/sql -type f -name "*.sql" -mtime +10 -delete' >> /home/ubuntu/portals/madrona-apps/mida-portal/docker/backups/db_dump.log 2>&1
 ```
 
-Copy backups off-host or include the directory in the host backup policy. The named PostGIS volume
-survives normal `down` and `up` operations, but it is not a substitute for database backups.
+Copy backups off-host or include the directory in the host backup policy. The named PostGIS volume survives normal `down` and `up` operations.
 
 ## Release and rollback
 
@@ -221,8 +227,7 @@ docker compose -f docker/compose.prod.yml --env-file docker/.env ps
 
 Rollback uses the same commands with the previous known-good SHA.
 
-A rebuild of the `madrona-portal` base image does not change production by itself. Rebuild the MidA
-overlay against the new `BASE_TAG`, publish a new MidA image, and then bump `IMAGE_TAG`.
+A rebuild of the `madrona-portal` base image does not change production by itself. Rebuild the MidA overlay against the new `BASE_TAG`, publish a new MidA image, and then bump `IMAGE_TAG`.
 
 ## Smoke checks
 
@@ -232,6 +237,3 @@ docker compose -f docker/compose.prod.yml --env-file docker/.env exec app python
   'from django.conf import settings; assert settings.DEBUG is False; print(settings.MEDIA_ROOT)'
 docker compose -f docker/compose.prod.yml --env-file docker/.env images app
 ```
-
-The app image must be `ghcr.io/ecotrust/mida-portal:<pinned-sha>`, and the compose file must contain
-no GeoPortal, Elasticsearch, Kibana, Harvester, or WAR dependencies.
