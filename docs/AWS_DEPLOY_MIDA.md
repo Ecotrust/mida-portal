@@ -18,9 +18,9 @@ Before deployment, confirm the production values from the legacy host for the re
 ## Clone and prepare the host
 
 ```bash
-sudo mkdir -p /home/ubuntu/portals
-sudo chown ubuntu:ubuntu /home/ubuntu/portals
-cd /home/ubuntu/portals
+sudo mkdir -p /home/ubuntu/portals/madrona-apps
+sudo chown ubuntu:ubuntu /home/ubuntu/portals /home/ubuntu/portals/madrona-apps
+cd /home/ubuntu/portals/madrona-apps
 git clone https://github.com/Ecotrust/mida-portal.git
 cd mida-portal
 mkdir -p docker/static docker/media docker/backups/sql
@@ -133,11 +133,11 @@ server {
     client_max_body_size 50M;
 
     location /static/ {
-        alias /home/ubuntu/portals/mida-portal/docker/static/;
+        alias /home/ubuntu/portals/madrona-apps/mida-portal/docker/static/;
     }
 
     location /media/ {
-        alias /home/ubuntu/portals/mida-portal/docker/media/;
+        alias /home/ubuntu/portals/madrona-apps/mida-portal/docker/media/;
     }
 
     location / {
@@ -192,7 +192,7 @@ Requires=docker.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-WorkingDirectory=/home/ubuntu/portals/mida-portal/docker
+WorkingDirectory=/home/ubuntu/portals/madrona-apps/mida-portal/docker
 ExecStart=/usr/bin/docker compose -f compose.prod.yml --env-file .env up -d
 ExecStop=/usr/bin/docker compose -f compose.prod.yml --env-file .env down
 TimeoutStartSec=0
@@ -215,7 +215,7 @@ sudo systemctl status mida.service --no-pager
 Install a nightly database dump with retention:
 
 ```cron
-15 2 * * * cd /home/ubuntu/portals/mida-portal && /bin/bash -lc './scripts/db_dump.sh -c ./docker/compose.prod.yml -e ./docker/.env -d ./docker/backups/sql && find ./docker/backups/sql -type f -name "*.sql" -mtime +10 -delete' >> /home/ubuntu/portals/mida-portal/docker/backups/db_dump.log 2>&1
+15 2 * * * cd /home/ubuntu/portals/madrona-apps/mida-portal && /bin/bash -lc './scripts/db_dump.sh -c ./docker/compose.prod.yml -e ./docker/.env -d ./docker/backups/sql && find ./docker/backups/sql -type f -name "*.sql" -mtime +10 -delete' >> /home/ubuntu/portals/madrona-apps/mida-portal/docker/backups/db_dump.log 2>&1
 ```
 
 Copy backups off-host or include the directory in the host backup policy. The named PostGIS volume
