@@ -59,12 +59,11 @@ RECAPTCHA_PUBLIC_KEY=<site-key-for-the-deployed-hostname>
 RECAPTCHA_PRIVATE_KEY=<secret-key>
 ```
 
-`IMAGE_TAG` is required and must be a pinned MidA image tag. Never use `latest` in production.
+`IMAGE_TAG` is required and must be a pinned MidA image tag
 `APP_PORT` is the host port; Gunicorn listens on container port `8008`. Keep `DB_PORT` and Redis on
 loopback only through the production compose file. The app is also bound to `127.0.0.1`; host nginx is the public ingress.
 
-Confirm that `docker/config.mida.prod.ini` contains the verified production values. It is mounted and
-selected through `MP_PROJECT_CONFIG`; the development INI is not used by this stack.
+Confirm that `docker/config.mida.prod.ini` contains the verified production values. It is mounted and selected through `MP_PROJECT_CONFIG`.
 
 ## Authenticate and start the stack
 
@@ -116,13 +115,11 @@ docker compose -f docker/compose.prod.yml --env-file docker/.env exec app python
 docker compose -f docker/compose.prod.yml --env-file docker/.env exec app python marco/manage.py compress --force
 ```
 
-Copy the production media archive into `docker/media` and verify that uploaded files remain after a
-`docker compose ... down` followed by `up -d`.
+Copy the production media archive into `docker/media` and verify that uploaded files remain after a `docker compose ... down` followed by `up -d`.
 
 ## Host nginx and TLS
 
-Replace the legacy uWSGI server block with a host nginx configuration that points to the Docker app
-port and the bind-mounted asset directories. The application locations should be equivalent to:
+Replace the legacy uWSGI server block with a host nginx configuration that points to the Docker app port and the bind-mounted asset directories. The application locations should be equivalent to:
 
 ```nginx
 server {
@@ -168,9 +165,6 @@ Request certificates after DNS points both names at the host:
 ```bash
 sudo certbot --nginx -d portal.midatlanticocean.org -d prod.mida.ecotrust.org
 ```
-
-If `prod.mida.ecotrust.org` is no longer live, omit it from nginx and certbot after confirming the
-legacy DNS and application usage.
 
 ## systemd service
 
@@ -218,8 +212,7 @@ Install a nightly database dump with retention:
 15 2 * * * cd /home/ubuntu/portals/madrona-apps/mida-portal && /bin/bash -lc './scripts/db_dump.sh -c ./docker/compose.prod.yml -e ./docker/.env -d ./docker/backups/sql && find ./docker/backups/sql -type f -name "*.sql" -mtime +10 -delete' >> /home/ubuntu/portals/madrona-apps/mida-portal/docker/backups/db_dump.log 2>&1
 ```
 
-Copy backups off-host or include the directory in the host backup policy. The named PostGIS volume
-survives normal `down` and `up` operations, but it is not a substitute for database backups.
+Copy backups off-host or include the directory in the host backup policy. The named PostGIS volume survives normal `down` and `up` operations.
 
 ## Release and rollback
 
@@ -234,8 +227,7 @@ docker compose -f docker/compose.prod.yml --env-file docker/.env ps
 
 Rollback uses the same commands with the previous known-good SHA.
 
-A rebuild of the `madrona-portal` base image does not change production by itself. Rebuild the MidA
-overlay against the new `BASE_TAG`, publish a new MidA image, and then bump `IMAGE_TAG`.
+A rebuild of the `madrona-portal` base image does not change production by itself. Rebuild the MidA overlay against the new `BASE_TAG`, publish a new MidA image, and then bump `IMAGE_TAG`.
 
 ## Smoke checks
 
@@ -245,6 +237,3 @@ docker compose -f docker/compose.prod.yml --env-file docker/.env exec app python
   'from django.conf import settings; assert settings.DEBUG is False; print(settings.MEDIA_ROOT)'
 docker compose -f docker/compose.prod.yml --env-file docker/.env images app
 ```
-
-The app image must be `ghcr.io/ecotrust/mida-portal:<pinned-sha>`, and the compose file must contain
-no GeoPortal, Elasticsearch, Kibana, Harvester, or WAR dependencies.
