@@ -127,8 +127,8 @@ Run tasks from the MidA repository root. `task --list` shows the current descrip
 
 | Command | Purpose |
 | --- | --- |
-| `task build-base` | Builds a madrona-portal image – *Run initially and when shared dependencies change* |
-| `task build-portal` | Builds a mida-portal dev image – *Run initially and when dependencies change* |
+| `task build-base` | Builds a madrona-portal image – *Run initially and when requirements (e.g., new pip package, docker-requirements.txt) change in madrona-portal, mp-\*, or madrona-\** |
+| `task build-portal` | Builds a mida-portal dev image – *Run initially and when requirements (e.g., new pip package, docker-requirements.txt) change in mida-portal* |
 | `task up` | Start the stack (Docker up) |
 | `task down` | Stop the stack (Docker down) |
 | `task logs` | See the stack logs (Docker logs) |
