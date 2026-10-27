@@ -91,7 +91,7 @@ After initialization, set `DB_INIT=0` in `docker/.env` and recreate the app:
 docker compose -f docker/compose.prod.yml --env-file docker/.env up -d --force-recreate app
 ```
 
-Check that the database and dependencies are healthy before continuing:
+Run the Docker process status command to check on the health of the running containers:
 
 ```bash
 docker compose -f docker/compose.prod.yml --env-file docker/.env ps
