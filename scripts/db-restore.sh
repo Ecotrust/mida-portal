@@ -1,37 +1,43 @@
 #!/usr/bin/env bash
 # -----------------------------------------------------------------------------
-# db-restore.sh — Restore a PostgreSQL dump into the decoupled mida-portal Docker DB.
+# db-restore.sh — Restore a PostgreSQL dump into the Dockerized database.
 #
 # Usage:
 #   ./scripts/db-restore.sh <dump.sql>
-#   ./scripts/db-restore.sh --drop <dump.sql>                    # drop & recreate DB first
+#   ./scripts/db-restore.sh --drop <dump.sql>          # drop & recreate DB first
+#   ./scripts/db-restore.sh --prod <dump.sql>          # force production compose
+#   ./scripts/db-restore.sh --dev  <dump.sql>          # force development compose
 #   ./scripts/db-restore.sh --env-file <path> <dump.sql>
-#   ./scripts/db-restore.sh --project-compose <path> <dump.sql>
 #
-# Run from anywhere — this script always operates relative to madrona-apps/mida-portal/.
+# Run from anywhere — this script always operates relative to mida-portal/.
 #
 # Prerequisites:
-#   1. Docker Compose stack is running with the production stack:
-#        docker compose -f docker/compose.prod.yml --env-file docker/.env up -d
-#   2. mida-portal/docker/.env exists and contains DB_NAME, DB_USER, DB_PASSWORD.
+#   1. Docker Compose stack is running (dev or prod):
+#        docker compose -f docker/compose.yml -f ../../madrona-portal/docker/compose.base.yml up  # dev
+#        docker compose -f docker/compose.prod.yml up                                           # prod
+#   2. docker/.env exists and contains DB_NAME, DB_USER, DB_PASSWORD.
+#
+# Environment detection (applied in order, first match wins):
+#   1. --prod / --dev CLI flag
+#   2. Running Docker Compose stack detected via `docker compose ls`
+#   3. DJANGO_ENV variable in the loaded .env file
+#   4. Default: development
 #
 # Options:
 #   --drop              Terminate all active connections, drop, and recreate the
 #                       target database before restoring. Required for a clean
 #                       import from prod. Without this flag the dump is applied
 #                       on top of existing data.
+#   --prod              Force the production compose file (compose.prod.yml).
+#   --dev               Force the development compose files (compose.yml + shared base).
 #   --env-file <path>   Path to the .env file (default: ./docker/.env).
-#   --project-compose <path>
-#                       Path to the production compose file
-#                       (default: ./docker/compose.prod.yml).
 #
 # Notes:
-#   - The dump is streamed directly into the db container (no temp files).
+#   - The dump is streamed directly into the container — no temp files on disk.
 #   - psql warnings (e.g. "already exists") are normal when importing a dump
 #     produced on a different Postgres version (12 → 16) and are not fatal.
 #   - After a --drop restore, run migrations to pick up any schema drift:
-#       docker compose -f <project-compose> --env-file <env-file> \
-#         exec app python marco/manage.py migrate
+#       <detected-compose-command> exec app python marco/manage.py migrate
 # -----------------------------------------------------------------------------
 set -euo pipefail
 
@@ -41,59 +47,50 @@ set -euo pipefail
 die()  { echo "[db-restore] ERROR: $*" >&2; exit 1; }
 info() { echo "[db-restore] $*"; }
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-
-DEFAULT_ENV_FILE="$PROJECT_ROOT/docker/.env"
-DEFAULT_PROJECT_COMPOSE="$PROJECT_ROOT/docker/compose.prod.yml"
-
-resolve_to_abs() {
-  local path="$1"
-  [[ -n "$path" ]] || return 1
-  if [[ "$path" == ~* ]]; then
-    path="${path/#\~/$HOME}"
-  fi
-  echo "$(cd "$(dirname "$path")" && pwd)/$(basename "$path")"
-}
+COMPOSE_DEV="docker/compose.yml"
+COMPOSE_DEV_BASE="../../madrona-portal/docker/compose.base.yml"
+COMPOSE_PROD="docker/compose.prod.yml"
 
 # ---------------------------------------------------------------------------
 # Parse arguments
 # ---------------------------------------------------------------------------
 DROP_FIRST=false
 DUMP_FILE=""
-ENV_FILE="$DEFAULT_ENV_FILE"
-PROJECT_COMPOSE_FILE="$DEFAULT_PROJECT_COMPOSE"
+ENV_FILE="$(dirname "${BASH_SOURCE[0]}")/../docker/.env"
+FORCE_ENV=""   # "prod" | "dev" | "" (auto-detect)
 
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --drop)     DROP_FIRST=true; shift ;;
+    --prod)     FORCE_ENV="prod"; shift ;;
+    --dev)      FORCE_ENV="dev";  shift ;;
     --env-file) [[ -n "${2:-}" ]] || die "--env-file requires a path argument"
                 ENV_FILE="$2"; shift 2 ;;
-    --project-compose)
-                [[ -n "${2:-}" ]] || die "--project-compose requires a path argument"
-                PROJECT_COMPOSE_FILE="$2"; shift 2 ;;
-    -*)         die "Unknown option: '$1'. Usage: $0 [--drop] [--env-file <path>] [--project-compose <path>] <dump.sql>" ;;
+    -*)         die "Unknown option: '$1'. Usage: $0 [--drop] [--prod|--dev] [--env-file <path>] <dump.sql>" ;;
     *)          [[ -z "$DUMP_FILE" ]] || die "Unexpected argument: '$1'"
                 DUMP_FILE="$1"; shift ;;
   esac
 done
 
-[[ -n "$DUMP_FILE" ]] || die "Usage: $0 [--drop] [--env-file <path>] [--project-compose <path>] <dump.sql>"
+[[ -n "$DUMP_FILE" ]] || die "Usage: $0 [--drop] [--prod|--dev] [--env-file <path>] <dump.sql>"
 
 # Resolve dump path before we cd away.
-DUMP_ABS="$(resolve_to_abs "$DUMP_FILE")"
+DUMP_ABS="$(cd "$(dirname "$DUMP_FILE")" && pwd)/$(basename "$DUMP_FILE")"
 [[ -f "$DUMP_ABS" ]] || die "Dump file not found: $DUMP_FILE"
 
-ENV_FILE_ABS="$(resolve_to_abs "$ENV_FILE")"
+# Expand a leading ~ in ENV_FILE before resolving it to an absolute path.
+if [[ "$ENV_FILE" == ~* ]]; then
+  ENV_FILE="${ENV_FILE/#\~/$HOME}"
+fi
+# Resolve ENV_FILE to an absolute path before we cd away.
+ENV_FILE_ABS="$(cd "$(dirname "$ENV_FILE")" && pwd)/$(basename "$ENV_FILE")"
 [[ -f "$ENV_FILE_ABS" ]] || die "Env file not found: $ENV_FILE"
 
-PROJECT_COMPOSE_ABS="$(resolve_to_abs "$PROJECT_COMPOSE_FILE")"
-[[ -f "$PROJECT_COMPOSE_ABS" ]] || die "Project compose file not found: $PROJECT_COMPOSE_FILE"
-
 # ---------------------------------------------------------------------------
-# Always operate from the mida-portal repo regardless of where the script is called
+# Always operate from madrona-portal/ regardless of where the script is called
 # ---------------------------------------------------------------------------
-cd "$PROJECT_ROOT"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$SCRIPT_DIR/.."
 
 # ---------------------------------------------------------------------------
 # Load .env for DB credentials and DJANGO_ENV
@@ -108,45 +105,80 @@ DB_USER="${DB_USER:-postgres}"
 DB_PASSWORD="${DB_PASSWORD:?DB_PASSWORD must be set in .env}"
 
 # ---------------------------------------------------------------------------
-# Compose command helpers
+# Detect which compose file to target
 # ---------------------------------------------------------------------------
-compose() {
-  docker compose -f "$PROJECT_COMPOSE_ABS" --env-file "$ENV_FILE_ABS" "$@"
+# detect_environment: inspect running Compose stacks, then use DJANGO_ENV.
+detect_environment() {
+  # 1. CLI flag takes priority.
+  if [[ "$FORCE_ENV" == "prod" ]]; then
+    echo "$COMPOSE_PROD"; return
+  elif [[ "$FORCE_ENV" == "dev" ]]; then
+    echo "$COMPOSE_DEV"; return
+  fi
+
+  # 2. Inspect running stacks. `docker compose ls` lists all projects with
+  #    their config file paths — grep for our known filenames.
+  local ls_out
+  if ls_out=$(docker compose ls 2>/dev/null); then
+    if echo "$ls_out" | grep -q "compose\.prod\.yml"; then
+      echo "prod"; return
+    fi
+    if echo "$ls_out" | grep -q "compose\.yml"; then
+      echo "dev"; return
+    fi
+  fi
+
+  # 3. Fall back to DJANGO_ENV from the loaded .env.
+  if [[ "${DJANGO_ENV:-}" == "production" ]]; then
+    echo "prod"; return
+  fi
+
+  # 4. Default to development.
+  echo "dev"
 }
 
-psql_exec() {
-  compose exec -T -e "PGPASSWORD=$DB_PASSWORD" db psql -U "$DB_USER" "$@"
-}
+COMPOSE_ENV="$(detect_environment)"
+COMPOSE_ARGS=(-f "$COMPOSE_DEV" -f "$COMPOSE_DEV_BASE")
+COMPOSE_FILES="$COMPOSE_DEV and $COMPOSE_DEV_BASE"
+COMPOSE_DISPLAY="docker compose -f $COMPOSE_DEV -f $COMPOSE_DEV_BASE --env-file $ENV_FILE_ABS"
+if [[ "$COMPOSE_ENV" == "prod" ]]; then
+  COMPOSE_ARGS=(-f "$COMPOSE_PROD")
+  COMPOSE_FILES="$COMPOSE_PROD"
+  COMPOSE_DISPLAY="docker compose -f $COMPOSE_PROD --env-file $ENV_FILE_ABS"
+fi
+COMPOSE_ARGS+=(--env-file "$ENV_FILE_ABS")
+compose() { docker compose "${COMPOSE_ARGS[@]}" "$@"; }
+psql() { compose exec -T -e "PGPASSWORD=$DB_PASSWORD" db psql -U "$DB_USER" "$@"; }
 
-info "Using project compose: $PROJECT_COMPOSE_ABS"
-info "Using env file:        $ENV_FILE_ABS"
+info "Using compose files: $COMPOSE_FILES"
 
 # ---------------------------------------------------------------------------
 # Verify the db container is healthy before doing anything
 # ---------------------------------------------------------------------------
 info "Checking db service health..."
-compose ps db | grep -q "healthy" \
-  || die "db container is not healthy. Is the stack running? Try: docker compose -f $PROJECT_COMPOSE_ABS --env-file $ENV_FILE_ABS up -d"
+DB_STATUS="$(compose ps db)"
+[[ "$DB_STATUS" == *healthy* ]] \
+  || die "db container is not healthy. Is the stack running? Try: $COMPOSE_DISPLAY up -d"
 
 # ---------------------------------------------------------------------------
 # Optional: terminate connections, drop, and recreate the database
 # ---------------------------------------------------------------------------
 if [[ "$DROP_FIRST" == true ]]; then
   info "Terminating active connections to '$DB_NAME'..."
-  psql_exec -d postgres -c \
+  psql -d postgres -c \
     "SELECT pg_terminate_backend(pid)
      FROM pg_stat_activity
      WHERE datname = '$DB_NAME' AND pid <> pg_backend_pid();" \
     > /dev/null
 
   info "Dropping database '$DB_NAME'..."
-  psql_exec -d postgres -c "DROP DATABASE IF EXISTS \"$DB_NAME\";"
+  psql -d postgres -c "DROP DATABASE IF EXISTS \"$DB_NAME\";"
 
   info "Creating database '$DB_NAME'..."
-  psql_exec -d postgres -c "CREATE DATABASE \"$DB_NAME\";"
+  psql -d postgres -c "CREATE DATABASE \"$DB_NAME\";"
 
   info "Enabling PostGIS extension..."
-  psql_exec -d "$DB_NAME" -c "CREATE EXTENSION IF NOT EXISTS postgis;"
+  psql -d "$DB_NAME" -c "CREATE EXTENSION IF NOT EXISTS postgis;"
 fi
 
 # ---------------------------------------------------------------------------
@@ -156,7 +188,7 @@ DUMP_SIZE="$(du -sh "$DUMP_ABS" | cut -f1)"
 info "Restoring '$DUMP_FILE' (${DUMP_SIZE}) → '$DB_NAME'..."
 info "psql warnings about existing objects are expected and non-fatal."
 
-psql_exec -d "$DB_NAME" \
+psql -d "$DB_NAME" \
   --set ON_ERROR_STOP=off \
   < "$DUMP_ABS"
 
@@ -164,4 +196,4 @@ info "Restore complete."
 info ""
 info "Next steps:"
 info "  Apply any pending migrations:"
-info "    docker compose -f $PROJECT_COMPOSE_ABS --env-file $ENV_FILE_ABS exec app python marco/manage.py migrate"
+info "    $COMPOSE_DISPLAY exec app python marco/manage.py migrate"

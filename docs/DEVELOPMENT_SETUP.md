@@ -96,7 +96,7 @@ task up
 This might take a minute, but after `task up` the dev stack should be running and you can detatch or open a new terminal and run:
 
 ```bash
-scripts/db-restore.sh /path/to/mida-dump.sql
+./scripts/db-restore.sh /path/to/mida-dump.sql
 task manage -- migrate
 task manage -- compress
 task manage -- collectstatic
