@@ -39,7 +39,7 @@ Set these values in `docker/.env`:
 
 ```env
 COMPOSE_PROJECT_NAME=mida
-BASE_TAG=<base-tag-used-to-build-this-overlay>
+BASE_TAG=<base-tag-used-to-build-this-app-image>
 IMAGE_TAG=<pinned-short-sha>
 
 APP_PORT=8001
@@ -216,20 +216,23 @@ Copy backups off-host or include the directory in the host backup policy. The na
 
 ## Release and rollback
 
-Deploy a release by changing `IMAGE_TAG` to a known pinned SHA:
+Deploy a release by changing `IMAGE_TAG` in `.env` to a release or pinned SHA (using `latest` will work, but is not recommended):  
 
 ```bash
 sed -i 's/^IMAGE_TAG=.*/IMAGE_TAG=<new-short-sha>/' docker/.env
 docker compose -f docker/compose.prod.yml --env-file docker/.env pull
 docker compose -f docker/compose.prod.yml --env-file docker/.env up -d
+```
+
+## Status and Checks
+
+Check the Docker process status:  
+
+```bash
 docker compose -f docker/compose.prod.yml --env-file docker/.env ps
 ```
 
-Rollback uses the same commands with the previous known-good SHA.
-
-A rebuild of the `madrona-portal` base image does not change production by itself. Rebuild the MidA overlay against the new `BASE_TAG`, publish a new MidA image, and then bump `IMAGE_TAG`.
-
-## Smoke checks
+Check the application configuration and health:  
 
 ```bash
 curl -sf http://127.0.0.1:8001/ >/dev/null
