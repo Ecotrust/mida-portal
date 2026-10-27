@@ -1,6 +1,6 @@
 # MidA Development Environment Setup
 
-This is a guide to running a local MidA portal. The local stack builds the shared Madrona base and MidA portal overlay. mp-\* and madrona-\* repos are bind-mounts for development.
+This is a guide to running a local MidA portal. The local stack builds the shared Madrona base and MidA portal overlay. mp-\* and madrona-\* repos are [bind mounts](https://docs.docker.com/engine/storage/bind-mounts/) for development.
 
 ## Prerequisites
 
