@@ -111,9 +111,9 @@ DB_PASSWORD="${DB_PASSWORD:?DB_PASSWORD must be set in .env}"
 detect_environment() {
   # 1. CLI flag takes priority.
   if [[ "$FORCE_ENV" == "prod" ]]; then
-    echo "$COMPOSE_PROD"; return
+    echo "prod"; return
   elif [[ "$FORCE_ENV" == "dev" ]]; then
-    echo "$COMPOSE_DEV"; return
+    echo "dev"; return
   fi
 
   # 2. Inspect running stacks. `docker compose ls` lists all projects with
